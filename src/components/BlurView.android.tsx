@@ -22,7 +22,7 @@ const BlurView = forwardRef<View, BlurViewAndroidProps>((props, ref) => {
 
   const overlayColors: Record<BlurViewAndroidType, string> = {
     dark: '#100C0cC3',
-    light: '#00FFFFFF',
+    light: '#3CFFFFFF',
   };
 
   const overlayColor = overlayColors[type] || overlayColors.light;
