@@ -3,10 +3,10 @@ import type { Float } from 'react-native/Libraries/Types/CodegenTypes';
 import type { ViewProps } from 'react-native';
 
 interface NativeProps extends ViewProps {
-  overlayColor?: string;
-  blurRadius?: Float;
   autoUpdate?: boolean;
   enabled?: boolean;
+  overlayColor?: string;
+  blurRadius?: Float;
 }
 
 export default codegenNativeComponent<NativeProps>('BlurViewView', {

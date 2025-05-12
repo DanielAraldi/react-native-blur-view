@@ -1,7 +1,7 @@
-import { type ViewProps } from 'react-native';
+import type { ViewProps } from 'react-native';
 
 /**
- * @type BlurViewAndroidType `'light'` | `'dark'`
+ * @type {BlurViewAndroidType} `'light'` | `'dark'`
  *
  * @description Type for the color type of the overlay on Android.
  */
