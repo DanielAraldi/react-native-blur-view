@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 
 import { BlurViewView } from '../fabrics';
 import type { BlurViewAndroidProps, BlurViewAndroidType } from '../@types';
-import { androidStyles } from '../styles';
+import { globalStyles } from '../styles';
 
 const BlurView = forwardRef<View, BlurViewAndroidProps>((props, ref) => {
   const {
@@ -36,7 +36,7 @@ const BlurView = forwardRef<View, BlurViewAndroidProps>((props, ref) => {
       enabled={isEnabled}
       autoUpdate
       pointerEvents="none"
-      style={StyleSheet.compose(androidStyles.container, style)}
+      style={StyleSheet.compose(globalStyles.container, style)}
       {...rest}
     />
   );

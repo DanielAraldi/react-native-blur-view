@@ -1,10 +1,15 @@
-import type { BlurViewAndroidProps } from './BlurView';
+import type { BlurViewAndroidProps } from './BlurView.android';
+import type { BlurViewIosProps } from './BlurView.ios';
 
 /**
  * @interface BlurViewProps
  *
  * @description Props for the BlurView component.
  */
-export type BlurViewProps = BlurViewAndroidProps;
+export type BlurViewProps = BlurViewAndroidProps | BlurViewIosProps;
 
-export type { BlurViewAndroidProps, BlurViewAndroidType } from './BlurView';
+export type {
+  BlurViewAndroidType,
+  BlurViewAndroidProps,
+} from './BlurView.android';
+export type { BlurViewIosType, BlurViewIosProps } from './BlurView.ios';

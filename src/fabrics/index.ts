@@ -1,1 +1,1 @@
-export { default as BlurViewView } from './BlurViewViewNativeComponentAndroid';
+export { default as BlurViewView } from './BlurViewViewNativeComponent';

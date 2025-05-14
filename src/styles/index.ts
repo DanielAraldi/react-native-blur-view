@@ -1,1 +1,1 @@
-export * from './BlurView';
+export * from './global';
