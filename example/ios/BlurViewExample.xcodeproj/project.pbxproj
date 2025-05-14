@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		6D2EADB39D4A64769A73E4B4 /* libPods-BlurViewExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DE55EA1C7F453E1FEA51FEA /* libPods-BlurViewExample.a */; };
+		3C52A6930FC5A6BFBA3192B8 /* libPods-BlurViewExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D66AEEF85853F947CAC3CCE6 /* libPods-BlurViewExample.a */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		FFB766085FA6BA5E12B74FC6 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
@@ -19,12 +19,12 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = BlurViewExample/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = BlurViewExample/Info.plist; sourceTree = "<group>"; };
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = BlurViewExample/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		310650783508E42DEE053154 /* Pods-BlurViewExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlurViewExample.release.xcconfig"; path = "Target Support Files/Pods-BlurViewExample/Pods-BlurViewExample.release.xcconfig"; sourceTree = "<group>"; };
-		3B0612784DD44B3D35CAC809 /* Pods-BlurViewExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlurViewExample.debug.xcconfig"; path = "Target Support Files/Pods-BlurViewExample/Pods-BlurViewExample.debug.xcconfig"; sourceTree = "<group>"; };
+		5250DCC2C6BFB0A38E446C98 /* Pods-BlurViewExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlurViewExample.release.xcconfig"; path = "Target Support Files/Pods-BlurViewExample/Pods-BlurViewExample.release.xcconfig"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = BlurViewExample/AppDelegate.swift; sourceTree = "<group>"; };
-		7DE55EA1C7F453E1FEA51FEA /* libPods-BlurViewExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlurViewExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = BlurViewExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D66AEEF85853F947CAC3CCE6 /* libPods-BlurViewExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BlurViewExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		F3DB5627A7DD0BD14E5A9DEC /* Pods-BlurViewExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlurViewExample.debug.xcconfig"; path = "Target Support Files/Pods-BlurViewExample/Pods-BlurViewExample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,7 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D2EADB39D4A64769A73E4B4 /* libPods-BlurViewExample.a in Frameworks */,
+				3C52A6930FC5A6BFBA3192B8 /* libPods-BlurViewExample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,7 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				7DE55EA1C7F453E1FEA51FEA /* libPods-BlurViewExample.a */,
+				D66AEEF85853F947CAC3CCE6 /* libPods-BlurViewExample.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -92,8 +92,8 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B0612784DD44B3D35CAC809 /* Pods-BlurViewExample.debug.xcconfig */,
-				310650783508E42DEE053154 /* Pods-BlurViewExample.release.xcconfig */,
+				F3DB5627A7DD0BD14E5A9DEC /* Pods-BlurViewExample.debug.xcconfig */,
+				5250DCC2C6BFB0A38E446C98 /* Pods-BlurViewExample.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -105,13 +105,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "BlurViewExample" */;
 			buildPhases = (
-				C0CF082E4C82E923055C7E39 /* [CP] Check Pods Manifest.lock */,
+				A877C324565F2CC66A9FF67E /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				B919223A083C3750B37B7E6E /* [CP] Embed Pods Frameworks */,
-				91D6AE94CC53102EEAF23E03 /* [CP] Copy Pods Resources */,
+				DA5B76CAE19CD9A79E7BFDED /* [CP] Embed Pods Frameworks */,
+				21FFA0B6E2A269EE9BA42175 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -184,7 +184,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		91D6AE94CC53102EEAF23E03 /* [CP] Copy Pods Resources */ = {
+		21FFA0B6E2A269EE9BA42175 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -201,24 +201,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BlurViewExample/Pods-BlurViewExample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B919223A083C3750B37B7E6E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BlurViewExample/Pods-BlurViewExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BlurViewExample/Pods-BlurViewExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BlurViewExample/Pods-BlurViewExample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C0CF082E4C82E923055C7E39 /* [CP] Check Pods Manifest.lock */ = {
+		A877C324565F2CC66A9FF67E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -240,6 +223,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DA5B76CAE19CD9A79E7BFDED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BlurViewExample/Pods-BlurViewExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BlurViewExample/Pods-BlurViewExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BlurViewExample/Pods-BlurViewExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -256,7 +256,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B0612784DD44B3D35CAC809 /* Pods-BlurViewExample.debug.xcconfig */;
+			baseConfigurationReference = F3DB5627A7DD0BD14E5A9DEC /* Pods-BlurViewExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -420,7 +420,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 310650783508E42DEE053154 /* Pods-BlurViewExample.release.xcconfig */;
+			baseConfigurationReference = 5250DCC2C6BFB0A38E446C98 /* Pods-BlurViewExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -650,7 +650,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -720,7 +723,10 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = "$(inherited)  ";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					" ",
+				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;

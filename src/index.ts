@@ -8,7 +8,7 @@ export const BlurView = BlurViewUntyped as ForwardRefExoticComponent<
       /**
        * @description Set the color type of the overlay.
        *
-       * @type {BlurViewAndroidType} - `'light'` | `'dark'`
+       * @type {BlurViewType} - `'light'` | `'dark'`
        *
        * @default 'light'
        */
@@ -32,8 +32,7 @@ export const BlurView = BlurViewUntyped as ForwardRefExoticComponent<
 
 export type {
   BlurViewAndroidProps,
-  BlurViewAndroidType,
   BlurViewIosProps,
-  BlurViewIosType,
   BlurViewProps,
+  BlurViewType,
 } from './@types';
