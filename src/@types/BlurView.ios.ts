@@ -1,5 +1,31 @@
 import type { ViewProps } from 'react-native';
-import type { BlurViewType } from './BlurView.native';
+
+/**
+ * @type {BlurViewIosType}
+ *
+ * @description Type for the color type of the overlay in iOS.
+ */
+export type BlurViewIosType =
+  | 'x-light'
+  | 'light'
+  | 'dark'
+  | 'thin-material'
+  | 'thin-material-light'
+  | 'thin-material-dark'
+  | 'material'
+  | 'material-light'
+  | 'material-dark'
+  | 'chrome-material'
+  | 'chrome-material-light'
+  | 'chrome-material-dark'
+  | 'thick-material'
+  | 'thick-material-light'
+  | 'thick-material-dark'
+  | 'ultra-thin-material'
+  | 'ultra-thin-material-light'
+  | 'ultra-thin-material-dark'
+  | 'regular'
+  | 'prominent';
 
 /**
  * @interface BlurViewIosProps
@@ -12,7 +38,7 @@ export interface BlurViewIosProps extends ViewProps {
    *
    * @default 'light'
    */
-  type?: BlurViewType;
+  type?: BlurViewIosType;
 
   /**
    * @description Set the blur radius. It accepts a number between `0` and `25`.

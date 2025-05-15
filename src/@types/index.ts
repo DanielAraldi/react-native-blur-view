@@ -8,6 +8,9 @@ import type { BlurViewIosProps } from './BlurView.ios';
  */
 export type BlurViewProps = BlurViewAndroidProps | BlurViewIosProps;
 
-export type { BlurViewAndroidProps } from './BlurView.android';
-export type { BlurViewIosProps } from './BlurView.ios';
+export type {
+  BlurViewAndroidProps,
+  BlurViewAndroidType,
+} from './BlurView.android';
+export type { BlurViewIosProps, BlurViewIosType } from './BlurView.ios';
 export type { BlurViewType } from './BlurView.native';

@@ -1,5 +1,11 @@
 import type { ViewProps } from 'react-native';
-import type { BlurViewType } from './BlurView.native';
+
+/**
+ * @type {BlurViewAndroidType}
+ *
+ * @description Type for the color type of the overlay in Android.
+ */
+export type BlurViewAndroidType = 'light' | 'dark';
 
 /**
  * @interface BlurViewAndroidProps
@@ -12,7 +18,7 @@ export interface BlurViewAndroidProps extends ViewProps {
    *
    * @default 'light'
    */
-  type?: BlurViewType;
+  type?: BlurViewAndroidType;
 
   /**
    * @description Set the blur radius. It accepts a number between `0` and `25`.
