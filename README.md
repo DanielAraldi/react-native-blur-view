@@ -2,6 +2,13 @@
 
 A simple blur view in react native
 
+## Summary
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Installation
 
 ```sh
@@ -15,7 +22,13 @@ import { BlurView } from 'react-native-blur-view';
 
 // ...
 
-<BlurView />;
+return (
+  <View style={styles.wrapper}>
+    <BlurView style={styles.blurView}>
+      <Text style={styles.title}>BlurView</Text>
+    </BlurView>
+  </View>
+);
 ```
 
 ## Contributing
