@@ -4,6 +4,7 @@ import { View, StyleSheet } from 'react-native';
 import { BlurViewView } from '../fabrics';
 import type { BlurViewAndroidProps, BlurViewAndroidType } from '../@types';
 import { globalStyles } from '../styles';
+import { clip } from '../utils';
 
 const BlurView = forwardRef<View, BlurViewAndroidProps>((props, ref) => {
   const {
@@ -14,11 +15,7 @@ const BlurView = forwardRef<View, BlurViewAndroidProps>((props, ref) => {
     ...rest
   } = props;
 
-  const handleClipRadius = useCallback(() => {
-    if (radius <= 0) return 0;
-    if (radius >= 25) return 25;
-    return radius;
-  }, [radius]);
+  const handleClipRadius = useCallback(() => clip(radius, 0, 25), [radius]);
 
   const overlayColors: Record<BlurViewAndroidType, string> = {
     dark: '#100C0cC3',
