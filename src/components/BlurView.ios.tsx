@@ -7,13 +7,7 @@ import { globalStyles } from '../styles';
 import { clip } from '../utils';
 
 const BlurView = forwardRef<View, BlurViewIosProps>((props, ref) => {
-  const {
-    type = 'light',
-    radius = 10,
-    isEnabled = true,
-    style,
-    ...rest
-  } = props;
+  const { type = 'light', radius = 10, style, ...rest } = props;
 
   const handleClipRadius = useCallback(() => clip(radius, 0, 100), [radius]);
 
@@ -48,7 +42,6 @@ const BlurView = forwardRef<View, BlurViewIosProps>((props, ref) => {
       ref={ref}
       overlayColor={overlayColor}
       blurRadius={blurRadius}
-      enabled={isEnabled}
       autoUpdate
       pointerEvents="none"
       style={StyleSheet.compose(globalStyles.container, style)}

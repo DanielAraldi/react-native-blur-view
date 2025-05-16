@@ -7,13 +7,7 @@ import { globalStyles } from '../styles';
 import { clip } from '../utils';
 
 const BlurView = forwardRef<View, BlurViewAndroidProps>((props, ref) => {
-  const {
-    type = 'light',
-    radius = 10,
-    isEnabled = true,
-    style,
-    ...rest
-  } = props;
+  const { type = 'light', radius = 10, style, ...rest } = props;
 
   const handleClipRadius = useCallback(() => {
     const MAX_RADIUS = 25;
@@ -34,7 +28,6 @@ const BlurView = forwardRef<View, BlurViewAndroidProps>((props, ref) => {
       ref={ref}
       overlayColor={overlayColor}
       blurRadius={blurRadius}
-      enabled={isEnabled}
       autoUpdate
       pointerEvents="none"
       style={StyleSheet.compose(globalStyles.container, style)}

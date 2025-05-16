@@ -4,7 +4,6 @@ import type { ViewProps } from 'react-native';
 
 interface NativeProps extends ViewProps {
   autoUpdate?: boolean;
-  enabled?: boolean;
   overlayColor?: string;
   blurRadius?: Float;
 }
