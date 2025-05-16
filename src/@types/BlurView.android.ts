@@ -26,11 +26,4 @@ export interface BlurViewAndroidProps extends ViewProps {
    * @default 10
    */
   radius?: number;
-
-  /**
-   * @description Set the enabled state of the blur view.
-   *
-   * @default true
-   */
-  isEnabled?: boolean;
 }

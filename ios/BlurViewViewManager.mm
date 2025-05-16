@@ -2,6 +2,8 @@
 #import <React/RCTUIManager.h>
 #import "RCTBridge.h"
 
+#import "BlurViewView.h"
+
 @interface BlurViewViewManager : RCTViewManager
 @end
 
@@ -15,5 +17,7 @@ RCT_EXPORT_MODULE(BlurViewView)
 }
 
 RCT_EXPORT_VIEW_PROPERTY(overlayColor, NSString)
+RCT_EXPORT_VIEW_PROPERTY(blurRadius, NSNumber)
+RCT_EXPORT_VIEW_PROPERTY(autoUpdate, Boolean)
 
 @end
