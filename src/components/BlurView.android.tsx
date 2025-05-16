@@ -15,7 +15,11 @@ const BlurView = forwardRef<View, BlurViewAndroidProps>((props, ref) => {
     ...rest
   } = props;
 
-  const handleClipRadius = useCallback(() => clip(radius, 0, 25), [radius]);
+  const handleClipRadius = useCallback(() => {
+    const MAX_RADIUS = 25;
+    const equivalentRadius = (MAX_RADIUS * radius) / 100;
+    return clip(equivalentRadius, 0, MAX_RADIUS);
+  }, [radius]);
 
   const overlayColors: Record<BlurViewAndroidType, string> = {
     dark: '#100C0cC3',
