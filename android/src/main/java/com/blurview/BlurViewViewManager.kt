@@ -56,11 +56,4 @@ class BlurViewViewManager : ViewGroupManager<BlurView>(),
 
     BlurViewView.setBlurAutoUpdate(view, autoUpdate)
   }
-
-  @ReactProp(name = "enabled")
-  override fun setEnabled(view: BlurView?, enabled: Boolean) {
-    if (view == null) return
-
-    BlurViewView.setBlurEnabled(view, enabled)
-  }
 }
