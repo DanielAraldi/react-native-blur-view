@@ -4,10 +4,12 @@ import { BlurView } from 'react-native-blur-view';
 import { styles } from './styles';
 import { useMemo } from 'react';
 
+const texts = Array.from({ length: 50 });
+
 export default function App() {
   const renderTexts = useMemo(
     () =>
-      Array.from({ length: 50 }).map((_, index) => {
+      texts.map((_, index) => {
         const textAlignIndex = Math.floor(Math.random() * (2 - 0 + 1) + 0);
         const textAlign = ['left', 'center', 'right'][
           textAlignIndex
@@ -29,7 +31,7 @@ export default function App() {
   return (
     <>
       <View style={styles.wrapper}>
-        <BlurView type="light" radius={10} style={styles.blurView}>
+        <BlurView type="light" radius={25} style={styles.blurView}>
           <Text style={styles.title}>BlurView</Text>
         </BlurView>
       </View>

@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
   wrapper: {
     position: 'absolute',
     width: '100%',
+    height: 256,
   },
 
   blurView: {
@@ -26,6 +27,7 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
+    textAlignVertical: 'center',
   },
 
   text: {
