@@ -1,13 +1,16 @@
-import { forwardRef, memo, useCallback } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { forwardRef, memo, useCallback, type ComponentRef } from 'react';
+import { StyleSheet } from 'react-native';
 
 import { BlurViewView } from '../fabrics';
 import type { BlurViewAndroidProps, BlurViewAndroidType } from '../@types';
 import { globalStyles } from '../styles';
 import { clip } from '../utils';
 
-const BlurView = forwardRef<View, BlurViewAndroidProps>((props, ref) => {
-  const { type = 'light', radius = 10, style, ...rest } = props;
+const BlurView = forwardRef<
+  ComponentRef<typeof BlurViewView>,
+  BlurViewAndroidProps
+>((props, ref) => {
+  const { type = 'light', radius = 25, style, ...rest } = props;
 
   const handleClipRadius = useCallback(() => {
     const MAX_RADIUS = 25;

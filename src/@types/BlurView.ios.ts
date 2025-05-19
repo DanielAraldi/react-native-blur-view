@@ -41,9 +41,10 @@ export interface BlurViewIosProps extends ViewProps {
   type?: BlurViewIosType;
 
   /**
-   * @description Set the blur radius. It accepts a number between `0` and `25`.
+   * @description Set the blur radius. It accepts a number between `0` and
+   * `100`.
    *
-   * @default 10
+   * @default 25
    */
   radius?: number;
 }
