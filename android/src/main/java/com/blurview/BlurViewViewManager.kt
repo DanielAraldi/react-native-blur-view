@@ -49,11 +49,4 @@ class BlurViewViewManager : ViewGroupManager<BlurView>(),
 
     BlurViewView.setBlurRadius(view, radius)
   }
-
-  @ReactProp(name = "autoUpdate")
-  override fun setAutoUpdate(view: BlurView?, autoUpdate: Boolean) {
-    if (view == null) return
-
-    BlurViewView.setBlurAutoUpdate(view, autoUpdate)
-  }
 }

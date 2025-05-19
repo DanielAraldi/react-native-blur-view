@@ -22,6 +22,7 @@ class BlurViewView {
         .setFrameClearDrawable(decorView.background)
         .setBlurRadius(0f)
         .setBlurEnabled(true)
+        .setBlurAutoUpdate(true)
 
       return view
     }
@@ -33,11 +34,6 @@ class BlurViewView {
 
     fun setBlurRadius(view: BlurView, radius: Float) {
       view.setBlurRadius(radius)
-      view.invalidate()
-    }
-
-    fun setBlurAutoUpdate(view: BlurView, autoUpdate: Boolean) {
-      view.setBlurAutoUpdate(autoUpdate)
       view.invalidate()
     }
   }
