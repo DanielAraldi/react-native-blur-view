@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   content: {
-    zIndex: -1,
     position: 'relative',
     flexGrow: 1,
   },
@@ -12,20 +11,21 @@ export const styles = StyleSheet.create({
   },
 
   wrapper: {
-    zIndex: 999,
     position: 'absolute',
     width: '100%',
   },
 
-  titleWrapper: {
-    paddingVertical: 96,
+  blurView: {
+    width: '100%',
+    height: 256,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   title: {
     fontSize: 24,
-    zIndex: 99,
+    fontWeight: 'bold',
     textAlign: 'center',
-    textAlignVertical: 'center',
   },
 
   text: {

@@ -29,7 +29,7 @@ export default function App() {
   return (
     <>
       <View style={styles.wrapper}>
-        <BlurView type="light" style={styles.titleWrapper}>
+        <BlurView type="light" radius={10} style={styles.blurView}>
           <Text style={styles.title}>BlurView</Text>
         </BlurView>
       </View>
