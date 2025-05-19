@@ -28,7 +28,6 @@ const BlurView = forwardRef<View, BlurViewAndroidProps>((props, ref) => {
       ref={ref}
       overlayColor={overlayColor}
       blurRadius={blurRadius}
-      autoUpdate
       pointerEvents="none"
       style={StyleSheet.compose(globalStyles.container, style)}
       {...rest}

@@ -1,7 +1,7 @@
 import { forwardRef, memo, useCallback } from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import { BlurViewView } from '../fabrics';
+import { VibrancyViewView } from '../fabrics';
 import type { BlurViewIosProps, BlurViewIosType } from '../@types';
 import { globalStyles } from '../styles';
 import { clip } from '../utils';
@@ -38,11 +38,10 @@ const BlurView = forwardRef<View, BlurViewIosProps>((props, ref) => {
   const blurRadius = handleClipRadius();
 
   return (
-    <BlurViewView
+    <VibrancyViewView
       ref={ref}
       overlayColor={overlayColor}
       blurRadius={blurRadius}
-      autoUpdate
       pointerEvents="none"
       style={StyleSheet.compose(globalStyles.container, style)}
       {...rest}
