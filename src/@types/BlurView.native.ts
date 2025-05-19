@@ -1,5 +1,8 @@
-import type { BlurViewAndroidType } from './BlurView.android';
-import type { BlurViewIosType } from './BlurView.ios';
+import type {
+  BlurViewAndroidProps,
+  BlurViewAndroidType,
+} from './BlurView.android';
+import type { BlurViewIosProps, BlurViewIosType } from './BlurView.ios';
 
 /**
  * @type {BlurViewType}
@@ -7,3 +10,10 @@ import type { BlurViewIosType } from './BlurView.ios';
  * @description Type for the color type of the overlay.
  */
 export type BlurViewType = BlurViewAndroidType | BlurViewIosType;
+
+/**
+ * @interface BlurViewProps
+ *
+ * @description Props for the BlurView component.
+ */
+export type BlurViewProps = BlurViewAndroidProps | BlurViewIosProps;

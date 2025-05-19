@@ -45,7 +45,9 @@ export const BlurView = BlurViewUntyped as ForwardRefExoticComponent<
 
 export type {
   BlurViewAndroidProps,
+  BlurViewAndroidType,
   BlurViewIosProps,
+  BlurViewIosType,
   BlurViewProps,
   BlurViewType,
 } from './@types';
