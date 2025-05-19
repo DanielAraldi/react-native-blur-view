@@ -10,7 +10,7 @@
 
 using namespace facebook::react;
 
-@interface BlurViewView () <RCTBlurViewViewViewProtocol>
+@interface BlurViewView () <RCTVibrancyViewViewProtocol>
 
 @end
 
@@ -30,7 +30,6 @@ using namespace facebook::react;
     _props = defaultProps;
 
     self.clipsToBounds = YES;
-    self.autoUpdate = YES;
     self.overlayColor = @"light";
     self.blurRadius = @10;
 
@@ -51,16 +50,14 @@ using namespace facebook::react;
   const auto &oldViewProps = *std::static_pointer_cast<BlurViewViewProps const>(_props);
   const auto &newViewProps = *std::static_pointer_cast<BlurViewViewProps const>(props);
 
-  if (self.autoUpdate) {
-    if (oldViewProps.blurRadius != newViewProps.blurRadius) {
-      NSNumber *blurRadius = [NSNumber numberWithInt:newViewProps.blurRadius];
-      [self setRadius:blurRadius];
-    }
+  if (oldViewProps.blurRadius != newViewProps.blurRadius) {
+    NSNumber *blurRadius = [NSNumber numberWithInt:newViewProps.blurRadius];
+    [self setRadius:blurRadius];
+  }
 
-    if (oldViewProps.overlayColor != newViewProps.overlayColor) {
-      NSString *overlayColor = [NSString stringWithUTF8String:toString(newViewProps.overlayColor).c_str()];
-      [self setOverlayColor:overlayColor];
-    }
+  if (oldViewProps.overlayColor != newViewProps.overlayColor) {
+    NSString *overlayColor = [NSString stringWithUTF8String:toString(newViewProps.overlayColor).c_str()];
+    [self setOverlayColor:overlayColor];
   }
 
   [super updateProps:props oldProps:oldProps];
@@ -110,8 +107,9 @@ Class<RCTComponentViewProtocol> BlurViewViewCls(void)
   self.blurEffectView.effect = nil;
 
   UIBlurEffectStyle blurEffectStyle = [self blurEffectStyle];
-  UIBlurEffect *blurEffect = [BlurViewEffect effectWithStyle:blurEffectStyle andRadius:self.blurRadius];
+  BlurViewEffect *blurEffect = [BlurViewEffect effectWithStyle:blurEffectStyle andRadius:self.blurRadius];
 
+  self.blurEffect = blurEffect;
   self.blurEffectView.effect = blurEffect;
 }
 
@@ -133,14 +131,6 @@ Class<RCTComponentViewProtocol> BlurViewViewCls(void)
 {
   if (radius && ![self.blurRadius isEqualToNumber:radius]) {
     _blurRadius = radius;
-    [self updateBlurEffect];
-  }
-}
-
-- (void)setAutoUpdate:(Boolean)autoUpdate
-{
-  if (self.autoUpdate != autoUpdate) {
-    _autoUpdate = autoUpdate;
     [self updateBlurEffect];
   }
 }
