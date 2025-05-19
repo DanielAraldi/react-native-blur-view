@@ -15,12 +15,12 @@ using namespace facebook::react;
 @end
 
 @implementation VibrancyView {
-    UIView * _view;
+  UIView * _view;
 }
 
 + (ComponentDescriptorProvider)componentDescriptorProvider
 {
-    return concreteComponentDescriptorProvider<VibrancyViewComponentDescriptor>();
+  return concreteComponentDescriptorProvider<VibrancyViewComponentDescriptor>();
 }
 
 - (void)mountChildComponentView:(UIView<RCTComponentViewProtocol> *)childComponentView index:(NSInteger)index

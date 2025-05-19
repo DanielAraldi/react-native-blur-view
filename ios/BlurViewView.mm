@@ -15,12 +15,12 @@ using namespace facebook::react;
 @end
 
 @implementation BlurViewView {
-    UIView * _view;
+  UIView * _view;
 }
 
 + (ComponentDescriptorProvider)componentDescriptorProvider
 {
-    return concreteComponentDescriptorProvider<BlurViewViewComponentDescriptor>();
+  return concreteComponentDescriptorProvider<BlurViewViewComponentDescriptor>();
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
