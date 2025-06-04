@@ -5,4 +5,14 @@ export const globalStyles = StyleSheet.create({
     zIndex: 9999,
     backgroundColor: 'transparent',
   },
+
+  vibrancy: {
+    zIndex: 9999,
+    backgroundColor: 'transparent',
+  },
+
+  content: {
+    zIndex: 9999,
+    position: 'absolute',
+  },
 });

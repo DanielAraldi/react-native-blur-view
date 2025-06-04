@@ -47,4 +47,13 @@ export interface BlurViewIosProps extends ViewProps {
    * @default 25
    */
   radius?: number;
+
+  /**
+   * @description Style for the BlurView component container.
+   *
+   * @default undefined
+   *
+   * @platform iOS
+   */
+  contentContainerStyle?: ViewProps['style'];
 }

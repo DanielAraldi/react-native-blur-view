@@ -31,14 +31,22 @@ export default function App() {
   return (
     <>
       <View style={styles.wrapper}>
-        <BlurView type="light" radius={25} style={styles.blurView}>
-          <Text style={styles.title}>BlurView</Text>
+        <BlurView
+          type="light"
+          radius={25}
+          style={styles.blurView}
+          contentContainerStyle={styles.blurView}
+        >
+          <View>
+            <Text style={styles.title}>BlurView</Text>
+          </View>
         </BlurView>
       </View>
 
       <ScrollView
         style={styles.content}
         contentContainerStyle={styles.contentContainer}
+        showsVerticalScrollIndicator={false}
       >
         {renderTexts}
       </ScrollView>
