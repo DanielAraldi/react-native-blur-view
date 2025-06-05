@@ -1,6 +1,6 @@
-# react-native-blur-view
+# `react-native-blur-view` 🌫️
 
-A simple blur view in react native.
+A simple blur view in react native based in [`@react-native-community/blur`](https://github.com/Kureev/react-native-blur).
 
 ## Summary
 
@@ -99,4 +99,4 @@ MIT
 
 ---
 
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob)
+Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob) and using the [`BlurView`](https://github.com/Dimezis/BlurView) library of the [Dimezis](https://github.com/Dimezis) ❤️
