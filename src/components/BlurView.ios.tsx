@@ -1,4 +1,4 @@
-import { forwardRef, memo, useCallback } from 'react';
+import { forwardRef, memo, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { VibrancyViewView } from '../fabrics';
@@ -17,7 +17,7 @@ const BlurView = forwardRef<View, BlurViewIosProps>((props, ref) => {
     ...rest
   } = props;
 
-  const handleClipRadius = useCallback(() => clip(radius, 0, 100), [radius]);
+  const blurRadius = useMemo(() => clip(radius, 0, 100), [radius]);
 
   const overlayColors: Record<BlurViewIosType, string> = {
     'x-light': 'xlight',
@@ -43,7 +43,6 @@ const BlurView = forwardRef<View, BlurViewIosProps>((props, ref) => {
   };
 
   const overlayColor = overlayColors[type] || overlayColors.light;
-  const blurRadius = handleClipRadius();
 
   return (
     <View

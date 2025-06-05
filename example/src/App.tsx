@@ -33,7 +33,7 @@ export default function App() {
           type="light"
           radius={25}
           style={styles.blurView}
-          contentStyle={styles.blurView}
+          blurStyle={styles.blurView}
         >
           <View>
             <Text style={styles.title}>BlurView</Text>

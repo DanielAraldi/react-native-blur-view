@@ -1,4 +1,4 @@
-import { forwardRef, memo, useCallback, type ComponentRef } from 'react';
+import { forwardRef, memo, useMemo, type ComponentRef } from 'react';
 import { StyleSheet } from 'react-native';
 
 import { BlurViewView } from '../fabrics';
@@ -12,7 +12,7 @@ const BlurView = forwardRef<
 >((props, ref) => {
   const { type = 'light', radius = 25, style, ...rest } = props;
 
-  const handleClipRadius = useCallback(() => {
+  const blurRadius = useMemo(() => {
     const MAX_RADIUS = 25;
     const equivalentRadius = (MAX_RADIUS * radius) / 100;
     return clip(equivalentRadius, 0, MAX_RADIUS);
@@ -24,7 +24,6 @@ const BlurView = forwardRef<
   };
 
   const overlayColor = overlayColors[type] || overlayColors.light;
-  const blurRadius = handleClipRadius();
 
   return (
     <BlurViewView

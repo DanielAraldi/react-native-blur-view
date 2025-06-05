@@ -49,7 +49,7 @@ export interface BlurViewIosProps extends ViewProps {
   radius?: number;
 
   /**
-   * @description Style for the BlurView component children content. In
+   * @description Style for the `BlurView` component children content. In
    * **Android**, you can use `style` to set blur style content.
    *
    * @default undefined
@@ -59,8 +59,8 @@ export interface BlurViewIosProps extends ViewProps {
   contentStyle?: ViewProps['style'];
 
   /**
-   * @description Style for the BlurView component. In **Android**, you can use
-   * `style` to set blur style content.
+   * @description Style for the `BlurView` component. In **Android**, you can
+   * use `style` to set blur style content.
    *
    * @default undefined
    *

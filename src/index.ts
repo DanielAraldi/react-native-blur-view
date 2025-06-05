@@ -43,7 +43,7 @@ export const BlurView = BlurViewUntyped as ForwardRefExoticComponent<
       radius?: number;
 
       /**
-       * @description Style for the BlurView component children content. In
+       * @description Style for the `BlurView` component children content. In
        * **Android**, you can use `style` to set blur style content.
        *
        * @default undefined
@@ -53,7 +53,7 @@ export const BlurView = BlurViewUntyped as ForwardRefExoticComponent<
       contentStyle?: ViewProps['style'];
 
       /**
-       * @description Style for the BlurView component. In **Android**, you can
+       * @description Style for the `BlurView` component. In **Android**, you can
        * use `style` to set blur style content.
        *
        * @default undefined
