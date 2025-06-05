@@ -12,11 +12,7 @@ const BlurView = forwardRef<
 >((props, ref) => {
   const { type = 'light', radius = 25, style, ...rest } = props;
 
-  const blurRadius = useMemo(() => {
-    const MAX_RADIUS = 25;
-    const equivalentRadius = (MAX_RADIUS * radius) / 100;
-    return clip(equivalentRadius, 0, MAX_RADIUS);
-  }, [radius]);
+  const blurRadius = useMemo(() => clip(radius, 0, 100), [radius]);
 
   const overlayColors: Record<BlurViewAndroidType, string> = {
     dark: '#100C0cC3',
