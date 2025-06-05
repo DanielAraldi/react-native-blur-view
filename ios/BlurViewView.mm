@@ -10,7 +10,7 @@
 
 using namespace facebook::react;
 
-@interface BlurViewView () <RCTVibrancyViewViewProtocol>
+@interface BlurViewView () <RCTBlurViewViewViewProtocol>
 
 @end
 

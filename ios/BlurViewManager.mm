@@ -2,18 +2,18 @@
 #import <React/RCTUIManager.h>
 #import "RCTBridge.h"
 
-#import "VibrancyView.h"
+#import "BlurViewView.h"
 
-@interface VibrancyViewManager : RCTViewManager
+@interface BlurViewManager : RCTViewManager
 @end
 
-@implementation VibrancyViewManager
+@implementation BlurViewManager
 
-RCT_EXPORT_MODULE(VibrancyView);
+RCT_EXPORT_MODULE(BlurViewView);
 
 - (UIView *)view
 {
-  return [[VibrancyView alloc] init];
+  return [[BlurViewView alloc] init];
 }
 
 RCT_EXPORT_VIEW_PROPERTY(overlayColor, NSString);
