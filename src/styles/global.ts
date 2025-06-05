@@ -1,18 +1,21 @@
 import { StyleSheet } from 'react-native';
 
+const zIndex = 9999;
+const backgroundColor = 'transparent';
+
 export const globalStyles = StyleSheet.create({
   container: {
-    zIndex: 9999,
-    backgroundColor: 'transparent',
+    zIndex,
+    backgroundColor,
   },
 
   vibrancy: {
-    zIndex: 9999,
-    backgroundColor: 'transparent',
+    zIndex,
+    backgroundColor,
   },
 
   content: {
-    zIndex: 9999,
+    zIndex,
     position: 'absolute',
   },
 });
