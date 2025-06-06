@@ -2,6 +2,9 @@
 
 A simple blur view in react native based in [`@react-native-community/blur`](https://github.com/Kureev/react-native-blur).
 
+> [!WARNING]
+> This package supports **only** [new architecture](https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here).
+
 ## Summary
 
 - [Installation](#installation)
