@@ -52,7 +52,7 @@ import { BlurView } from 'react-native-blur-view';
 
 return (
   <View style={styles.wrapper}>
-    <BlurView style={styles.blurView}>
+    <BlurView style={styles.blurView} blurStyle={styles.blurView}>
       <Text style={styles.title}>BlurView</Text>
     </BlurView>
   </View>
