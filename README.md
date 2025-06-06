@@ -74,11 +74,11 @@ In **Android**, you can use `style` to set blur style content.
 
 #### Blur Types
 
-| Property | Description                                                                    | Platform |
-| -------- | ------------------------------------------------------------------------------ | -------- |
-| `xlight` | The area of the view is lighter than the underlying view.                      | iOS      |
-| `light`  | The area of the view is the same approximate lightness of the underlying view. | All      |
-| `dark`   | The area of the view is darker than the underlying view.                       | All      |
+| Property  | Description                                                                    | Platform |
+| --------- | ------------------------------------------------------------------------------ | -------- |
+| `x-light` | The area of the view is lighter than the underlying view.                      | iOS      |
+| `light`   | The area of the view is the same approximate lightness of the underlying view. | All      |
+| `dark`    | The area of the view is darker than the underlying view.                       | All      |
 
 #### Blur Types (Only iOS >= 10)
 
@@ -89,23 +89,23 @@ In **Android**, you can use `style` to set blur style content.
 
 #### Blur Types (Only iOS >= 13)
 
-| Property                 | Description                                                                                             | Platform |
-| ------------------------ | ------------------------------------------------------------------------------------------------------- | -------- |
-| `chromeMaterial`         | An adaptable blur effect that creates the appearance of the system chrome.                              | iOS      |
-| `material`               | An adaptable blur effect that creates the appearance of a material with normal thickness.               | iOS      |
-| `thickMaterial`          | An adaptable blur effect that creates the appearance of a material that’s thicker than normal.          | iOS      |
-| `thinMaterial`           | An adaptable blur effect that creates the appearance of a thin material.                                | iOS      |
-| `ultraThinMaterial`      | An adaptable blur effect that creates the appearance of an ultra-thin material.                         | iOS      |
-| `chromeMaterialLight`    | A blur effect that creates the appearance of the system chrome and is always light.                     | iOS      |
-| `materialLight`          | A blur effect that creates the appearance of a material with normal thickness and is always light.      | iOS      |
-| `thickMaterialLight`     | A blur effect that creates the appearance of a material that’s thicker than normal and is always light. | iOS      |
-| `thinMaterialLight`      | A blur effect that creates the appearance of a thin material and is always light.                       | iOS      |
-| `ultraThinMaterialLight` | A blur effect that creates the appearance of an ultra-thin material and is always light.                | iOS      |
-| `chromeMaterialDark`     | A blur effect that creates the appearance of the system chrome and is always dark.                      | iOS      |
-| `materialDark`           | A blur effect that creates the appearance of a material with normal thickness and is always dark.       | iOS      |
-| `thickMaterialDark`      | A blur effect that creates the appearance of a material that’s thicker than normal and is always dark.  | iOS      |
-| `thinMaterialDark`       | A blur effect that creates the appearance of a thin material and is always dark.                        | iOS      |
-| `ultraThinMaterialDark`  | A blur effect that creates the appearance of an ultra-thin material and is always dark.                 | iOS      |
+| Property                    | Description                                                                                             | Platform |
+| --------------------------- | ------------------------------------------------------------------------------------------------------- | -------- |
+| `chrome-material`           | An adaptable blur effect that creates the appearance of the system chrome.                              | iOS      |
+| `material`                  | An adaptable blur effect that creates the appearance of a material with normal thickness.               | iOS      |
+| `thick-material`            | An adaptable blur effect that creates the appearance of a material that’s thicker than normal.          | iOS      |
+| `thin-material`             | An adaptable blur effect that creates the appearance of a thin material.                                | iOS      |
+| `ultra-thin-material`       | An adaptable blur effect that creates the appearance of an ultra-thin material.                         | iOS      |
+| `chrome-material-light`     | A blur effect that creates the appearance of the system chrome and is always light.                     | iOS      |
+| `material-light`            | A blur effect that creates the appearance of a material with normal thickness and is always light.      | iOS      |
+| `thick-material-light`      | A blur effect that creates the appearance of a material that’s thicker than normal and is always light. | iOS      |
+| `thin-material-light`       | A blur effect that creates the appearance of a thin material and is always light.                       | iOS      |
+| `ultra-thin-material-light` | A blur effect that creates the appearance of an ultra-thin material and is always light.                | iOS      |
+| `chrome-material-dark`      | A blur effect that creates the appearance of the system chrome and is always dark.                      | iOS      |
+| `material-dark`             | A blur effect that creates the appearance of a material with normal thickness and is always dark.       | iOS      |
+| `thick-material-dark`       | A blur effect that creates the appearance of a material that’s thicker than normal and is always dark.  | iOS      |
+| `thin-material-dark`        | A blur effect that creates the appearance of a thin material and is always dark.                        | iOS      |
+| `ultra-thin-material-dark`  | A blur effect that creates the appearance of an ultra-thin material and is always dark.                 | iOS      |
 
 ## Contributing
 
