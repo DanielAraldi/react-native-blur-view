@@ -5,6 +5,21 @@ A simple blur view in react native based in [`@react-native-community/blur`](htt
 > [!WARNING]
 > This package supports **only** [new architecture](https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here).
 
+<p align="center">
+  <img
+    height="400px"
+    hspace="8"
+    src="./.github/previews/ios.gif"
+    alt="React Native Blur View on iOS"
+  />
+  <img
+    height="400px"
+    hspace="8"
+    src="./.github/previews/android.gif"
+    alt="React Native Blur View on Android"
+  />
+</p>
+
 ## Summary
 
 - [Installation](#installation)
@@ -51,7 +66,7 @@ The `BlurView` component is an extends the same properties of the a `View` compo
 | Property       | Description                                          | Default     | Platform |
 | -------------- | ---------------------------------------------------- | ----------- | -------- |
 | `type`         | Color type of the overlay.                           | `light`     | All      |
-| `radius`       | Blur radius `0` - `100`.                             | `25`        | All      |
+| `radius`       | Blur radius `0` - `100`.                             | `10`        | All      |
 | `contentStyle` | Style for the `BlurView` component children content. | `undefined` | iOS      |
 | `blurStyle`    | Style for the `BlurView` component.                  | `undefined` | iOS      |
 
@@ -102,4 +117,4 @@ MIT
 
 ---
 
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob) and using the [BlurView](https://github.com/Dimezis/BlurView) library of the [Dimezis](https://github.com/Dimezis) ❤️
+Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob) and using the [BlurView](https://github.com/Dimezis/BlurView) library of the [Dimezis](https://github.com/Dimezis) on Android ❤️
