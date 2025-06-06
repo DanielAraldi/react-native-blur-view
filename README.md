@@ -99,4 +99,4 @@ MIT
 
 ---
 
-Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob) and using the [`BlurView`](https://github.com/Dimezis/BlurView) library of the [Dimezis](https://github.com/Dimezis) ❤️
+Made with [create-react-native-library](https://github.com/callstack/react-native-builder-bob) and using the [BlurView](https://github.com/Dimezis/BlurView) library of the [Dimezis](https://github.com/Dimezis) ❤️
