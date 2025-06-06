@@ -139,6 +139,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-cocoapods-
 
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3.0'
+          bundler-cache: true
+
+      - name: Update Bundler
+        run: |
+          gem install bundler
+          bundle update --bundler
+
       - name: Install cocoapods
         if: env.turbo_cache_hit != 1 && steps.cocoapods-cache.outputs.cache-hit != 'true'
         run: |
