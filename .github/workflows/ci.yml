@@ -142,22 +142,17 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3.0'
+          ruby-version: '3.2.0'
           bundler-cache: true
-
-      - name: Update Bundler
-        run: |
-          gem install bundler
-          bundle update --bundler
 
       - name: Install cocoapods
         if: env.turbo_cache_hit != 1 && steps.cocoapods-cache.outputs.cache-hit != 'true'
         run: |
           cd example
-          rm -rf Gemfile.lock
-          bundle update --bundler
-          bundle install
-          bundle exec pod install --project-directory=ios
+          cd ios
+          pod deintegrate
+          pod install
+          cd ..
 
       - name: Cache cocoapods
         if: env.turbo_cache_hit != 1 && steps.cocoapods-cache.outputs.cache-hit != 'true'
