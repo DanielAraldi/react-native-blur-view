@@ -148,7 +148,6 @@ jobs:
         if: env.turbo_cache_hit != 1 && steps.cocoapods-cache.outputs.cache-hit != 'true'
         run: |
           cd example
-          bundle install
           bundle exec pod install --project-directory=ios
 
       - name: Cache cocoapods
