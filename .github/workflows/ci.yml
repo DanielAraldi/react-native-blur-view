@@ -155,6 +155,7 @@ jobs:
         run: |
           cd example
           rm -rf Gemfile.lock
+          bundle update --bundler
           bundle install
           bundle exec pod install --project-directory=ios
 
