@@ -38,7 +38,7 @@ export const BlurView = BlurViewUntyped as ForwardRefExoticComponent<
        * @description Set the blur radius. It accepts a number between `0` and
        * `100`.
        *
-       * @default 25
+       * @default 10
        */
       radius?: number;
 

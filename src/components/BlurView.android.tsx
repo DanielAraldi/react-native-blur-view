@@ -10,7 +10,7 @@ const BlurView = forwardRef<
   ComponentRef<typeof BlurViewView>,
   BlurViewAndroidProps
 >((props, ref) => {
-  const { type = 'light', radius = 25, style, ...rest } = props;
+  const { type = 'light', radius = 10, style, ...rest } = props;
 
   const blurRadius = useMemo(() => clip(radius, 0, 100), [radius]);
 

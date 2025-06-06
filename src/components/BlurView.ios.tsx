@@ -9,7 +9,7 @@ import { clip } from '../utils';
 const BlurView = forwardRef<View, BlurViewIosProps>((props, ref) => {
   const {
     type = 'light',
-    radius = 25,
+    radius = 10,
     style,
     blurStyle,
     contentStyle,

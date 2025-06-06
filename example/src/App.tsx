@@ -31,7 +31,7 @@ export default function App() {
       <View style={styles.wrapper}>
         <BlurView
           type="light"
-          radius={25}
+          radius={10}
           style={styles.blurView}
           blurStyle={styles.blurView}
         >
