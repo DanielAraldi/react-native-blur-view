@@ -20,7 +20,7 @@ class BlurViewView {
       view
         .setupWith(decorView.findViewById(android.R.id.content))
         .setFrameClearDrawable(decorView.background)
-        .setBlurRadius(0f)
+        .setBlurRadius(10f)
         .setBlurEnabled(true)
         .setBlurAutoUpdate(true)
 
