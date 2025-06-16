@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>0.1.5 (2025-06-16)</small>
+
+* docs: small changes in `CHANGELOG.md` ([11e2f03](https://github.com/DanielAraldi/react-native-blur-view/commit/11e2f03))
+* docs: update main documentation ([b592afe](https://github.com/DanielAraldi/react-native-blur-view/commit/b592afe))
+* chore: add `.vscode` folder to the `.npmignore` file ([2978726](https://github.com/DanielAraldi/react-native-blur-view/commit/2978726))
+
 ## <small>0.1.4 (2025-06-16)</small>
 
 - fix: change name in `package` ([48c95ff](https://github.com/DanielAraldi/react-native-blur-view/commit/48c95ff))
