@@ -1,5 +1,9 @@
 # Changelog
 
+## <small>0.1.3 (2025-06-16)</small>
+
+* ci: go back to `--immutable` command before install in `yarn` ([03232ec](https://github.com/DanielAraldi/react-native-blur-view/commit/03232ec))
+
 ## <small>0.1.2 (2025-06-16)</small>
 
 * ci: remove `conventional-changelog` resolutions ([4fb83ff](https://github.com/DanielAraldi/react-native-blur-view/commit/4fb83ff))
