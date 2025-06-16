@@ -1,5 +1,9 @@
 # Changelog
 
+## <small>0.1.6 (2025-06-16)</small>
+
+* chore: add `src` folder in `.npmignore` file ([bec1c15](https://github.com/DanielAraldi/react-native-blur-view/commit/bec1c15))
+
 ## <small>0.1.5 (2025-06-16)</small>
 
 * docs: small changes in `CHANGELOG.md` ([11e2f03](https://github.com/DanielAraldi/react-native-blur-view/commit/11e2f03))
