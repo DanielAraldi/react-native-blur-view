@@ -1,5 +1,10 @@
 # Changelog
 
+## <small>0.1.4 (2025-06-16)</small>
+
+* fix: change name in `package` ([48c95ff](https://github.com/DanielAraldi/react-native-blur-view/commit/48c95ff))
+* chore: change access to the public in `publishConfig` ([33a19e5](https://github.com/DanielAraldi/react-native-blur-view/commit/33a19e5))
+
 ## <small>0.1.3 (2025-06-16)</small>
 
 * ci: go back to `--immutable` command before install in `yarn` ([03232ec](https://github.com/DanielAraldi/react-native-blur-view/commit/03232ec))
