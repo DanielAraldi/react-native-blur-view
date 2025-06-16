@@ -1,5 +1,9 @@
 # Changelog
 
+## <small>0.1.2 (2025-06-16)</small>
+
+* ci: remove `conventional-changelog` resolutions ([4fb83ff](https://github.com/DanielAraldi/react-native-blur-view/commit/4fb83ff))
+
 ## <small>0.1.1 (2025-06-16)</small>
 
 * ci: force clean cache and frozen lockfile in setup action ([e940cdc](https://github.com/DanielAraldi/react-native-blur-view/commit/e940cdc))
