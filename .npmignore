@@ -6,6 +6,7 @@
 
 # Library
 example
+src
 .yarn
 .yarnrc.yml
 
