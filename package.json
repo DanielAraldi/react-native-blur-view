@@ -4,7 +4,6 @@
   "description": "A simple blur view in react native",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
-  "private": true,
   "exports": {
     ".": {
       "source": "./src/index.ts",
@@ -62,7 +61,9 @@
   },
   "homepage": "https://github.com/DanielAraldi/react-native-blur-view#readme",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "access": "public",
+    "tag": "latest"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^19.6.0",
