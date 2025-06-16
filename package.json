@@ -1,5 +1,5 @@
 {
-  "name": "react-native-blur-view",
+  "name": "@danielsaraldi/react-native-blur-view",
   "version": "0.1.3",
   "description": "A simple blur view in react native",
   "main": "./lib/module/index.js",
