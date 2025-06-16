@@ -7,13 +7,13 @@ A simple blur view in react native based in [`@react-native-community/blur`](htt
 
 <p align="center">
   <img
-    height="400px"
+    height="320px"
     hspace="8"
     src="./.github/previews/ios.gif"
     alt="React Native Blur View on iOS"
   />
   <img
-    height="400px"
+    height="320px"
     hspace="8"
     src="./.github/previews/android.gif"
     alt="React Native Blur View on Android"
@@ -34,10 +34,12 @@ A simple blur view in react native based in [`@react-native-community/blur`](htt
 ## Installation
 
 ```sh
-npm install react-native-blur-view
+npm install @danielsaraldi/react-native-blur-view
+# or
+yarn add @danielsaraldi/react-native-blur-view
 ```
 
-Install native dependencies (iOS only):
+Install native dependencies (**iOS only**):
 
 ```sh
 cd ios && pod install
@@ -46,31 +48,62 @@ cd ios && pod install
 ## Usage
 
 ```js
-import { BlurView } from 'react-native-blur-view';
+import { BlurView } from '@danielsaraldi/react-native-blur-view';
 
 // ...
 
 return (
-  <View style={styles.wrapper}>
+  <View style={styles.container}>
     <BlurView style={styles.blurView} blurStyle={styles.blurView}>
       <Text style={styles.title}>BlurView</Text>
     </BlurView>
   </View>
 );
+
+export const styles = StyleSheet.create({
+  container: {
+    position: 'absolute',
+
+    width: '100%',
+    height: 256,
+  },
+
+  blurView: {
+    width: '100%',
+    height: 256,
+
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+
+    textAlign: 'center',
+    textAlignVertical: 'center',
+  },
+
+  // ...
+});
 ```
 
 ### Properties
 
 The `BlurView` component is an extends the same properties of the a `View` component.
 
-| Property       | Description                                          | Default     | Platform |
-| -------------- | ---------------------------------------------------- | ----------- | -------- |
-| `type`         | Color type of the overlay.                           | `light`     | All      |
-| `radius`       | Blur radius `0` - `100`.                             | `10`        | All      |
-| `contentStyle` | Style for the `BlurView` component children content. | `undefined` | iOS      |
-| `blurStyle`    | Style for the `BlurView` component.                  | `undefined` | iOS      |
+| Property       | Description                                          | Default                                            | Platform |
+| -------------- | ---------------------------------------------------- | -------------------------------------------------- | -------- |
+| `type`         | Color type of the overlay.                           | `light`                                            | All      |
+| `radius`       | Blur radius `0` - `100`.                             | `10`                                               | All      |
+| `blurStyle`    | Style for the `BlurView` component.                  | `{ zIndex: 9999, backgroundColor: 'transparent' }` | iOS      |
+| `contentStyle` | Style for the `BlurView` component children content. | `{ zIndex: 9999, position: 'absolute' }`           | iOS      |
+
+By default, the style property is `{ zIndex: 9999, backgroundColor: 'transparent' }`.
 
 In **Android**, you can use `style` to set blur style content.
+
+An important detail, when a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
 
 #### Blur Types
 
