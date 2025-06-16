@@ -1,5 +1,9 @@
 # Changelog
 
+## <small>0.1.1 (2025-06-16)</small>
+
+* ci: force clean cache and frozen lockfile in setup action ([e940cdc](https://github.com/DanielAraldi/react-native-blur-view/commit/e940cdc))
+
 ## 0.1.0 (2025-06-16)
 
 * chore: add `.npmignore` file ([aa95ea5](https://github.com/DanielAraldi/react-native-blur-view/commit/aa95ea5))
