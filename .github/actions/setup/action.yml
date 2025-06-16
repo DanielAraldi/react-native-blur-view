@@ -23,9 +23,7 @@ runs:
 
     - name: Install dependencies
       if: steps.yarn-cache.outputs.cache-hit != 'true'
-      run: |
-        yarn cache clean --all
-        yarn install --frozen-lockfile
+      run: yarn install --immutable
       shell: bash
 
     - name: Cache dependencies
