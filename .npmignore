@@ -1,0 +1,15 @@
+# GitHub
+.gitHub
+
+# Library
+example
+.yarn
+.yarnrc.yml
+
+# Node
+node_modules
+
+
+# Lint
+.editorconfig
+eslint.config.mjs
