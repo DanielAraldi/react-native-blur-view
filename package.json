@@ -1,6 +1,6 @@
 {
   "name": "@danielsaraldi/react-native-blur-view",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A simple blur view in react native",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
@@ -113,14 +113,28 @@
   },
   "release-it": {
     "git": {
-      "commitMessage": "chore: release ${version}",
-      "tagName": "v${version}"
+      "commitMessage": "feat: release v${version}",
+      "tagName": "v${version}",
+      "push": true,
+      "commit": true,
+      "tag": true
     },
     "npm": {
-      "publish": true
+      "publish": true,
+      "skipChecks": false
     },
     "github": {
-      "release": true
+      "release": true,
+      "releaseName": "Release ${version}"
+    },
+    "hooks": {
+      "before:init": [
+        "yarn lint",
+        "yarn typecheck"
+      ],
+      "after:bump": [
+        "yarn prepare"
+      ]
     },
     "plugins": {
       "@release-it/conventional-changelog": {
