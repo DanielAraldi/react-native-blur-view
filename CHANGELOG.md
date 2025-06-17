@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.5.0 (2025-06-17)
+
+* chore: bump version ([a66b179](https://github.com/DanielAraldi/react-native-blur-view/commit/a66b179))
+* chore: bump version ([136fbc7](https://github.com/DanielAraldi/react-native-blur-view/commit/136fbc7))
+* ci: add again NPM configuration ([6b0c93e](https://github.com/DanielAraldi/react-native-blur-view/commit/6b0c93e))
+* ci: add git configuration ([0cb3433](https://github.com/DanielAraldi/react-native-blur-view/commit/0cb3433))
+* ci: add git configuration again ([f104457](https://github.com/DanielAraldi/react-native-blur-view/commit/f104457))
+* ci: bump version ([e713c98](https://github.com/DanielAraldi/react-native-blur-view/commit/e713c98))
+* ci: change git credentials ([9dfed6c](https://github.com/DanielAraldi/react-native-blur-view/commit/9dfed6c))
+* ci: move `release-it` configuration to the package ([bc68ea8](https://github.com/DanielAraldi/react-native-blur-view/commit/bc68ea8))
+* ci: remove git configuration ([039ebb3](https://github.com/DanielAraldi/react-native-blur-view/commit/039ebb3))
+* ci: remove node configuration in `release` file ([783916c](https://github.com/DanielAraldi/react-native-blur-view/commit/783916c))
+* feat: bump version ([70cdcd7](https://github.com/DanielAraldi/react-native-blur-view/commit/70cdcd7))
+
 ## <small>0.1.6 (2025-06-16)</small>
 
 * chore: add `src` folder in `.npmignore` file ([bec1c15](https://github.com/DanielAraldi/react-native-blur-view/commit/bec1c15))
