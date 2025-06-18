@@ -45,11 +45,7 @@ const BlurView = forwardRef<View, BlurViewIosProps>((props, ref) => {
   const overlayColor = overlayColors[type] || overlayColors.light;
 
   return (
-    <View
-      ref={ref}
-      pointerEvents="none"
-      style={StyleSheet.compose(globalStyles.container, style)}
-    >
+    <View ref={ref} style={StyleSheet.compose(globalStyles.container, style)}>
       <BlurViewView
         overlayColor={overlayColor}
         blurRadius={blurRadius}
@@ -58,10 +54,7 @@ const BlurView = forwardRef<View, BlurViewIosProps>((props, ref) => {
         {...rest}
       />
 
-      <View
-        pointerEvents="none"
-        style={StyleSheet.compose(globalStyles.content, contentStyle)}
-      >
+      <View style={StyleSheet.compose(globalStyles.content, contentStyle)}>
         {children}
       </View>
     </View>
