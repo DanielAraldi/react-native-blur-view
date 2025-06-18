@@ -1,8 +1,8 @@
+import { useMemo } from 'react';
 import { View, Text, ScrollView, type TextStyle } from 'react-native';
 import { BlurView } from '@danielsaraldi/react-native-blur-view';
 
 import { styles } from './styles';
-import { useMemo } from 'react';
 
 export default function App() {
   const renderTexts = useMemo(
