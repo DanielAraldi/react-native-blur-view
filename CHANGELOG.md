@@ -1,5 +1,9 @@
 # Changelog
 
+## <small>0.5.2 (2025-06-18)</small>
+
+* fix(ios): remove `pointerEvents` none in main `View` and content `View` ([6259c76](https://github.com/DanielAraldi/react-native-blur-view/commit/6259c76))
+
 ## <small>0.5.1 (2025-06-18)</small>
 
 * fix: add autolinking ([60fec22](https://github.com/DanielAraldi/react-native-blur-view/commit/60fec22))
