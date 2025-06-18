@@ -1,5 +1,15 @@
 # Changelog
 
+## <small>0.5.1 (2025-06-18)</small>
+
+* fix: add autolinking ([60fec22](https://github.com/DanielAraldi/react-native-blur-view/commit/60fec22))
+* fix: adjust in import not found in example ([8352cd1](https://github.com/DanielAraldi/react-native-blur-view/commit/8352cd1))
+* fix: small adjusts in example ([3505757](https://github.com/DanielAraldi/react-native-blur-view/commit/3505757))
+* fix(ios): add `blurStyle` and `contentStyle` default values in JSDoc ([b671570](https://github.com/DanielAraldi/react-native-blur-view/commit/b671570))
+* fix(ios): add dependencies and targets in `.podspec` file ([4b35c40](https://github.com/DanielAraldi/react-native-blur-view/commit/4b35c40))
+* docs: add expo support documentation ([5611ea1](https://github.com/DanielAraldi/react-native-blur-view/commit/5611ea1))
+* docs: add github version badge in documentation ([d49592a](https://github.com/DanielAraldi/react-native-blur-view/commit/d49592a))
+
 ## 0.5.0 (2025-06-17)
 
 * chore: bump version ([a66b179](https://github.com/DanielAraldi/react-native-blur-view/commit/a66b179))
