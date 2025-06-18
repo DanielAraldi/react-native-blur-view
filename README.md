@@ -30,6 +30,7 @@ A simple blur view in react native based in [`@react-native-community/blur`](htt
     - [Blur Types](#blur-types)
     - [Blur Types (Only iOS >= 10)](#blur-types-only-ios--10)
     - [Blur Types (Only iOS >= 13)](#blur-types-only-ios--13)
+- [Expo](#expo)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -141,6 +142,10 @@ An important detail, when a value less than `0` or greater than `100` are provid
 | `thick-material-dark`       | A blur effect that creates the appearance of a material that’s thicker than normal and is always dark.  | iOS      |
 | `thin-material-dark`        | A blur effect that creates the appearance of a thin material and is always dark.                        | iOS      |
 | `ultra-thin-material-dark`  | A blur effect that creates the appearance of an ultra-thin material and is always dark.                 | iOS      |
+
+## Expo
+
+In Expo, you need to convert to a [custom development build](https://docs.expo.dev/develop/development-builds/introduction/) or use [prebuild](https://docs.expo.dev/workflow/continuous-native-generation/). You can use also React Native without Expo.
 
 ## Contributing
 
