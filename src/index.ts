@@ -46,7 +46,7 @@ export const BlurView = BlurViewUntyped as ForwardRefExoticComponent<
        * @description Style for the `BlurView` component children content. In
        * **Android**, you can use `style` to set blur style content.
        *
-       * @default undefined
+       * @default { zIndex: 9999, position: 'absolute' }
        *
        * @platform iOS
        */
@@ -56,7 +56,7 @@ export const BlurView = BlurViewUntyped as ForwardRefExoticComponent<
        * @description Style for the `BlurView` component. In **Android**, you can
        * use `style` to set blur style content.
        *
-       * @default undefined
+       * @default { zIndex: 9999, backgroundColor: 'transparent' }
        *
        * @platform iOS
        */
