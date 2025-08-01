@@ -24,7 +24,7 @@ class BlurViewView {
       this.target = this.ensureTargetInitialized(context)
 
       this.view
-        .setupWith(this.target!!)
+        .setupWith(this.target!!, 4f, false)
         .setBlurRadius(10f)
         .setBlurEnabled(true)
         .setBlurAutoUpdate(true)
