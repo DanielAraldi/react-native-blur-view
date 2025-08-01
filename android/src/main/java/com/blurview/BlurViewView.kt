@@ -1,40 +1,48 @@
 package com.blurview
 
-import android.view.View
 import com.facebook.react.uimanager.ThemedReactContext
-
-import eightbitlab.com.blurview.BlurView;
-import java.util.Objects
+import eightbitlab.com.blurview.BlurTarget
+import eightbitlab.com.blurview.BlurView
 
 class BlurViewView {
   companion object {
-    fun createViewInstance(context: ThemedReactContext): BlurView {
-      val view = BlurView(context)
-      val decorView: View? = Objects
-        .requireNonNull(context.currentActivity)
-        ?.window
-        ?.decorView
+    private lateinit var view: BlurView
+    private var target: BlurTarget? = null
 
-      if (decorView == null) return view
+    private fun ensureTargetInitialized(context: ThemedReactContext): BlurTarget {
+      if (this.target == null) this.target = BlurTarget(context)
 
-      view
-        .setupWith(decorView.findViewById(android.R.id.content))
-        .setFrameClearDrawable(decorView.background)
+      return this.target!!
+    }
+
+    fun getBlurViewInstance(context: ThemedReactContext): BlurView {
+      this.view = BlurView(context)
+
+      val activity = context.currentActivity ?: return this.view
+      val decorView = activity.window.decorView
+
+      this.target = this.ensureTargetInitialized(context)
+
+      this.view
+        .setupWith(this.target!!)
         .setBlurRadius(10f)
         .setBlurEnabled(true)
         .setBlurAutoUpdate(true)
+        .setFrameClearDrawable(decorView.background)
 
-      return view
+      return this.view
+    }
+
+    fun getTargetViewInstance(context: ThemedReactContext): BlurTarget {
+      return this.ensureTargetInitialized(context)
     }
 
     fun setOverlayColor(view: BlurView, overlayColor: Int) {
       view.setOverlayColor(overlayColor)
-      view.invalidate()
     }
 
     fun setBlurRadius(view: BlurView, radius: Float) {
       view.setBlurRadius(radius)
-      view.invalidate()
     }
   }
 }
