@@ -1,6 +1,13 @@
-import type { ForwardRefExoticComponent, RefAttributes } from 'react';
-import type { View, ViewProps } from 'react-native';
-import { BlurView as BlurViewUntyped } from './components';
+import type {
+  ForwardRefExoticComponent,
+  RefAttributes,
+  FragmentProps,
+} from 'react';
+import { type View, type ViewProps, Platform } from 'react-native';
+import {
+  BlurView as BlurViewUntyped,
+  BlurTarget as BlurTargetUntyped,
+} from './components';
 
 export const BlurView = BlurViewUntyped as ForwardRefExoticComponent<
   RefAttributes<View> &
@@ -63,6 +70,12 @@ export const BlurView = BlurViewUntyped as ForwardRefExoticComponent<
       blurStyle?: ViewProps['style'];
     }
 >;
+
+type BlurTargetType<T extends Platform['OS']> = T extends 'android'
+  ? ForwardRefExoticComponent<RefAttributes<View> & ViewProps>
+  : ForwardRefExoticComponent<FragmentProps>;
+
+export const BlurTarget = BlurTargetUntyped as BlurTargetType<Platform['OS']>;
 
 export type {
   BlurViewAndroidProps,
