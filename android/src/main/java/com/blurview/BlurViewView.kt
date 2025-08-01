@@ -30,6 +30,9 @@ class BlurViewView {
         .setBlurAutoUpdate(true)
         .setFrameClearDrawable(decorView.background)
 
+      this.view.clipChildren = true
+      this.view.clipToOutline = true
+
       return this.view
     }
 
