@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { View, Text, ScrollView, type TextStyle } from 'react-native';
-import { BlurView } from '@danielsaraldi/react-native-blur-view';
+import { BlurView, BlurTarget } from '@danielsaraldi/react-native-blur-view';
 
 import { styles } from './styles';
 
@@ -41,13 +41,15 @@ export default function App() {
         </BlurView>
       </View>
 
-      <ScrollView
-        style={styles.content}
-        contentContainerStyle={styles.contentContainer}
-        showsVerticalScrollIndicator={false}
-      >
-        {renderTexts}
-      </ScrollView>
+      <BlurTarget>
+        <ScrollView
+          style={styles.content}
+          contentContainerStyle={styles.contentContainer}
+          showsVerticalScrollIndicator={false}
+        >
+          {renderTexts}
+        </ScrollView>
+      </BlurTarget>
     </>
   );
 }
