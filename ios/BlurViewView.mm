@@ -56,7 +56,7 @@ using namespace facebook::react;
   }
 
   if (oldViewProps.overlayColor != newViewProps.overlayColor) {
-    NSString *overlayColor = [NSString stringWithUTF8String:toString(newViewProps.overlayColor).c_str()];
+    NSString *overlayColor = [NSString stringWithUTF8String:newViewProps.overlayColor.c_str()];
     [self setOverlayColor:overlayColor];
   }
 
