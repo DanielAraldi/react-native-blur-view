@@ -1,6 +1,6 @@
 {
   "name": "@danielsaraldi/react-native-blur-view",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "A simple blur view in react native",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",

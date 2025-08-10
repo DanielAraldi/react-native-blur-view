@@ -1,5 +1,9 @@
 # Changelog
 
+## <small>0.5.3 (2025-08-10)</small>
+
+* fix(ios): remove undeclared `toString` function in `overlayColor` to build release work ([08d674f](https://github.com/DanielAraldi/react-native-blur-view/commit/08d674f))
+
 ## <small>0.5.2 (2025-06-18)</small>
 
 * fix(ios): remove `pointerEvents` none in main `View` and content `View` ([6259c76](https://github.com/DanielAraldi/react-native-blur-view/commit/6259c76))
