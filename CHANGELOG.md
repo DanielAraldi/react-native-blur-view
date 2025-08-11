@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>0.6.1 (2025-08-11)</small>
+
+* fix: resolve not find `BlurView` component config for native component ([6eaecd4](https://github.com/DanielAraldi/react-native-blur-view/commit/6eaecd4))
+* fix(ios): resolve invalid `Cls` name in ios class protocol ([20a9e18](https://github.com/DanielAraldi/react-native-blur-view/commit/20a9e18))
+* refactor(android): simplify get currency activity ([6af28da](https://github.com/DanielAraldi/react-native-blur-view/commit/6af28da))
+
 ## 0.6.0 (2025-08-11)
 
 * feat: fix issue when changing blur type and add new type color (x-light) for Android ([10096fa](https://github.com/DanielAraldi/react-native-blur-view/commit/10096fa))
