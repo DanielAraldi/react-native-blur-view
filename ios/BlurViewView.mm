@@ -63,7 +63,7 @@ using namespace facebook::react;
   [super updateProps:props oldProps:oldProps];
 }
 
-Class<RCTComponentViewProtocol> BlurViewViewCls(void)
+Class<RCTComponentViewProtocol> BlurViewIosCls(void)
 {
   return BlurViewIos.class;
 }
