@@ -1,5 +1,9 @@
 # Changelog
 
+## <small>0.5.4 (2025-08-11)</small>
+
+* fix: add issue templates ([412beef](https://github.com/DanielAraldi/react-native-blur-view/commit/412beef))
+
 ## <small>0.5.3 (2025-08-10)</small>
 
 * fix(ios): remove undeclared `toString` function in `overlayColor` to build release work ([08d674f](https://github.com/DanielAraldi/react-native-blur-view/commit/08d674f))
