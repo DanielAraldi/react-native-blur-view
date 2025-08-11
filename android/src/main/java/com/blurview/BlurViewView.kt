@@ -1,6 +1,7 @@
 package com.blurview
 
 import android.view.View
+import android.view.ViewGroup
 import com.facebook.react.uimanager.ThemedReactContext
 
 import eightbitlab.com.blurview.BlurView;
@@ -10,15 +11,15 @@ class BlurViewView {
   companion object {
     fun createViewInstance(context: ThemedReactContext): BlurView {
       val view = BlurView(context)
-      val decorView: View? = Objects
-        .requireNonNull(context.currentActivity)
-        ?.window
-        ?.decorView
+      val activity = context.currentActivity
 
-      if (decorView == null) return view
+      if (activity == null) return view
+
+      val decorView = activity.window.decorView
+      val contentView = decorView.findViewById<ViewGroup>(android.R.id.content)
 
       view
-        .setupWith(decorView.findViewById(android.R.id.content))
+        .setupWith(contentView)
         .setFrameClearDrawable(decorView.background)
         .setBlurRadius(10f)
         .setBlurEnabled(true)
