@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.0 (2025-08-11)
+
+* feat: fix issue when changing blur type and add new type color (x-light) for Android ([10096fa](https://github.com/DanielAraldi/react-native-blur-view/commit/10096fa))
+
 ## <small>0.5.4 (2025-08-11)</small>
 
 * fix: add issue templates ([412beef](https://github.com/DanielAraldi/react-native-blur-view/commit/412beef))
