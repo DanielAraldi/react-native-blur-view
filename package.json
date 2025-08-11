@@ -189,7 +189,7 @@
     },
     "ios": {
       "componentProvider": {
-        "BlurViewView": "BlurViewView"
+        "BlurViewIos": "BlurViewIos"
       }
     }
   },

@@ -10,23 +10,23 @@
 
 using namespace facebook::react;
 
-@interface BlurViewView () <RCTBlurViewViewViewProtocol>
+@interface BlurViewIos () <RCTBlurViewIosViewProtocol>
 
 @end
 
-@implementation BlurViewView {
+@implementation BlurViewIos {
   UIView * _view;
 }
 
 + (ComponentDescriptorProvider)componentDescriptorProvider
 {
-  return concreteComponentDescriptorProvider<BlurViewViewComponentDescriptor>();
+  return concreteComponentDescriptorProvider<BlurViewIosComponentDescriptor>();
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
   if (self = [super initWithFrame:frame]) {
-    static const auto defaultProps = std::make_shared<const BlurViewViewProps>();
+    static const auto defaultProps = std::make_shared<const BlurViewIosProps>();
     _props = defaultProps;
 
     self.clipsToBounds = YES;
@@ -47,8 +47,8 @@ using namespace facebook::react;
 
 - (void)updateProps:(Props::Shared const &)props oldProps:(Props::Shared const &)oldProps
 {
-  const auto &oldViewProps = *std::static_pointer_cast<BlurViewViewProps const>(_props);
-  const auto &newViewProps = *std::static_pointer_cast<BlurViewViewProps const>(props);
+  const auto &oldViewProps = *std::static_pointer_cast<BlurViewIosProps const>(_props);
+  const auto &newViewProps = *std::static_pointer_cast<BlurViewIosProps const>(props);
 
   if (oldViewProps.blurRadius != newViewProps.blurRadius) {
     NSNumber *blurRadius = [NSNumber numberWithInt:newViewProps.blurRadius];
@@ -65,7 +65,7 @@ using namespace facebook::react;
 
 Class<RCTComponentViewProtocol> BlurViewViewCls(void)
 {
-  return BlurViewView.class;
+  return BlurViewIos.class;
 }
 
 - (UIBlurEffectStyle)blurEffectStyle

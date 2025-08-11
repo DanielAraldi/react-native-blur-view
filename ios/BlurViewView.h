@@ -8,7 +8,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BlurViewView : RCTViewComponentView
+@interface BlurViewIos : RCTViewComponentView
 
 @property(nonatomic, copy, nullable) NSString *overlayColor;
 @property(nonatomic, copy, nullable) NSNumber *blurRadius;

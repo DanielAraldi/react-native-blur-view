@@ -1,6 +1,33 @@
 import type { ViewProps } from 'react-native';
 
 /**
+ * @type {BlurViewNativeIosType}
+ *
+ * @description Type for the native color type of the overlay in iOS.
+ */
+export type BlurViewNativeIosType =
+  | 'xlight'
+  | 'light'
+  | 'dark'
+  | 'thinMaterial'
+  | 'thinMaterialLight'
+  | 'thinMaterialDark'
+  | 'material'
+  | 'materialLight'
+  | 'materialDark'
+  | 'chromeMaterial'
+  | 'chromeMaterialLight'
+  | 'chromeMaterialDark'
+  | 'thickMaterial'
+  | 'thickMaterialLight'
+  | 'thickMaterialDark'
+  | 'ultraThinMaterial'
+  | 'ultraThinMaterialLight'
+  | 'ultraThinMaterialDark'
+  | 'prominent'
+  | 'regular';
+
+/**
  * @type {BlurViewIosType}
  *
  * @description Type for the color type of the overlay in iOS.

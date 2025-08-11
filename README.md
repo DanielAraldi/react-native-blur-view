@@ -112,7 +112,7 @@ An important detail, when a value less than `0` or greater than `100` are provid
 
 | Property  | Description                                                                    | Platform |
 | --------- | ------------------------------------------------------------------------------ | -------- |
-| `x-light` | The area of the view is lighter than the underlying view.                      | iOS      |
+| `x-light` | The area of the view is lighter than the underlying view.                      | All      |
 | `light`   | The area of the view is the same approximate lightness of the underlying view. | All      |
 | `dark`    | The area of the view is darker than the underlying view.                       | All      |
 

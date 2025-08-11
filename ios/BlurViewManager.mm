@@ -9,11 +9,11 @@
 
 @implementation BlurViewManager
 
-RCT_EXPORT_MODULE(BlurViewView);
+RCT_EXPORT_MODULE(BlurViewIos);
 
 - (UIView *)view
 {
-  return [[BlurViewView alloc] init];
+  return [[BlurViewIos alloc] init];
 }
 
 RCT_EXPORT_VIEW_PROPERTY(overlayColor, NSString);
