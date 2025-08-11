@@ -1,5 +1,5 @@
 PODS:
-  - BlurView (0.5.3):
+  - BlurView (0.6.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1906,7 +1906,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  BlurView: 66ab1c8e91ef446c5078ab8e9045c7e4124a4110
+  BlurView: b3abe5c79bac114e3eff2b1559c1745483ae29bb
   boost: 7e761d76ca2ce687f7cc98e698152abd03a18f90
   DoubleConversion: cb417026b2400c8f53ae97020b2be961b59470cb
   fast_float: 06eeec4fe712a76acc9376682e4808b05ce978b6
