@@ -1,5 +1,9 @@
 # Changelog
 
+## <small>0.6.2 (2025-08-12)</small>
+
+* fix(android): force `clipToOutline` and `clipChildren` as `true` to remove blur color outside view ([fd3de66](https://github.com/DanielAraldi/react-native-blur-view/commit/fd3de66))
+
 ## <small>0.6.1 (2025-08-11)</small>
 
 * fix: resolve not find `BlurView` component config for native component ([6eaecd4](https://github.com/DanielAraldi/react-native-blur-view/commit/6eaecd4))
