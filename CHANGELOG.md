@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>0.6.4 (2025-08-12)</small>
+
+* docs: add documentation about "How BlurView works with and without children?" ([295e2c3](https://github.com/DanielAraldi/react-native-blur-view/commit/295e2c3))
+* fix: small adjust in default values of the `blurStyle` ([390dcd9](https://github.com/DanielAraldi/react-native-blur-view/commit/390dcd9))
+* fix: small adjust in release action ([95b009e](https://github.com/DanielAraldi/react-native-blur-view/commit/95b009e))
+
 ## <small>0.6.3 (2025-08-12)</small>
 
 * fix: improve example ([8d61354](https://github.com/DanielAraldi/react-native-blur-view/commit/8d61354))
