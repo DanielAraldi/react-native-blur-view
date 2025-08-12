@@ -1,11 +1,9 @@
 package com.blurview
 
-import android.view.View
 import android.view.ViewGroup
 import com.facebook.react.uimanager.ThemedReactContext
 
 import eightbitlab.com.blurview.BlurView;
-import java.util.Objects
 
 class BlurViewView {
   companion object {
@@ -24,6 +22,9 @@ class BlurViewView {
         .setBlurRadius(10f)
         .setBlurEnabled(true)
         .setBlurAutoUpdate(true)
+
+      view.clipToOutline = true
+      view.clipChildren = true
 
       return view
     }
