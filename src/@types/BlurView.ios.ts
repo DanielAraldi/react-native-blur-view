@@ -89,7 +89,7 @@ export interface BlurViewIosProps extends ViewProps {
    * @description Style for the `BlurView` component. In **Android**, you can
    * use `style` to set blur style content.
    *
-   * @default { zIndex: 9999, backgroundColor: 'transparent' }
+   * @default { zIndex: 9999, backgroundColor: 'transparent', ...StyleSheet.absoluteFill }
    *
    * @platform iOS
    */
