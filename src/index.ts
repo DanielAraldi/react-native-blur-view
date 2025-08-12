@@ -56,7 +56,7 @@ export const BlurView = BlurViewUntyped as ForwardRefExoticComponent<
        * @description Style for the `BlurView` component. In **Android**, you can
        * use `style` to set blur style content.
        *
-       * @default { zIndex: 9999, backgroundColor: 'transparent', ...StyleSheet.absoluteFill }
+       * @default [{ zIndex: 9999, backgroundColor: 'transparent' }, StyleSheet.absoluteFill]
        *
        * @platform iOS
        */
