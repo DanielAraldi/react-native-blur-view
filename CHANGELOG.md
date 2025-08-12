@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>0.6.3 (2025-08-12)</small>
+
+* fix: improve example ([8d61354](https://github.com/DanielAraldi/react-native-blur-view/commit/8d61354))
+* fix(ios): add `StyleSheet.absoluteFill` as default value when `blurStyle` doesn't provided ([ad29504](https://github.com/DanielAraldi/react-native-blur-view/commit/ad29504))
+* docs: add new value as default in `blurStyle` ([a23d76b](https://github.com/DanielAraldi/react-native-blur-view/commit/a23d76b))
+
 ## <small>0.6.2 (2025-08-12)</small>
 
 * fix(android): force `clipToOutline` and `clipChildren` as `true` to remove blur color outside view ([fd3de66](https://github.com/DanielAraldi/react-native-blur-view/commit/fd3de66))
