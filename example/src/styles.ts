@@ -1,6 +1,13 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+
+    width: '100%',
+    height: '100%',
+  },
+
   content: {
     position: 'relative',
     flexGrow: 1,
@@ -28,11 +35,13 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     textAlignVertical: 'center',
+    color: 'white',
   },
 
   text: {
     width: '100%',
     fontSize: 24,
     fontWeight: 'bold',
+    color: 'white',
   },
 });

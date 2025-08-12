@@ -1,8 +1,15 @@
 import { useMemo } from 'react';
-import { View, Text, ScrollView, type TextStyle } from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  type TextStyle,
+  ImageBackground,
+} from 'react-native';
 import { BlurView } from '@danielsaraldi/react-native-blur-view';
 
 import { styles } from './styles';
+import { BACKGROUND_IMAGE } from './assets';
 
 export default function App() {
   const renderTexts = useMemo(
@@ -27,14 +34,13 @@ export default function App() {
   );
 
   return (
-    <>
+    <ImageBackground
+      source={BACKGROUND_IMAGE}
+      style={styles.container}
+      resizeMethod="resize"
+    >
       <View style={styles.wrapper}>
-        <BlurView
-          type="light"
-          radius={10}
-          style={styles.blurView}
-          blurStyle={styles.blurView}
-        >
+        <BlurView type="dark" radius={10} style={styles.blurView}>
           <View>
             <Text style={styles.title}>BlurView</Text>
           </View>
@@ -48,6 +54,6 @@ export default function App() {
       >
         {renderTexts}
       </ScrollView>
-    </>
+    </ImageBackground>
   );
 }
