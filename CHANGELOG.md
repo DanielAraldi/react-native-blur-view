@@ -1,5 +1,10 @@
 # Changelog
 
+## <small>0.6.5 (2025-08-12)</small>
+
+* fix: add `permissions` contents write in release action ([5e6f9e3](https://github.com/DanielAraldi/react-native-blur-view/commit/5e6f9e3))
+* docs: add new topic in summary ([9bbfce3](https://github.com/DanielAraldi/react-native-blur-view/commit/9bbfce3))
+
 ## <small>0.6.4 (2025-08-12)</small>
 
 * docs: add documentation about "How BlurView works with and without children?" ([295e2c3](https://github.com/DanielAraldi/react-native-blur-view/commit/295e2c3))
