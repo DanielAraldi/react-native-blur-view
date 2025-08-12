@@ -57,7 +57,7 @@ import { BlurView } from '@danielsaraldi/react-native-blur-view';
 
 return (
   <View style={styles.container}>
-    <BlurView style={styles.blurView} blurStyle={styles.blurView}>
+    <BlurView style={styles.blurView}>
       <Text style={styles.title}>BlurView</Text>
     </BlurView>
   </View>
@@ -95,12 +95,12 @@ export const styles = StyleSheet.create({
 
 The `BlurView` component is an extends the same properties of the a `View` component.
 
-| Property       | Description                                          | Default                                                                        | Platform |
-| -------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------ | -------- |
-| `type`         | Color type of the overlay.                           | `light`                                                                        | All      |
-| `radius`       | Blur radius `0` - `100`.                             | `10`                                                                           | All      |
-| `blurStyle`    | Style for the `BlurView` component.                  | `{ zIndex: 9999, backgroundColor: 'transparent', ...StyleSheet.absoluteFill }` | iOS      |
-| `contentStyle` | Style for the `BlurView` component children content. | `{ zIndex: 9999, position: 'absolute' }`                                       | iOS      |
+| Property       | Description                                          | Default                                                                       | Platform |
+| -------------- | ---------------------------------------------------- | ----------------------------------------------------------------------------- | -------- |
+| `type`         | Color type of the overlay.                           | `light`                                                                       | All      |
+| `radius`       | Blur radius `0` - `100`.                             | `10`                                                                          | All      |
+| `blurStyle`    | Style for the `BlurView` component.                  | `[{ zIndex: 9999, backgroundColor: 'transparent' }, StyleSheet.absoluteFill]` | iOS      |
+| `contentStyle` | Style for the `BlurView` component children content. | `{ zIndex: 9999, position: 'absolute' }`                                      | iOS      |
 
 By default, the style property is `{ zIndex: 9999, backgroundColor: 'transparent' }`.
 
@@ -142,6 +142,39 @@ An important detail, when a value less than `0` or greater than `100` are provid
 | `thick-material-dark`       | A blur effect that creates the appearance of a material that’s thicker than normal and is always dark.  | iOS      |
 | `thin-material-dark`        | A blur effect that creates the appearance of a thin material and is always dark.                        | iOS      |
 | `ultra-thin-material-dark`  | A blur effect that creates the appearance of an ultra-thin material and is always dark.                 | iOS      |
+
+## How `BlurView` works with and without children?
+
+- **With children**: The blur effect is applied to the background behind the `BlurView`, while the children content remains sharp and visible on top.
+
+```tsx
+return (
+  <View style={styles.container}>
+    <BlurView style={styles.blurView}>
+      <Text style={styles.title}>
+        This text will appear above the blur effect, the blur effect doesn't
+        applied about it.
+      </Text>
+
+      <Button title="Click me" />
+    </BlurView>
+  </View>
+);
+```
+
+- **Without children**: The blur effect affects whatever content is rendered below or above the `BlurView` in the component tree.
+
+```tsx
+return (
+  <>
+    <BlurView style={styles.container} />
+
+    <Text style={styles.title}>
+      This text will be blurred when it be behind or above BlurView!
+    </Text>
+  </>
+);
+```
 
 ## Expo
 
