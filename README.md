@@ -95,12 +95,12 @@ export const styles = StyleSheet.create({
 
 The `BlurView` component is an extends the same properties of the a `View` component.
 
-| Property       | Description                                          | Default                                            | Platform |
-| -------------- | ---------------------------------------------------- | -------------------------------------------------- | -------- |
-| `type`         | Color type of the overlay.                           | `light`                                            | All      |
-| `radius`       | Blur radius `0` - `100`.                             | `10`                                               | All      |
-| `blurStyle`    | Style for the `BlurView` component.                  | `{ zIndex: 9999, backgroundColor: 'transparent' }` | iOS      |
-| `contentStyle` | Style for the `BlurView` component children content. | `{ zIndex: 9999, position: 'absolute' }`           | iOS      |
+| Property       | Description                                          | Default                                                                        | Platform |
+| -------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------ | -------- |
+| `type`         | Color type of the overlay.                           | `light`                                                                        | All      |
+| `radius`       | Blur radius `0` - `100`.                             | `10`                                                                           | All      |
+| `blurStyle`    | Style for the `BlurView` component.                  | `{ zIndex: 9999, backgroundColor: 'transparent', ...StyleSheet.absoluteFill }` | iOS      |
+| `contentStyle` | Style for the `BlurView` component children content. | `{ zIndex: 9999, position: 'absolute' }`                                       | iOS      |
 
 By default, the style property is `{ zIndex: 9999, backgroundColor: 'transparent' }`.
 
