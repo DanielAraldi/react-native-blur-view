@@ -30,6 +30,7 @@ A simple blur view in react native based in [`@react-native-community/blur`](htt
     - [Blur Types](#blur-types)
     - [Blur Types (Only iOS >= 10)](#blur-types-only-ios--10)
     - [Blur Types (Only iOS >= 13)](#blur-types-only-ios--13)
+- [How BlurView works with and without children?](#how-blurview-works-with-and-without-children)
 - [Expo](#expo)
 - [Contributing](#contributing)
 - [License](#license)
