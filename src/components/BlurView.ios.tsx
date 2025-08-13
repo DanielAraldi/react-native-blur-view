@@ -16,7 +16,7 @@ const BlurView = forwardRef<View, BlurViewIosProps>((props, ref) => {
     radius = 10,
     style,
     blurStyle = StyleSheet.absoluteFill,
-    contentStyle,
+    contentStyle = StyleSheet.absoluteFill,
     children,
     ...rest
   } = props;
