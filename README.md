@@ -163,7 +163,7 @@ return (
 );
 ```
 
-- **Without children**: The blur effect affects whatever content is rendered below or above the `BlurView` in the component tree.
+- **Without children**: The blur effect affects whatever content is rendered below or above the `BlurView` in the component tree. This comportment occurs **only in Android**.
 
 ```tsx
 return (
