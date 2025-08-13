@@ -1,5 +1,10 @@
 # Changelog
 
+## <small>0.6.6 (2025-08-13)</small>
+
+* docs: add specific comportment for Android devices ([fcb32f6](https://github.com/DanielAraldi/react-native-blur-view/commit/fcb32f6))
+* fix: force version of the release-it in 17.10.x ([5f1e895](https://github.com/DanielAraldi/react-native-blur-view/commit/5f1e895))
+
 ## <small>0.6.5 (2025-08-12)</small>
 
 * fix: add `permissions` contents write in release action ([5e6f9e3](https://github.com/DanielAraldi/react-native-blur-view/commit/5e6f9e3))
