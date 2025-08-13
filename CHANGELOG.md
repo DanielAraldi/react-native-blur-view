@@ -1,5 +1,11 @@
 # Changelog
 
+## <small>0.6.7 (2025-08-13)</small>
+
+* docs: update documentation ([2284d74](https://github.com/DanielAraldi/react-native-blur-view/commit/2284d74))
+* fix(android): add new property called `blurStyle` to the manager children ([41f864c](https://github.com/DanielAraldi/react-native-blur-view/commit/41f864c))
+* fix(ios): force `StyleSheet.absoluteFill` to the `contentStyle` ([2f63a1d](https://github.com/DanielAraldi/react-native-blur-view/commit/2f63a1d))
+
 ## <small>0.6.6 (2025-08-13)</small>
 
 * docs: add specific comportment for Android devices ([fcb32f6](https://github.com/DanielAraldi/react-native-blur-view/commit/fcb32f6))
