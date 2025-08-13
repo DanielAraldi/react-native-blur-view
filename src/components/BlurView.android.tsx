@@ -1,5 +1,5 @@
 import { forwardRef, memo, useMemo, type ComponentRef } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { BlurViewAndroid } from '../fabrics';
 import type { BlurViewAndroidProps, BlurViewAndroidType } from '../@types';
@@ -10,7 +10,14 @@ const BlurView = forwardRef<
   ComponentRef<typeof BlurViewAndroid>,
   BlurViewAndroidProps
 >((props, ref) => {
-  const { type = 'light', radius = 10, style, ...rest } = props;
+  const {
+    type = 'light',
+    radius = 10,
+    style,
+    blurStyle,
+    children,
+    ...rest
+  } = props;
 
   const blurRadius = useMemo(() => clip(radius, 0, 100), [radius]);
 
@@ -30,7 +37,11 @@ const BlurView = forwardRef<
       pointerEvents="none"
       style={StyleSheet.compose(globalStyles.container, style)}
       {...rest}
-    />
+    >
+      <View style={StyleSheet.compose(globalStyles.content, blurStyle)}>
+        {children}
+      </View>
+    </BlurViewAndroid>
   );
 });
 
