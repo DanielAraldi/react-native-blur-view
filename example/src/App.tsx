@@ -3,8 +3,8 @@ import {
   View,
   Text,
   ScrollView,
-  type TextStyle,
   ImageBackground,
+  type TextStyle,
 } from 'react-native';
 import { BlurView } from '@danielsaraldi/react-native-blur-view';
 
@@ -39,13 +39,11 @@ export default function App() {
       style={styles.container}
       resizeMethod="resize"
     >
-      <View style={styles.wrapper}>
-        <BlurView type="dark" radius={10} style={styles.blurView}>
-          <View>
-            <Text style={styles.title}>BlurView</Text>
-          </View>
-        </BlurView>
-      </View>
+      <BlurView type="dark" radius={10} style={styles.blurView}>
+        <View style={styles.wrapper}>
+          <Text style={styles.title}>BlurView</Text>
+        </View>
+      </BlurView>
 
       <ScrollView
         style={styles.content}

@@ -57,22 +57,17 @@ import { BlurView } from '@danielsaraldi/react-native-blur-view';
 // ...
 
 return (
-  <View style={styles.container}>
-    <BlurView style={styles.blurView}>
+  <BlurView style={styles.blurView}>
+    <View style={styles.wrapper}>
       <Text style={styles.title}>BlurView</Text>
-    </BlurView>
-  </View>
+    </View>
+  </BlurView>
 );
 
 export const styles = StyleSheet.create({
-  container: {
+  blurView: {
     position: 'absolute',
 
-    width: '100%',
-    height: 256,
-  },
-
-  blurView: {
     width: '100%',
     height: 256,
 
@@ -80,15 +75,22 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
+  wrapper: {
+    width: '100%',
+    height: '100%',
+
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    padding: 20,
+  },
+
   title: {
     fontSize: 24,
     fontWeight: 'bold',
 
-    textAlign: 'center',
-    textAlignVertical: 'center',
+    color: 'white',
   },
-
-  // ...
 });
 ```
 
@@ -96,16 +98,16 @@ export const styles = StyleSheet.create({
 
 The `BlurView` component is an extends the same properties of the a `View` component.
 
-| Property       | Description                                          | Default                                                                       | Platform |
-| -------------- | ---------------------------------------------------- | ----------------------------------------------------------------------------- | -------- |
-| `type`         | Color type of the overlay.                           | `light`                                                                       | All      |
-| `radius`       | Blur radius `0` - `100`.                             | `10`                                                                          | All      |
-| `blurStyle`    | Style for the `BlurView` component.                  | `[{ zIndex: 9999, backgroundColor: 'transparent' }, StyleSheet.absoluteFill]` | iOS      |
-| `contentStyle` | Style for the `BlurView` component children content. | `{ zIndex: 9999, position: 'absolute' }`                                      | iOS      |
+| Property       | Description                                                                                      | Default                   | Platform |
+| -------------- | ------------------------------------------------------------------------------------------------ | ------------------------- | -------- |
+| `type`         | Color type of the overlay.                                                                       | `light`                   | All      |
+| `radius`       | Blur radius `0` - `100`.                                                                         | `10`                      | All      |
+| `blurStyle`    | Style for the `BlurView` component in iOS. But, on Android it's style of the children component. | `StyleSheet.absoluteFill` | All      |
+| `contentStyle` | Style for the `BlurView` component children content.                                             | `StyleSheet.absoluteFill` | iOS      |
 
 By default, the style property is `{ zIndex: 9999, backgroundColor: 'transparent' }`.
 
-In **Android**, you can use `style` to set blur style content.
+The `blurStyle` and `contentStyle` have another internal style properties, you can see them [clicking here](./src/styles/global.ts)! Just for context, these styles exist for internal management, you can overwrite them via the available properties.
 
 An important detail, when a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
 
@@ -150,16 +152,16 @@ An important detail, when a value less than `0` or greater than `100` are provid
 
 ```tsx
 return (
-  <View style={styles.container}>
-    <BlurView style={styles.blurView}>
+  <BlurView style={styles.blurView}>
+    <View style={styles.wrapper}>
       <Text style={styles.title}>
         This text will appear above the blur effect, the blur effect doesn't
         applied about it.
       </Text>
 
       <Button title="Click me" />
-    </BlurView>
-  </View>
+    </View>
+  </BlurView>
 );
 ```
 
@@ -168,7 +170,7 @@ return (
 ```tsx
 return (
   <>
-    <BlurView style={styles.container} />
+    <BlurView style={styles.blurView} />
 
     <Text style={styles.title}>
       This text will be blurred when it be behind or above BlurView!
