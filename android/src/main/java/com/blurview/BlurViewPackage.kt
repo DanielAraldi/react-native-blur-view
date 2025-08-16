@@ -10,6 +10,7 @@ class BlurViewViewPackage : ReactPackage {
   override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
     val viewManagers: MutableList<ViewManager<*, *>> = ArrayList()
     viewManagers.add(BlurViewViewManager())
+    viewManagers.add(BlurViewTargetManager())
     return viewManagers
   }
 

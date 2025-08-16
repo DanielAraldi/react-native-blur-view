@@ -6,7 +6,7 @@ import {
   ImageBackground,
   type TextStyle,
 } from 'react-native';
-import { BlurView } from '@danielsaraldi/react-native-blur-view';
+import { BlurView, BlurTarget } from '@danielsaraldi/react-native-blur-view';
 
 import { styles } from './styles';
 import { BACKGROUND_IMAGE } from './assets';
@@ -45,13 +45,15 @@ export default function App() {
         </View>
       </BlurView>
 
-      <ScrollView
-        style={styles.content}
-        contentContainerStyle={styles.contentContainer}
-        showsVerticalScrollIndicator={false}
-      >
-        {renderTexts}
-      </ScrollView>
+      <BlurTarget>
+        <ScrollView
+          style={styles.content}
+          contentContainerStyle={styles.contentContainer}
+          showsVerticalScrollIndicator={false}
+        >
+          {renderTexts}
+        </ScrollView>
+      </BlurTarget>
     </ImageBackground>
   );
 }

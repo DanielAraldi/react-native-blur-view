@@ -24,7 +24,7 @@ class BlurViewViewManager : ViewGroupManager<BlurView>(),
   }
 
   public override fun createViewInstance(context: ThemedReactContext): BlurView {
-    return BlurViewView.createViewInstance(context)
+    return BlurViewView.getBlurViewInstance(context)
   }
 
   companion object {

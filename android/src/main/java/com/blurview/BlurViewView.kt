@@ -1,42 +1,51 @@
 package com.blurview
 
-import android.view.ViewGroup
 import com.facebook.react.uimanager.ThemedReactContext
-
-import eightbitlab.com.blurview.BlurView;
+import eightbitlab.com.blurview.BlurTarget
+import eightbitlab.com.blurview.BlurView
 
 class BlurViewView {
   companion object {
-    fun createViewInstance(context: ThemedReactContext): BlurView {
-      val view = BlurView(context)
-      val activity = context.currentActivity
+    private lateinit var view: BlurView
+    private var target: BlurTarget? = null
 
-      if (activity == null) return view
+    private fun ensureTargetInitialized(context: ThemedReactContext): BlurTarget {
+      if (this.target == null) this.target = BlurTarget(context)
 
+      return this.target!!
+    }
+
+    fun getBlurViewInstance(context: ThemedReactContext): BlurView {
+      this.view = BlurView(context)
+
+      val activity = context.currentActivity ?: return this.view
       val decorView = activity.window.decorView
-      val contentView = decorView.findViewById<ViewGroup>(android.R.id.content)
 
-      view
-        .setupWith(contentView)
-        .setFrameClearDrawable(decorView.background)
+      this.target = this.ensureTargetInitialized(context)
+
+      this.view
+        .setupWith(this.target!!, 4f, false)
         .setBlurRadius(10f)
         .setBlurEnabled(true)
         .setBlurAutoUpdate(true)
+        .setFrameClearDrawable(decorView.background)
 
-      view.clipToOutline = true
-      view.clipChildren = true
+      this.view.clipChildren = true
+      this.view.clipToOutline = true
 
-      return view
+      return this.view
+    }
+
+    fun getTargetViewInstance(context: ThemedReactContext): BlurTarget {
+      return this.ensureTargetInitialized(context)
     }
 
     fun setOverlayColor(view: BlurView, overlayColor: Int) {
       view.setOverlayColor(overlayColor)
-      view.invalidate()
     }
 
     fun setBlurRadius(view: BlurView, radius: Float) {
       view.setBlurRadius(radius)
-      view.invalidate()
     }
   }
 }
