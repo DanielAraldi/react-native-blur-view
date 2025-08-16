@@ -5,7 +5,7 @@ import type { ViewProps } from 'react-native';
  *
  * @description Type for the color type of the overlay in Android.
  */
-export type BlurViewAndroidType = 'light' | 'dark';
+export type BlurViewAndroidType = 'light' | 'dark' | 'x-light';
 
 /**
  * @interface BlurViewAndroidProps
@@ -27,4 +27,13 @@ export interface BlurViewAndroidProps extends ViewProps {
    * @default 10
    */
   radius?: number;
+
+  /**
+   * @description Style for the `BlurView` component. In **iOS**, this style
+   * will be applied to the `BlurView` itself. But, in **Android**, this
+   * will be applied to the children.
+   *
+   * @default StyleSheet.absoluteFill
+   */
+  blurStyle?: ViewProps['style'];
 }

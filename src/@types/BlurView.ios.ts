@@ -1,6 +1,33 @@
 import type { ViewProps } from 'react-native';
 
 /**
+ * @type {BlurViewNativeIosType}
+ *
+ * @description Type for the native color type of the overlay in iOS.
+ */
+export type BlurViewNativeIosType =
+  | 'xlight'
+  | 'light'
+  | 'dark'
+  | 'thinMaterial'
+  | 'thinMaterialLight'
+  | 'thinMaterialDark'
+  | 'material'
+  | 'materialLight'
+  | 'materialDark'
+  | 'chromeMaterial'
+  | 'chromeMaterialLight'
+  | 'chromeMaterialDark'
+  | 'thickMaterial'
+  | 'thickMaterialLight'
+  | 'thickMaterialDark'
+  | 'ultraThinMaterial'
+  | 'ultraThinMaterialLight'
+  | 'ultraThinMaterialDark'
+  | 'prominent'
+  | 'regular';
+
+/**
  * @type {BlurViewIosType}
  *
  * @description Type for the color type of the overlay in iOS.
@@ -50,21 +77,20 @@ export interface BlurViewIosProps extends ViewProps {
 
   /**
    * @description Style for the `BlurView` component children content. In
-   * **Android**, you can use `style` to set blur style content.
+   * **Android**, you can use `blurStyle` to set blur style content.
    *
-   * @default { zIndex: 9999, position: 'absolute' }
+   * @default StyleSheet.absoluteFill
    *
    * @platform iOS
    */
   contentStyle?: ViewProps['style'];
 
   /**
-   * @description Style for the `BlurView` component. In **Android**, you can
-   * use `style` to set blur style content.
+   * @description Style for the `BlurView` component. In **iOS**, this style
+   * will be applied to the `BlurView` itself. But, in **Android**, this
+   * will be applied to the children.
    *
-   * @default { zIndex: 9999, backgroundColor: 'transparent' }
-   *
-   * @platform iOS
+   * @default StyleSheet.absoluteFill
    */
   blurStyle?: ViewProps['style'];
 }

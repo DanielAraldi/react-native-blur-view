@@ -1,6 +1,6 @@
 {
   "name": "@danielsaraldi/react-native-blur-view",
-  "version": "0.5.2",
+  "version": "0.6.7",
   "description": "A simple blur view in react native",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
@@ -87,7 +87,7 @@
     "react": "19.0.0",
     "react-native": "0.79.2",
     "react-native-builder-bob": "^0.40.10",
-    "release-it": "^17.10.0",
+    "release-it": "17.10.0",
     "turbo": "^1.10.7",
     "typescript": "^5.2.2"
   },
@@ -189,7 +189,7 @@
     },
     "ios": {
       "componentProvider": {
-        "BlurViewView": "BlurViewView"
+        "BlurViewIos": "BlurViewIos"
       }
     }
   },

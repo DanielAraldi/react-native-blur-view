@@ -1,5 +1,55 @@
 # Changelog
 
+## <small>0.6.7 (2025-08-13)</small>
+
+* docs: update documentation ([2284d74](https://github.com/DanielAraldi/react-native-blur-view/commit/2284d74))
+* fix(android): add new property called `blurStyle` to the manager children ([41f864c](https://github.com/DanielAraldi/react-native-blur-view/commit/41f864c))
+* fix(ios): force `StyleSheet.absoluteFill` to the `contentStyle` ([2f63a1d](https://github.com/DanielAraldi/react-native-blur-view/commit/2f63a1d))
+
+## <small>0.6.6 (2025-08-13)</small>
+
+* docs: add specific comportment for Android devices ([fcb32f6](https://github.com/DanielAraldi/react-native-blur-view/commit/fcb32f6))
+* fix: force version of the release-it in 17.10.x ([5f1e895](https://github.com/DanielAraldi/react-native-blur-view/commit/5f1e895))
+
+## <small>0.6.5 (2025-08-12)</small>
+
+* fix: add `permissions` contents write in release action ([5e6f9e3](https://github.com/DanielAraldi/react-native-blur-view/commit/5e6f9e3))
+* docs: add new topic in summary ([9bbfce3](https://github.com/DanielAraldi/react-native-blur-view/commit/9bbfce3))
+
+## <small>0.6.4 (2025-08-12)</small>
+
+* docs: add documentation about "How BlurView works with and without children?" ([295e2c3](https://github.com/DanielAraldi/react-native-blur-view/commit/295e2c3))
+* fix: small adjust in default values of the `blurStyle` ([390dcd9](https://github.com/DanielAraldi/react-native-blur-view/commit/390dcd9))
+* fix: small adjust in release action ([95b009e](https://github.com/DanielAraldi/react-native-blur-view/commit/95b009e))
+
+## <small>0.6.3 (2025-08-12)</small>
+
+* fix: improve example ([8d61354](https://github.com/DanielAraldi/react-native-blur-view/commit/8d61354))
+* fix(ios): add `StyleSheet.absoluteFill` as default value when `blurStyle` doesn't provided ([ad29504](https://github.com/DanielAraldi/react-native-blur-view/commit/ad29504))
+* docs: add new value as default in `blurStyle` ([a23d76b](https://github.com/DanielAraldi/react-native-blur-view/commit/a23d76b))
+
+## <small>0.6.2 (2025-08-12)</small>
+
+* fix(android): force `clipToOutline` and `clipChildren` as `true` to remove blur color outside view ([fd3de66](https://github.com/DanielAraldi/react-native-blur-view/commit/fd3de66))
+
+## <small>0.6.1 (2025-08-11)</small>
+
+* fix: resolve not find `BlurView` component config for native component ([6eaecd4](https://github.com/DanielAraldi/react-native-blur-view/commit/6eaecd4))
+* fix(ios): resolve invalid `Cls` name in ios class protocol ([20a9e18](https://github.com/DanielAraldi/react-native-blur-view/commit/20a9e18))
+* refactor(android): simplify get currency activity ([6af28da](https://github.com/DanielAraldi/react-native-blur-view/commit/6af28da))
+
+## 0.6.0 (2025-08-11)
+
+* feat: fix issue when changing blur type and add new type color (x-light) for Android ([10096fa](https://github.com/DanielAraldi/react-native-blur-view/commit/10096fa))
+
+## <small>0.5.4 (2025-08-11)</small>
+
+* fix: add issue templates ([412beef](https://github.com/DanielAraldi/react-native-blur-view/commit/412beef))
+
+## <small>0.5.3 (2025-08-10)</small>
+
+* fix(ios): remove undeclared `toString` function in `overlayColor` to build release work ([08d674f](https://github.com/DanielAraldi/react-native-blur-view/commit/08d674f))
+
 ## <small>0.5.2 (2025-06-18)</small>
 
 * fix(ios): remove `pointerEvents` none in main `View` and content `View` ([6259c76](https://github.com/DanielAraldi/react-native-blur-view/commit/6259c76))

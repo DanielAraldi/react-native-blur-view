@@ -1,8 +1,12 @@
 import { forwardRef, memo, useMemo } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { BlurViewView } from '../fabrics';
-import type { BlurViewIosProps, BlurViewIosType } from '../@types';
+import { BlurViewIos } from '../fabrics';
+import type {
+  BlurViewIosProps,
+  BlurViewIosType,
+  BlurViewNativeIosType,
+} from '../@types';
 import { globalStyles } from '../styles';
 import { clip } from '../utils';
 
@@ -11,15 +15,15 @@ const BlurView = forwardRef<View, BlurViewIosProps>((props, ref) => {
     type = 'light',
     radius = 10,
     style,
-    blurStyle,
-    contentStyle,
+    blurStyle = StyleSheet.absoluteFill,
+    contentStyle = StyleSheet.absoluteFill,
     children,
     ...rest
   } = props;
 
   const blurRadius = useMemo(() => clip(radius, 0, 100), [radius]);
 
-  const overlayColors: Record<BlurViewIosType, string> = {
+  const overlayColors: Record<BlurViewIosType, BlurViewNativeIosType> = {
     'x-light': 'xlight',
     'light': 'light',
     'dark': 'dark',
@@ -46,7 +50,7 @@ const BlurView = forwardRef<View, BlurViewIosProps>((props, ref) => {
 
   return (
     <View ref={ref} style={StyleSheet.compose(globalStyles.container, style)}>
-      <BlurViewView
+      <BlurViewIos
         overlayColor={overlayColor}
         blurRadius={blurRadius}
         pointerEvents="none"

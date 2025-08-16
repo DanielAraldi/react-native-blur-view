@@ -1,2 +1,3 @@
+export { default as BlurViewAndroid } from './BlurViewAndroidNativeComponent';
+export { default as BlurViewIos } from './BlurViewIosNativeComponent';
 export { default as BlurViewTarget } from './BlurTargetNativeComponent';
-export { default as BlurViewView } from './BlurViewNativeComponent';
