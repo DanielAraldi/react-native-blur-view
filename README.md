@@ -9,13 +9,13 @@ A simple blur view in react native based in [`@react-native-community/blur`](htt
 
 <p align="center">
   <img
-    height="320px"
+    height="448px"
     hspace="8"
     src="./.github/previews/ios.gif"
     alt="React Native Blur View on iOS"
   />
   <img
-    height="320px"
+    height="448px"
     hspace="8"
     src="./.github/previews/android.gif"
     alt="React Native Blur View on Android"

@@ -40,8 +40,8 @@ const BLUR_TYPES: BlurViewType[] = [
 ];
 
 export default function App() {
-  const [radius, setRadius] = useState<number>(100);
-  const [mode, setMode] = useState<BlurViewType>('dark');
+  const [radius, setRadius] = useState<number>(10);
+  const [mode, setMode] = useState<BlurViewType>('light');
 
   const isDark = mode.includes('dark');
   const isMax = radius === 100;
