@@ -7,6 +7,4 @@ export interface NativeProps extends ViewProps {
   blurRadius: Float;
 }
 
-export default codegenNativeComponent<NativeProps>('BlurViewIos', {
-  excludedPlatforms: ['android'],
-});
+export default codegenNativeComponent<NativeProps>('BlurView');
