@@ -2,20 +2,27 @@
 
 A simple blur view in react native based in [`@react-native-community/blur`](https://github.com/Kureev/react-native-blur).
 
-![GitHub package.json version](https://img.shields.io/github/package-json/v/DanielAraldi/react-native-blur-view?style=flat&color=brightgreen)
+<div align="center">
+  <p>
+    <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/DanielAraldi/react-native-blur-view?style=flat&color=brightgreen">
+
+    <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/%40danielsaraldi%2Freact-native-blur-view?style=flat">
+
+  </p>
+</div>
 
 > [!WARNING]
 > This package supports **only** [new architecture](https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here).
 
 <p align="center">
   <img
-    height="576px"
+    height="756px"
     hspace="8"
     src="./.github/previews/ios.gif"
     alt="React Native Blur View on iOS"
   />
   <img
-    height="576px"
+    height="756px"
     hspace="8"
     src="./.github/previews/android.gif"
     alt="React Native Blur View on Android"
