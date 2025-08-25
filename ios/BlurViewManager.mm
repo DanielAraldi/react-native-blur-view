@@ -2,18 +2,18 @@
 #import <React/RCTUIManager.h>
 #import "RCTBridge.h"
 
-#import "BlurViewView.h"
+#import "BlurView.h"
 
 @interface BlurViewManager : RCTViewManager
 @end
 
 @implementation BlurViewManager
 
-RCT_EXPORT_MODULE(BlurViewIos);
+RCT_EXPORT_MODULE(BlurView);
 
 - (UIView *)view
 {
-  return [[BlurViewIos alloc] init];
+  return [[BlurView alloc] init];
 }
 
 RCT_EXPORT_VIEW_PROPERTY(overlayColor, NSString);

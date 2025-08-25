@@ -3,12 +3,12 @@
 
 #import "BlurViewEffect.h"
 
-#ifndef BlurViewViewNativeComponent_h
-#define BlurViewViewNativeComponent_h
+#ifndef BlurViewNativeComponent_h
+#define BlurViewNativeComponent_h
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BlurViewIos : RCTViewComponentView
+@interface BlurView : RCTViewComponentView
 
 @property(nonatomic, copy, nullable) NSString *overlayColor;
 @property(nonatomic, copy, nullable) NSNumber *blurRadius;
@@ -16,10 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong, nullable) BlurViewEffect *blurEffect;
 @property(nonatomic, strong, nullable) UIVisualEffectView *blurEffectView;
 
-- (void)updateBlurEffect;
-
 @end
 
 NS_ASSUME_NONNULL_END
 
-#endif /* BlurViewViewNativeComponent_h */
+#endif /* BlurViewNativeComponent_h */

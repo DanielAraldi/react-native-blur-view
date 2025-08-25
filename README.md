@@ -1,21 +1,26 @@
-# `react-native-blur-view` 🌫️
+# `@danielsaraldi/react-native-blur-view` 🌫️
 
 A simple blur view in react native based in [`@react-native-community/blur`](https://github.com/Kureev/react-native-blur).
 
-![GitHub package.json version](https://img.shields.io/github/package-json/v/DanielAraldi/react-native-blur-view?style=flat&color=brightgreen)
+<div align="center">
+  <p>
+    <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/DanielAraldi/react-native-blur-view?style=flat&color=brightgreen" />
+    <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/%40danielsaraldi%2Freact-native-blur-view?style=flat" />
+  </p>
+</div>
 
 > [!WARNING]
 > This package supports **only** [new architecture](https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here).
 
 <p align="center">
   <img
-    height="320px"
+    height="756px"
     hspace="8"
     src="./.github/previews/ios.gif"
     alt="React Native Blur View on iOS"
   />
   <img
-    height="320px"
+    height="756px"
     hspace="8"
     src="./.github/previews/android.gif"
     alt="React Native Blur View on Android"
@@ -26,12 +31,13 @@ A simple blur view in react native based in [`@react-native-community/blur`](htt
 
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Properties](#properties)
-    - [Blur Types](#blur-types)
-    - [Blur Types (Only iOS >= 10)](#blur-types-only-ios--10)
-    - [Blur Types (Only iOS >= 13)](#blur-types-only-ios--13)
-- [How BlurView works with and without children?](#how-blurview-works-with-and-without-children)
+- [Properties](#properties)
+  - [Blur Types](#blur-types)
+- [Platform Differences](#platform-differences)
+  - [Android](#android)
+  - [iOS](#ios)
 - [Expo](#expo)
+- [TypeScript Support](#typescript-support)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -51,16 +57,14 @@ cd ios && pod install
 
 ## Usage
 
-```js
+```tsx
 import { BlurView } from '@danielsaraldi/react-native-blur-view';
 
 // ...
 
 return (
   <BlurView style={styles.blurView}>
-    <View style={styles.wrapper}>
-      <Text style={styles.title}>BlurView</Text>
-    </View>
+    <Text style={styles.title}>BlurView</Text>
   </BlurView>
 );
 
@@ -75,16 +79,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  wrapper: {
-    width: '100%',
-    height: '100%',
-
-    justifyContent: 'center',
-    alignItems: 'center',
-
-    padding: 20,
-  },
-
   title: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -94,94 +88,70 @@ export const styles = StyleSheet.create({
 });
 ```
 
-### Properties
+## Properties
 
 The `BlurView` component is an extends the same properties of the a `View` component.
 
-| Property       | Description                                                                                      | Default                   | Platform |
-| -------------- | ------------------------------------------------------------------------------------------------ | ------------------------- | -------- |
-| `type`         | Color type of the overlay.                                                                       | `light`                   | All      |
-| `radius`       | Blur radius `0` - `100`.                                                                         | `10`                      | All      |
-| `blurStyle`    | Style for the `BlurView` component in iOS. But, on Android it's style of the children component. | `StyleSheet.absoluteFill` | All      |
-| `contentStyle` | Style for the `BlurView` component children content.                                             | `StyleSheet.absoluteFill` | iOS      |
-
-By default, the style property is `{ zIndex: 9999, backgroundColor: 'transparent' }`.
-
-The `blurStyle` and `contentStyle` have another internal style properties, you can see them [clicking here](./src/styles/global.ts)! Just for context, these styles exist for internal management, you can overwrite them via the available properties.
+| Property | Description                | Default     | Platform |
+| -------- | -------------------------- | ----------- | -------- |
+| `type`   | Color type of the overlay. | `light`     | All      |
+| `radius` | Blur radius `0` - `100`.   | `10`        | All      |
+| `style`  | The View style.            | `undefined` | All      |
 
 An important detail, when a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
 
-#### Blur Types
+### Blur Types
 
-| Property  | Description                                                                    | Platform |
-| --------- | ------------------------------------------------------------------------------ | -------- |
-| `x-light` | The area of the view is lighter than the underlying view.                      | All      |
-| `light`   | The area of the view is the same approximate lightness of the underlying view. | All      |
-| `dark`    | The area of the view is darker than the underlying view.                       | All      |
+| Property                    | Description                                                                                                             | Platform |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------- | -------- |
+| `x-light`                   | The area of the view is lighter than the underlying view.                                                               | All      |
+| `light`                     | The area of the view is the same approximate lightness of the underlying view.                                          | All      |
+| `dark`                      | The area of the view is darker than the underlying view.                                                                | All      |
+| `regular`                   | A regular blur style that adapts to the user interface style. (**iOS >= 10**)                                           | All      |
+| `prominent`                 | A blur style for making content more prominent that adapts to the user interface style. (**iOS >= 10**)                 | All      |
+| `chrome-material`           | An adaptable blur effect that creates the appearance of the system chrome. (**iOS >= 13**)                              | All      |
+| `material`                  | An adaptable blur effect that creates the appearance of a material with normal thickness. (**iOS >= 13**)               | All      |
+| `thick-material`            | An adaptable blur effect that creates the appearance of a material that’s thicker than normal. (**iOS >= 13**)          | All      |
+| `thin-material`             | An adaptable blur effect that creates the appearance of a thin material. (**iOS >= 13**)                                | All      |
+| `ultra-thin-material`       | An adaptable blur effect that creates the appearance of an ultra-thin material. (**iOS >= 13**)                         | All      |
+| `chrome-material-light`     | A blur effect that creates the appearance of the system chrome and is always light. (**iOS >= 13**)                     | All      |
+| `material-light`            | A blur effect that creates the appearance of a material with normal thickness and is always light. (**iOS >= 13**)      | All      |
+| `thick-material-light`      | A blur effect that creates the appearance of a material that’s thicker than normal and is always light. (**iOS >= 13**) | All      |
+| `thin-material-light`       | A blur effect that creates the appearance of a thin material and is always light. (**iOS >= 13**)                       | All      |
+| `ultra-thin-material-light` | A blur effect that creates the appearance of an ultra-thin material and is always light. (**iOS >= 13**)                | All      |
+| `chrome-material-dark`      | A blur effect that creates the appearance of the system chrome and is always dark. (**iOS >= 13**)                      | All      |
+| `material-dark`             | A blur effect that creates the appearance of a material with normal thickness and is always dark. (**iOS >= 13**)       | All      |
+| `thick-material-dark`       | A blur effect that creates the appearance of a material that’s thicker than normal and is always dark. (**iOS >= 13**)  | All      |
+| `thin-material-dark`        | A blur effect that creates the appearance of a thin material and is always dark. (**iOS >= 13**)                        | All      |
+| `ultra-thin-material-dark`  | A blur effect that creates the appearance of an ultra-thin material and is always dark. (**iOS >= 13**)                 | All      |
 
-#### Blur Types (Only iOS >= 10)
+## Platform Differences
 
-| Property    | Description                                                                             | Platform |
-| ----------- | --------------------------------------------------------------------------------------- | -------- |
-| `regular`   | A regular blur style that adapts to the user interface style.                           | iOS      |
-| `prominent` | A blur style for making content more prominent that adapts to the user interface style. | iOS      |
+### Android
 
-#### Blur Types (Only iOS >= 13)
+On Android platforms, the component utilizes the BlurView library to offer native blur effects with hardware-accelerated rendering.
 
-| Property                    | Description                                                                                             | Platform |
-| --------------------------- | ------------------------------------------------------------------------------------------------------- | -------- |
-| `chrome-material`           | An adaptable blur effect that creates the appearance of the system chrome.                              | iOS      |
-| `material`                  | An adaptable blur effect that creates the appearance of a material with normal thickness.               | iOS      |
-| `thick-material`            | An adaptable blur effect that creates the appearance of a material that’s thicker than normal.          | iOS      |
-| `thin-material`             | An adaptable blur effect that creates the appearance of a thin material.                                | iOS      |
-| `ultra-thin-material`       | An adaptable blur effect that creates the appearance of an ultra-thin material.                         | iOS      |
-| `chrome-material-light`     | A blur effect that creates the appearance of the system chrome and is always light.                     | iOS      |
-| `material-light`            | A blur effect that creates the appearance of a material with normal thickness and is always light.      | iOS      |
-| `thick-material-light`      | A blur effect that creates the appearance of a material that’s thicker than normal and is always light. | iOS      |
-| `thin-material-light`       | A blur effect that creates the appearance of a thin material and is always light.                       | iOS      |
-| `ultra-thin-material-light` | A blur effect that creates the appearance of an ultra-thin material and is always light.                | iOS      |
-| `chrome-material-dark`      | A blur effect that creates the appearance of the system chrome and is always dark.                      | iOS      |
-| `material-dark`             | A blur effect that creates the appearance of a material with normal thickness and is always dark.       | iOS      |
-| `thick-material-dark`       | A blur effect that creates the appearance of a material that’s thicker than normal and is always dark.  | iOS      |
-| `thin-material-dark`        | A blur effect that creates the appearance of a thin material and is always dark.                        | iOS      |
-| `ultra-thin-material-dark`  | A blur effect that creates the appearance of an ultra-thin material and is always dark.                 | iOS      |
+### iOS
 
-## How `BlurView` works with and without children?
-
-- **With children**: The blur effect is applied to the background behind the `BlurView`, while the children content remains sharp and visible on top.
-
-```tsx
-return (
-  <BlurView style={styles.blurView}>
-    <View style={styles.wrapper}>
-      <Text style={styles.title}>
-        This text will appear above the blur effect, the blur effect doesn't
-        applied about it.
-      </Text>
-
-      <Button title="Click me" />
-    </View>
-  </BlurView>
-);
-```
-
-- **Without children**: The blur effect affects whatever content is rendered below or above the `BlurView` in the component tree. This comportment occurs **only in Android**.
-
-```tsx
-return (
-  <>
-    <BlurView style={styles.blurView} />
-
-    <Text style={styles.title}>
-      This text will be blurred when it be behind or above BlurView!
-    </Text>
-  </>
-);
-```
+On iOS all types are supported by default. However, on Android they are RGBA colors to simulate the same blur color.
 
 ## Expo
 
 In Expo, you need to convert to a [custom development build](https://docs.expo.dev/develop/development-builds/introduction/) or use [prebuild](https://docs.expo.dev/workflow/continuous-native-generation/). You can use also React Native without Expo.
+
+## TypeScript Support
+
+Full TypeScript support with proper type definitions!
+
+```ts
+import { BlurViewType, BlurViewProps } from '@danielsaraldi/react-native-blur';
+
+export const INITIAL_BLUR_TYPE: BlurViewType = 'x-light';
+
+export interface CustomBlurViewProps extends BlurViewProps {
+  // ...
+}
+```
 
 ## Contributing
 

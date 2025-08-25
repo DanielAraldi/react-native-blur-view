@@ -181,7 +181,7 @@
     ]
   },
   "codegenConfig": {
-    "name": "BlurViewViewSpec",
+    "name": "BlurViewSpec",
     "type": "all",
     "jsSrcsDir": "src",
     "android": {
@@ -189,7 +189,7 @@
     },
     "ios": {
       "componentProvider": {
-        "BlurViewIos": "BlurViewIos"
+        "BlurView": "BlurView"
       }
     }
   },

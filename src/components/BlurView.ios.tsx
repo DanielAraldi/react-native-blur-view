@@ -1,68 +1,38 @@
-import { forwardRef, memo, useMemo } from 'react';
+import { Children, memo } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { BlurViewIos } from '../fabrics';
-import type {
-  BlurViewIosProps,
-  BlurViewIosType,
-  BlurViewNativeIosType,
-} from '../@types';
+import { Blur } from '../fabrics';
+import type { BlurViewProps } from '../@types';
 import { globalStyles } from '../styles';
-import { clip } from '../utils';
 
-const BlurView = forwardRef<View, BlurViewIosProps>((props, ref) => {
-  const {
-    type = 'light',
-    radius = 10,
-    style,
-    blurStyle = StyleSheet.absoluteFill,
-    contentStyle = StyleSheet.absoluteFill,
-    children,
-    ...rest
-  } = props;
+const BlurView = (props: BlurViewProps) => {
+  const { type = 'light', radius = 10, style, children, ...rest } = props;
 
-  const blurRadius = useMemo(() => clip(radius, 0, 100), [radius]);
-
-  const overlayColors: Record<BlurViewIosType, BlurViewNativeIosType> = {
-    'x-light': 'xlight',
-    'light': 'light',
-    'dark': 'dark',
-    'thin-material': 'thinMaterial',
-    'thin-material-light': 'thinMaterialLight',
-    'thin-material-dark': 'thinMaterialDark',
-    'material': 'material',
-    'material-light': 'materialLight',
-    'material-dark': 'materialDark',
-    'chrome-material': 'chromeMaterial',
-    'chrome-material-light': 'chromeMaterialLight',
-    'chrome-material-dark': 'chromeMaterialDark',
-    'thick-material': 'thickMaterial',
-    'thick-material-light': 'thickMaterialLight',
-    'thick-material-dark': 'thickMaterialDark',
-    'ultra-thin-material': 'ultraThinMaterial',
-    'ultra-thin-material-light': 'ultraThinMaterialLight',
-    'ultra-thin-material-dark': 'ultraThinMaterialDark',
-    'prominent': 'prominent',
-    'regular': 'regular',
-  };
-
-  const overlayColor = overlayColors[type] || overlayColors.light;
+  if (!Children.count(children)) {
+    return (
+      <Blur
+        overlayColor={type}
+        blurRadius={radius}
+        pointerEvents="none"
+        style={style}
+        {...rest}
+      />
+    );
+  }
 
   return (
-    <View ref={ref} style={StyleSheet.compose(globalStyles.container, style)}>
-      <BlurViewIos
-        overlayColor={overlayColor}
-        blurRadius={blurRadius}
+    <View style={[globalStyles.container, style]}>
+      <Blur
+        overlayColor={type}
+        blurRadius={radius}
         pointerEvents="none"
-        style={StyleSheet.compose(globalStyles.vibrancy, blurStyle)}
+        style={StyleSheet.absoluteFill}
         {...rest}
       />
 
-      <View style={StyleSheet.compose(globalStyles.content, contentStyle)}>
-        {children}
-      </View>
+      <View style={globalStyles.content}>{children}</View>
     </View>
   );
-});
+};
 
 export default memo(BlurView);
