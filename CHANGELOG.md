@@ -1,3 +1,18 @@
+# [0.7.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v0.6.7...v0.7.0) (2025-08-26)
+
+
+### Bug Fixes
+
+* **ios:** update XCode version ([3fb6af1](https://github.com/DanielAraldi/react-native-blur-view/commit/3fb6af1f5fd4aacea978d6660f5e64d2ae9fd54c))
+
+
+### Features
+
+* **android:** rename `BlurViewView` to `BlurView` and add new overlay colors with background active ([f11aa5f](https://github.com/DanielAraldi/react-native-blur-view/commit/f11aa5fab7753cdbafffaeb2bf96d62485c8c52b))
+* force node version to `20.x` and remove pull request to main in release action ([7509624](https://github.com/DanielAraldi/react-native-blur-view/commit/7509624c441855a3a9763284da5922c705c6b5f0))
+* **ios:** rename `BlurViewIos` to `BlurView` and add dealloc memory with clipped ([9e3e5dc](https://github.com/DanielAraldi/react-native-blur-view/commit/9e3e5dcd58ae05ae0b672a48efa3e4f392f555e0))
+* redesign of fabric types and components for each OS ([3dc2bba](https://github.com/DanielAraldi/react-native-blur-view/commit/3dc2bba397906b3f4e566bc012b5329e7a43211d))
+
 # Changelog
 
 ## <small>0.6.7 (2025-08-13)</small>
