@@ -1,10 +1,1 @@
-export type {
-  BlurViewAndroidProps,
-  BlurViewAndroidType,
-} from './BlurView.android';
-export type {
-  BlurViewIosProps,
-  BlurViewIosType,
-  BlurViewNativeIosType,
-} from './BlurView.ios';
-export type { BlurViewType, BlurViewProps } from './BlurView.native';
+export type { BlurViewProps, BlurViewType } from './BlurView';
