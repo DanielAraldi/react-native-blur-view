@@ -1,11 +1,20 @@
 package com.blurview
 
+import android.content.Context
 import android.graphics.Color
+import android.util.AttributeSet
 import android.util.Log
 import android.view.ViewGroup
-import com.facebook.react.uimanager.ThemedReactContext
 
-class BlurView {
+class BlurView : eightbitlab.com.blurview.BlurView {
+  private var overlayColor: OverlayColor = OverlayColor.fromString("light")
+  private var radius: Float = 10f
+  private var isConfigured: Boolean = false
+
+  companion object {
+    private val TAG: String = "BlurView"
+  }
+
   private enum class OverlayColor(val color: Int) {
     X_LIGHT(Color.argb(25, 255, 255, 255)),
     LIGHT(Color.argb(40, 255, 255, 255)),
@@ -57,49 +66,136 @@ class BlurView {
     }
   }
 
-  companion object {
-    private fun clipRadius(radius: Float): Float {
-      return if (radius <= 0) 0f
-      else if (radius >= 100) 100f
-      else radius
+  constructor(context: Context?) : super(context) {
+    this.initialize()
+  }
+
+  constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
+    this.initialize()
+  }
+
+  constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
+    context,
+    attrs,
+    defStyleAttr
+  ) {
+    this.initialize()
+  }
+
+  override fun onAttachedToWindow() {
+    super.onAttachedToWindow()
+
+    // Now we can safely walk the parent hierarchy
+    if (!this.isConfigured) {
+      this.isConfigured = true
+      this.initialize()
     }
+  }
 
-    fun createViewInstance(context: ThemedReactContext?): eightbitlab.com.blurview.BlurView {
-      val view = eightbitlab.com.blurview.BlurView(context)
-      val activity = context?.currentActivity
+  override fun onDetachedFromWindow() {
+    super.onDetachedFromWindow()
 
-      if (activity == null) {
-        Log.e("ReactNativeBlurView", "Failed to create BlurView instance. Activity doesn't exists.")
-        return view
+    this.isConfigured = false
+    this.removeCallbacks(null)
+  }
+
+  private fun initialize() {
+    val rootView = findOptimalBlurRoot()
+
+    rootView?.let { root ->
+      try {
+        super.setBackgroundColor(this.overlayColor.color)
+
+        super.setupWith(root)
+          .setBlurRadius(this.radius)
+          .setOverlayColor(this.overlayColor.color)
+
+        root.clipToOutline = true
+        root.clipChildren = true
+      } catch (e: Exception) {
+        super.setBackgroundColor(this.overlayColor.color)
+        super.setOverlayColor(this.overlayColor.color)
+
+        val throwable = Throwable("Failed to initialize blur: ${e.message}")
+        throw Error(TAG, throwable)
       }
+    }
+  }
 
-      val decorView = activity.window.decorView
-      val contentView = decorView.findViewById<ViewGroup>(android.R.id.content)
+  private fun clipRadius(radius: Float): Float {
+    return if (radius <= 0) 0f
+    else if (radius >= 100) 100f
+    else radius
+  }
 
-      view
-        .setupWith(contentView)
-        .setFrameClearDrawable(decorView.background)
-        .setBlurRadius(10f)
-        .setBlurEnabled(true)
-        .setBlurAutoUpdate(true)
+  /**
+   * Attempts to find the nearest Screen ancestor (from react-native-screens).
+   * Falls back to app root if no Screen is found.
+   */
+  private fun findOptimalBlurRoot(): ViewGroup? {
+    val screenAncestor = this.findNearestScreenAncestor()
+    return screenAncestor ?: this.getAppRootFallback()
+  }
 
-      view.clipToOutline = true
-      view.clipChildren = true
+  /**
+   * Walks up the view hierarchy looking for react-native-screens Screen components
+   * using class name detection to avoid hard dependencies.
+   */
+  private fun findNearestScreenAncestor(): ViewGroup? {
+    var currentParent = this.parent
+    while (currentParent != null) {
+      if (isReactNativeScreen(currentParent)) {
+        return currentParent as? ViewGroup
+      }
+      currentParent = currentParent.parent
+    }
+    return null
+  }
 
-      return view
+  private fun isReactNativeScreen(view: Any): Boolean {
+    val className = view.javaClass.name
+    return className == "com.swmansion.rnscreens.Screen"
+  }
+
+  private fun getAppRootFallback(): ViewGroup? {
+    var parent = this.parent
+    while (parent != null) {
+      if (parent is ViewGroup && parent.id == android.R.id.content) {
+        return parent
+      }
+      parent = parent.parent
     }
 
-    fun setOverlayColor(view: eightbitlab.com.blurview.BlurView?, overlayColor: String) {
-      val overlay = OverlayColor.fromString(overlayColor)
-      view?.setBackgroundColor(overlay.color)
-      view?.setOverlayColor(overlay.color)
-      view?.invalidate()
+    try {
+      val activity = context as? android.app.Activity
+      activity?.findViewById<ViewGroup>(android.R.id.content)?.let {
+        return it
+      }
+    } catch (e: Exception) {
+      Log.d(TAG, "Could not access activity root view: ${e.message}")
     }
 
-    fun setRadius(view: eightbitlab.com.blurview.BlurView?, radius: Float) {
-      val clippedRadius = clipRadius(radius)
-      view?.setBlurRadius(clippedRadius)
-      view?.invalidate()
-    }
+    return this.parent as? ViewGroup
+  }
+
+  fun setOverlayColor(overlayColor: String) {
+    this.overlayColor = OverlayColor.fromString(overlayColor)
+
+    if (!this.isConfigured) return
+
+    val overlay = OverlayColor.fromString(overlayColor)
+    super.setBackgroundColor(overlay.color)
+    super.setOverlayColor(overlay.color)
+    super.invalidate()
+  }
+
+  fun setRadius(radius: Float) {
+    this.radius = radius
+    
+    if (!this.isConfigured) return
+
+    val clippedRadius = this.clipRadius(radius)
+    super.setBlurRadius(clippedRadius)
+    super.invalidate()
   }
 }

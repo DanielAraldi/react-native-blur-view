@@ -7,7 +7,6 @@ import com.facebook.react.uimanager.ViewManagerDelegate
 import com.facebook.react.uimanager.annotations.ReactProp
 import com.facebook.react.viewmanagers.BlurViewManagerInterface
 import com.facebook.react.viewmanagers.BlurViewManagerDelegate
-import eightbitlab.com.blurview.BlurView
 
 @ReactModule(name = BlurViewManager.NAME)
 class BlurViewManager : ViewGroupManager<BlurView>(),
@@ -23,7 +22,7 @@ class BlurViewManager : ViewGroupManager<BlurView>(),
   }
 
   public override fun createViewInstance(context: ThemedReactContext): BlurView {
-    return com.blurview.BlurView.createViewInstance(context)
+    return BlurView(context)
   }
 
   companion object {
@@ -33,13 +32,13 @@ class BlurViewManager : ViewGroupManager<BlurView>(),
   @Override
   @ReactProp(name = "overlayColor")
   override fun setOverlayColor(view: BlurView?, overlarColor: String?) {
-    com.blurview.BlurView.setOverlayColor(view, overlarColor ?: "light")
+    view?.setOverlayColor(overlarColor ?: "light")
   }
 
   @Override
   @ReactProp(name = "blurRadius", defaultFloat = 10f)
   override fun setBlurRadius(view: BlurView?, radius: Float) {
-    com.blurview.BlurView.setRadius(view, radius)
+    view?.setRadius(radius)
   }
 }
 
