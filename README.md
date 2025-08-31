@@ -52,7 +52,7 @@ yarn add @danielsaraldi/react-native-blur-view
 Install native dependencies (**iOS only**):
 
 ```sh
-cd ios && pod install
+cd ios && pod install && cd ..
 ```
 
 ## Usage
@@ -129,7 +129,7 @@ An important detail, when a value less than `0` or greater than `100` are provid
 
 ### Android
 
-On Android platforms, the component utilizes the BlurView library to offer native blur effects with hardware-accelerated rendering.
+On Android platforms, the component utilizes the BlurView library to offer native blur effects with hardware-accelerated rendering. Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens).
 
 ### iOS
 
