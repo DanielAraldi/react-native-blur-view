@@ -1,3 +1,10 @@
+## [0.7.1](https://github.com/DanielAraldi/react-native-blur-view/compare/v0.7.0...v0.7.1) (2025-08-31)
+
+
+### Bug Fixes
+
+* **android:** transition issue with RNScreens ([9148ff6](https://github.com/DanielAraldi/react-native-blur-view/commit/9148ff61cf5f6882d4f505289b584d302a3d9386))
+
 # [0.7.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v0.6.7...v0.7.0) (2025-08-26)
 
 
