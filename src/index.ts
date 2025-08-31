@@ -1,46 +1,7 @@
-import type { ForwardRefExoticComponent } from 'react';
-import type { ViewProps } from 'react-native';
+import type { ComponentType } from 'react';
 import { BlurView as BlurViewUntyped } from './components';
+import type { BlurViewProps } from './@types';
 
-export const BlurView = BlurViewUntyped as ForwardRefExoticComponent<
-  ViewProps & {
-    /**
-     * @description Set the color type of the overlay.
-     *
-     * @type {BlurViewType}
-     *
-     * @default 'light'
-     */
-    type?:
-      | 'x-light'
-      | 'light'
-      | 'dark'
-      | 'thin-material'
-      | 'thin-material-light'
-      | 'thin-material-dark'
-      | 'material'
-      | 'material-light'
-      | 'material-dark'
-      | 'chrome-material'
-      | 'chrome-material-light'
-      | 'chrome-material-dark'
-      | 'thick-material'
-      | 'thick-material-light'
-      | 'thick-material-dark'
-      | 'ultra-thin-material'
-      | 'ultra-thin-material-light'
-      | 'ultra-thin-material-dark'
-      | 'regular'
-      | 'prominent';
-
-    /**
-     * @description Set the blur radius. It accepts a number between `0` and
-     * `100`.
-     *
-     * @default 10
-     */
-    radius?: number;
-  }
->;
+export const BlurView = BlurViewUntyped as ComponentType<BlurViewProps>;
 
 export type { BlurViewProps, BlurViewType } from './@types';
