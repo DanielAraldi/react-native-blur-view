@@ -54,23 +54,15 @@ export const styles = StyleSheet.create({
     height: 144,
 
     justifyContent: 'flex-end',
-    alignItems: 'flex-start',
 
     padding: 20,
   },
 
   topBlurViewContainer: {
-    flex: 1,
-
     flexDirection: 'row',
-
-    width: '100%',
-    height: '100%',
 
     justifyContent: 'space-between',
     alignItems: 'flex-end',
-
-    gap: 8,
   },
 
   bottomBlurView: {
