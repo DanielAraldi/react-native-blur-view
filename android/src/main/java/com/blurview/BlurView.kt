@@ -5,10 +5,12 @@ import android.graphics.Color
 import android.util.AttributeSet
 import android.util.Log
 import android.view.ViewGroup
+import kotlin.text.equals
 
 class BlurView : eightbitlab.com.blurview.BlurView {
   private var overlayColor: OverlayColor = OverlayColor.fromString("light")
   private var radius: Float = 10f
+  private var fixedRadius: Float = 0f
   private var isConfigured: Boolean = false
 
   companion object {
@@ -17,10 +19,10 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   }
 
   private enum class OverlayColor(val color: Int) {
-    X_LIGHT(Color.argb(25, 255, 255, 255)),
+    X_LIGHT(Color.argb(140, 240, 240, 240)),
     LIGHT(Color.argb(40, 255, 255, 255)),
-    DARK(Color.argb(60, 0, 0, 0)),
-    REGULAR(Color.argb(50, 255, 255, 255)),
+    DARK(Color.argb(120, 26, 22, 22)),
+    REGULAR(Color.argb(35, 255, 255, 255)),
     PROMINENT(Color.argb(70, 255, 255, 255)),
     ULTRA_THIN_MATERIAL(Color.argb(20, 255, 255, 255)),
     ULTRA_THIN_MATERIAL_LIGHT(Color.argb(5, 255, 255, 255)),
@@ -39,7 +41,15 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     CHROME_MATERIAL_DARK(Color.argb(45, 15, 15, 15));
 
     companion object {
+      var colorString: String = "light"
+
+      fun isRegular(): Boolean {
+        return this.colorString.equals("regular", true)
+      }
+
       fun fromString(color: String): OverlayColor {
+        this.colorString = color
+
         return when (color.lowercase()) {
           "x-light" -> X_LIGHT
           "light" -> LIGHT
@@ -107,8 +117,10 @@ class BlurView : eightbitlab.com.blurview.BlurView {
       try {
         super.setBackgroundColor(this.overlayColor.color)
 
+        val blurRadius = if (OverlayColor.isRegular()) this.fixedRadius else this.radius
+
         super.setupWith(root)
-          .setBlurRadius(this.radius)
+          .setBlurRadius(blurRadius)
           .setOverlayColor(this.overlayColor.color)
 
         root.clipToOutline = true
@@ -182,6 +194,9 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   fun setOverlayColor(overlayColor: String) {
     this.overlayColor = OverlayColor.fromString(overlayColor)
 
+    val radiusProp =  if (OverlayColor.isRegular()) this.fixedRadius else this.radius
+    this.setRadius(radiusProp)
+
     if (!this.isConfigured) return
 
     val overlay = OverlayColor.fromString(overlayColor)
@@ -191,11 +206,14 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   }
 
   fun setRadius(radius: Float) {
+    val isRegular = OverlayColor.isRegular()
+    this.fixedRadius = if (isRegular) 35f else 0f
     this.radius = this.clipRadius(radius * INTENSITY)
 
     if (!this.isConfigured) return
 
-    val clippedRadius = this.clipRadius(radius * INTENSITY)
+    val radiusProp =  if (isRegular) this.fixedRadius else this.radius
+    val clippedRadius = this.clipRadius(radiusProp * INTENSITY)
     super.setBlurRadius(clippedRadius)
     super.invalidate()
   }
