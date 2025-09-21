@@ -13,6 +13,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
 
   companion object {
     private val TAG: String = "BlurView"
+    private val INTENSITY: Float = 0.675f
   }
 
   private enum class OverlayColor(val color: Int) {
@@ -124,7 +125,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
 
   private fun clipRadius(radius: Float): Float {
     return if (radius <= 0) 0f
-    else if (radius >= 100) 100f
+    else if (radius >= 67.5f) 67.5f
     else radius
   }
 
@@ -190,11 +191,11 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   }
 
   fun setRadius(radius: Float) {
-    this.radius = radius
-    
+    this.radius = this.clipRadius(radius * INTENSITY)
+
     if (!this.isConfigured) return
 
-    val clippedRadius = this.clipRadius(radius)
+    val clippedRadius = this.clipRadius(radius * INTENSITY)
     super.setBlurRadius(clippedRadius)
     super.invalidate()
   }
