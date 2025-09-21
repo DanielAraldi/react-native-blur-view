@@ -40,6 +40,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     CHROME_MATERIAL_LIGHT(Color.argb(30, 240, 240, 240)),
     CHROME_MATERIAL_DARK(Color.argb(45, 15, 15, 15));
 
+    // TODO: Add getter for radius when overlayColor is a fixed radius value
     companion object {
       var colorString: String = "light"
 
