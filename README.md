@@ -107,23 +107,23 @@ An important detail, when a value less than `0` or greater than `100` are provid
 | `x-light`                   | The area of the view is lighter than the underlying view.                                                               | All      |
 | `light`                     | The area of the view is the same approximate lightness of the underlying view.                                          | All      |
 | `dark`                      | The area of the view is darker than the underlying view.                                                                | All      |
-| `regular`                   | A regular blur style that adapts to the user interface style. (**iOS >= 10**)                                           | All      |
-| `prominent`                 | A blur style for making content more prominent that adapts to the user interface style. (**iOS >= 10**)                 | All      |
-| `chrome-material`           | An adaptable blur effect that creates the appearance of the system chrome. (**iOS >= 13**)                              | All      |
-| `material`                  | An adaptable blur effect that creates the appearance of a material with normal thickness. (**iOS >= 13**)               | All      |
-| `thick-material`            | An adaptable blur effect that creates the appearance of a material that’s thicker than normal. (**iOS >= 13**)          | All      |
-| `thin-material`             | An adaptable blur effect that creates the appearance of a thin material. (**iOS >= 13**)                                | All      |
-| `ultra-thin-material`       | An adaptable blur effect that creates the appearance of an ultra-thin material. (**iOS >= 13**)                         | All      |
-| `chrome-material-light`     | A blur effect that creates the appearance of the system chrome and is always light. (**iOS >= 13**)                     | All      |
-| `material-light`            | A blur effect that creates the appearance of a material with normal thickness and is always light. (**iOS >= 13**)      | All      |
-| `thick-material-light`      | A blur effect that creates the appearance of a material that’s thicker than normal and is always light. (**iOS >= 13**) | All      |
-| `thin-material-light`       | A blur effect that creates the appearance of a thin material and is always light. (**iOS >= 13**)                       | All      |
-| `ultra-thin-material-light` | A blur effect that creates the appearance of an ultra-thin material and is always light. (**iOS >= 13**)                | All      |
-| `chrome-material-dark`      | A blur effect that creates the appearance of the system chrome and is always dark. (**iOS >= 13**)                      | All      |
-| `material-dark`             | A blur effect that creates the appearance of a material with normal thickness and is always dark. (**iOS >= 13**)       | All      |
-| `thick-material-dark`       | A blur effect that creates the appearance of a material that’s thicker than normal and is always dark. (**iOS >= 13**)  | All      |
-| `thin-material-dark`        | A blur effect that creates the appearance of a thin material and is always dark. (**iOS >= 13**)                        | All      |
-| `ultra-thin-material-dark`  | A blur effect that creates the appearance of an ultra-thin material and is always dark. (**iOS >= 13**)                 | All      |
+| `regular`                   | A regular blur style that adapts to the user interface style. Radius **doesn't apply** to this. (**iOS >= 10**)                                           | All      |
+| `prominent`                 | A blur style for making content more prominent that adapts to the user interface style. Radius **doesn't apply** to this. (**iOS >= 10**)                 | All      |
+| `chrome-material`           | An adaptable blur effect that creates the appearance of the system chrome. Radius **doesn't apply** to this. (**iOS >= 13**)                              | All      |
+| `material`                  | An adaptable blur effect that creates the appearance of a material with normal thickness. Radius **doesn't apply** to this. (**iOS >= 13**)               | All      |
+| `thick-material`            | An adaptable blur effect that creates the appearance of a material that’s thicker than normal. Radius **doesn't apply** to this. (**iOS >= 13**)          | All      |
+| `thin-material`             | An adaptable blur effect that creates the appearance of a thin material. Radius **doesn't apply** to this. (**iOS >= 13**)                                | All      |
+| `ultra-thin-material`       | An adaptable blur effect that creates the appearance of an ultra-thin material. Radius **doesn't apply** to this. (**iOS >= 13**)                         | All      |
+| `chrome-material-light`     | A blur effect that creates the appearance of the system chrome and is always light. Radius **doesn't apply** to this. (**iOS >= 13**)                     | All      |
+| `material-light`            | A blur effect that creates the appearance of a material with normal thickness and is always light. Radius **doesn't apply** to this. (**iOS >= 13**)      | All      |
+| `thick-material-light`      | A blur effect that creates the appearance of a material that’s thicker than normal and is always light. Radius **doesn't apply** to this. (**iOS >= 13**) | All      |
+| `thin-material-light`       | A blur effect that creates the appearance of a thin material and is always light. Radius **doesn't apply** to this. (**iOS >= 13**)                       | All      |
+| `ultra-thin-material-light` | A blur effect that creates the appearance of an ultra-thin material and is always light. Radius **doesn't apply** to this. (**iOS >= 13**)                | All      |
+| `chrome-material-dark`      | A blur effect that creates the appearance of the system chrome and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)                      | All      |
+| `material-dark`             | A blur effect that creates the appearance of a material with normal thickness and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)       | All      |
+| `thick-material-dark`       | A blur effect that creates the appearance of a material that’s thicker than normal and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)  | All      |
+| `thin-material-dark`        | A blur effect that creates the appearance of a thin material and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)                        | All      |
+| `ultra-thin-material-dark`  | A blur effect that creates the appearance of an ultra-thin material and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)                 | All      |
 
 ## Platform Differences
 
