@@ -14,7 +14,7 @@ import {
 } from '@danielsaraldi/react-native-blur-view';
 
 import { styles } from './styles';
-import { BACKGROUND_IMAGE } from './assets';
+import { WOMAN } from './assets';
 
 const BLUR_TYPES: BlurViewType[] = [
   'x-light',
@@ -23,18 +23,18 @@ const BLUR_TYPES: BlurViewType[] = [
   'regular',
   'prominent',
   'material',
-  'thin-material',
-  'ultra-thin-material',
-  'thick-material',
-  'chrome-material',
-  'thin-material-light',
-  'thin-material-dark',
   'material-light',
   'material-dark',
+  'thin-material',
+  'thin-material-light',
+  'thin-material-dark',
+  'chrome-material',
   'chrome-material-light',
   'chrome-material-dark',
+  'thick-material',
   'thick-material-light',
   'thick-material-dark',
+  'ultra-thin-material',
   'ultra-thin-material-light',
   'ultra-thin-material-dark',
 ];
@@ -80,7 +80,7 @@ export default function App() {
 
   return (
     <ImageBackground
-      source={BACKGROUND_IMAGE}
+      source={WOMAN}
       style={styles.container}
       resizeMethod="resize"
     >
