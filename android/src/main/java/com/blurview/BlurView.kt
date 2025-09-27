@@ -5,8 +5,6 @@ import android.graphics.Color
 import android.util.AttributeSet
 import android.util.Log
 import android.view.ViewGroup
-import kotlin.text.equals
-import kotlin.text.lowercase
 
 class BlurView : eightbitlab.com.blurview.BlurView {
   private var overlayColor: OverlayColor = OverlayColor.fromString("light")
@@ -24,9 +22,9 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     DARK(Color.argb(120, 26, 22, 22)),
     REGULAR(Color.argb(35, 255, 255, 255)),
     PROMINENT(Color.argb(140, 240, 240, 240)),
-    ULTRA_THIN_MATERIAL(Color.argb(20, 255, 255, 255)),
-    ULTRA_THIN_MATERIAL_LIGHT(Color.argb(5, 255, 255, 255)),
-    ULTRA_THIN_MATERIAL_DARK(Color.argb(20, 0, 0, 0)),
+    ULTRA_THIN_MATERIAL(Color.argb(75, 240, 240, 240)),
+    ULTRA_THIN_MATERIAL_LIGHT(Color.argb(77, 240, 240, 240)),
+    ULTRA_THIN_MATERIAL_DARK(Color.argb(65, 40, 40, 40)),
     THIN_MATERIAL(Color.argb(102, 240, 240, 240)),
     THIN_MATERIAL_LIGHT(Color.argb(105, 240, 240, 240)),
     THIN_MATERIAL_DARK(Color.argb(102, 35, 35, 35)),
