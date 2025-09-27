@@ -18,7 +18,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
 
   private enum class OverlayColor(val color: Int) {
     X_LIGHT(Color.argb(140, 240, 240, 240)),
-    LIGHT(Color.argb(38, 255, 255, 255)),
+    LIGHT(Color.argb(42, 255, 255, 255)),
     DARK(Color.argb(120, 26, 22, 22)),
     REGULAR(Color.argb(35, 255, 255, 255)),
     PROMINENT(Color.argb(140, 240, 240, 240)),
