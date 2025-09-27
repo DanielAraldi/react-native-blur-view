@@ -1,4 +1,4 @@
-import { memo, Children } from 'react';
+import { memo, Children, useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { Blur } from '../fabrics';
@@ -8,11 +8,21 @@ import { globalStyles } from '../styles';
 const BlurView = (props: BlurViewProps) => {
   const { type = 'light', radius = 10, style, children, ...rest } = props;
 
+  const [blurRadius, setBlurRadius] = useState<number>(radius);
+
+  useEffect(() => {
+    const isChangeable =
+      type === 'x-light' || type === 'light' || type === 'dark';
+
+    if (isChangeable) setBlurRadius(radius);
+    else setBlurRadius(35);
+  }, [type, radius]);
+
   if (!Children.count(children)) {
     return (
       <Blur
         overlayColor={type}
-        blurRadius={radius}
+        blurRadius={blurRadius}
         pointerEvents="none"
         style={style}
         {...rest}
@@ -24,7 +34,7 @@ const BlurView = (props: BlurViewProps) => {
     <View style={[globalStyles.container, style]}>
       <Blur
         overlayColor={type}
-        blurRadius={radius}
+        blurRadius={blurRadius}
         pointerEvents="none"
         style={StyleSheet.absoluteFill}
         {...rest}
