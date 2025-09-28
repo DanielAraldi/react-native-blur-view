@@ -34,9 +34,9 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     THICK_MATERIAL(Color.argb(210, 248, 248, 248)),
     THICK_MATERIAL_LIGHT(Color.argb(212, 248, 248, 248)),
     THICK_MATERIAL_DARK(Color.argb(165, 35, 35, 35)),
-    CHROME_MATERIAL(Color.argb(45, 240, 240, 240)),
-    CHROME_MATERIAL_LIGHT(Color.argb(30, 240, 240, 240)),
-    CHROME_MATERIAL_DARK(Color.argb(45, 15, 15, 15));
+    CHROME_MATERIAL(Color.argb(165, 248, 248, 248)),
+    CHROME_MATERIAL_LIGHT(Color.argb(167, 248, 248, 248)),
+    CHROME_MATERIAL_DARK(Color.argb(100, 32, 32, 32));
 
     companion object {
       fun fromString(color: String): OverlayColor {
