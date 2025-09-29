@@ -1,3 +1,22 @@
+## [0.7.2](https://github.com/DanielAraldi/react-native-blur-view/compare/v0.7.1...v0.7.2) (2025-09-29)
+
+
+### Bug Fixes
+
+* adjust light, thin group, material group and trick group variant colors ([e5256ac](https://github.com/DanielAraldi/react-native-blur-view/commit/e5256ac9414ba06f5277ce36320613d42cf1ce44))
+* adjust ulta thin group variant colors ([6a8da13](https://github.com/DanielAraldi/react-native-blur-view/commit/6a8da13ff39a06780a89e0b740c6d82b704aabf3))
+* **android:** adjust chrome material group variant colors ([b4609ef](https://github.com/DanielAraldi/react-native-blur-view/commit/b4609efc480eb9959bd363ffeb6a4563a70770d8))
+* **android:** adjust in `x-light`, `dark` and `regular` inconsistent overlay colors ([1c62a5b](https://github.com/DanielAraldi/react-native-blur-view/commit/1c62a5b15adc2fff536af147846c601d5afee652))
+* **android:** adjust the intensity of the radius ([a060a40](https://github.com/DanielAraldi/react-native-blur-view/commit/a060a40aaa4257375dda5b680ecf2048a2e4031c))
+* **android:** force fixed radius value when it's different of the x-light, light and dark color ([3fabf56](https://github.com/DanielAraldi/react-native-blur-view/commit/3fabf560de6b2b37ed8bd8c3a1b28f74900208c7))
+* force radius to be `35` when it isn't `x-light` or `light` or `dark` ([fa10a47](https://github.com/DanielAraldi/react-native-blur-view/commit/fa10a47be5a08d6c6e57afe076fee4e0a78d2728))
+* small adjust in alpha value of the `light` variant ([a2cd0b4](https://github.com/DanielAraldi/react-native-blur-view/commit/a2cd0b4d833c30854cfbc2e4b058a95dd04dba04))
+
+
+### Performance Improvements
+
+* **android:** remove unnecessary react hook in the `BlurView` component ([d00f514](https://github.com/DanielAraldi/react-native-blur-view/commit/d00f5143a8f005b6a96e522276dd00fc524bce0a))
+
 ## [0.7.1](https://github.com/DanielAraldi/react-native-blur-view/compare/v0.7.0...v0.7.1) (2025-08-31)
 
 
