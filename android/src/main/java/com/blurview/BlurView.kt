@@ -8,34 +8,35 @@ import android.view.ViewGroup
 
 class BlurView : eightbitlab.com.blurview.BlurView {
   private var overlayColor: OverlayColor = OverlayColor.fromString("light")
-  private var radius: Float = 10f
+  private var radius: Float = 10f * INTENSITY
   private var isConfigured: Boolean = false
 
   companion object {
     private val TAG: String = "BlurView"
+    private val INTENSITY: Float = 0.675f
   }
 
   private enum class OverlayColor(val color: Int) {
-    X_LIGHT(Color.argb(25, 255, 255, 255)),
-    LIGHT(Color.argb(40, 255, 255, 255)),
-    DARK(Color.argb(60, 0, 0, 0)),
-    REGULAR(Color.argb(50, 255, 255, 255)),
-    PROMINENT(Color.argb(70, 255, 255, 255)),
-    ULTRA_THIN_MATERIAL(Color.argb(20, 255, 255, 255)),
-    ULTRA_THIN_MATERIAL_LIGHT(Color.argb(5, 255, 255, 255)),
-    ULTRA_THIN_MATERIAL_DARK(Color.argb(20, 0, 0, 0)),
-    THIN_MATERIAL(Color.argb(35, 255, 255, 255)),
-    THIN_MATERIAL_LIGHT(Color.argb(20, 255, 255, 255)),
-    THIN_MATERIAL_DARK(Color.argb(35, 0, 0, 0)),
-    MATERIAL(Color.argb(50, 255, 255, 255)),
-    MATERIAL_LIGHT(Color.argb(35, 255, 255, 255)),
-    MATERIAL_DARK(Color.argb(50, 0, 0, 0)),
-    THICK_MATERIAL(Color.argb(65, 255, 255, 255)),
-    THICK_MATERIAL_LIGHT(Color.argb(50, 255, 255, 255)),
-    THICK_MATERIAL_DARK(Color.argb(65, 0, 0, 0)),
-    CHROME_MATERIAL(Color.argb(45, 240, 240, 240)),
-    CHROME_MATERIAL_LIGHT(Color.argb(30, 240, 240, 240)),
-    CHROME_MATERIAL_DARK(Color.argb(45, 15, 15, 15));
+    X_LIGHT(Color.argb(140, 240, 240, 240)),
+    LIGHT(Color.argb(42, 255, 255, 255)),
+    DARK(Color.argb(120, 26, 22, 22)),
+    REGULAR(Color.argb(35, 255, 255, 255)),
+    PROMINENT(Color.argb(140, 240, 240, 240)),
+    ULTRA_THIN_MATERIAL(Color.argb(75, 240, 240, 240)),
+    ULTRA_THIN_MATERIAL_LIGHT(Color.argb(77, 240, 240, 240)),
+    ULTRA_THIN_MATERIAL_DARK(Color.argb(65, 40, 40, 40)),
+    THIN_MATERIAL(Color.argb(102, 240, 240, 240)),
+    THIN_MATERIAL_LIGHT(Color.argb(105, 240, 240, 240)),
+    THIN_MATERIAL_DARK(Color.argb(102, 35, 35, 35)),
+    MATERIAL(Color.argb(140, 245, 245, 245)),
+    MATERIAL_LIGHT(Color.argb(140, 248, 248, 248)),
+    MATERIAL_DARK(Color.argb(215, 65, 60, 60)),
+    THICK_MATERIAL(Color.argb(210, 248, 248, 248)),
+    THICK_MATERIAL_LIGHT(Color.argb(212, 248, 248, 248)),
+    THICK_MATERIAL_DARK(Color.argb(165, 35, 35, 35)),
+    CHROME_MATERIAL(Color.argb(165, 248, 248, 248)),
+    CHROME_MATERIAL_LIGHT(Color.argb(167, 248, 248, 248)),
+    CHROME_MATERIAL_DARK(Color.argb(100, 32, 32, 32));
 
     companion object {
       fun fromString(color: String): OverlayColor {
@@ -124,7 +125,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
 
   private fun clipRadius(radius: Float): Float {
     return if (radius <= 0) 0f
-    else if (radius >= 100) 100f
+    else if (radius >= 67.5f) 67.5f
     else radius
   }
 
@@ -179,22 +180,25 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   }
 
   fun setOverlayColor(overlayColor: String) {
-    this.overlayColor = OverlayColor.fromString(overlayColor)
+    val overlay = OverlayColor.fromString(overlayColor)
+
+    this.overlayColor = overlay
 
     if (!this.isConfigured) return
 
-    val overlay = OverlayColor.fromString(overlayColor)
     super.setBackgroundColor(overlay.color)
     super.setOverlayColor(overlay.color)
     super.invalidate()
   }
 
   fun setRadius(radius: Float) {
-    this.radius = radius
-    
+    var radiusValue = radius * INTENSITY
+
+    this.radius = this.clipRadius(radiusValue)
+
     if (!this.isConfigured) return
 
-    val clippedRadius = this.clipRadius(radius)
+    val clippedRadius = this.clipRadius(radiusValue)
     super.setBlurRadius(clippedRadius)
     super.invalidate()
   }

@@ -8,11 +8,15 @@ import { globalStyles } from '../styles';
 const BlurView = (props: BlurViewProps) => {
   const { type = 'light', radius = 10, style, children, ...rest } = props;
 
+  const isChangeable =
+    type === 'x-light' || type === 'light' || type === 'dark';
+  const blurRadius = isChangeable ? radius : 35;
+
   if (!Children.count(children)) {
     return (
       <Blur
         overlayColor={type}
-        blurRadius={radius}
+        blurRadius={blurRadius}
         pointerEvents="none"
         style={style}
         {...rest}
@@ -24,7 +28,7 @@ const BlurView = (props: BlurViewProps) => {
     <View style={[globalStyles.container, style]}>
       <Blur
         overlayColor={type}
-        blurRadius={radius}
+        blurRadius={blurRadius}
         pointerEvents="none"
         style={StyleSheet.absoluteFill}
         {...rest}
