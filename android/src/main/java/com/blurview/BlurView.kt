@@ -5,6 +5,8 @@ import android.graphics.Color
 import android.util.AttributeSet
 import android.util.Log
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.toDrawable
 
 class BlurView : eightbitlab.com.blurview.BlurView {
   private var overlayColor: OverlayColor = OverlayColor.fromString("light")
@@ -12,8 +14,8 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   private var isConfigured: Boolean = false
 
   companion object {
-    private val TAG: String = "BlurView"
-    private val INTENSITY: Float = 0.675f
+    private const val TAG: String = "BlurView"
+    private const val INTENSITY: Float = 0.675f
   }
 
   private enum class OverlayColor(val color: Int) {
@@ -86,7 +88,6 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   override fun onAttachedToWindow() {
     super.onAttachedToWindow()
 
-    // Now we can safely walk the parent hierarchy
     if (!this.isConfigured) {
       this.isConfigured = true
       this.initialize()
@@ -177,6 +178,55 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     }
 
     return this.parent as? ViewGroup
+  }
+
+  /**
+   * This method attempts to obtain a background in the following priority order:
+   * 1. The current window's decor view background (if available)
+   * 2. A fallback overlay color converted to a drawable
+   */
+  private fun getAppropriateBackground(): android.graphics.drawable.Drawable {
+    try {
+      val activity = this.getActivityFromContext()
+      activity?.window?.decorView?.background?.let {
+        return it
+      }
+
+      activity?.window?.let { window ->
+        val windowBackground = window.decorView.background
+        windowBackground?.let {
+          return it
+        }
+      }
+
+      return this.overlayColor.color.toDrawable()
+    } catch (e: Exception) {
+      Log.e(TAG, "Error getting background: ${e.message}")
+
+      return this.overlayColor.color.toDrawable()
+    }
+  }
+
+  /**
+   * Traverses the context hierarchy to find the associated AppCompatActivity.
+   * This method unwraps the context chain by checking each context in the hierarchy.
+   * It handles ContextWrapper instances by accessing their base context recursively
+   * until it either finds an AppCompatActivity or reaches the end of the chain.
+   */
+  private fun getActivityFromContext(): AppCompatActivity? {
+    var context = this.context
+
+    while (context != null) {
+      when (context) {
+        is AppCompatActivity -> return context
+        is android.content.ContextWrapper -> {
+          context = context.baseContext
+        }
+        else -> break
+      }
+    }
+
+    return null
   }
 
   fun setOverlayColor(overlayColor: String) {
