@@ -102,11 +102,11 @@ An important detail, when a value less than `0` or greater than `100` are provid
 
 ### Blur Types
 
-| Property                    | Description                                                                                                             | Platform |
-| --------------------------- | ----------------------------------------------------------------------------------------------------------------------- | -------- |
-| `x-light`                   | The area of the view is lighter than the underlying view.                                                               | All      |
-| `light`                     | The area of the view is the same approximate lightness of the underlying view.                                          | All      |
-| `dark`                      | The area of the view is darker than the underlying view.                                                                | All      |
+| Property                    | Description                                                                                                                                               | Platform |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `x-light`                   | The area of the view is lighter than the underlying view.                                                                                                 | All      |
+| `light`                     | The area of the view is the same approximate lightness of the underlying view.                                                                            | All      |
+| `dark`                      | The area of the view is darker than the underlying view.                                                                                                  | All      |
 | `regular`                   | A regular blur style that adapts to the user interface style. Radius **doesn't apply** to this. (**iOS >= 10**)                                           | All      |
 | `prominent`                 | A blur style for making content more prominent that adapts to the user interface style. Radius **doesn't apply** to this. (**iOS >= 10**)                 | All      |
 | `chrome-material`           | An adaptable blur effect that creates the appearance of the system chrome. Radius **doesn't apply** to this. (**iOS >= 13**)                              | All      |
@@ -129,7 +129,7 @@ An important detail, when a value less than `0` or greater than `100` are provid
 
 ### Android
 
-On Android platforms, the component utilizes the BlurView library to offer native blur effects with hardware-accelerated rendering. Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens).
+On Android platforms, the component utilizes the BlurView library to offer native blur effects with hardware-accelerated rendering. Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens) and Modals 😁.
 
 ### iOS
 
