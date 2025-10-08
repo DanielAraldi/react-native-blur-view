@@ -1,3 +1,16 @@
+# [0.8.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v0.7.2...v0.8.0) (2025-10-08)
+
+
+### Bug Fixes
+
+* add empty `View` to the `BlurView` component to it expand when children aren't provided ([c5c254d](https://github.com/DanielAraldi/react-native-blur-view/commit/c5c254df6729a575096879c2dce46693556ecb31))
+* **android:** add support compatibility and support between blur views and modals ([9543a1c](https://github.com/DanielAraldi/react-native-blur-view/commit/9543a1caec4a7add33f5b1e20650e9024c917cae))
+
+
+### Features
+
+* update example app ([4e97323](https://github.com/DanielAraldi/react-native-blur-view/commit/4e97323379104793587a5a3e0818b52776b9a6a3))
+
 ## [0.7.2](https://github.com/DanielAraldi/react-native-blur-view/compare/v0.7.1...v0.7.2) (2025-09-29)
 
 
