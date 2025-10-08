@@ -20,7 +20,9 @@ const BlurView = (props: BlurViewProps) => {
         pointerEvents="none"
         style={style}
         {...rest}
-      />
+      >
+        <View style={globalStyles.expand} />
+      </Blur>
     );
   }
 

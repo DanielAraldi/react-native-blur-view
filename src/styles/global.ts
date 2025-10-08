@@ -15,4 +15,8 @@ export const globalStyles = StyleSheet.create({
     zIndex,
     position,
   },
+
+  expand: {
+    flex: 1,
+  },
 });
