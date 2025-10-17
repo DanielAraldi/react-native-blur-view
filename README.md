@@ -31,8 +31,12 @@ A simple blur view in react native based in [`@react-native-community/blur`](htt
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Properties](#properties)
-  - [Blur Types](#blur-types)
+- [Components](#components)
+  - [`BlurView`](#blurview)
+    - [Properties](#properties)
+    - [Blur Types](#blur-types)
+  - [`BlurTarget`](#blurtarget)
+    - [Properties](#properties-1)
 - [Platform Differences](#platform-differences)
   - [Android](#android)
   - [iOS](#ios)
@@ -58,14 +62,26 @@ cd ios && pod install && cd ..
 ## Usage
 
 ```tsx
-import { BlurView } from '@danielsaraldi/react-native-blur-view';
+import { BlurView, BlurTarget } from '@danielsaraldi/react-native-blur-view';
 
 // ...
 
 return (
-  <BlurView style={styles.blurView}>
-    <Text style={styles.title}>BlurView</Text>
-  </BlurView>
+  <>
+    <BlurView targetId="foo" style={styles.blurView}>
+      <Text style={styles.title}>BlurView</Text>
+    </BlurView>
+
+    <BlurTarget id="foo" style={styles.main}>
+      <ScrollView
+        style={styles.main}
+        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+      >
+        {/* ... */}
+      </ScrollView>
+    </BlurTarget>
+  </>
 );
 
 export const styles = StyleSheet.create({
@@ -85,22 +101,37 @@ export const styles = StyleSheet.create({
 
     color: 'white',
   },
+
+  main: {
+    flex: 1,
+  },
+
+  content: {
+    padding: 20,
+
+    gap: 8,
+  },
 });
 ```
 
-## Properties
+## Components
+
+### `BlurView`
 
 The `BlurView` component is an extends the same properties of the a `View` component.
 
-| Property | Description                | Default     | Platform |
-| -------- | -------------------------- | ----------- | -------- |
-| `type`   | Color type of the overlay. | `light`     | All      |
-| `radius` | Blur radius `0` - `100`.   | `10`        | All      |
-| `style`  | The View style.            | `undefined` | All      |
+#### Properties
+
+| Property   | Description                            | Default     | Platform |
+| ---------- | -------------------------------------- | ----------- | -------- |
+| `targetId` | Id of the target that will be blurred. | -           | Android  |
+| `type`     | Color type of the overlay.             | `light`     | All      |
+| `radius`   | Blur radius `0` - `100`.               | `10`        | All      |
+| `style`    | The View style.                        | `undefined` | All      |
 
 An important detail, when a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
 
-### Blur Types
+#### Blur Types
 
 | Property                    | Description                                                                                                                                               | Platform |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
@@ -125,11 +156,23 @@ An important detail, when a value less than `0` or greater than `100` are provid
 | `thin-material-dark`        | A blur effect that creates the appearance of a thin material and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)                        | All      |
 | `ultra-thin-material-dark`  | A blur effect that creates the appearance of an ultra-thin material and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)                 | All      |
 
+### `BlurTarget`
+
+The `BlurTarget` component is an extends the same properties of the a `View` component.
+
+This component is exclusive and mandatory for **Android**. It's useful because we use [Dimezis's 3v library](https://github.com/Dimezis/BlurView) to apply the blur effect, so its implementation is slightly different than on iOS. On iOS the `BlurTarget` component is a common `View`.
+
+#### Properties
+
+| Property | Description                                       | Platform |
+| -------- | ------------------------------------------------- | -------- |
+| `id`     | Id of this target to be identified by `BlurView`. | Android  |
+
 ## Platform Differences
 
 ### Android
 
-On Android platforms, the component utilizes the BlurView library to offer native blur effects with hardware-accelerated rendering. Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens) and Modals 😁.
+On Android platforms, the component utilizes the BlurView library to offer native blur effects with hardware-accelerated rendering. Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-navigation](https://wix.github.io/react-native-navigation) and Modals 😁.
 
 ### iOS
 
@@ -144,11 +187,19 @@ In Expo, you need to convert to a [custom development build](https://docs.expo.d
 Full TypeScript support with proper type definitions!
 
 ```ts
-import { BlurViewType, BlurViewProps } from '@danielsaraldi/react-native-blur';
+import {
+  BlurViewType,
+  BlurViewProps,
+  BlurTargetProps,
+} from '@danielsaraldi/react-native-blur-view';
 
 export const INITIAL_BLUR_TYPE: BlurViewType = 'x-light';
 
 export interface CustomBlurViewProps extends BlurViewProps {
+  // ...
+}
+
+export interface CustomBlurTargetProps extends BlurTargetProps {
   // ...
 }
 ```
