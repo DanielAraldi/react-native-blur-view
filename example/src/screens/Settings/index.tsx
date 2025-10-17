@@ -44,7 +44,12 @@ export function Settings() {
 
   return (
     <View style={styles.container}>
-      <BlurView style={styles.blurView} radius={radius} type={mode}>
+      <BlurView
+        targetId="target"
+        style={styles.blurView}
+        radius={radius}
+        type={mode}
+      >
         <View style={styles.blurViewContent} />
       </BlurView>
 

@@ -35,7 +35,12 @@ export function Home() {
 
   return (
     <View style={styles.container}>
-      <BlurView radius={radius} type={mode} style={styles.blurView}>
+      <BlurView
+        targetId="target"
+        radius={radius}
+        type={mode}
+        style={styles.blurView}
+      >
         <View style={styles.blurViewContent}>
           <View style={styles.avatarWrapper}>
             <Image style={styles.avatar} source={{ uri: avatar }} />
@@ -98,6 +103,7 @@ export function Home() {
             </ScrollView>
 
             <BlurView
+              targetId="target"
               type={mode}
               radius={radius}
               style={styles.modalBlurFooter}

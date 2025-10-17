@@ -10,7 +10,12 @@ export function Tabs(props: BottomTabBarProps) {
 
   return (
     <View style={styles.container}>
-      <BlurView style={styles.blurView} type={mode} radius={radius}>
+      <BlurView
+        targetId="target"
+        style={styles.blurView}
+        type={mode}
+        radius={radius}
+      >
         <View style={styles.content}>
           {props.state.routes.map((route, index) => {
             const isFocused = props.state.index === index;
