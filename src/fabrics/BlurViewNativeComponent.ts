@@ -3,6 +3,7 @@ import codegenNativeComponent from 'react-native/Libraries/Utilities/codegenNati
 import type { Float } from 'react-native/Libraries/Types/CodegenTypes';
 
 export interface NativeProps extends ViewProps {
+  targetId: string;
   overlayColor: string;
   blurRadius: Float;
 }

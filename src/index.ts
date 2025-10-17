@@ -1,7 +1,11 @@
 import type { ComponentType } from 'react';
-import { BlurView as BlurViewUntyped } from './components';
-import type { BlurViewProps } from './@types';
+import {
+  BlurView as BlurViewUntyped,
+  BlurTarget as BlurTargetUntyped,
+} from './components';
+import type { BlurTargetProps, BlurViewProps } from './@types';
 
 export const BlurView = BlurViewUntyped as ComponentType<BlurViewProps>;
+export const BlurTarget = BlurTargetUntyped as ComponentType<BlurTargetProps>;
 
-export type { BlurViewProps, BlurViewType } from './@types';
+export type { BlurViewProps, BlurViewType, BlurTargetProps } from './@types';

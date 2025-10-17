@@ -30,9 +30,18 @@ export type BlurViewType =
 /**
  * @interface BlurViewProps
  *
- * @description Props for the BlurView component.
+ * @description Props for the `BlurView` component.
  */
 export interface BlurViewProps extends ViewProps {
+  /**
+   * @description Id for the `BlurView` component to be identifier the
+   * `BlurTarget` component in tree. **This is used to link the two components
+   * together and it's required for Android.**
+   *
+   * @platform Android
+   */
+  targetId: string;
+
   /**
    * @description Set the color type of the overlay.
    *
