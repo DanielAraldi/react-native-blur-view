@@ -5,4 +5,6 @@ export interface NativeProps extends ViewProps {
   id: string;
 }
 
-export default codegenNativeComponent<NativeProps>('TargetView');
+export default codegenNativeComponent<NativeProps>('TargetView', {
+  excludedPlatforms: ['iOS'],
+});
