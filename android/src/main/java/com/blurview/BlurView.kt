@@ -137,7 +137,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     }
 
     val drawable = this.getAppropriateBackground()
-    super.setupWith(this.rootView!!, 4f, false)
+    super.setupWith(this.rootView!!, 6f, false)
       .setBlurRadius(this.radius)
       .setOverlayColor(this.overlayColor.color)
       .setBlurAutoUpdate(true)
