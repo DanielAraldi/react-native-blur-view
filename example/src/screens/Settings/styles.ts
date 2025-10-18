@@ -49,6 +49,10 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
       flex: 1,
     },
 
+    blurTarget: {
+      flex: 1,
+    },
+
     titleWrapper: {
       gap: 8,
     },
