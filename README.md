@@ -116,7 +116,7 @@ export const styles = StyleSheet.create({
 });
 ```
 
-If you are using `@react-navigation/bottom-tabs` with blur, all screens that the bottom tabs will navigate must contain a `BlurTarget` as a parent component on them. An example below:
+If you are using [@react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator/) with blur, all screens that the bottom tabs will navigate must contain a `BlurTarget` as a parent component on them. An example below:
 
 ```tsx
 // screens/MyScreen.tsx
@@ -212,7 +212,7 @@ The `BlurTarget` may not contain a `BlurView` that targets the same `BlurTarget`
 
 ### Android
 
-On Android platforms, the component utilizes the BlurView library to offer native blur effects with hardware-accelerated rendering. Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-navigation](https://wix.github.io/react-native-navigation) and Modals 😁.
+On Android platforms, the component utilizes the [BlurView](https://github.com/Dimezis/BlurView) library to offer native blur effects with hardware-accelerated rendering. Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-navigation](https://wix.github.io/react-native-navigation) and Modals 😁.
 
 ### iOS
 
