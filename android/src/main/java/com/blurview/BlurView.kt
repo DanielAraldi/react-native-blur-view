@@ -272,6 +272,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     if (this.isInitialized) {
       val clippedRadius = this.clipRadius(radiusValue)
       super.setBlurRadius(clippedRadius)
+      this.isInitialized = false
       this.reinitialize()
     }
   }
@@ -283,7 +284,6 @@ class BlurView : eightbitlab.com.blurview.BlurView {
 
     if (oldTargetId != targetId && this.isAttachedToWindow) {
       this.isInitialized = false
-      this.rootView = null
       this.reinitialize()
     }
   }
