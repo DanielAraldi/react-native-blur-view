@@ -142,7 +142,7 @@ export function MyCustomTabs() {
 
   return (
     <View style={styles.container}>
-      <BlurView id="target" style={styles.content}>
+      <BlurView targetId="target" style={styles.content}>
         {/* ... */}
       </BlurView>
     </View>
