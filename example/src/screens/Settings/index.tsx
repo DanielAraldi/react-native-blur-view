@@ -56,7 +56,7 @@ export function Settings() {
 
       <BlurTarget id="target" style={styles.blurTarget}>
         <ScrollView
-          style={styles.content}
+          style={[styles.content, isDark && styles.contentDark]}
           contentContainerStyle={[
             styles.contentContainer,
             isDark && styles.contentContainerDark,
