@@ -9,7 +9,7 @@ import com.facebook.react.viewmanagers.TargetViewManagerInterface
 import com.facebook.react.viewmanagers.TargetViewManagerDelegate
 
 @ReactModule(name = TargetViewManager.NAME)
-class TargetViewManager : ViewGroupManager<ReactNativeTargetView>(),
+class TargetViewManager : ViewGroupManager<TargetView>(),
   TargetViewManagerInterface<TargetView> {
   private val mDelegate: ViewManagerDelegate<TargetView> = TargetViewManagerDelegate(this)
 
