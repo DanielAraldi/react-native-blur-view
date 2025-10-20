@@ -57,10 +57,6 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     super.setBackgroundColor(this.overlayColor.color)
     super.clipChildren = true
     super.clipToOutline = true
-    super.layoutParams = LayoutParams(
-      LayoutParams.MATCH_PARENT,
-      LayoutParams.MATCH_PARENT
-    )
   }
 
   // Wait all views are mounted in interface
