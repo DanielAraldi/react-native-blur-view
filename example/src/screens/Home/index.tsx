@@ -36,7 +36,7 @@ export function Home() {
   return (
     <View style={styles.container}>
       <BlurView
-        targetId="target"
+        targetId="0"
         radius={radius}
         type={mode}
         style={styles.blurView}
@@ -52,7 +52,7 @@ export function Home() {
         </View>
       </BlurView>
 
-      <BlurTarget id="target" style={styles.blurTarget}>
+      <BlurTarget id="0" style={styles.blurTarget}>
         <FlatList
           data={posts}
           style={[styles.list, isDark && styles.listDark]}

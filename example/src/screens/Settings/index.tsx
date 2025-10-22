@@ -46,7 +46,7 @@ export function Settings() {
   return (
     <View style={styles.container}>
       <BlurView
-        targetId="target"
+        targetId="1"
         style={styles.blurView}
         radius={radius}
         type={mode}
@@ -54,7 +54,7 @@ export function Settings() {
         <View style={styles.blurViewContent} />
       </BlurView>
 
-      <BlurTarget id="target" style={styles.blurTarget}>
+      <BlurTarget id="1" style={styles.blurTarget}>
         <ScrollView
           style={[styles.content, isDark && styles.contentDark]}
           contentContainerStyle={[
