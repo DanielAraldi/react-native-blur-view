@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { isAndroidSDK31OrLower } from '../../utils';
 
 interface MakeStylesProps {
   top: number;
@@ -42,7 +43,7 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
       left: 0,
 
       width: '100%',
-      height: top,
+      height: isAndroidSDK31OrLower ? 16 : top,
     },
 
     blurViewContent: {
