@@ -1,4 +1,5 @@
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { isIos } from './utils';
 
 export const styles = StyleSheet.create({
   container: {
@@ -56,7 +57,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'flex-end',
 
     padding: 20,
-    paddingRight: Platform.OS === 'ios' ? 36 : 20,
+    paddingRight: isIos ? 36 : 20,
   },
 
   topBlurViewContainer: {
