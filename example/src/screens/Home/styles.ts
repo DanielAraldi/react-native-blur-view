@@ -41,6 +41,10 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
       gap: 12,
     },
 
+    blurTarget: {
+      flex: 1,
+    },
+
     avatarWrapper: {
       overflow: 'hidden',
 

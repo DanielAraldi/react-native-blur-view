@@ -73,7 +73,7 @@ repositories {
 def kotlin_version = getExtOrDefault("kotlinVersion")
 
 dependencies {
-  implementation 'com.github.Dimezis:BlurView:version-2.0.6'
+  implementation 'com.github.Dimezis:BlurView:version-3.2.0'
   implementation 'com.facebook.react:react-android:0.79.2'
 
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

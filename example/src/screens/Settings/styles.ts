@@ -10,6 +10,7 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
   StyleSheet.create({
     container: {
       flex: 1,
+      // backgroundColor: '#000',
     },
 
     content: {
@@ -19,6 +20,10 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
       height: '100%',
 
       paddingBottom: bottom,
+    },
+
+    contentDark: {
+      backgroundColor: '#202020',
     },
 
     contentContainer: {
@@ -47,6 +52,10 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
     },
 
     blurViewContent: {
+      flex: 1,
+    },
+
+    blurTarget: {
       flex: 1,
     },
 

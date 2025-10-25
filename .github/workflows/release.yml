@@ -26,11 +26,6 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
 
-      - name: Configure Git
-        run: |
-          git config --global user.name "Daniel Sansão Araldi"
-          git config --global user.email "danielsaraldi@gmail.com"
-
       - name: Configure NPM
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
