@@ -162,7 +162,7 @@ export function MyCustomTabs(props: BottomTabBarProps) {
 
 The `MyCustomTabs` component must be used in the `tabBar` property of the `Navigator`'s bottom tabs. Notice that the `targetId` of the `MyScreen` screen **references** the `id` in the custom bottom tab component.
 
-The target value **must be updated every time** a new screen is rendered, so we've used the page index in this example. However, you can explore other approaches, so feel free to do so.
+The target value **must be updated every time** a new screen is rendered, so we've used the route name in this example. However, you can explore other approaches, so feel free to do so.
 
 **Note**: We **don't yet** have full support for nested tabs.
 
