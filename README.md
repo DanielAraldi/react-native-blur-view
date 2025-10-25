@@ -120,13 +120,18 @@ If you are using [@react-navigation/bottom-tabs](https://reactnavigation.org/doc
 
 ```tsx
 // screens/MyScreen.tsx
+import { useNavigation } from '@react-navigation/native';
 import { BlurTarget } from '@danielsaraldi/react-native-blur-view';
 
 export function MyScreen() {
+  const { getState } = useNavigation();
+
+  const pageIndex = getState()?.index?.toString() || '0';
+
   // ...
 
   return (
-    <BlurTarget id="target" style={styles.container}>
+    <BlurTarget id={pageIndex} style={styles.container}>
       {/* ... */}
     </BlurTarget>
   );
@@ -135,14 +140,19 @@ export function MyScreen() {
 
 ```tsx
 // components/MyCustomTabs.tsx
+import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { BlurView } from '@danielsaraldi/react-native-blur-view';
 
-export function MyCustomTabs() {
+export function MyCustomTabs(props: BottomTabBarProps) {
+  const { state } = props;
+
+  const pageIndex = state.index.toString();
+
   // ...
 
   return (
     <View style={styles.container}>
-      <BlurView targetId="target" style={styles.content}>
+      <BlurView targetId={pageIndex} style={styles.content}>
         {/* ... */}
       </BlurView>
     </View>
@@ -151,6 +161,10 @@ export function MyCustomTabs() {
 ```
 
 The `MyCustomTabs` component must be used in the `tabBar` property of the `Navigator`'s bottom tabs. Notice that the `targetId` of the `MyScreen` screen **references** the `id` in the custom bottom tab component.
+
+The target value **must be updated every time** a new screen is rendered, so we've used the page index in this example. However, you can explore other approaches, so feel free to do so.
+
+**Note**: We **don't yet** have full support for nested tabs.
 
 ## Components
 
