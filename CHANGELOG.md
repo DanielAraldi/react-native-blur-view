@@ -1,3 +1,10 @@
+## [0.8.2](https://github.com/DanielAraldi/react-native-blur-view/compare/v0.8.1...v0.8.2) (2025-10-25)
+
+
+### Bug Fixes
+
+* **android:** revert blur radius intensity for SDK <= `31` ([1f0474d](https://github.com/DanielAraldi/react-native-blur-view/commit/1f0474de95fd845fc5bc0c1f6e6d45f96efb408f))
+
 ## [0.8.1](https://github.com/DanielAraldi/react-native-blur-view/compare/v0.8.0...v0.8.1) (2025-10-24)
 
 
