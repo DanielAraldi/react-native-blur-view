@@ -10,12 +10,13 @@ export function Tabs(props: BottomTabBarProps) {
 
   const { mode, radius, isDark } = useBlur();
 
-  const pageIndex = state.index.toString();
+  const pageIndex = state.index;
+  const id = state.routeNames[pageIndex] || 'Home';
 
   return (
     <View style={styles.container}>
       <BlurView
-        targetId={pageIndex}
+        targetId={id}
         style={styles.blurView}
         type={mode}
         radius={radius}

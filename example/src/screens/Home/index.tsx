@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useMemo, useState } from 'react';
 import { makeStyles } from './styles';
@@ -20,6 +21,11 @@ export function Home() {
   const { name, avatar, posts } = useUser();
   const { mode, radius, isDark } = useBlur();
   const { top, bottom } = useSafeAreaInsets();
+  const { getState } = useNavigation();
+
+  const pageIndex = getState()?.index || 0;
+  const stack = getState()?.routeNames[pageIndex];
+  const id = (stack || 'Home').replace('Stack', '');
 
   function onOpenModal(newContent: string): void {
     setContent(newContent);
@@ -36,7 +42,7 @@ export function Home() {
   return (
     <View style={styles.container}>
       <BlurView
-        targetId="0"
+        targetId={id}
         radius={radius}
         type={mode}
         style={styles.blurView}
@@ -52,7 +58,7 @@ export function Home() {
         </View>
       </BlurView>
 
-      <BlurTarget id="0" style={styles.blurTarget}>
+      <BlurTarget id={id} style={styles.blurTarget}>
         <FlatList
           data={posts}
           style={[styles.list, isDark && styles.listDark]}

@@ -9,6 +9,7 @@ import {
   type BlurViewType,
 } from '@danielsaraldi/react-native-blur-view';
 import { useBlur } from '../../hooks';
+import { useNavigation } from '@react-navigation/native';
 
 const TYPES: BlurViewType[] = [
   'x-light',
@@ -37,6 +38,11 @@ export function Settings() {
   const { mode, radius, isDark, onDecrement, onIncrement, onToggle } =
     useBlur();
   const { top, bottom } = useSafeAreaInsets();
+  const { getState } = useNavigation();
+
+  const pageIndex = getState()?.index || 0;
+  const stack = getState()?.routeNames[pageIndex];
+  const id = (stack || 'Settings').replace('Stack', '');
 
   const isChangeable =
     mode === 'x-light' || mode === 'dark' || mode === 'light';
@@ -46,7 +52,7 @@ export function Settings() {
   return (
     <View style={styles.container}>
       <BlurView
-        targetId="1"
+        targetId={id}
         style={styles.blurView}
         radius={radius}
         type={mode}
@@ -54,7 +60,7 @@ export function Settings() {
         <View style={styles.blurViewContent} />
       </BlurView>
 
-      <BlurTarget id="1" style={styles.blurTarget}>
+      <BlurTarget id={id} style={styles.blurTarget}>
         <ScrollView
           style={[styles.content, isDark && styles.contentDark]}
           contentContainerStyle={[
