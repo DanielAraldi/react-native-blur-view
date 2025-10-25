@@ -19,7 +19,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
 
   companion object {
     private const val TAG: String = "BlurView"
-    private var INTENSITY: Float = if (Build.VERSION.SDK_INT > 31) 0.675f else 0.25f
+    private const val INTENSITY: Float = 0.675f
   }
 
   constructor(context: Context?) : super(context) {
