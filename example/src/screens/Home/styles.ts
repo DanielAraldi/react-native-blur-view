@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
+import { isAndroidSDK31OrLower } from '../../utils';
 
 const windowHeight = Dimensions.get('window').height;
 
@@ -198,6 +199,6 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
       right: 0,
 
       width: '100%',
-      height: 48 + bottom,
+      height: (isAndroidSDK31OrLower ? 96 : 48) + bottom,
     },
   });

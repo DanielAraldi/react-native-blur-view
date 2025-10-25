@@ -1,3 +1,11 @@
+## [0.8.1](https://github.com/DanielAraldi/react-native-blur-view/compare/v0.8.0...v0.8.1) (2025-10-24)
+
+
+### Bug Fixes
+
+* **android:** adjust `RenderScript` crash when `radius` > `25` ([fee3079](https://github.com/DanielAraldi/react-native-blur-view/commit/fee3079dba166555922048ac472cc0f87a24ab1c))
+* **android:** adjust example app to android SDK 31 or lower ([4a1dd4c](https://github.com/DanielAraldi/react-native-blur-view/commit/4a1dd4ca9df5160741792f85176d4b0ce9d9e3aa))
+
 # [0.8.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v0.7.2...v0.8.0) (2025-10-08)
 
 ### Bug Fixes
