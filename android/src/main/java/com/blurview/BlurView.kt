@@ -2,6 +2,7 @@ package com.blurview
 
 import android.content.Context
 import android.graphics.Color
+import android.os.Build
 import android.util.AttributeSet
 import android.util.Log
 import android.view.ViewGroup
@@ -18,7 +19,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
 
   companion object {
     private const val TAG: String = "BlurView"
-    private const val INTENSITY: Float = 0.675f
+    private val INTENSITY: Float = if (Build.VERSION.SDK_INT > 31) 0.675f else 0.25f
   }
 
   constructor(context: Context?) : super(context) {
@@ -190,8 +191,10 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   }
 
   private fun clipRadius(radius: Float): Float {
+    val maxRadius = if (Build.VERSION.SDK_INT > 31) 67.5f else 25f
+
     return if (radius <= 0) 0f
-    else if (radius >= 67.5f) 67.5f
+    else if (radius >= maxRadius) maxRadius
     else radius
   }
 
