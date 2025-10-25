@@ -126,12 +126,13 @@ import { BlurTarget } from '@danielsaraldi/react-native-blur-view';
 export function MyScreen() {
   const { getState } = useNavigation();
 
-  const pageIndex = getState()?.index?.toString() || '0';
+  const pageIndex = getState()?.index || 0;
+  const id = getState()?.routeNames[pageIndex] || 'MyScreen';
 
   // ...
 
   return (
-    <BlurTarget id={pageIndex} style={styles.container}>
+    <BlurTarget id={id} style={styles.container}>
       {/* ... */}
     </BlurTarget>
   );
@@ -146,7 +147,8 @@ import { BlurView } from '@danielsaraldi/react-native-blur-view';
 export function MyCustomTabs(props: BottomTabBarProps) {
   const { state } = props;
 
-  const pageIndex = state.index.toString();
+  const pageIndex = getState()?.index || 0;
+  const targetId = getState()?.routeNames[pageIndex] || 'MyScreen';
 
   // ...
 
@@ -179,7 +181,6 @@ The `BlurView` component is an extends the same properties of the a `View` compo
 | `targetId` | Id of the target that will be blurred. | `undefined` | Android  |
 | `type`     | Color type of the overlay.             | `light`     | All      |
 | `radius`   | Blur radius `0` - `100`.               | `10`        | All      |
-| `style`    | The View style.                        | `undefined` | All      |
 
 An important detail, when a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
 
@@ -226,7 +227,9 @@ The `BlurTarget` may not contain a `BlurView` that targets the same `BlurTarget`
 
 ### Android
 
-On Android platforms, the component utilizes the [BlurView](https://github.com/Dimezis/BlurView) library to offer native blur effects with hardware-accelerated rendering. Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-navigation](https://wix.github.io/react-native-navigation) and Modals 😁.
+On Android platforms, the component utilizes the [BlurView](https://github.com/Dimezis/BlurView) library to offer native blur effects with hardware-accelerated rendering.
+
+Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-navigation](https://wix.github.io/react-native-navigation) and Modals 😁.
 
 ### iOS
 
