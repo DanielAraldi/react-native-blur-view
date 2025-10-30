@@ -6,11 +6,21 @@ import { useBlur } from '../../hooks';
 import { styles } from './styles';
 
 export function Tabs(props: BottomTabBarProps) {
+  const { state } = props;
+
   const { mode, radius, isDark } = useBlur();
+
+  const pageIndex = state.index;
+  const id = state.routeNames[pageIndex] || 'Home';
 
   return (
     <View style={styles.container}>
-      <BlurView style={styles.blurView} type={mode} radius={radius}>
+      <BlurView
+        targetId={id}
+        style={styles.blurView}
+        type={mode}
+        radius={radius}
+      >
         <View style={styles.content}>
           {props.state.routes.map((route, index) => {
             const isFocused = props.state.index === index;

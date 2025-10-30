@@ -33,6 +33,7 @@
   ],
   "scripts": {
     "example": "yarn workspace react-native-blur-view-example",
+    "setup:example": "yarn && yarn podspec && yarn prepack && cd example && yarn && cd ios && pod install && cd .. && yarn start",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
