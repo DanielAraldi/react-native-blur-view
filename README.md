@@ -154,7 +154,7 @@ export function MyCustomTabs(props: BottomTabBarProps) {
 
   return (
     <View style={styles.container}>
-      <BlurView targetId={pageIndex} style={styles.content}>
+      <BlurView targetId={targetId} style={styles.content}>
         {/* ... */}
       </BlurView>
     </View>
