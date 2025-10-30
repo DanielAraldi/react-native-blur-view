@@ -1,3 +1,32 @@
+# [1.0.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v0.8.2...v1.0.0) (2025-10-30)
+
+
+### Bug Fixes
+
+* add `targetId` in `BlurView` component in example app ([7821e37](https://github.com/DanielAraldi/react-native-blur-view/commit/7821e37c4df293188f3380b3c87a5ff2810be65c))
+* **android:** add momently hank to radius value ([905ff4f](https://github.com/DanielAraldi/react-native-blur-view/commit/905ff4f2a08f2291061ad98b5c11dfca060786c2))
+* **android:** adjust scale factor to be default value ([f15c5f7](https://github.com/DanielAraldi/react-native-blur-view/commit/f15c5f71407fb045aa4d7b79a55e33a26c474efb))
+* **android:** change target via page index in bottom tabs transaction ([4eef388](https://github.com/DanielAraldi/react-native-blur-view/commit/4eef3884302c14bf2ff7604a468b397fc232c714))
+* **android:** fix `RenderScript` crash when `radius` > `25` ([19199fa](https://github.com/DanielAraldi/react-native-blur-view/commit/19199fa3aa58395cc0b3f0bb5876e0db57769b4c))
+* **android:** force `isInitialized` as `false` on `setRadius` method ([c25ec85](https://github.com/DanielAraldi/react-native-blur-view/commit/c25ec85896b8b1b6c430bc505cabb2ca80087206))
+* **android:** remove old overlay color enum ([d36854c](https://github.com/DanielAraldi/react-native-blur-view/commit/d36854cd9174b2b445bf31ca2b0ad4c49d176a26))
+* **android:** revert blur radius intensity for SDK <= 31 ([df2890e](https://github.com/DanielAraldi/react-native-blur-view/commit/df2890ed9f2bc4e1ee734a824045330c4987ee7f))
+* **android:** revert blur radius intensity for SDK <= 31 again 🤣 ([b0951d6](https://github.com/DanielAraldi/react-native-blur-view/commit/b0951d67342a912c5a133cf10d8ef8c670cea26d))
+* **ios:** small adjust in dark mode in the example app ([01a9cbd](https://github.com/DanielAraldi/react-native-blur-view/commit/01a9cbdf11a76690ca815608470ba41a839095b1))
+* remove unnecessary configuration in release CI ([e9f7203](https://github.com/DanielAraldi/react-native-blur-view/commit/e9f7203ccd0628d11d0d86a9f56f086cd955f466))
+
+
+### Features
+
+* add the new `BlurTarget` component to the used by Android as target of the blur effect ([7d96588](https://github.com/DanielAraldi/react-native-blur-view/commit/7d9658812275da3900fe3d95c20d9ec7d8f6a1a8))
+* **android:** add native `TargetView` ([d0fc3b2](https://github.com/DanielAraldi/react-native-blur-view/commit/d0fc3b2a8f876111c83577b2473a915a277d55be))
+* **android:** integrate new native target component completely ([c0201d9](https://github.com/DanielAraldi/react-native-blur-view/commit/c0201d9e7b6338e06e2ce312334241fc99aa29f8))
+
+
+### BREAKING CHANGES
+
+* **android:** Update Dimezis `BlurView` library version for `3v` in Android
+
 ## [0.8.2](https://github.com/DanielAraldi/react-native-blur-view/compare/v0.8.1...v0.8.2) (2025-10-25)
 
 
