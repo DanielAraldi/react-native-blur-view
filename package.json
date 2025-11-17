@@ -151,7 +151,8 @@
       "componentProvider": {
         "BlurView": "BlurView"
       }
-    }
+    },
+    "excludePlatformsForPackage": []
   },
   "create-react-native-library": {
     "languages": "kotlin-objc",

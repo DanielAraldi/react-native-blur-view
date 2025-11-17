@@ -4,6 +4,33 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 > **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
 
+## Architecture Support
+
+This example app demonstrates the blur view library working with **React Native's New Architecture (Fabric)** enabled.
+
+The library also supports the **Old Architecture (Paper)**. To test with old architecture:
+
+**iOS**: In `ios/Podfile`, change:
+```ruby
+ENV['RCT_NEW_ARCH_ENABLED'] = '0'  # or comment out the line
+```
+
+**Android**: In `android/gradle.properties`, change:
+```properties
+newArchEnabled=false  # or remove the line
+```
+
+Then clean and rebuild:
+```bash
+# iOS
+cd ios && rm -rf Pods Podfile.lock build && bundle exec pod install && cd ..
+
+# Android  
+cd android && ./gradlew clean && cd ..
+```
+
+The app will work identically with both architectures! 🎉
+
 ## Step 1: Start Metro
 
 First, you will need to run **Metro**, the JavaScript build tool for React Native.

@@ -1,33 +1,40 @@
 #import "BlurView.h"
 #import "BlurViewEffect.h"
 
+#ifdef RCT_NEW_ARCH_ENABLED
 #import <react/renderer/components/BlurViewSpec/ComponentDescriptors.h>
 #import <react/renderer/components/BlurViewSpec/EventEmitters.h>
 #import <react/renderer/components/BlurViewSpec/Props.h>
 #import <react/renderer/components/BlurViewSpec/RCTComponentViewHelpers.h>
-
 #import "RCTFabricComponentsPlugins.h"
 
 using namespace facebook::react;
 
 @interface BlurView () <RCTBlurViewViewProtocol>
-
 @end
+#else
+@interface BlurView ()
+@end
+#endif
 
 @implementation BlurView {
   UIView * _view;
 }
 
+#ifdef RCT_NEW_ARCH_ENABLED
 + (ComponentDescriptorProvider)componentDescriptorProvider
 {
   return concreteComponentDescriptorProvider<BlurViewComponentDescriptor>();
 }
+#endif
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
   if (self = [super initWithFrame:frame]) {
+#ifdef RCT_NEW_ARCH_ENABLED
     static const auto defaultProps = std::make_shared<const BlurViewProps>();
     _props = defaultProps;
+#endif
 
     self.clipsToBounds = YES;
     self.overlayColor = @"light";
@@ -45,6 +52,7 @@ using namespace facebook::react;
   return self;
 }
 
+#ifdef RCT_NEW_ARCH_ENABLED
 - (void)updateProps:(Props::Shared const &)props oldProps:(Props::Shared const &)oldProps
 {
   const auto &oldViewProps = *std::static_pointer_cast<BlurViewProps const>(_props);
@@ -62,6 +70,7 @@ using namespace facebook::react;
 
   [super updateProps:props oldProps:oldProps];
 }
+#endif
 
 - (UIBlurEffectStyle)blurEffectStyle
 {
@@ -108,6 +117,7 @@ using namespace facebook::react;
   self.blurEffectView.effect = blurEffect;
 }
 
+#ifdef RCT_NEW_ARCH_ENABLED
 - (void)mountChildComponentView:(UIView<RCTComponentViewProtocol> *)childComponentView index:(NSInteger)index
 {
   NSInteger adjustedIndex = index + 2;
@@ -118,6 +128,18 @@ using namespace facebook::react;
 {
   [childComponentView removeFromSuperview];
 }
+#else
+- (void)insertReactSubview:(UIView *)subview atIndex:(NSInteger)atIndex
+{
+  NSInteger adjustedIndex = atIndex + 1;
+  [self insertSubview:subview atIndex:adjustedIndex];
+}
+
+- (void)removeReactSubview:(UIView *)subview
+{
+  [subview removeFromSuperview];
+}
+#endif
 
 - (void)layoutSubviews
 {
@@ -148,10 +170,12 @@ using namespace facebook::react;
   }
 }
 
+#ifdef RCT_NEW_ARCH_ENABLED
 Class<RCTComponentViewProtocol> BlurViewCls(void)
 {
   return BlurView.class;
 }
+#endif
 
 - (void)setOverlayColor:(NSString *)overlayColor
 {

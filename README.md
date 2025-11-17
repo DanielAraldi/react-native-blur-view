@@ -9,8 +9,12 @@ A simple blur view in react native based in [`@react-native-community/blur`](htt
   </p>
 </div>
 
-> [!WARNING]
-> This package supports **only** [new architecture](https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here).
+> [!NOTE]
+> This package supports **both** React Native architectures:
+> - ✅ **New Architecture** (Fabric) - React Native 0.68+
+> - ✅ **Old Architecture** (Paper) - React Native 0.60+
+>
+> The library automatically detects and adapts to your project's architecture. No configuration needed!
 
 <p align="center">
   <img
@@ -40,6 +44,7 @@ A simple blur view in react native based in [`@react-native-community/blur`](htt
 - [Platform Differences](#platform-differences)
   - [Android](#android)
   - [iOS](#ios)
+- [Architecture Compatibility](#architecture-compatibility)
 - [Expo](#expo)
 - [TypeScript Support](#typescript-support)
 - [Contributing](#contributing)
@@ -235,9 +240,40 @@ Support the animation transitions with [react-native-screens](https://github.com
 
 On iOS all types are supported by default. However, on Android they are RGBA colors to simulate the same blur color.
 
+## Architecture Compatibility
+
+This library works with **both** old and new React Native architectures out of the box!
+
+### Automatic Detection
+
+The library automatically detects your app's architecture:
+- Uses **Fabric** components when new architecture is enabled
+- Falls back to **Paper** (old architecture) components otherwise
+- No configuration or code changes required!
+
+### Migration Guide
+
+When migrating between architectures, your code stays the same:
+
+```tsx
+// This code works in BOTH architectures! ✨
+<BlurView targetId="target" style={styles.blurView}>
+  <Text>BlurView</Text>
+</BlurView>
+```
+
+For detailed information about architecture compatibility, see [ARCHITECTURE_COMPATIBILITY.md](./ARCHITECTURE_COMPATIBILITY.md).
+
+### Supported Versions
+
+| Architecture | React Native Version | Status |
+|--------------|---------------------|--------|
+| Old (Paper)  | 0.60 - 0.75+        | ✅ Supported |
+| New (Fabric) | 0.68 - 0.79+        | ✅ Supported |
+
 ## Expo
 
-In Expo, you need to convert to a [custom development build](https://docs.expo.dev/develop/development-builds/introduction/) or use [prebuild](https://docs.expo.dev/workflow/continuous-native-generation/). You can use also React Native without Expo.
+In Expo, you need to convert to a [custom development build](https://docs.expo.dev/develop/development-builds/introduction/) or use [prebuild](https://docs.expo.dev/workflow/continuous-native-generation/). Works with both old and new architecture. You can also use React Native without Expo.
 
 ## TypeScript Support
 

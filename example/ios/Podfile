@@ -1,4 +1,7 @@
-ENV['RCT_NEW_ARCH_ENABLED'] = '1'
+# Enable or disable React Native's New Architecture (Fabric)
+# The blur view library supports BOTH old and new architecture
+# Set to '1' for new architecture, '0' or comment out for old architecture
+# ENV['RCT_NEW_ARCH_ENABLED'] = '1'  # Disabled - using old architecture
 
 # Resolve react_native_pods.rb with node to allow for hoisting
 require Pod::Executable.execute_command('node', ['-p',

@@ -1,7 +1,9 @@
+#ifdef RCT_NEW_ARCH_ENABLED
+// New architecture is handled by BlurView.mm Fabric component
+#else
+// Old architecture - use RCTViewManager
 #import <React/RCTViewManager.h>
 #import <React/RCTUIManager.h>
-#import "RCTBridge.h"
-
 #import "BlurView.h"
 
 @interface BlurViewManager : RCTViewManager
@@ -17,6 +19,7 @@ RCT_EXPORT_MODULE(BlurView);
 }
 
 RCT_EXPORT_VIEW_PROPERTY(overlayColor, NSString);
-RCT_EXPORT_VIEW_PROPERTY(radius, NSNumber);
+RCT_EXPORT_VIEW_PROPERTY(blurRadius, NSNumber);
 
 @end
+#endif
