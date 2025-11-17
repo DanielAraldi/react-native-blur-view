@@ -161,7 +161,7 @@
   },
   "react-native": {
     "android": {
-      "sourceDir": "../android",
+      "sourceDir": "./android",
       "packageImportPath": "import com.blurview.BlurViewPackage;"
     },
     "ios": {
