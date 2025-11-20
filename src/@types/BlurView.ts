@@ -1,4 +1,4 @@
-import type { ViewProps } from 'react-native';
+import type { ViewProps, ColorValue } from 'react-native';
 
 /**
  * @type {BlurViewType}
@@ -56,4 +56,11 @@ export interface BlurViewProps extends ViewProps {
    * @default 10
    */
   radius?: number;
+
+  /**
+   * @description Set a background color for the blur fallback view.
+   *
+   * @default undefined
+   */
+  reducedTransparencyFallbackColor?: ColorValue;
 }
