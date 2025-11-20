@@ -12,9 +12,11 @@ const BlurView = (props: BlurViewProps) => {
     targetId,
     style,
     children,
+    reducedTransparencyFallbackColor,
     ...rest
   } = props;
 
+  const backgroundColor = { backgroundColor: reducedTransparencyFallbackColor };
   const isChangeable =
     type === 'x-light' || type === 'light' || type === 'dark';
   const blurRadius = isChangeable ? radius : 35;
@@ -29,7 +31,7 @@ const BlurView = (props: BlurViewProps) => {
         style={style}
         {...rest}
       >
-        <View style={globalStyles.expand} />
+        <View style={[globalStyles.expand, backgroundColor]} />
       </Blur>
     );
   }
@@ -44,7 +46,9 @@ const BlurView = (props: BlurViewProps) => {
         style={StyleSheet.absoluteFill}
         {...rest}
       >
-        <View style={[globalStyles.content, style]}>{children}</View>
+        <View style={[globalStyles.content, style, backgroundColor]}>
+          {children}
+        </View>
       </Blur>
     </View>
   );

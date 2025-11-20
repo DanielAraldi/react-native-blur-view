@@ -12,8 +12,11 @@ const BlurView = (props: BlurViewProps) => {
     targetId,
     style,
     children,
+    reducedTransparencyFallbackColor,
     ...rest
   } = props;
+
+  const backgroundColor = { backgroundColor: reducedTransparencyFallbackColor };
 
   if (!Children.count(children)) {
     return (
@@ -25,7 +28,7 @@ const BlurView = (props: BlurViewProps) => {
         style={style}
         {...rest}
       >
-        <View style={globalStyles.expand} />
+        <View style={[globalStyles.expand, backgroundColor]} />
       </Blur>
     );
   }
@@ -41,7 +44,7 @@ const BlurView = (props: BlurViewProps) => {
         {...rest}
       />
 
-      <View style={globalStyles.content}>{children}</View>
+      <View style={[globalStyles.content, backgroundColor]}>{children}</View>
     </View>
   );
 };

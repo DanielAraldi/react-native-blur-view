@@ -176,11 +176,12 @@ The `BlurView` component is an extends the same properties of the a `View` compo
 
 #### Properties
 
-| Property   | Description                            | Default     | Platform |
-| ---------- | -------------------------------------- | ----------- | -------- |
-| `targetId` | Id of the target that will be blurred. | `undefined` | Android  |
-| `type`     | Color type of the overlay.             | `light`     | All      |
-| `radius`   | Blur radius `0` - `100`.               | `10`        | All      |
+| Property                           | Description                                   | Default     | Platform |
+| ---------------------------------- | --------------------------------------------- | ----------- | -------- |
+| `targetId`                         | Id of the target that will be blurred.        | `undefined` | Android  |
+| `type`                             | Color type of the overlay.                    | `light`     | All      |
+| `radius`                           | Blur radius `0` - `100`.                      | `10`        | All      |
+| `reducedTransparencyFallbackColor` | Fallback color to reduced transparency color. | `undefined` | All      |
 
 An important detail, when a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
 
