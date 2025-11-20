@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v1.0.0...v1.1.0) (2025-11-20)
+
+
+### Features
+
+* add `reducedTransparencyFallbackColor` property to the `BlurView` component ([075de41](https://github.com/DanielAraldi/react-native-blur-view/commit/075de417897aaac6abf2bbdc7c472b9ad6a28d0e))
+
 # [1.0.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v0.8.2...v1.0.0) (2025-10-30)
 
 
