@@ -16,18 +16,18 @@ const BlurView = (props: BlurViewProps) => {
     ...rest
   } = props;
 
+  const commonProps = {
+    targetId,
+    overlayColor: type,
+    blurRadius: radius,
+    ...rest,
+  };
+
   const backgroundColor = { backgroundColor: reducedTransparencyFallbackColor };
 
   if (!Children.count(children)) {
     return (
-      <Blur
-        targetId={targetId}
-        overlayColor={type}
-        blurRadius={radius}
-        pointerEvents="none"
-        style={style}
-        {...rest}
-      >
+      <Blur style={style} {...commonProps}>
         <View style={[globalStyles.expand, backgroundColor]} />
       </Blur>
     );
@@ -35,14 +35,7 @@ const BlurView = (props: BlurViewProps) => {
 
   return (
     <View style={[globalStyles.container, style]}>
-      <Blur
-        targetId={targetId}
-        overlayColor={type}
-        blurRadius={radius}
-        pointerEvents="none"
-        style={StyleSheet.absoluteFill}
-        {...rest}
-      />
+      <Blur style={StyleSheet.absoluteFill} {...commonProps} />
 
       <View style={[globalStyles.content, backgroundColor]}>{children}</View>
     </View>

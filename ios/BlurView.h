@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong, nullable) BlurViewEffect *blurEffect;
 @property(nonatomic, strong, nullable) UIVisualEffectView *blurEffectView;
 
+- (void)updateBlurEffect;
+
 @end
 
 NS_ASSUME_NONNULL_END

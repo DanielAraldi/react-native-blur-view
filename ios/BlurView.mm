@@ -69,31 +69,31 @@ using namespace facebook::react;
   else if ([self.overlayColor isEqualToString: @"light"]) return UIBlurEffectStyleLight;
   else if ([self.overlayColor isEqualToString: @"dark"]) return UIBlurEffectStyleDark;
 
-  // Available >= iPhone 10
-  #if defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
+  if (@available(iOS 10.0, *)) {
     if ([self.overlayColor isEqualToString: @"regular"]) return UIBlurEffectStyleRegular;
     else if ([self.overlayColor isEqualToString: @"prominent"]) return UIBlurEffectStyleProminent;
+  }
+  
+  #if !TARGET_OS_TV
+    if (@available(iOS 13.0, *)) {
+      if ([self.overlayColor isEqualToString: @"chrome-material"]) return UIBlurEffectStyleSystemChromeMaterial;
+      else if ([self.overlayColor isEqualToString: @"material"]) return UIBlurEffectStyleSystemMaterial;
+      else if ([self.overlayColor isEqualToString: @"thick-material"]) return UIBlurEffectStyleSystemThickMaterial;
+      else if ([self.overlayColor isEqualToString: @"thin-material"]) return UIBlurEffectStyleSystemThinMaterial;
+      else if ([self.overlayColor isEqualToString: @"ultra-thin-material"]) return UIBlurEffectStyleSystemUltraThinMaterial;
+      else if ([self.overlayColor isEqualToString: @"chrome-material-dark"]) return UIBlurEffectStyleSystemChromeMaterialDark;
+      else if ([self.overlayColor isEqualToString: @"material-dark"]) return UIBlurEffectStyleSystemMaterialDark;
+      else if ([self.overlayColor isEqualToString: @"thick-material-dark"]) return UIBlurEffectStyleSystemThickMaterialDark;
+      else if ([self.overlayColor isEqualToString: @"thin-material-dark"]) return UIBlurEffectStyleSystemThinMaterialDark;
+      else if ([self.overlayColor isEqualToString: @"ultra-thin-material-dark"]) return UIBlurEffectStyleSystemUltraThinMaterialDark;
+      else if ([self.overlayColor isEqualToString: @"chrome-material-light"]) return UIBlurEffectStyleSystemChromeMaterialLight;
+      else if ([self.overlayColor isEqualToString: @"material-light"]) return UIBlurEffectStyleSystemMaterialLight;
+      else if ([self.overlayColor isEqualToString: @"thick-material-light"]) return UIBlurEffectStyleSystemThickMaterialLight;
+      else if ([self.overlayColor isEqualToString: @"thin-material-light"]) return UIBlurEffectStyleSystemThinMaterialLight;
+      else if ([self.overlayColor isEqualToString: @"ultra-thin-material-light"]) return UIBlurEffectStyleSystemUltraThinMaterialLight;
+    }
   #endif
-
-  // Available >= iPhone 13
-  #if !TARGET_OS_TV && defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
-    if ([self.overlayColor isEqualToString: @"chrome-material"]) return UIBlurEffectStyleSystemChromeMaterial;
-    else if ([self.overlayColor isEqualToString: @"material"]) return UIBlurEffectStyleSystemMaterial;
-    else if ([self.overlayColor isEqualToString: @"thick-material"]) return UIBlurEffectStyleSystemThickMaterial;
-    else if ([self.overlayColor isEqualToString: @"thin-material"]) return UIBlurEffectStyleSystemThinMaterial;
-    else if ([self.overlayColor isEqualToString: @"ultra-thin-material"]) return UIBlurEffectStyleSystemUltraThinMaterial;
-    else if ([self.overlayColor isEqualToString: @"chrome-material-dark"]) return UIBlurEffectStyleSystemChromeMaterialDark;
-    else if ([self.overlayColor isEqualToString: @"material-dark"]) return UIBlurEffectStyleSystemMaterialDark;
-    else if ([self.overlayColor isEqualToString: @"thick-material-dark"]) return UIBlurEffectStyleSystemThickMaterialDark;
-    else if ([self.overlayColor isEqualToString: @"thin-material-dark"]) return UIBlurEffectStyleSystemThinMaterialDark;
-    else if ([self.overlayColor isEqualToString: @"ultra-thin-material-dark"]) return UIBlurEffectStyleSystemUltraThinMaterialDark;
-    else if ([self.overlayColor isEqualToString: @"chrome-material-light"]) return UIBlurEffectStyleSystemChromeMaterialLight;
-    else if ([self.overlayColor isEqualToString: @"material-light"]) return UIBlurEffectStyleSystemMaterialLight;
-    else if ([self.overlayColor isEqualToString: @"thick-material-light"]) return UIBlurEffectStyleSystemThickMaterialLight;
-    else if ([self.overlayColor isEqualToString: @"thin-material-light"]) return UIBlurEffectStyleSystemThinMaterialLight;
-    else if ([self.overlayColor isEqualToString: @"ultra-thin-material-light"]) return UIBlurEffectStyleSystemUltraThinMaterialLight;
-  #endif
-
+  
   return UIBlurEffectStyleLight;
 }
 
@@ -110,7 +110,7 @@ using namespace facebook::react;
 
 - (void)mountChildComponentView:(UIView<RCTComponentViewProtocol> *)childComponentView index:(NSInteger)index
 {
-  NSInteger adjustedIndex = index + 2;
+  NSInteger adjustedIndex = index + 1;
   [self insertSubview:childComponentView atIndex:adjustedIndex];
 }
 
