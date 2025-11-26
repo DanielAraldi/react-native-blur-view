@@ -31,9 +31,9 @@ using namespace facebook::react;
     self.vibrancyEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
     self.clipsToBounds = YES;
-    
+
     [self updateVibrancyEffect];
-    
+
     if (self.blurEffectView && self.blurEffectView.contentView) {
       [self.blurEffectView.contentView addSubview:self.vibrancyEffectView];
     } else {
@@ -42,6 +42,26 @@ using namespace facebook::react;
   }
 
   return self;
+}
+
+- (void)updateProps:(Props::Shared const &)props oldProps:(Props::Shared const &)oldProps
+{
+  const auto &oldViewProps = *std::static_pointer_cast<VibrancyViewProps const>(_props);
+  const auto &newViewProps = *std::static_pointer_cast<VibrancyViewProps const>(props);
+
+  if (oldViewProps.blurRadius != newViewProps.blurRadius) {
+    NSNumber *blurRadius = [NSNumber numberWithInt:newViewProps.blurRadius];
+    [super setRadius:blurRadius];
+    [self updateBlurEffect];
+  }
+
+  if (oldViewProps.overlayColor != newViewProps.overlayColor) {
+    NSString *overlayColor = [NSString stringWithUTF8String:newViewProps.overlayColor.c_str()];
+    [super setOverlayColor:overlayColor];
+    [self updateBlurEffect];
+  }
+
+  [super updateProps:props oldProps:oldProps];
 }
 
 - (void)updateBlurEffect

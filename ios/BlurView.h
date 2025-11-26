@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong, nullable) UIVisualEffectView *blurEffectView;
 
 - (void)updateBlurEffect;
+- (void)setOverlayColor:(NSString *)overlayColor;
+- (void)setRadius:(NSNumber *)radius;
 
 @end
 
