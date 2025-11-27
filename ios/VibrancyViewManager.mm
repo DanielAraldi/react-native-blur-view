@@ -17,7 +17,7 @@ RCT_EXPORT_MODULE(VibrancyView);
 }
 
 RCT_EXPORT_VIEW_PROPERTY(overlayColor, NSString);
-RCT_EXPORT_VIEW_PROPERTY(radius, NSNumber);
+RCT_EXPORT_VIEW_PROPERTY(blurRadius, NSNumber);
 
 @end
 

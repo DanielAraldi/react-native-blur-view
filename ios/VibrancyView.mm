@@ -26,19 +26,26 @@ using namespace facebook::react;
 - (instancetype)initWithFrame:(CGRect)frame
 {
   if (self = [super initWithFrame:frame]) {
-    self.vibrancyEffectView = [[UIVisualEffectView alloc] init];
-    self.vibrancyEffectView.frame = frame;
-    self.vibrancyEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    static const auto defaultProps = std::make_shared<const VibrancyViewProps>();
+    _props = defaultProps;
 
     self.clipsToBounds = YES;
+    self.overlayColor = @"light";
+    self.blurRadius = @10;
+
+    self.blurEffectView = [[UIVisualEffectView alloc] init];
+    self.blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.blurEffectView.frame = self.bounds;
+
+    self.vibrancyEffect = [[UIVibrancyEffect alloc] init];
+    self.vibrancyEffectView = [[UIVisualEffectView alloc] init];
+    self.vibrancyEffectView.frame = self.blurEffectView.bounds;
+    self.vibrancyEffectView.autoresizingMask = self.blurEffectView.autoresizingMask;
 
     [self updateVibrancyEffect];
 
-    if (self.blurEffectView && self.blurEffectView.contentView) {
-      [self.blurEffectView.contentView addSubview:self.vibrancyEffectView];
-    } else {
-      [self addSubview:self.vibrancyEffectView];
-    }
+    [self.blurEffectView.contentView addSubview:self.vibrancyEffectView];
+    [self addSubview:self.blurEffectView];
   }
 
   return self;
@@ -50,32 +57,63 @@ using namespace facebook::react;
   const auto &newViewProps = *std::static_pointer_cast<VibrancyViewProps const>(props);
 
   if (oldViewProps.blurRadius != newViewProps.blurRadius) {
-    NSNumber *blurRadius = [NSNumber numberWithInt:newViewProps.blurRadius];
-    [super setRadius:blurRadius];
-    [self updateBlurEffect];
+    NSNumber *blurRadius = [NSNumber numberWithDouble:newViewProps.blurRadius];
+    [self setRadius:blurRadius];
   }
 
   if (oldViewProps.overlayColor != newViewProps.overlayColor) {
     NSString *overlayColor = [NSString stringWithUTF8String:newViewProps.overlayColor.c_str()];
-    [super setOverlayColor:overlayColor];
-    [self updateBlurEffect];
+    [self setOverlayColor:overlayColor];
   }
 
   [super updateProps:props oldProps:oldProps];
 }
 
-- (void)updateBlurEffect
+- (UIBlurEffectStyle)blurEffectStyle
 {
-  [super updateBlurEffect];
-  [self updateVibrancyEffect];
+  if ([self.overlayColor isEqualToString: @"x-light"]) return UIBlurEffectStyleExtraLight;
+  else if ([self.overlayColor isEqualToString: @"light"]) return UIBlurEffectStyleLight;
+  else if ([self.overlayColor isEqualToString: @"dark"]) return UIBlurEffectStyleDark;
+
+  if (@available(iOS 10.0, *)) {
+    if ([self.overlayColor isEqualToString: @"regular"]) return UIBlurEffectStyleRegular;
+    else if ([self.overlayColor isEqualToString: @"prominent"]) return UIBlurEffectStyleProminent;
+  }
+
+  #if !TARGET_OS_TV
+    if (@available(iOS 13.0, *)) {
+      if ([self.overlayColor isEqualToString: @"chrome-material"]) return UIBlurEffectStyleSystemChromeMaterial;
+      else if ([self.overlayColor isEqualToString: @"material"]) return UIBlurEffectStyleSystemMaterial;
+      else if ([self.overlayColor isEqualToString: @"thick-material"]) return UIBlurEffectStyleSystemThickMaterial;
+      else if ([self.overlayColor isEqualToString: @"thin-material"]) return UIBlurEffectStyleSystemThinMaterial;
+      else if ([self.overlayColor isEqualToString: @"ultra-thin-material"]) return UIBlurEffectStyleSystemUltraThinMaterial;
+      else if ([self.overlayColor isEqualToString: @"chrome-material-dark"]) return UIBlurEffectStyleSystemChromeMaterialDark;
+      else if ([self.overlayColor isEqualToString: @"material-dark"]) return UIBlurEffectStyleSystemMaterialDark;
+      else if ([self.overlayColor isEqualToString: @"thick-material-dark"]) return UIBlurEffectStyleSystemThickMaterialDark;
+      else if ([self.overlayColor isEqualToString: @"thin-material-dark"]) return UIBlurEffectStyleSystemThinMaterialDark;
+      else if ([self.overlayColor isEqualToString: @"ultra-thin-material-dark"]) return UIBlurEffectStyleSystemUltraThinMaterialDark;
+      else if ([self.overlayColor isEqualToString: @"chrome-material-light"]) return UIBlurEffectStyleSystemChromeMaterialLight;
+      else if ([self.overlayColor isEqualToString: @"material-light"]) return UIBlurEffectStyleSystemMaterialLight;
+      else if ([self.overlayColor isEqualToString: @"thick-material-light"]) return UIBlurEffectStyleSystemThickMaterialLight;
+      else if ([self.overlayColor isEqualToString: @"thin-material-light"]) return UIBlurEffectStyleSystemThinMaterialLight;
+      else if ([self.overlayColor isEqualToString: @"ultra-thin-material-light"]) return UIBlurEffectStyleSystemUltraThinMaterialLight;
+    }
+  #endif
+
+  return UIBlurEffectStyleLight;
 }
 
 - (void)updateVibrancyEffect
 {
-  if (self.blurEffect) {
-    self.vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:self.blurEffect];
-    self.vibrancyEffectView.effect = self.vibrancyEffect;
-  }
+  self.blurEffectView.effect = nil;
+  self.vibrancyEffectView.effect = nil;
+
+  UIBlurEffectStyle blurEffectStyle = [self blurEffectStyle];
+  self.blurEffect = [BlurViewEffect effectWithStyle:blurEffectStyle andRadius:self.blurRadius];
+  self.blurEffectView.effect = self.blurEffect;
+
+  self.vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:self.blurEffect];
+  self.vibrancyEffectView.effect = self.vibrancyEffect;
 }
 
 - (void)mountChildComponentView:(UIView<RCTComponentViewProtocol> *)childComponentView index:(NSInteger)index
@@ -91,12 +129,67 @@ using namespace facebook::react;
 - (void)layoutSubviews
 {
   [super layoutSubviews];
-  self.vibrancyEffectView.frame = self.bounds;
+
+  if (self.blurEffectView) {
+    self.blurEffectView.frame = self.bounds;
+  }
+
+  if (self.vibrancyEffectView) {
+    self.vibrancyEffectView.frame = self.blurEffectView.bounds;
+  }
+}
+
+- (void)dealloc
+{
+  if (self.vibrancyEffectView) {
+    [self.vibrancyEffectView removeFromSuperview];
+    self.vibrancyEffectView = nil;
+  }
+
+  if (self.blurEffectView) {
+    [self.blurEffectView removeFromSuperview];
+    self.blurEffectView = nil;
+  }
+
+  if (self.vibrancyEffect) {
+    self.vibrancyEffect = nil;
+  }
+
+  if (self.blurEffect) {
+    self.blurEffect = nil;
+  }
 }
 
 Class<RCTComponentViewProtocol> VibrancyViewCls(void)
 {
   return VibrancyView.class;
+}
+
+- (void)setOverlayColor:(NSString *)overlayColor
+{
+  if (overlayColor && ![self.overlayColor isEqual:overlayColor]) {
+    _overlayColor = overlayColor;
+    [self updateVibrancyEffect];
+  }
+}
+
+- (NSNumber *)clipRadius:(NSNumber *)radius
+{
+  if ([radius doubleValue] <= 0.0) {
+    return @0.0;
+  } else if ([radius doubleValue] >= 100.0) {
+    return @100.0;
+  }
+
+  return radius;
+}
+
+- (void)setRadius:(NSNumber *)radius
+{
+  if (radius && ![self.blurRadius isEqualToNumber:radius]) {
+    _blurRadius = [self clipRadius:radius];
+    [self updateVibrancyEffect];
+  }
 }
 
 @end

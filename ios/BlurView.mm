@@ -51,7 +51,7 @@ using namespace facebook::react;
   const auto &newViewProps = *std::static_pointer_cast<BlurViewProps const>(props);
 
   if (oldViewProps.blurRadius != newViewProps.blurRadius) {
-    NSNumber *blurRadius = [NSNumber numberWithInt:newViewProps.blurRadius];
+    NSNumber *blurRadius = [NSNumber numberWithDouble:newViewProps.blurRadius];
     [self setRadius:blurRadius];
   }
 
@@ -110,8 +110,7 @@ using namespace facebook::react;
 
 - (void)mountChildComponentView:(UIView<RCTComponentViewProtocol> *)childComponentView index:(NSInteger)index
 {
-  NSInteger adjustedIndex = index + 1;
-  [self insertSubview:childComponentView atIndex:adjustedIndex];
+  [self insertSubview:childComponentView atIndex:index];
 }
 
 - (void)unmountChildComponentView:(UIView<RCTComponentViewProtocol> *)childComponentView index:(NSInteger)index
