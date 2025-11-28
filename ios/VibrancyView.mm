@@ -112,18 +112,35 @@ using namespace facebook::react;
   self.blurEffect = [BlurViewEffect effectWithStyle:blurEffectStyle andRadius:self.blurRadius];
   self.blurEffectView.effect = self.blurEffect;
 
-  self.vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:self.blurEffect];
+  if (@available(iOS 13.0, *)) {
+    self.vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:self.blurEffect style:UIVibrancyEffectStyleLabel];
+  } else {
+    self.vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:self.blurEffect];
+  }
+
   self.vibrancyEffectView.effect = self.vibrancyEffect;
 }
 
 - (void)mountChildComponentView:(UIView<RCTComponentViewProtocol> *)childComponentView index:(NSInteger)index
 {
+  childComponentView.translatesAutoresizingMaskIntoConstraints = TRUE;
+
   [self.vibrancyEffectView.contentView addSubview:childComponentView];
 }
 
 - (void)unmountChildComponentView:(UIView<RCTComponentViewProtocol> *)childComponentView index:(NSInteger)index
 {
   [childComponentView removeFromSuperview];
+}
+
+- (void)insertReactSubview:(UIView *)subview atIndex:(NSInteger)atIndex
+{
+  [self.vibrancyEffectView.contentView insertSubview:subview atIndex:atIndex];
+}
+
+- (void)removeReactSubview:(UIView *)subview
+{
+  [subview removeFromSuperview];
 }
 
 - (void)layoutSubviews
