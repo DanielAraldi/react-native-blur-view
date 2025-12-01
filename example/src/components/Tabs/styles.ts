@@ -6,19 +6,23 @@ export const styles = StyleSheet.create({
 
     position: 'absolute',
 
-    bottom: 0,
+    bottom: 16,
 
-    width: '100%',
+    width: '75%',
+
+    alignSelf: 'center',
+
+    borderRadius: 9999,
   },
 
   blurView: {
     width: '100%',
-    height: 80,
+    height: 64,
   },
 
   content: {
     width: '100%',
-    height: 80,
+    height: 64,
 
     flexDirection: 'row',
   },
@@ -36,6 +40,7 @@ export const styles = StyleSheet.create({
 
   tabText: {
     fontSize: 16,
+    fontWeight: '600',
 
     color: '#202020',
   },
