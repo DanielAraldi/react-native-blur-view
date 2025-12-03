@@ -1,5 +1,6 @@
 #import "BlurView.h"
 #import "BlurViewEffect.h"
+#import "BlurUtils.h"
 
 #import <react/renderer/components/BlurViewSpec/ComponentDescriptors.h>
 #import <react/renderer/components/BlurViewSpec/EventEmitters.h>
@@ -63,45 +64,11 @@ using namespace facebook::react;
   [super updateProps:props oldProps:oldProps];
 }
 
-- (UIBlurEffectStyle)blurEffectStyle
-{
-  if ([self.overlayColor isEqualToString: @"x-light"]) return UIBlurEffectStyleExtraLight;
-  else if ([self.overlayColor isEqualToString: @"light"]) return UIBlurEffectStyleLight;
-  else if ([self.overlayColor isEqualToString: @"dark"]) return UIBlurEffectStyleDark;
-
-  if (@available(iOS 10.0, *)) {
-    if ([self.overlayColor isEqualToString: @"regular"]) return UIBlurEffectStyleRegular;
-    else if ([self.overlayColor isEqualToString: @"prominent"]) return UIBlurEffectStyleProminent;
-  }
-  
-  #if !TARGET_OS_TV
-    if (@available(iOS 13.0, *)) {
-      if ([self.overlayColor isEqualToString: @"chrome-material"]) return UIBlurEffectStyleSystemChromeMaterial;
-      else if ([self.overlayColor isEqualToString: @"material"]) return UIBlurEffectStyleSystemMaterial;
-      else if ([self.overlayColor isEqualToString: @"thick-material"]) return UIBlurEffectStyleSystemThickMaterial;
-      else if ([self.overlayColor isEqualToString: @"thin-material"]) return UIBlurEffectStyleSystemThinMaterial;
-      else if ([self.overlayColor isEqualToString: @"ultra-thin-material"]) return UIBlurEffectStyleSystemUltraThinMaterial;
-      else if ([self.overlayColor isEqualToString: @"chrome-material-dark"]) return UIBlurEffectStyleSystemChromeMaterialDark;
-      else if ([self.overlayColor isEqualToString: @"material-dark"]) return UIBlurEffectStyleSystemMaterialDark;
-      else if ([self.overlayColor isEqualToString: @"thick-material-dark"]) return UIBlurEffectStyleSystemThickMaterialDark;
-      else if ([self.overlayColor isEqualToString: @"thin-material-dark"]) return UIBlurEffectStyleSystemThinMaterialDark;
-      else if ([self.overlayColor isEqualToString: @"ultra-thin-material-dark"]) return UIBlurEffectStyleSystemUltraThinMaterialDark;
-      else if ([self.overlayColor isEqualToString: @"chrome-material-light"]) return UIBlurEffectStyleSystemChromeMaterialLight;
-      else if ([self.overlayColor isEqualToString: @"material-light"]) return UIBlurEffectStyleSystemMaterialLight;
-      else if ([self.overlayColor isEqualToString: @"thick-material-light"]) return UIBlurEffectStyleSystemThickMaterialLight;
-      else if ([self.overlayColor isEqualToString: @"thin-material-light"]) return UIBlurEffectStyleSystemThinMaterialLight;
-      else if ([self.overlayColor isEqualToString: @"ultra-thin-material-light"]) return UIBlurEffectStyleSystemUltraThinMaterialLight;
-    }
-  #endif
-  
-  return UIBlurEffectStyleLight;
-}
-
 - (void)updateBlurEffect
 {
   self.blurEffectView.effect = nil;
 
-  UIBlurEffectStyle blurEffectStyle = [self blurEffectStyle];
+  UIBlurEffectStyle blurEffectStyle = [BlurUtils blurEffectStyle:self.overlayColor];
   BlurViewEffect *blurEffect = [BlurViewEffect effectWithStyle:blurEffectStyle andRadius:self.blurRadius];
 
   self.blurEffect = blurEffect;
@@ -141,7 +108,7 @@ using namespace facebook::react;
     [self.blurEffectView removeFromSuperview];
     self.blurEffectView = nil;
   }
-  
+
   if (self.blurEffect) {
     self.blurEffect = nil;
   }
@@ -160,21 +127,10 @@ Class<RCTComponentViewProtocol> BlurViewCls(void)
   }
 }
 
-- (NSNumber *)clipRadius:(NSNumber *)radius
-{
-  if ([radius doubleValue] <= 0.0) {
-    return @0.0;
-  } else if ([radius doubleValue] >= 100.0) {
-    return @100.0;
-  }
-  
-  return radius;
-}
-
 - (void)setRadius:(NSNumber *)radius
 {
   if (radius && ![self.blurRadius isEqualToNumber:radius]) {
-    _blurRadius = [self clipRadius:radius];
+    _blurRadius = [BlurUtils clipRadius:radius];
     [self updateBlurEffect];
   }
 }
