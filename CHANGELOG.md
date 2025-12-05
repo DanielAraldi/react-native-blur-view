@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/DanielAraldi/react-native-blur-view/compare/v1.1.0...v1.1.1) (2025-12-05)
+
+
+### Bug Fixes
+
+* **android:** adjust `BlurView` with absolute positioning on hot reload and keyboard events ([53e1a08](https://github.com/DanielAraldi/react-native-blur-view/commit/53e1a08da92100447fbdb144234ec0ea1d225e5f))
+
 # [1.1.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v1.0.0...v1.1.0) (2025-11-20)
 
 
