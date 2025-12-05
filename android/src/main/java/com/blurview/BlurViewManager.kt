@@ -46,5 +46,13 @@ class BlurViewManager : ViewGroupManager<BlurView>(),
   override fun setTargetId(view: BlurView?, targetId: String?) {
     view?.setTargetId(targetId)
   }
+
+  /**
+   * Indicates that React Native's Yoga layout should handle child positioning.
+   * Returns false to let React Native manage the layout of children.
+   */
+  override fun needsCustomLayoutForChildren(): Boolean {
+    return false
+  }
 }
 

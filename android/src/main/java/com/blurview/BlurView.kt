@@ -1,7 +1,6 @@
 package com.blurview
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Build
 import android.util.AttributeSet
 import android.util.Log
@@ -54,8 +53,38 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     this.removeCallbacks(null)
   }
 
+  override fun generateLayoutParams(p: ViewGroup.LayoutParams?): ViewGroup.LayoutParams {
+    return ViewGroup.MarginLayoutParams(p)
+  }
+
+  override fun checkLayoutParams(p: ViewGroup.LayoutParams?): Boolean {
+    return p is ViewGroup.MarginLayoutParams
+  }
+
+  override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+    // Trust React Native to provide correct dimensions
+    setMeasuredDimension(
+      MeasureSpec.getSize(widthMeasureSpec),
+      MeasureSpec.getSize(heightMeasureSpec)
+    )
+  }
+
+  /**
+   * Override onLayout to properly position children according to React Native's Yoga layout.
+   */
+  override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
+    // No-op: Layout is handled by React Native's UIManager.
+    // We override this to prevent the superclass (BlurViewGroup/FrameLayout) from
+    // re-positioning children based on its own logic (e.g. gravity), which would
+    // conflict with React Native's layout.
+  }
+
   private fun setupBlurView() {
     super.setBackgroundColor(this.overlayColor.color)
+    super.layoutParams = ViewGroup.LayoutParams(
+      ViewGroup.LayoutParams.MATCH_PARENT,
+      ViewGroup.LayoutParams.MATCH_PARENT
+    )
     super.clipChildren = true
     super.clipToOutline = true
   }
