@@ -2,6 +2,8 @@
 
 A simple blur view in react native based in [`@react-native-community/blur`](https://github.com/Kureev/react-native-blur).
 
+Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-navigation](https://wix.github.io/react-native-navigation) and Modals 😁.
+
 <div align="center">
   <p>
     <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/DanielAraldi/react-native-blur-view?style=flat&color=brightgreen" />
@@ -34,9 +36,12 @@ A simple blur view in react native based in [`@react-native-community/blur`](htt
 - [Components](#components)
   - [`BlurView`](#blurview)
     - [Properties](#properties)
-    - [Blur Types](#blur-types)
   - [`BlurTarget`](#blurtarget)
     - [Properties](#properties-1)
+  - [`VibrancyView`](#vibrancyview)
+    - [Properties](#properties-2)
+- [Types](#types)
+  - [Blur Types](#blur-types)
 - [Platform Differences](#platform-differences)
   - [Android](#android)
   - [iOS](#ios)
@@ -62,7 +67,11 @@ cd ios && pod install && cd ..
 ## Usage
 
 ```tsx
-import { BlurView, BlurTarget } from '@danielsaraldi/react-native-blur-view';
+import {
+  BlurView,
+  BlurTarget,
+  VibrancyView,
+} from '@danielsaraldi/react-native-blur-view';
 
 export default function App() {
   // ...
@@ -72,6 +81,10 @@ export default function App() {
       <BlurView targetId="target" style={styles.blurView}>
         <Text style={styles.title}>BlurView</Text>
       </BlurView>
+
+      <VibrancyView style={styles.vibrancyView}>
+        <Text style={styles.title}>VibrancyView</Text>
+      </VibrancyView>
 
       <BlurTarget id="target" style={styles.main}>
         <ScrollView
@@ -89,6 +102,18 @@ export default function App() {
 export const styles = StyleSheet.create({
   blurView: {
     position: 'absolute',
+    top: 0,
+
+    width: '100%',
+    height: 256,
+
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  vibrancyView: {
+    position: 'absolute',
+    top: 256,
 
     width: '100%',
     height: 256,
@@ -179,13 +204,49 @@ The `BlurView` component is an extends the same properties of the a `View` compo
 | Property                           | Description                                   | Default     | Platform |
 | ---------------------------------- | --------------------------------------------- | ----------- | -------- |
 | `targetId`                         | Id of the target that will be blurred.        | `undefined` | Android  |
-| `type`                             | Color type of the overlay.                    | `light`     | All      |
+| `type`                             | [Blur type](#blur-types) of the overlay.      | `light`     | All      |
 | `radius`                           | Blur radius `0` - `100`.                      | `10`        | All      |
 | `reducedTransparencyFallbackColor` | Fallback color to reduced transparency color. | `undefined` | All      |
 
 An important detail, when a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
 
-#### Blur Types
+### `BlurTarget`
+
+The `BlurTarget` component is an extends the same properties of the a `View` component.
+
+This component is exclusive and mandatory for **Android**. It's useful because we use [Dimezis's 3v library](https://github.com/Dimezis/BlurView) to apply the blur effect, so its implementation is slightly different than on iOS. On iOS the `BlurTarget` component is a common `View`.
+
+The `BlurTarget` may not contain a `BlurView` that targets the same `BlurTarget`. The `BlurTarget` may contain other `BlurTargets` and `BlurViews` though.
+
+#### Properties
+
+| Property | Description                                       | Platform |
+| -------- | ------------------------------------------------- | -------- |
+| `id`     | Id of this target to be identified by `BlurView`. | Android  |
+
+### `VibrancyView`
+
+The `VibrancyView` component is an extends the same properties of the a `View` component.
+
+This component is available for **iOS only**. It apply a vibrancy effect in children content. On Android the `VibrancyView` component is a common `View`. It's available for **iOS >= 13**.
+
+#### Properties
+
+| Property                           | Description                                   | Default     | Platform |
+| ---------------------------------- | --------------------------------------------- | ----------- | -------- |
+| `type`                             | [Blur type](#blur-types) of the overlay.      | `light`     | All      |
+| `radius`                           | Blur radius `0` - `100`.                      | `10`        | All      |
+| `reducedTransparencyFallbackColor` | Fallback color to reduced transparency color. | `undefined` | All      |
+
+An important detail, when a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
+
+## Types
+
+These are all types of available.
+
+### Blur Types
+
+On iOS all types are supported, but, on Android is simulated the types using RGBA colors.
 
 | Property                    | Description                                                                                                                                               | Platform |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
@@ -210,27 +271,13 @@ An important detail, when a value less than `0` or greater than `100` are provid
 | `thin-material-dark`        | A blur effect that creates the appearance of a thin material and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)                        | All      |
 | `ultra-thin-material-dark`  | A blur effect that creates the appearance of an ultra-thin material and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)                 | All      |
 
-### `BlurTarget`
-
-The `BlurTarget` component is an extends the same properties of the a `View` component.
-
-This component is exclusive and mandatory for **Android**. It's useful because we use [Dimezis's 3v library](https://github.com/Dimezis/BlurView) to apply the blur effect, so its implementation is slightly different than on iOS. On iOS the `BlurTarget` component is a common `View`.
-
-The `BlurTarget` may not contain a `BlurView` that targets the same `BlurTarget`. The `BlurTarget` may contain other `BlurTargets` and `BlurViews` though.
-
-#### Properties
-
-| Property | Description                                       | Platform |
-| -------- | ------------------------------------------------- | -------- |
-| `id`     | Id of this target to be identified by `BlurView`. | Android  |
-
 ## Platform Differences
 
 ### Android
 
 On Android platforms, the component utilizes the [BlurView](https://github.com/Dimezis/BlurView) library to offer native blur effects with hardware-accelerated rendering.
 
-Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-navigation](https://wix.github.io/react-native-navigation) and Modals 😁.
+On Android isn't supported blurring items of a list, it's occurs because in Android is necessary first a target (`BlurTarget`) to apply the blur effect. Like blur target of item list is the list itself, applying blur to the blur isn't possible.
 
 ### iOS
 
@@ -247,17 +294,24 @@ Full TypeScript support with proper type definitions!
 ```ts
 import {
   BlurViewType,
+  VibrancyViewType,
   BlurViewProps,
   BlurTargetProps,
+  VibrancyProps,
 } from '@danielsaraldi/react-native-blur-view';
 
-export const INITIAL_BLUR_TYPE: BlurViewType = 'x-light';
+export const INITIAL_BLUR_TYPE: BlurViewType = 'light';
+export const INITIAL_VIBRANCY_TYPE: VibrancyViewType = 'light';
 
 export interface CustomBlurViewProps extends BlurViewProps {
   // ...
 }
 
 export interface CustomBlurTargetProps extends BlurTargetProps {
+  // ...
+}
+
+export interface CustomVibrancyViewProps extends VibrancyProps {
   // ...
 }
 ```
