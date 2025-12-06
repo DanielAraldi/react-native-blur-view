@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { isIos } from '../../utils';
 
 export const styles = StyleSheet.create({
   container: {
@@ -46,7 +47,7 @@ export const styles = StyleSheet.create({
   },
 
   textTextDark: {
-    color: '#F1F1F1',
+    color: isIos ? 'rgba(241, 241, 241, 0.25)' : '#F1F1F1',
   },
 
   tabTextSelected: {
@@ -54,6 +55,6 @@ export const styles = StyleSheet.create({
   },
 
   tabTextDarkSelected: {
-    color: '#819bf1',
+    color: isIos ? 'rgba(129, 155, 241, 0.75)' : '#819bf1',
   },
 });
