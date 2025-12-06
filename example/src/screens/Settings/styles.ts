@@ -10,7 +10,6 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
   StyleSheet.create({
     container: {
       flex: 1,
-      // backgroundColor: '#000',
     },
 
     content: {

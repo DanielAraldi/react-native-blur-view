@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { isIos } from '../../utils';
 
 export const styles = StyleSheet.create({
   container: {
@@ -6,19 +7,23 @@ export const styles = StyleSheet.create({
 
     position: 'absolute',
 
-    bottom: 0,
+    bottom: 16,
 
-    width: '100%',
+    width: '75%',
+
+    alignSelf: 'center',
+
+    borderRadius: 9999,
   },
 
   blurView: {
     width: '100%',
-    height: 80,
+    height: 64,
   },
 
   content: {
     width: '100%',
-    height: 80,
+    height: 64,
 
     flexDirection: 'row',
   },
@@ -36,12 +41,13 @@ export const styles = StyleSheet.create({
 
   tabText: {
     fontSize: 16,
+    fontWeight: '600',
 
     color: '#202020',
   },
 
   textTextDark: {
-    color: '#F1F1F1',
+    color: isIos ? 'rgba(241, 241, 241, 0.25)' : '#F1F1F1',
   },
 
   tabTextSelected: {
@@ -49,6 +55,6 @@ export const styles = StyleSheet.create({
   },
 
   tabTextDarkSelected: {
-    color: '#819bf1',
+    color: isIos ? 'rgba(129, 155, 241, 0.75)' : '#819bf1',
   },
 });

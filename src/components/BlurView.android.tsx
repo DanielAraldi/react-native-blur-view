@@ -19,18 +19,17 @@ const BlurView = (props: BlurViewProps) => {
   const backgroundColor = { backgroundColor: reducedTransparencyFallbackColor };
   const isChangeable =
     type === 'x-light' || type === 'light' || type === 'dark';
-  const blurRadius = isChangeable ? radius : 35;
+
+  const commonProps = {
+    targetId,
+    blurRadius: isChangeable ? radius : 35,
+    overlayColor: type,
+    ...rest,
+  };
 
   if (!Children.count(children)) {
     return (
-      <Blur
-        targetId={targetId}
-        overlayColor={type}
-        blurRadius={blurRadius}
-        pointerEvents="none"
-        style={style}
-        {...rest}
-      >
+      <Blur style={style} {...commonProps}>
         <View style={[globalStyles.expand, backgroundColor]} />
       </Blur>
     );
@@ -38,14 +37,7 @@ const BlurView = (props: BlurViewProps) => {
 
   return (
     <View style={[globalStyles.container, style]}>
-      <Blur
-        targetId={targetId}
-        overlayColor={type}
-        blurRadius={blurRadius}
-        pointerEvents="none"
-        style={StyleSheet.absoluteFill}
-        {...rest}
-      >
+      <Blur style={StyleSheet.absoluteFill} {...commonProps}>
         <View style={[globalStyles.content, style, backgroundColor]}>
           {children}
         </View>
