@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v1.1.1...v1.2.0) (2025-12-06)
+
+
+### Features
+
+* add JSDoc for all component ([428f76d](https://github.com/DanielAraldi/react-native-blur-view/commit/428f76dd2809a90754ae6bb97e3ae7c2e1aeb1dd))
+* **ios:** add the new `VibrancyView` component ([ccf9181](https://github.com/DanielAraldi/react-native-blur-view/commit/ccf91812b4f169774accdeb71fbc125d09008111))
+* **ios:** and constraint effect in child ([868e0aa](https://github.com/DanielAraldi/react-native-blur-view/commit/868e0aaca7f53615a8dc94083763879fec53b4a4))
+* **ios:** remove `BlurView` as parent class of `VibrancyView` component ([daaea71](https://github.com/DanielAraldi/react-native-blur-view/commit/daaea713e50dc8f4bf647379a724475fabc51e69))
+* **ios:** update `overlayColor` and `blurRadius` property in `VibrancyView` component ([0010706](https://github.com/DanielAraldi/react-native-blur-view/commit/00107060fd01ebd7927f6222d0ac45dbf8513ea4))
+* update app example ([7681fc7](https://github.com/DanielAraldi/react-native-blur-view/commit/7681fc769242f549369774cb9a94173dfe22fdc4))
+
 ## [1.1.1](https://github.com/DanielAraldi/react-native-blur-view/compare/v1.1.0...v1.1.1) (2025-12-05)
 
 
