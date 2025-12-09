@@ -33,6 +33,8 @@ Support the animation transitions with [react-native-screens](https://github.com
 
 - [Installation](#installation)
 - [Usage](#usage)
+  - [Using `@react-navigation/bottom-tabs`](#using-react-navigationbottom-tabs)
+  - [Using `ImageBackground`](#using-imagebackground)
 - [Components](#components)
   - [`BlurView`](#blurview)
     - [Properties](#properties)
@@ -72,6 +74,7 @@ import {
   BlurTarget,
   VibrancyView,
 } from '@danielsaraldi/react-native-blur-view';
+// ...
 
 export default function App() {
   // ...
@@ -141,12 +144,15 @@ export const styles = StyleSheet.create({
 });
 ```
 
+### Using `@react-navigation/bottom-tabs`
+
 If you are using [@react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator/) with blur, all screens that the bottom tabs will navigate must contain a `BlurTarget` as a parent component on them. An example below:
 
 ```tsx
 // screens/MyScreen.tsx
 import { useNavigation } from '@react-navigation/native';
 import { BlurTarget } from '@danielsaraldi/react-native-blur-view';
+// ...
 
 export function MyScreen() {
   const { getState } = useNavigation();
@@ -168,12 +174,13 @@ export function MyScreen() {
 // components/MyCustomTabs.tsx
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { BlurView } from '@danielsaraldi/react-native-blur-view';
+// ...
 
 export function MyCustomTabs(props: BottomTabBarProps) {
   const { state } = props;
 
-  const pageIndex = getState()?.index || 0;
-  const targetId = getState()?.routeNames[pageIndex] || 'MyScreen';
+  const pageIndex = state.index || 0;
+  const targetId = state.routeNames[pageIndex] || 'MyScreen';
 
   // ...
 
@@ -192,6 +199,37 @@ The `MyCustomTabs` component must be used in the `tabBar` property of the `Navig
 The target value **must be updated every time** a new screen is rendered, so we've used the route name in this example. However, you can explore other approaches, so feel free to do so.
 
 **Note**: We **don't yet** have full support for nested tabs.
+
+### Using `ImageBackground`
+
+You must add `BlurTarget` as a parent of `ImageBackground` because it will be the **target** of blur, the `BlurView` component must be to used as **brother** of `BlurTarget` to blur effect works correctly.
+
+```tsx
+import { BlurTarget, BlurView } from '@danielsaraldi/react-native-blur-view';
+// ...
+
+export function MyScreen() {
+  // ...
+
+  return (
+    <>
+      <View style={styles.blurViewWrapper}>
+        <BlurView targetId="target" style={styles.blurView}>
+          {/** ... **/}
+        </BlurView>
+      </View>
+
+      <BlurTarget id="target" style={styles.blurTarget}>
+        <ImageBackground
+          style={styles.background}
+          source={{ uri: 'https://picsum.photos/seed/picsum/600/900' }}
+          resizeMode="cover"
+        />
+      </BlurTarget>
+    </>
+  );
+}
+```
 
 ## Components
 
