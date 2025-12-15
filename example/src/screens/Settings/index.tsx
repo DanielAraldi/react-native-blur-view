@@ -6,12 +6,12 @@ import { makeStyles } from './styles';
 import {
   BlurTarget,
   BlurView,
-  type BlurViewType,
+  type BlurType,
 } from '@danielsaraldi/react-native-blur-view';
 import { useBlur } from '../../hooks';
 import { useNavigation } from '@react-navigation/native';
 
-const TYPES: BlurViewType[] = [
+const TYPES: BlurType[] = [
   'x-light',
   'light',
   'dark',
