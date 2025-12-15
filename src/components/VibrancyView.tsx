@@ -1,5 +1,5 @@
 import { Children, memo } from 'react';
-import { View, type StyleProp, type ViewStyle } from 'react-native';
+import { Platform, View, type StyleProp, type ViewStyle } from 'react-native';
 
 import { Vibrancy } from '../fabrics';
 import type { VibrancyViewProps } from '../@types';
@@ -14,6 +14,10 @@ const VibrancyView = (props: VibrancyViewProps) => {
     reducedTransparencyFallbackColor,
     ...rest
   } = props;
+
+  if (Platform.OS !== 'ios') {
+    return <View {...props} />;
+  }
 
   const commonProps = {
     overlayColor: type,
