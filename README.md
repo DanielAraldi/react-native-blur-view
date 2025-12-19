@@ -15,7 +15,7 @@ Support the animation transitions with [react-native-screens](https://github.com
 > This package supports **only** [new architecture](https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here).
 
 > [!WARNING]
-> This package will migrate the blur core to the [QmBlurView](https://github.com/QmDeve/QmBlurView) library. We decided remove [Dimezis's BlurView](https://github.com/Dimezis/BlurView) library because it introduced more complexing structure in React Native Blur View. This migration is very necessary for Android devices and it removed to use of the `BlurTarget` component.
+> This package will migrate the blur core to the [QmBlurView](https://github.com/QmDeve/QmBlurView) library. We decided remove [Dimezis's BlurView](https://github.com/Dimezis/BlurView) library because it introduced more complexing structure in React Native Blur View. This migration is very necessary for Android devices and it removed to use of the `BlurTarget` component. The [QmBlurView](https://github.com/QmDeve/QmBlurView) is a high-performance Android UI library that provides real-time, dynamic blur effects.
 
 <p align="center">
   <img
