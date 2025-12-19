@@ -1,129 +1,138 @@
-import { Button, ScrollView, Text, TouchableOpacity, View } from 'react-native';
-
-import { useMemo } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { makeStyles } from './styles';
-import {
-  BlurTarget,
-  BlurView,
-  type BlurType,
-} from '@danielsaraldi/react-native-blur-view';
 import { useBlur } from '../../hooks';
-import { useNavigation } from '@react-navigation/native';
-
-const TYPES: BlurType[] = [
-  'x-light',
-  'light',
-  'dark',
-  'regular',
-  'prominent',
-  'material',
-  'material-light',
-  'material-dark',
-  'thin-material',
-  'thin-material-light',
-  'thin-material-dark',
-  'chrome-material',
-  'chrome-material-light',
-  'chrome-material-dark',
-  'thick-material',
-  'thick-material-light',
-  'thick-material-dark',
-  'ultra-thin-material',
-  'ultra-thin-material-light',
-  'ultra-thin-material-dark',
-];
+import { makeStyles } from './styles';
+import { useMemo } from 'react';
+import {
+  ImageBackground,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { BlurTarget, BlurView } from '@danielsaraldi/react-native-blur-view';
+import { PORSCHE_ARCHITECTURE } from '../../assets';
+import { BLUR_RADIUS_DATA } from '../../constants';
 
 export function Settings() {
-  const { mode, radius, isDark, onDecrement, onIncrement, onToggle } =
-    useBlur();
+  const { mode, radius, isDark, onRadius } = useBlur();
   const { top, bottom } = useSafeAreaInsets();
-  const { getState } = useNavigation();
-
-  const pageIndex = getState()?.index || 0;
-  const stack = getState()?.routeNames[pageIndex];
-  const id = (stack || 'Settings').replace('Stack', '');
-
-  const isChangeable =
-    mode === 'x-light' || mode === 'dark' || mode === 'light';
 
   const styles = useMemo(() => makeStyles({ top, bottom }), [top, bottom]);
 
-  return (
-    <View style={styles.container}>
-      <BlurView
-        targetId={id}
-        style={styles.blurView}
-        radius={radius}
-        type={mode}
-      >
-        <View style={styles.blurViewContent} />
-      </BlurView>
+  const renderBlurRadius = useMemo(
+    () =>
+      BLUR_RADIUS_DATA.map(({ radius: blurRadius, label }, index) => {
+        const color = mode.includes('dark') ? 'white' : 'black';
 
-      <BlurTarget id={id} style={styles.blurTarget}>
+        return (
+          <TouchableOpacity
+            key={index}
+            style={styles.item}
+            onPress={() => onRadius(blurRadius)}
+            activeOpacity={0.75}
+          >
+            <BlurView
+              targetId="radius"
+              radius={blurRadius}
+              type={mode}
+              style={styles.centralize}
+            >
+              <Text style={[styles.itemText, { color }]}>{label}</Text>
+            </BlurView>
+          </TouchableOpacity>
+        );
+      }),
+    [mode, styles, onRadius]
+  );
+
+  return (
+    <BlurTarget
+      id="Settings"
+      style={[styles.expand, StyleSheet.absoluteFillObject]}
+    >
+      <View style={styles.expand}>
+        <BlurTarget id="radius" style={StyleSheet.absoluteFillObject}>
+          <ImageBackground
+            style={StyleSheet.absoluteFillObject}
+            source={PORSCHE_ARCHITECTURE}
+            resizeMode="cover"
+          />
+        </BlurTarget>
+
         <ScrollView
-          style={[styles.content, isDark && styles.contentDark]}
-          contentContainerStyle={[
-            styles.contentContainer,
-            isDark && styles.contentContainerDark,
-          ]}
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}
           showsVerticalScrollIndicator={false}
         >
-          <View style={styles.titleWrapper}>
-            <Text style={[styles.title, isDark && styles.titleDark]}>
-              Radius
+          <View style={styles.header}>
+            <Text style={styles.headerText}>Settings</Text>
+          </View>
+
+          <View style={styles.configurationItem}>
+            <BlurView
+              targetId="radius"
+              type={mode}
+              radius={radius}
+              style={StyleSheet.absoluteFillObject}
+            />
+
+            <Text
+              style={[
+                styles.configurationText,
+                isDark && styles.configurationTextDark,
+              ]}
+            >
+              On Android platforms, the component utilizes the Dimezis's
+              BlurView library to offer native blur effects with
+              hardware-accelerated rendering.
             </Text>
-            <View style={[styles.divider, isDark && styles.dividerDark]} />
-          </View>
 
-          <View style={styles.listItem}>
-            <Text style={[styles.label, isDark && styles.labelDark]}>
-              Intensity
+            <Text
+              style={[
+                styles.configurationText,
+                isDark && styles.configurationTextDark,
+              ]}
+            >
+              On iOS all types are supported by default. However, on Android
+              they are RGBA colors to simulate the same blur color.
             </Text>
 
-            <View style={styles.radiusWrapper}>
-              <Button
-                title="+"
-                onPress={onIncrement}
-                disabled={radius >= 100 || !isChangeable}
-              />
+            <Text
+              style={[
+                styles.configurationText,
+                isDark && styles.configurationTextDark,
+              ]}
+            >
+              Default type is light and default radius is 10.
+            </Text>
 
-              <Text style={[styles.label, isDark && styles.labelDark]}>
-                {radius}
-              </Text>
+            <Text
+              style={[
+                styles.configurationText,
+                isDark && styles.configurationTextDark,
+              ]}
+            >
+              Current type: {mode}.
+            </Text>
 
-              <Button
-                title="-"
-                onPress={onDecrement}
-                disabled={radius <= 0 || !isChangeable}
-              />
-            </View>
+            <Text
+              style={[
+                styles.configurationText,
+                isDark && styles.configurationTextDark,
+              ]}
+            >
+              Current radius: {radius}.
+            </Text>
           </View>
 
-          <View style={styles.titleWrapper}>
-            <Text style={[styles.title, isDark && styles.titleDark]}>Type</Text>
-            <View style={[styles.divider, isDark && styles.dividerDark]} />
+          <View style={styles.header}>
+            <Text style={styles.headerText}>Blur Radius</Text>
           </View>
 
-          {TYPES.map((type) => (
-            <View key={type} style={styles.listItem}>
-              <Text style={[styles.label, isDark && styles.labelDark]}>
-                {type}
-              </Text>
-
-              <TouchableOpacity
-                activeOpacity={0.85}
-                onPress={() => onToggle(type)}
-                style={[
-                  styles.radio,
-                  isDark && styles.radioDark,
-                  mode === type && styles.radioSelected,
-                ]}
-              />
-            </View>
-          ))}
+          {renderBlurRadius}
         </ScrollView>
-      </BlurTarget>
-    </View>
+      </View>
+    </BlurTarget>
   );
 }

@@ -1,5 +1,4 @@
-import { StyleSheet } from 'react-native';
-import { isIos } from '../../utils';
+import { Dimensions, StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
@@ -9,7 +8,7 @@ export const styles = StyleSheet.create({
 
     bottom: 16,
 
-    width: '75%',
+    width: Dimensions.get('window').width - 40,
 
     alignSelf: 'center',
 
@@ -43,18 +42,20 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
 
-    color: '#202020',
+    textAlign: 'center',
+
+    color: '#00000080',
   },
 
   textTextDark: {
-    color: isIos ? 'rgba(241, 241, 241, 0.25)' : '#F1F1F1',
+    color: '#CCCCCCBF',
   },
 
   tabTextSelected: {
-    color: '#3a57b7',
+    color: 'black',
   },
 
   tabTextDarkSelected: {
-    color: isIos ? 'rgba(129, 155, 241, 0.75)' : '#819bf1',
+    color: 'white',
   },
 });

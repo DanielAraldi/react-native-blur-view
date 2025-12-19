@@ -29,33 +29,6 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
       flex: 1,
     },
 
-    configurationItem: {
-      overflow: 'hidden',
-
-      flexDirection: 'column',
-
-      width: '100%',
-
-      marginBottom: 24,
-
-      padding: 16,
-
-      gap: 8,
-
-      borderRadius: 16,
-    },
-
-    configurationText: {
-      fontSize: 16,
-      fontWeight: '600',
-
-      color: 'black',
-    },
-
-    configurationTextDark: {
-      color: 'white',
-    },
-
     item: {
       width: '100%',
       height: 80,
@@ -79,7 +52,9 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
 
       alignItems: 'center',
 
-      marginBottom: 24,
+      marginBottom: 8,
+
+      gap: 16,
     },
 
     headerText: {

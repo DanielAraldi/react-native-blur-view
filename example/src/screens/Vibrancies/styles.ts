@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { isAndroidSDK31OrLower } from '../../utils';
 
 interface MakeStylesProps {
   top: number;
@@ -18,42 +17,15 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
     contentContainer: {
       flexGrow: 1,
 
-      paddingTop: isAndroidSDK31OrLower ? top + 20 : top,
+      paddingTop: top,
       paddingHorizontal: 20,
-      paddingBottom: bottom + (isAndroidSDK31OrLower ? 96 : 64),
+      paddingBottom: bottom + 64,
 
       gap: 16,
     },
 
     expand: {
       flex: 1,
-    },
-
-    configurationItem: {
-      overflow: 'hidden',
-
-      flexDirection: 'column',
-
-      width: '100%',
-
-      marginBottom: 24,
-
-      padding: 16,
-
-      gap: 8,
-
-      borderRadius: 16,
-    },
-
-    configurationText: {
-      fontSize: 16,
-      fontWeight: '600',
-
-      color: 'black',
-    },
-
-    configurationTextDark: {
-      color: 'white',
     },
 
     item: {
@@ -63,6 +35,9 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
 
     centralize: {
       flex: 1,
+
+      width: '100%',
+      height: '100%',
 
       borderRadius: 16,
 
@@ -79,7 +54,9 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
 
       alignItems: 'center',
 
-      marginBottom: 24,
+      marginBottom: 8,
+
+      gap: 16,
     },
 
     headerText: {
