@@ -34,4 +34,12 @@ class TargetViewManager : ViewGroupManager<TargetView>(),
   override fun setId(view: TargetView?, id: String?) {
     view?.setId(id)
   }
+
+  /**
+   * Indicates that React Native's Yoga layout should handle child positioning.
+   * Returns false to let React Native manage the layout of children.
+   */
+  override fun needsCustomLayoutForChildren(): Boolean {
+    return false
+  }
 }
