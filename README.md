@@ -11,7 +11,7 @@ Support the animation transitions with [react-native-screens](https://github.com
   </p>
 </div>
 
-> [!WARNING]
+> [!NOTE]
 > This package supports **only** [new architecture](https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here).
 
 > [!WARNING]
