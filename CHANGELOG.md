@@ -1,3 +1,16 @@
+# [1.3.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v1.2.0...v1.3.0) (2025-12-19)
+
+
+### Bug Fixes
+
+* **android:** add UI manager layout methods in native target view ([80b5fec](https://github.com/DanielAraldi/react-native-blur-view/commit/80b5fec02d9268d4662ec75abcd1ad2505535b41))
+* **ios:** remove unnecessary View in Vibrancy component ([9a93139](https://github.com/DanielAraldi/react-native-blur-view/commit/9a9313979f099b3587f20a063d2aa1eb34f9cf42))
+
+
+### Features
+
+* redesign of the App example ([f3d8678](https://github.com/DanielAraldi/react-native-blur-view/commit/f3d8678e9ecc2da43a57550fb9c6d509647e0851))
+
 # [1.2.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v1.1.1...v1.2.0) (2025-12-06)
 
 
