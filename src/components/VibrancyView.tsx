@@ -1,5 +1,5 @@
 import { Children, memo } from 'react';
-import { Platform, View, type StyleProp, type ViewStyle } from 'react-native';
+import { Platform, View } from 'react-native';
 
 import { Vibrancy } from '../fabrics';
 import type { VibrancyViewProps } from '../@types';
@@ -22,28 +22,23 @@ const VibrancyView = (props: VibrancyViewProps) => {
   const commonProps = {
     overlayColor: type,
     blurRadius: radius,
-    style: [globalStyles.container, style],
+    style: [
+      globalStyles.container,
+      style,
+      { backgroundColor: reducedTransparencyFallbackColor },
+    ],
     ...rest,
   };
-
-  const viewStyle: StyleProp<ViewStyle> = [
-    globalStyles.expand,
-    { backgroundColor: reducedTransparencyFallbackColor },
-  ];
 
   if (!Children.count(children)) {
     return (
       <Vibrancy {...commonProps}>
-        <View style={viewStyle} />
+        <View style={globalStyles.expand} />
       </Vibrancy>
     );
   }
 
-  return (
-    <Vibrancy {...commonProps}>
-      <View style={viewStyle}>{children}</View>
-    </Vibrancy>
-  );
+  return <Vibrancy {...commonProps}>{children}</Vibrancy>;
 };
 
 export default memo(VibrancyView);
