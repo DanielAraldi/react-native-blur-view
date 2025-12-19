@@ -6,6 +6,7 @@ import { BlurView, VibrancyView } from '@danielsaraldi/react-native-blur-view';
 import { useBlur } from '../../hooks';
 import { isAndroid } from '../../utils';
 import { styles } from './styles';
+import { NAVIGATION_ICONS } from '../../constants';
 
 export function Tabs(props: BottomTabBarProps) {
   const { state } = props;
@@ -13,12 +14,14 @@ export function Tabs(props: BottomTabBarProps) {
   const { mode, radius, isDark } = useBlur();
 
   const pageIndex = state.index;
-  const id = state.routeNames[pageIndex] || 'Home';
+  const id = state.routeNames[pageIndex] || 'Blurs';
 
   const renderTabs = useMemo(
     () =>
       props.state.routes.map((route, index) => {
         const isFocused = props.state.index === index;
+        const icon =
+          NAVIGATION_ICONS[route.name as keyof typeof NAVIGATION_ICONS];
 
         return (
           <TouchableOpacity
@@ -35,7 +38,7 @@ export function Tabs(props: BottomTabBarProps) {
                 isFocused && isDark && styles.tabTextDarkSelected,
               ]}
             >
-              {route.name}
+              {route.name} {icon}
             </Text>
           </TouchableOpacity>
         );

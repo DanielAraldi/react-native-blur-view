@@ -1,36 +1,14 @@
 import type { ViewProps, ColorValue } from 'react-native';
-
-/**
- * @type {BlurViewType}
- *
- * @description Type for the color type of the overlay.
- */
-export type BlurViewType =
-  | 'x-light'
-  | 'light'
-  | 'dark'
-  | 'thin-material'
-  | 'thin-material-light'
-  | 'thin-material-dark'
-  | 'material'
-  | 'material-light'
-  | 'material-dark'
-  | 'chrome-material'
-  | 'chrome-material-light'
-  | 'chrome-material-dark'
-  | 'thick-material'
-  | 'thick-material-light'
-  | 'thick-material-dark'
-  | 'ultra-thin-material'
-  | 'ultra-thin-material-light'
-  | 'ultra-thin-material-dark'
-  | 'regular'
-  | 'prominent';
+import type { BlurType } from './BlurType';
 
 /**
  * @interface BlurViewProps
  *
  * @description Props for the `BlurView` component.
+ *
+ * @see https://github.com/DanielAraldi/react-native-blur-view?tab=readme-ov-file#properties
+ *
+ * @since 0.1.0
  */
 export interface BlurViewProps extends ViewProps {
   /**
@@ -39,6 +17,8 @@ export interface BlurViewProps extends ViewProps {
    * together and it's required for Android.**
    *
    * @platform Android
+   *
+   * @since 1.0.0
    */
   targetId: string;
 
@@ -46,14 +26,18 @@ export interface BlurViewProps extends ViewProps {
    * @description Set the color type of the overlay.
    *
    * @default 'light'
+   *
+   * @since 0.1.0
    */
-  type?: BlurViewType;
+  type?: BlurType;
 
   /**
    * @description Set the blur radius. It accepts a number between `0` and
    * `100`.
    *
    * @default 10
+   *
+   * @since 0.1.0
    */
   radius?: number;
 
@@ -61,6 +45,8 @@ export interface BlurViewProps extends ViewProps {
    * @description Set a background color for the blur fallback view.
    *
    * @default undefined
+   *
+   * @since 1.1.0
    */
   reducedTransparencyFallbackColor?: ColorValue;
 }

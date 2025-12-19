@@ -43,8 +43,8 @@ export const VibrancyView =
   VibrancyViewUntyped as ComponentType<VibrancyViewProps>;
 
 export type {
+  BlurType,
   BlurViewProps,
-  BlurViewType,
   BlurTargetProps,
   VibrancyViewProps,
 } from './@types';

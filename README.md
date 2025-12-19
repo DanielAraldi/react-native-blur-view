@@ -11,8 +11,11 @@ Support the animation transitions with [react-native-screens](https://github.com
   </p>
 </div>
 
-> [!WARNING]
+> [!NOTE]
 > This package supports **only** [new architecture](https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here).
+
+> [!WARNING]
+> This package will migrate the blur core to the [QmBlurView](https://github.com/QmDeve/QmBlurView) library. We decided remove [Dimezis's BlurView](https://github.com/Dimezis/BlurView) library because it introduced more complexing structure in React Native Blur View. This migration is very necessary for Android devices and it removed to use of the `BlurTarget` component. The [QmBlurView](https://github.com/QmDeve/QmBlurView) is a high-performance Android UI library that provides real-time, dynamic blur effects.
 
 <p align="center">
   <img
@@ -33,6 +36,7 @@ Support the animation transitions with [react-native-screens](https://github.com
 
 - [Installation](#installation)
 - [Usage](#usage)
+  - [Using `ScrollView`/`FlatList`](#using-scrollviewflatlist)
   - [Using `@react-navigation/bottom-tabs`](#using-react-navigationbottom-tabs)
   - [Using `ImageBackground`](#using-imagebackground)
 - [Components](#components)
@@ -142,6 +146,51 @@ export const styles = StyleSheet.create({
     gap: 8,
   },
 });
+```
+
+### Using `ScrollView`/`FlatList`
+
+You must add `BlurView` elements inside of the list (`ScrollView`/`FlatList`), and the content behind should be added as child of the `BlurTarget` component. Check it below:
+
+```tsx
+import { BlurView, BlurTarget } from '@danielsaraldi/react-native-blur-view';
+// ...
+
+export function MyScreen() {
+  // ...
+
+  return (
+    <View style={styles.expand}>
+      <BlurTarget id="target" style={styles.blurTarget}>
+        <ImageBackground
+          style={styles.background}
+          source={BACKGROUND}
+          resizeMode="cover"
+        />
+      </BlurTarget>
+
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={styles.contentContainer}
+        showsVerticalScrollIndicator={false}
+      >
+        <BlurView targetId="target" style={styles.blurView}>
+          <Text style={styles.title}>BlurView 1</Text>
+        </BlurView>
+
+        <BlurView targetId="target" style={styles.blurView}>
+          <Text style={styles.title}>BlurView 2</Text>
+        </BlurView>
+
+        <BlurView targetId="target" style={styles.blurView}>
+          <Text style={styles.title}>BlurView 3</Text>
+        </BlurView>
+
+        {/* ... */}
+      </ScrollView>
+    </View>
+  );
+}
 ```
 
 ### Using `@react-navigation/bottom-tabs`
@@ -314,8 +363,6 @@ On iOS all types are supported, but, on Android is simulated the types using RGB
 ### Android
 
 On Android platforms, the component utilizes the [BlurView](https://github.com/Dimezis/BlurView) library to offer native blur effects with hardware-accelerated rendering.
-
-On Android isn't supported blurring items of a list, it's occurs because in Android is necessary first a target (`BlurTarget`) to apply the blur effect. Like blur target of item list is the list itself, applying blur to the blur isn't possible.
 
 ### iOS
 

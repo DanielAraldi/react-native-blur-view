@@ -10,130 +10,91 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
   StyleSheet.create({
     container: {
       flex: 1,
-    },
-
-    content: {
-      flexGrow: 1,
 
       width: '100%',
       height: '100%',
-
-      paddingBottom: bottom,
-    },
-
-    contentDark: {
-      backgroundColor: '#202020',
     },
 
     contentContainer: {
+      flexGrow: 1,
+
+      paddingTop: isAndroidSDK31OrLower ? top + 20 : top,
       paddingHorizontal: 20,
-      paddingTop: 20 + top,
-      paddingBottom: 72 + bottom,
+      paddingBottom: bottom + (isAndroidSDK31OrLower ? 96 : 64),
 
       gap: 16,
-
-      backgroundColor: '#F2F2F2',
     },
 
-    contentContainerDark: {
-      backgroundColor: '#202020',
-    },
-
-    blurView: {
-      position: 'absolute',
-
-      top: 0,
-      right: 0,
-      left: 0,
-
-      width: '100%',
-      height: isAndroidSDK31OrLower ? 16 : top,
-    },
-
-    blurViewContent: {
+    expand: {
       flex: 1,
     },
 
-    blurTarget: {
-      flex: 1,
-    },
+    configurationItem: {
+      overflow: 'hidden',
 
-    titleWrapper: {
-      gap: 8,
-    },
+      flexDirection: 'column',
 
-    title: {
-      fontSize: 18,
-      fontWeight: 600,
-
-      color: '#202020',
-    },
-
-    titleDark: {
-      color: '#F1F1F1',
-    },
-
-    divider: {
       width: '100%',
-      height: 1,
 
-      backgroundColor: '#00000020',
-    },
+      marginBottom: 24,
 
-    dividerDark: {
-      backgroundColor: '#FFFFFF20',
-    },
-
-    listItem: {
-      flexDirection: 'row',
-
-      justifyContent: 'space-between',
-      alignItems: 'center',
-    },
-
-    radiusWrapper: {
-      flexDirection: 'row',
-
-      alignItems: 'center',
+      padding: 16,
 
       gap: 8,
+
+      borderRadius: 16,
     },
 
-    label: {
+    configurationText: {
       fontSize: 16,
+      fontWeight: '600',
 
-      color: '#202020',
+      color: 'black',
     },
 
-    labelDark: {
-      color: '#F1F1F1',
+    configurationTextDark: {
+      color: 'white',
     },
 
-    typeItem: {
-      flexDirection: 'row',
+    item: {
+      width: '100%',
+      height: 80,
+    },
 
-      justifyContent: 'space-between',
+    centralize: {
+      flex: 1,
+
+      borderRadius: 16,
+
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+
+    itemText: {
+      fontSize: 20,
+    },
+
+    header: {
+      width: '100%',
+
       alignItems: 'center',
 
-      marginBottom: 8,
+      marginBottom: 24,
     },
 
-    radio: {
-      width: 20,
-      height: 20,
+    headerText: {
+      fontSize: 24,
+      fontWeight: 'bold',
 
-      borderWidth: 2,
-      borderColor: '#000000e6',
-      borderRadius: 9999,
-
-      backgroundColor: 'transparent',
+      color: 'white',
     },
 
-    radioDark: {
-      borderColor: '#FFFFFFe6',
-    },
+    headerHint: {
+      fontSize: 16,
+      fontWeight: 'bold',
 
-    radioSelected: {
-      borderWidth: 6,
+      textAlign: 'center',
+
+      color: 'white',
     },
   });
