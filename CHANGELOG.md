@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/DanielAraldi/react-native-blur-view/compare/v1.3.0...v1.3.1) (2025-12-19)
+
+
+### Bug Fixes
+
+* force release ([c2167fe](https://github.com/DanielAraldi/react-native-blur-view/commit/c2167fe326c73c634034fd46a2ca2690364416c3))
+
 # [1.3.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v1.2.0...v1.3.0) (2025-12-19)
 
 
