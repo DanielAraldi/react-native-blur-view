@@ -2,7 +2,7 @@
 
 A simple blur view in react native based in [`@react-native-community/blur`](https://github.com/Kureev/react-native-blur).
 
-Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-navigation](https://wix.github.io/react-native-navigation) and Modals 😁.
+Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-navigation](https://wix.github.io/react-native-navigation) and Modals 😁. This library supports tvOS and Android TV! 📺
 
 <div align="center">
   <p>
@@ -288,12 +288,12 @@ The `BlurView` component is an extends the same properties of the a `View` compo
 
 #### Properties
 
-| Property                           | Description                                   | Default     | Platform |
-| ---------------------------------- | --------------------------------------------- | ----------- | -------- |
-| `targetId`                         | Id of the target that will be blurred.        | `undefined` | Android  |
-| `type`                             | [Blur type](#blur-types) of the overlay.      | `light`     | All      |
-| `radius`                           | Blur radius `0` - `100`.                      | `10`        | All      |
-| `reducedTransparencyFallbackColor` | Fallback color to reduced transparency color. | `undefined` | All      |
+| Property       | Description                              | Default     | Platform |
+| -------------- | ---------------------------------------- | ----------- | -------- |
+| `targetId`     | Id of the target that will be blurred.   | `undefined` | Android  |
+| `type`         | [Blur type](#blur-types) of the overlay. | `light`     | All      |
+| `radius`       | Blur radius `0` - `100`.                 | `10`        | All      |
+| `overlayColor` | Add the overlay color about component.   | `undefined` | All      |
 
 An important detail, when a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
 
@@ -319,11 +319,11 @@ This component is available for **iOS only**. It apply a vibrancy effect in chil
 
 #### Properties
 
-| Property                           | Description                                   | Default     | Platform |
-| ---------------------------------- | --------------------------------------------- | ----------- | -------- |
-| `type`                             | [Blur type](#blur-types) of the overlay.      | `light`     | All      |
-| `radius`                           | Blur radius `0` - `100`.                      | `10`        | All      |
-| `reducedTransparencyFallbackColor` | Fallback color to reduced transparency color. | `undefined` | All      |
+| Property       | Description                              | Default     | Platform |
+| -------------- | ---------------------------------------- | ----------- | -------- |
+| `type`         | [Blur type](#blur-types) of the overlay. | `light`     | All      |
+| `radius`       | Blur radius `0` - `100`.                 | `10`        | All      |
+| `overlayColor` | Add the overlay color about component.   | `undefined` | All      |
 
 An important detail, when a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
 
