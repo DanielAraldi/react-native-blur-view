@@ -1,4 +1,8 @@
+#import <React/RCTViewComponentView.h>
 #import "BlurView.h"
+
+#if !TARGET_OS_TV
+
 #import "BlurViewEffect.h"
 #import "BlurUtils.h"
 
@@ -136,3 +140,25 @@ Class<RCTComponentViewProtocol> BlurViewCls(void)
 }
 
 @end
+
+#else
+
+// Minimal stub implementation for tvOS
+// This prevents crashes but doesn't provide any blur effect
+@implementation BlurView
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+  if (self = [super initWithFrame:frame]) {
+  }
+  return self;
+}
+
+@end
+
+Class<RCTComponentViewProtocol> BlurViewCls(void)
+{
+  return BlurView.class;
+}
+
+#endif

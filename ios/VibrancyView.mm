@@ -1,4 +1,8 @@
+#import <React/RCTViewComponentView.h>
 #import "VibrancyView.h"
+
+#if !TARGET_OS_TV
+
 #import "BlurViewEffect.h"
 #import "BlurUtils.h"
 
@@ -166,3 +170,25 @@ Class<RCTComponentViewProtocol> VibrancyViewCls(void)
 }
 
 @end
+
+#else
+
+// Minimal stub implementation for tvOS
+// This prevents crashes but doesn't provide any vibrancy effect
+@implementation VibrancyView
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+  if (self = [super initWithFrame:frame]) {
+  }
+  return self;
+}
+
+@end
+
+Class<RCTComponentViewProtocol> VibrancyViewCls(void)
+{
+  return VibrancyView.class;
+}
+
+#endif
