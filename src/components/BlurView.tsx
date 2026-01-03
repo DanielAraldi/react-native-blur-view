@@ -9,28 +9,26 @@ const BlurView = (props: BlurViewProps) => {
   const {
     type = 'light',
     radius = 10,
-    targetId,
     style,
     children,
-    reducedTransparencyFallbackColor,
+    overlayColor,
     ...rest
   } = props;
 
   const isAndroid = Platform.OS === 'android';
-  const backgroundColor = { backgroundColor: reducedTransparencyFallbackColor };
-  const shouldApplyRadius =
-    type === 'x-light' || type === 'light' || type === 'dark';
+  const backgroundColor = { backgroundColor: overlayColor };
 
   const commonProps = useMemo(() => {
-    const androidBlurRadius = shouldApplyRadius ? radius : 35;
+    const isFixedRadius =
+      type === 'x-light' || type === 'light' || type === 'dark';
+    const androidBlurRadius = isFixedRadius ? radius : 40;
 
     return {
-      targetId,
       overlayColor: type,
       blurRadius: isAndroid ? androidBlurRadius : radius,
       ...rest,
     };
-  }, [type, radius, targetId, rest, shouldApplyRadius, isAndroid]);
+  }, [type, radius, rest, isAndroid]);
 
   if (!Children.count(children)) {
     return (
@@ -40,23 +38,21 @@ const BlurView = (props: BlurViewProps) => {
     );
   }
 
+  if (isAndroid) {
+    return (
+      <Blur style={style} {...commonProps}>
+        <View style={[StyleSheet.absoluteFill, backgroundColor]} />
+
+        {children}
+      </Blur>
+    );
+  }
+
   return (
     <View style={[globalStyles.container, style]}>
-      {isAndroid ? (
-        <Blur style={StyleSheet.absoluteFill} {...commonProps}>
-          <View style={[globalStyles.content, style, backgroundColor]}>
-            {children}
-          </View>
-        </Blur>
-      ) : (
-        <>
-          <Blur style={StyleSheet.absoluteFill} {...commonProps} />
+      <Blur style={StyleSheet.absoluteFill} {...commonProps} />
 
-          <View style={[globalStyles.content, backgroundColor]}>
-            {children}
-          </View>
-        </>
-      )}
+      <View style={[globalStyles.content, backgroundColor]}>{children}</View>
     </View>
   );
 };

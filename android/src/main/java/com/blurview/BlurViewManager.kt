@@ -21,6 +21,16 @@ class BlurViewManager : ViewGroupManager<BlurView>(),
     return NAME
   }
 
+  /**
+   * Called when view is detached from view hierarchy and allows for cleanup.
+   * This prevents the white screen issue during navigation transitions on Android.
+   */
+  override fun onDropViewInstance(view: BlurView) {
+    super.onDropViewInstance(view)
+
+    view.cleanUp()
+  }
+
   public override fun createViewInstance(context: ThemedReactContext): BlurView {
     return BlurView(context)
   }
@@ -42,9 +52,9 @@ class BlurViewManager : ViewGroupManager<BlurView>(),
   }
 
   @Override
-  @ReactProp(name = "targetId")
-  override fun setTargetId(view: BlurView?, targetId: String?) {
-    view?.setTargetId(targetId)
+  @ReactProp(name = "borderRadius", defaultFloat = 0f)
+  override fun setBorderRadius(view: BlurView?, borderRadius: Float) {
+    view?.setBorderRadius(borderRadius)
   }
 
   /**
