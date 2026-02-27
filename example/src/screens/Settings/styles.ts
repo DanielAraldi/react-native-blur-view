@@ -46,6 +46,8 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
     },
 
     configurationText: {
+      zIndex: 99,
+
       fontSize: 16,
       fontWeight: '600',
 

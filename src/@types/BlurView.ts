@@ -42,11 +42,11 @@ export interface BlurViewProps extends ViewProps {
   radius?: number;
 
   /**
-   * @description Set a background color for the blur fallback view.
+   * @description Set a background color about blur effect.
    *
    * @default undefined
    *
    * @since 1.1.0
    */
-  reducedTransparencyFallbackColor?: ColorValue;
+  overlayColor?: ColorValue;
 }
