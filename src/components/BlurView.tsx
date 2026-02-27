@@ -12,12 +12,12 @@ const BlurView = (props: BlurViewProps) => {
     targetId,
     style,
     children,
-    reducedTransparencyFallbackColor,
+    overlayColor,
     ...rest
   } = props;
 
   const isAndroid = Platform.OS === 'android';
-  const backgroundColor = { backgroundColor: reducedTransparencyFallbackColor };
+  const backgroundColor = { backgroundColor: overlayColor };
   const shouldApplyRadius =
     type === 'x-light' || type === 'light' || type === 'dark';
 
@@ -34,14 +34,19 @@ const BlurView = (props: BlurViewProps) => {
 
   if (!Children.count(children)) {
     return (
-      <Blur style={style} {...commonProps}>
-        <View style={[globalStyles.expand, backgroundColor]} />
-      </Blur>
+      <View style={[globalStyles.container, style]}>
+        <Blur
+          style={[StyleSheet.absoluteFill, backgroundColor]}
+          {...commonProps}
+        />
+      </View>
     );
   }
 
   return (
-    <View style={[globalStyles.container, style]}>
+    <View
+      style={[globalStyles.container, style, !isAndroid && backgroundColor]}
+    >
       {isAndroid ? (
         <Blur style={StyleSheet.absoluteFill} {...commonProps}>
           <View style={[globalStyles.content, style, backgroundColor]}>
@@ -52,9 +57,7 @@ const BlurView = (props: BlurViewProps) => {
         <>
           <Blur style={StyleSheet.absoluteFill} {...commonProps} />
 
-          <View style={[globalStyles.content, backgroundColor]}>
-            {children}
-          </View>
+          <View style={globalStyles.content}>{children}</View>
         </>
       )}
     </View>

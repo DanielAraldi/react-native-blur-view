@@ -31,11 +31,11 @@ export interface VibrancyViewProps extends ViewProps {
   radius?: number;
 
   /**
-   * @description Set a background color for the blur fallback view.
+   * @description Set a background color about vibrancy effect.
    *
    * @default undefined
    *
    * @since 1.2.0
    */
-  reducedTransparencyFallbackColor?: ColorValue;
+  overlayColor?: ColorValue;
 }
