@@ -14,9 +14,6 @@ Support the animation transitions with [react-native-screens](https://github.com
 > [!NOTE]
 > This package supports **only** [new architecture](https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here).
 
-> [!WARNING]
-> This package will migrate the blur core to the [QmBlurView](https://github.com/QmDeve/QmBlurView) library. We decided remove [Dimezis's BlurView](https://github.com/Dimezis/BlurView) library because it introduced more complexing structure in React Native Blur View. This migration is very necessary for Android devices and it removed to use of the `BlurTarget` component. The [QmBlurView](https://github.com/QmDeve/QmBlurView) is a high-performance Android UI library that provides real-time, dynamic blur effects.
-
 <p align="center">
   <img
     height="756px"
@@ -288,12 +285,12 @@ The `BlurView` component is an extends the same properties of the a `View` compo
 
 #### Properties
 
-| Property                           | Description                                   | Default     | Platform |
-| ---------------------------------- | --------------------------------------------- | ----------- | -------- |
-| `targetId`                         | Id of the target that will be blurred.        | `undefined` | Android  |
-| `type`                             | [Blur type](#blur-types) of the overlay.      | `light`     | All      |
-| `radius`                           | Blur radius `0` - `100`.                      | `10`        | All      |
-| `reducedTransparencyFallbackColor` | Fallback color to reduced transparency color. | `undefined` | All      |
+| Property       | Description                              | Default     | Platform |
+| -------------- | ---------------------------------------- | ----------- | -------- |
+| `targetId`     | Id of the target that will be blurred.   | `undefined` | Android  |
+| `type`         | [Blur type](#blur-types) of the overlay. | `light`     | All      |
+| `radius`       | Blur radius `0` - `100`.                 | `10`        | All      |
+| `overlayColor` | Add the overlay color about component.   | `undefined` | All      |
 
 An important detail, when a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
 
@@ -319,11 +316,11 @@ This component is available for **iOS only**. It apply a vibrancy effect in chil
 
 #### Properties
 
-| Property                           | Description                                   | Default     | Platform |
-| ---------------------------------- | --------------------------------------------- | ----------- | -------- |
-| `type`                             | [Blur type](#blur-types) of the overlay.      | `light`     | All      |
-| `radius`                           | Blur radius `0` - `100`.                      | `10`        | All      |
-| `reducedTransparencyFallbackColor` | Fallback color to reduced transparency color. | `undefined` | All      |
+| Property       | Description                              | Default     | Platform |
+| -------------- | ---------------------------------------- | ----------- | -------- |
+| `type`         | [Blur type](#blur-types) of the overlay. | `light`     | All      |
+| `radius`       | Blur radius `0` - `100`.                 | `10`        | All      |
+| `overlayColor` | Add the overlay color about component.   | `undefined` | All      |
 
 An important detail, when a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
 
