@@ -9,6 +9,7 @@ const BlurView = (props: BlurViewProps) => {
   const {
     type = 'light',
     radius = 10,
+    downscaleFactor = 6,
     targetId,
     style,
     children,
@@ -18,19 +19,26 @@ const BlurView = (props: BlurViewProps) => {
 
   const isAndroid = Platform.OS === 'android';
   const backgroundColor = { backgroundColor: overlayColor };
-  const shouldApplyRadius =
-    type === 'x-light' || type === 'light' || type === 'dark';
 
   const commonProps = useMemo(() => {
-    const androidBlurRadius = shouldApplyRadius ? radius : 35;
+    /**
+     * When the type is not a primary one, we need to increase the blur radius
+     * and decrease the downscale factor to achieve a similar effect on Android.
+     */
+    const isPrimary = type === 'x-light' || type === 'light' || type === 'dark';
+    const _blurRadius = isPrimary ? radius : 35;
+    const _downscaleFactor = isPrimary
+      ? downscaleFactor
+      : downscaleFactor * 0.66;
 
     return {
       targetId,
+      downscaleFactor: _downscaleFactor,
       overlayColor: type,
-      blurRadius: isAndroid ? androidBlurRadius : radius,
+      blurRadius: isAndroid ? _blurRadius : radius,
       ...rest,
     };
-  }, [type, radius, targetId, rest, shouldApplyRadius, isAndroid]);
+  }, [type, radius, downscaleFactor, targetId, rest, isAndroid]);
 
   if (!Children.count(children)) {
     return (
