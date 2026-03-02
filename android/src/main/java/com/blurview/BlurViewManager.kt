@@ -42,6 +42,12 @@ class BlurViewManager : ViewGroupManager<BlurView>(),
   }
 
   @Override
+  @ReactProp(name = "downscaleFactor", defaultFloat = 6f)
+  override fun setDownscaleFactor(view: BlurView?, downscaleFactor: Float) {
+    view?.setDownscaleFactor(downscaleFactor)
+  }
+
+  @Override
   @ReactProp(name = "targetId")
   override fun setTargetId(view: BlurView?, targetId: String?) {
     view?.setTargetId(targetId)
