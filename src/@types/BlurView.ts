@@ -50,7 +50,7 @@ export interface BlurViewProps extends ViewProps {
    *
    * @platform Android
    *
-   * @since 1.4.0
+   * @since 1.3.3
    */
   downscaleFactor?: number;
 
