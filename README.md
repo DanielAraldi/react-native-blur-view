@@ -285,14 +285,15 @@ The `BlurView` component is an extends the same properties of the a `View` compo
 
 #### Properties
 
-| Property       | Description                              | Default     | Platform |
-| -------------- | ---------------------------------------- | ----------- | -------- |
-| `targetId`     | Id of the target that will be blurred.   | `undefined` | Android  |
-| `type`         | [Blur type](#blur-types) of the overlay. | `light`     | All      |
-| `radius`       | Blur radius `0` - `100`.                 | `10`        | All      |
-| `overlayColor` | Add the overlay color about component.   | `undefined` | All      |
+| Property          | Description                              | Default     | Platform |
+| ----------------- | ---------------------------------------- | ----------- | -------- |
+| `targetId`        | Id of the target that will be blurred.   | `undefined` | Android  |
+| `type`            | [Blur type](#blur-types) of the overlay. | `light`     | All      |
+| `radius`          | Blur radius `0` - `100`.                 | `10.0`      | All      |
+| `downscaleFactor` | Downscale factor `0` - `100`.            | `6.0`       | Android  |
+| `overlayColor`    | Add the overlay color about component.   | `undefined` | All      |
 
-An important detail, when a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
+When a value less than `0` or greater than `100` are provided for `radius` or `downscaleFactor` property, the value is clipped.
 
 ### `BlurTarget`
 
@@ -322,7 +323,7 @@ This component is available for **iOS only**. It apply a vibrancy effect in chil
 | `radius`       | Blur radius `0` - `100`.                 | `10`        | All      |
 | `overlayColor` | Add the overlay color about component.   | `undefined` | All      |
 
-An important detail, when a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
+When a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
 
 ## Types
 
@@ -360,6 +361,8 @@ On iOS all types are supported, but, on Android is simulated the types using RGB
 ### Android
 
 On Android platforms, the component utilizes the [BlurView](https://github.com/Dimezis/BlurView) library to offer native blur effects with hardware-accelerated rendering.
+
+For different types of `x-light`, `light`, and `dark`, the `radius` is fixed at `35` and the `downscaleFactor` is only 66% of the stated value. This is done to maintain similarity with the iOS effect.
 
 ### iOS
 
