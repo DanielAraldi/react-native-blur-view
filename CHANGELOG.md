@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/DanielAraldi/react-native-blur-view/compare/v1.3.2...v1.3.3) (2026-03-02)
+
+
+### Bug Fixes
+
+* **android:** add new `downscaleFactor` property for `BlurView` component (Android only) ([2da16e5](https://github.com/DanielAraldi/react-native-blur-view/commit/2da16e561140b0f87b2b0c6867e449942b30fe0f))
+
 ## [1.3.2](https://github.com/DanielAraldi/react-native-blur-view/compare/v1.3.1...v1.3.2) (2026-02-27)
 
 
