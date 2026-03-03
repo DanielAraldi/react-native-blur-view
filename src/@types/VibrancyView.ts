@@ -38,4 +38,16 @@ export interface VibrancyViewProps extends ViewProps {
    * @since 1.2.0
    */
   overlayColor?: ColorValue;
+
+  /**
+   * @description Set a background color about vibrancy effect when reduced
+   * transparency is enabled.
+   *
+   * @default 'white'
+   *
+   * @platform iOS
+   *
+   * @since 1.4.0
+   */
+  reducedTransparencyFallbackColor?: string;
 }

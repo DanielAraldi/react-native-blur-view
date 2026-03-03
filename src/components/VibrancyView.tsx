@@ -9,6 +9,7 @@ const VibrancyView = (props: VibrancyViewProps) => {
   const {
     type = 'light',
     radius = 10,
+    reducedTransparencyFallbackColor = 'white',
     style,
     children,
     overlayColor,
@@ -20,6 +21,7 @@ const VibrancyView = (props: VibrancyViewProps) => {
   }
 
   const commonProps = {
+    reducedTransparencyFallbackColor,
     overlayColor: type,
     blurRadius: radius,
     style: [globalStyles.container, style, { backgroundColor: overlayColor }],

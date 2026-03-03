@@ -16,6 +16,13 @@ export function Tabs(props: BottomTabBarProps) {
   const pageIndex = state.index;
   const id = state.routeNames[pageIndex] || 'Blurs';
 
+  const commonProps = {
+    radius,
+    style: styles.blurView,
+    type: mode,
+    reducedTransparencyFallbackColor: '#F1F1F1',
+  };
+
   const renderTabs = useMemo(
     () =>
       props.state.routes.map((route, index) => {
@@ -49,16 +56,11 @@ export function Tabs(props: BottomTabBarProps) {
   return (
     <View style={styles.container}>
       {isAndroid ? (
-        <BlurView
-          targetId={id}
-          style={styles.blurView}
-          type={mode}
-          radius={radius}
-        >
+        <BlurView targetId={id} {...commonProps}>
           <View style={styles.content}>{renderTabs}</View>
         </BlurView>
       ) : (
-        <VibrancyView style={styles.blurView} type={mode} radius={radius}>
+        <VibrancyView {...commonProps}>
           <View style={styles.content}>{renderTabs}</View>
         </VibrancyView>
       )}

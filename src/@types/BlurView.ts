@@ -62,4 +62,16 @@ export interface BlurViewProps extends ViewProps {
    * @since 1.1.0
    */
   overlayColor?: ColorValue;
+
+  /**
+   * @description Set a background color about blur effect when reduced
+   * transparency is enabled.
+   *
+   * @default 'white'
+   *
+   * @platform iOS
+   *
+   * @since 1.4.0
+   */
+  reducedTransparencyFallbackColor?: string;
 }

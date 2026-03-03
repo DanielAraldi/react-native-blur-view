@@ -37,6 +37,7 @@ export function Settings() {
               radius={blurRadius}
               type={mode}
               style={styles.centralize}
+              reducedTransparencyFallbackColor="#F1F1F1"
             >
               <Text style={[styles.itemText, { color }]}>{label}</Text>
             </BlurView>
