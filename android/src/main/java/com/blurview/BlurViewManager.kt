@@ -42,6 +42,21 @@ class BlurViewManager : ViewGroupManager<BlurView>(),
   }
 
   @Override
+  @ReactProp(name = "downscaleFactor", defaultFloat = 6f)
+  override fun setDownscaleFactor(view: BlurView?, downscaleFactor: Float) {
+    view?.setDownscaleFactor(downscaleFactor)
+  }
+
+  @Override
+  @ReactProp(name = "reducedTransparencyFallbackColor")
+  override fun setReducedTransparencyFallbackColor(view: BlurView?, reducedTransparencyFallbackColor: String?) {
+    /**
+      No-op: Android does not have a direct equivalent to iOS's reduced
+      transparency fallback.
+     */
+  }
+
+  @Override
   @ReactProp(name = "targetId")
   override fun setTargetId(view: BlurView?, targetId: String?) {
     view?.setTargetId(targetId)

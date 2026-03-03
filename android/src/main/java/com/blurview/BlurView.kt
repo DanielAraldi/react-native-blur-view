@@ -13,6 +13,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   private var targetId: String? = null
   private var overlayColor: BlurOverlayColor = BlurOverlayColor.fromString("light")
   private var radius: Float = 10f * INTENSITY
+  private var downscaleFactor: Float = 6f
   private var isInitialized: Boolean = false
   private var rootView: BlurTarget? = null
 
@@ -112,7 +113,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     }
 
     val drawable = this.getAppropriateBackground()
-    super.setupWith(this.rootView!!, 6f, false)
+    super.setupWith(this.rootView!!, this.downscaleFactor, false)
       .setBlurRadius(this.radius)
       .setOverlayColor(this.overlayColor.color)
       .setBlurAutoUpdate(true)
@@ -224,7 +225,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
      * On Android > 31 the maximum blur radius is 67.5f and minimum is 0f.
      * On Android <= 31 the maximum blur radius is 25f and minimum must be
      * 0.00001f because if 0f radius is provided the Dimezis's BlurView library
-     * crashes. That's momently hack.
+     * crashes.
      *
      * See more details in the issue: https://github.com/Dimezis/BlurView/issues/247
      */
@@ -232,9 +233,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     val minRadius = if (isAndroidHigherThan12) 0f else 0.00001f
     val maxRadius = if (isAndroidHigherThan12) 67.5f else 25f
 
-    return if (radius <= minRadius) minRadius
-    else if (radius >= maxRadius) maxRadius
-    else radius
+    return radius.coerceIn(minRadius, maxRadius)
   }
 
   fun setOverlayColor(overlayColor: String) {
@@ -259,6 +258,15 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     if (this.isInitialized) {
       val clippedRadius = this.clipRadius(radiusValue)
       super.setBlurRadius(clippedRadius)
+      this.isInitialized = false
+      this.reinitialize()
+    }
+  }
+
+  fun setDownscaleFactor(downscaleFactor: Float) {
+    this.downscaleFactor = downscaleFactor.coerceIn(0f, 100f)
+
+    if (this.isInitialized) {
       this.isInitialized = false
       this.reinitialize()
     }

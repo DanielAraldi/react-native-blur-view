@@ -42,6 +42,19 @@ export interface BlurViewProps extends ViewProps {
   radius?: number;
 
   /**
+   * @description Set the downscale factor for the blur effect. It accepts a
+   * number between `0` and `15`. The higher the value, the more blurred the
+   * effect will be, but it may also impact performance.
+   *
+   * @default 6
+   *
+   * @platform Android
+   *
+   * @since 1.3.3
+   */
+  downscaleFactor?: number;
+
+  /**
    * @description Set a background color about blur effect.
    *
    * @default undefined
@@ -49,4 +62,16 @@ export interface BlurViewProps extends ViewProps {
    * @since 1.1.0
    */
   overlayColor?: ColorValue;
+
+  /**
+   * @description Set a background color about blur effect when reduced
+   * transparency is enabled.
+   *
+   * @default 'white'
+   *
+   * @platform iOS
+   *
+   * @since 1.4.0
+   */
+  reducedTransparencyFallbackColor?: string;
 }
