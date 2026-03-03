@@ -232,7 +232,11 @@ export function MyCustomTabs(props: BottomTabBarProps) {
 
   return (
     <View style={styles.container}>
-      <BlurView targetId={targetId} style={styles.content}>
+      <BlurView
+        targetId={targetId}
+        style={styles.content}
+        reducedTransparencyFallbackColor="#CCCCCC"
+      >
         {/* ... */}
       </BlurView>
     </View>
@@ -260,7 +264,7 @@ export function MyScreen() {
   return (
     <>
       <View style={styles.blurViewWrapper}>
-        <BlurView targetId="target" style={styles.blurView}>
+        <BlurView targetId="target" style={styles.blurView} downscaleFactor={4}>
           {/** ... **/}
         </BlurView>
       </View>
@@ -285,13 +289,14 @@ The `BlurView` component is an extends the same properties of the a `View` compo
 
 #### Properties
 
-| Property          | Description                              | Default     | Platform |
-| ----------------- | ---------------------------------------- | ----------- | -------- |
-| `targetId`        | Id of the target that will be blurred.   | `undefined` | Android  |
-| `type`            | [Blur type](#blur-types) of the overlay. | `light`     | All      |
-| `radius`          | Blur radius `0` - `100`.                 | `10.0`      | All      |
-| `downscaleFactor` | Downscale factor `0` - `100`.            | `6.0`       | Android  |
-| `overlayColor`    | Add the overlay color about component.   | `undefined` | All      |
+| Property                           | Description                                                              | Default     | Platform |
+| ---------------------------------- | ------------------------------------------------------------------------ | ----------- | -------- |
+| `targetId`                         | Id of the target that will be blurred.                                   | `undefined` | Android  |
+| `type`                             | [Blur type](#blur-types) of the overlay.                                 | `light`     | All      |
+| `radius`                           | Blur radius `0` - `100`.                                                 | `10.0`      | All      |
+| `downscaleFactor`                  | Downscale factor `0` - `100`.                                            | `6.0`       | Android  |
+| `overlayColor`                     | Add the overlay color about component.                                   | `undefined` | All      |
+| `reducedTransparencyFallbackColor` | Background color about blur effect when reduced transparency is enabled. | `white`     | iOS      |
 
 When a value less than `0` or greater than `100` are provided for `radius` or `downscaleFactor` property, the value is clipped.
 
@@ -317,11 +322,12 @@ This component is available for **iOS only**. It apply a vibrancy effect in chil
 
 #### Properties
 
-| Property       | Description                              | Default     | Platform |
-| -------------- | ---------------------------------------- | ----------- | -------- |
-| `type`         | [Blur type](#blur-types) of the overlay. | `light`     | All      |
-| `radius`       | Blur radius `0` - `100`.                 | `10`        | All      |
-| `overlayColor` | Add the overlay color about component.   | `undefined` | All      |
+| Property                           | Description                                                                  | Default     | Platform |
+| ---------------------------------- | ---------------------------------------------------------------------------- | ----------- | -------- |
+| `type`                             | [Blur type](#blur-types) of the overlay.                                     | `light`     | All      |
+| `radius`                           | Blur radius `0` - `100`.                                                     | `10`        | All      |
+| `overlayColor`                     | Add the overlay color about component.                                       | `undefined` | All      |
+| `reducedTransparencyFallbackColor` | Background color about vibrancy effect when reduced transparency is enabled. | `white`     | iOS      |
 
 When a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
 
@@ -367,6 +373,8 @@ For different types of `x-light`, `light`, and `dark`, the `radius` is fixed at 
 ### iOS
 
 On iOS all types are supported by default. However, on Android they are RGBA colors to simulate the same blur color.
+
+The `reducedTransparencyFallbackColor` property **accepts** hexadecimal colors and named colors: `black`, `blue`, `brown`, `clear`, `cyan`, `magenta`, `gray`, `green`, `orange`, `purple`, `red`, `transparent`, `white` and `yellow`.
 
 ## Expo
 
