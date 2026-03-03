@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v1.3.3...v1.4.0) (2026-03-03)
+
+
+### Bug Fixes
+
+* **android:** only declare `setReducedTransparencyFallbackColor` member method generated ([af418a9](https://github.com/DanielAraldi/react-native-blur-view/commit/af418a98e9a3e25d49775b967b5fe404ff5ddfcf))
+
+
+### Features
+
+* **ios:** add the new `reducedTransparencyFallbackColor` property ([289acd5](https://github.com/DanielAraldi/react-native-blur-view/commit/289acd5ae623fbf267211d9479b13f65ce38a114))
+
 ## [1.3.3](https://github.com/DanielAraldi/react-native-blur-view/compare/v1.3.2...v1.3.3) (2026-03-02)
 
 
