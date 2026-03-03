@@ -10,6 +10,7 @@ const BlurView = (props: BlurViewProps) => {
     type = 'light',
     radius = 10,
     downscaleFactor = 6,
+    reducedTransparencyFallbackColor = 'white',
     targetId,
     style,
     children,
@@ -33,12 +34,21 @@ const BlurView = (props: BlurViewProps) => {
 
     return {
       targetId,
+      reducedTransparencyFallbackColor,
       downscaleFactor: _downscaleFactor,
       overlayColor: type,
       blurRadius: isAndroid ? _blurRadius : radius,
       ...rest,
     };
-  }, [type, radius, downscaleFactor, targetId, rest, isAndroid]);
+  }, [
+    type,
+    radius,
+    downscaleFactor,
+    reducedTransparencyFallbackColor,
+    targetId,
+    rest,
+    isAndroid,
+  ]);
 
   if (!Children.count(children)) {
     return (

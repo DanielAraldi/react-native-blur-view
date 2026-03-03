@@ -10,6 +10,7 @@ export interface NativeProps extends ViewProps {
   overlayColor?: WithDefault<string, 'light'>;
   blurRadius?: WithDefault<Float, 10.0>;
   downscaleFactor?: WithDefault<Float, 6.0>;
+  reducedTransparencyFallbackColor?: WithDefault<string, 'white'>;
 }
 
 export default codegenNativeComponent<NativeProps>('BlurView');
