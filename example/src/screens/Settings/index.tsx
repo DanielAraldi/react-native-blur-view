@@ -1,7 +1,7 @@
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useBlur } from '../../hooks';
 import { makeStyles } from './styles';
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import {
   ImageBackground,
   ScrollView,
@@ -15,8 +15,9 @@ import { PORSCHE_ARCHITECTURE } from '../../assets';
 import { BLUR_RADIUS_DATA } from '../../constants';
 
 export function Settings() {
-  const { mode, radius, isDark, onRadius } = useBlur();
+  const radiusRef = useRef<View | null>(null);
   const { top, bottom } = useSafeAreaInsets();
+  const { mode, radius, isDark, onRadius } = useBlur();
 
   const styles = useMemo(() => makeStyles({ top, bottom }), [top, bottom]);
 
@@ -33,7 +34,7 @@ export function Settings() {
             activeOpacity={0.75}
           >
             <BlurView
-              targetId="radius"
+              blurTarget={radiusRef}
               radius={blurRadius}
               type={mode}
               style={styles.centralize}
@@ -48,12 +49,9 @@ export function Settings() {
   );
 
   return (
-    <BlurTarget
-      id="Settings"
-      style={[styles.expand, StyleSheet.absoluteFillObject]}
-    >
+    <View id="Settings" style={[styles.expand, StyleSheet.absoluteFillObject]}>
       <View style={styles.expand}>
-        <BlurTarget id="radius" style={StyleSheet.absoluteFillObject}>
+        <BlurTarget ref={radiusRef} style={StyleSheet.absoluteFillObject}>
           <ImageBackground
             style={StyleSheet.absoluteFillObject}
             source={PORSCHE_ARCHITECTURE}
@@ -72,7 +70,7 @@ export function Settings() {
 
           <View style={styles.configurationItem}>
             <BlurView
-              targetId="radius"
+              blurTarget={radiusRef}
               type={mode}
               radius={radius}
               style={StyleSheet.absoluteFillObject}
@@ -134,6 +132,6 @@ export function Settings() {
           {renderBlurRadius}
         </ScrollView>
       </View>
-    </BlurTarget>
+    </View>
   );
 }

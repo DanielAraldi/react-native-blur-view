@@ -1,5 +1,6 @@
-import type { ViewProps, ColorValue } from 'react-native';
+import type { ViewProps, ColorValue, View } from 'react-native';
 import type { BlurType } from './BlurType';
+import type { RefObject } from 'react';
 
 /**
  * @interface BlurViewProps
@@ -12,15 +13,15 @@ import type { BlurType } from './BlurType';
  */
 export interface BlurViewProps extends ViewProps {
   /**
-   * @description Id for the `BlurView` component to be identifier the
+   * @description Ref for the `BlurView` component to be identified by the
    * `BlurTarget` component in tree. **This is used to link the two components
    * together and it's required for Android.**
    *
    * @platform Android
    *
-   * @since 1.0.0
+   * @since 2.0.0
    */
-  targetId: string;
+  blurTarget?: RefObject<View | null>;
 
   /**
    * @description Set the color type of the overlay.

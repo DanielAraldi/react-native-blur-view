@@ -4,7 +4,6 @@ import com.facebook.react.module.annotations.ReactModule
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.ViewGroupManager
 import com.facebook.react.uimanager.ViewManagerDelegate
-import com.facebook.react.uimanager.annotations.ReactProp
 import com.facebook.react.viewmanagers.TargetViewManagerInterface
 import com.facebook.react.viewmanagers.TargetViewManagerDelegate
 
@@ -27,12 +26,6 @@ class TargetViewManager : ViewGroupManager<TargetView>(),
 
   companion object {
     const val NAME = "TargetView"
-  }
-
-  @Override
-  @ReactProp(name = "id")
-  override fun setId(view: TargetView?, id: String?) {
-    view?.setId(id)
   }
 
   /**
