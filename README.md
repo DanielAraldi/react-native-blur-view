@@ -78,7 +78,7 @@ cd ios && pod install && cd ..
 
 ```tsx
 import { useRef } from 'react';
-import { ImageBackground, ScrollView, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import {
   BlurView,
   BlurTarget,
@@ -161,7 +161,7 @@ You must add `BlurView` elements inside of the list (`ScrollView`/`FlatList`), a
 
 ```tsx
 import { useRef } from 'react';
-import { ImageBackground, ScrollView, View } from 'react-native';
+import { ImageBackground, ScrollView, Text, View } from 'react-native';
 import { BlurView, BlurTarget } from '@danielsaraldi/react-native-blur-view';
 // ...
 
@@ -209,7 +209,7 @@ You must add `BlurTarget` as a parent of content screen because it will be the *
 
 ```tsx
 import { useRef, useState } from 'react';
-import { Modal, ImageBackground, View } from 'react-native';
+import { Modal, View } from 'react-native';
 import { BlurTarget, BlurView } from '@danielsaraldi/react-native-blur-view';
 // ...
 
@@ -238,11 +238,7 @@ export function MyScreen() {
       </Modal>
 
       <BlurTarget ref={targetRef} style={styles.blurTarget}>
-        <ImageBackground
-          style={styles.background}
-          source={{ uri: 'https://picsum.photos/seed/picsum/600/900' }}
-          resizeMode="cover"
-        />
+        {/* ... */}
       </BlurTarget>
     </>
   );
@@ -378,11 +374,9 @@ In version 1.x, the `BlurView` has the `targetId` prop to be used as a reference
 ```tsx
 // ❌ Old API (v1.x) - Deprecated
 <>
-  <View style={styles.blurViewWrapper}>
-    <BlurView targetId="target" style={styles.blurView}>
-      {/** ... **/}
-    </BlurView>
-  </View>
+  <BlurView targetId="target" style={styles.blurView}>
+    {/** ... **/}
+  </BlurView>
 
   <BlurTarget id="target" style={styles.blurTarget}>
     {/** ... **/}
@@ -400,15 +394,9 @@ const targetRef = useRef<View | null>(null);
 ```tsx
 // ✅ New API (v2.0.0) - Current
 <>
-  <View style={styles.blurViewWrapper}>
-    <BlurView
-      blurTarget={targetRef}
-      style={styles.blurView}
-      downscaleFactor={4}
-    >
-      {/** ... **/}
-    </BlurView>
-  </View>
+  <BlurView blurTarget={targetRef} style={styles.blurView}>
+    {/** ... **/}
+  </BlurView>
 
   <BlurTarget ref={targetRef} style={styles.blurTarget}>
     {/** ... **/}
@@ -475,6 +463,7 @@ export interface CustomVibrancyViewProps extends VibrancyProps {
 
 - ✅ [`expo-blur`](https://docs.expo.dev/versions/latest/sdk/blur-view/) - A React component that blurs everything underneath the view. Common usage of this is for navigation bars, tab bars, and modals.
 - ✅ [`@sbaiahmed1/react-native-blur`](https://github.com/sbaiahmed1/react-native-blur) - A modern React Native blur view component that provides native blur effects for both iOS and Android platforms. also adds progressive blur and liquidGlass.
+- 🛑 [`@react-native-community/blur`](https://github.com/margelo/react-native-blur) - A component for UIVisualEffectView's blur and vibrancy effect on iOS, and BlurView on Android.
 
 ## Contributing
 
