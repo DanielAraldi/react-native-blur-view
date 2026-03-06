@@ -13,8 +13,8 @@ import type { RefObject } from 'react';
  */
 export interface BlurViewProps extends ViewProps {
   /**
-   * @description Ref for the `BlurView` component to be identified by the
-   * `BlurTarget` component in tree. **This is used to link the two components
+   * @description Ref of the `BlurTarget` component to be identified by the
+   * `BlurView` component in the tree. **This is used to link the two components
    * together and it's required for Android.**
    *
    * @platform Android
