@@ -15,7 +15,7 @@ import { BLUR_TYPES_DATA } from '../../constants';
 import { MOUNTAIN } from '../../assets';
 
 export function Blurs() {
-  const blursRef = useRef<View | null>(null);
+  const targetRef = useRef<View | null>(null);
   const { top, bottom } = useSafeAreaInsets();
   const { radius, onToggle } = useBlur();
 
@@ -34,7 +34,7 @@ export function Blurs() {
             activeOpacity={0.75}
           >
             <BlurView
-              blurTarget={blursRef}
+              blurTarget={targetRef}
               radius={radius}
               type={type}
               style={styles.centralize}
@@ -48,9 +48,9 @@ export function Blurs() {
   );
 
   return (
-    <View id="Blurs" style={[styles.expand, StyleSheet.absoluteFillObject]}>
+    <View style={[styles.expand, StyleSheet.absoluteFillObject]}>
       <View style={styles.expand}>
-        <BlurTarget ref={blursRef} style={StyleSheet.absoluteFillObject}>
+        <BlurTarget ref={targetRef} style={StyleSheet.absoluteFillObject}>
           <ImageBackground
             style={StyleSheet.absoluteFillObject}
             source={MOUNTAIN}

@@ -4,9 +4,8 @@ import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { VibrancyView } from '@danielsaraldi/react-native-blur-view';
 
 import { useBlur } from '../../hooks';
-import { isAndroid } from '../../utils';
-import { styles } from './styles';
 import { NAVIGATION_ICONS } from '../../constants';
+import { styles } from './styles';
 
 export function Tabs(props: BottomTabBarProps) {
   const { mode, radius, isDark } = useBlur();
@@ -49,17 +48,10 @@ export function Tabs(props: BottomTabBarProps) {
   );
 
   return (
-    <View style={styles.container}>
-      {isAndroid ? (
-        // <BlurView blurTarget={targetRef} {...commonProps} />
-        <View style={styles.blurView}>
-          <View style={styles.content}>{renderTabs}</View>
-        </View>
-      ) : (
-        <VibrancyView {...commonProps}>
-          <View style={styles.content}>{renderTabs}</View>
-        </VibrancyView>
-      )}
+    <View style={[styles.container, isDark && styles.containerDark]}>
+      <VibrancyView {...commonProps}>
+        <View style={styles.content}>{renderTabs}</View>
+      </VibrancyView>
     </View>
   );
 }
