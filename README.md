@@ -34,6 +34,7 @@ Support the animation transitions with [react-native-screens](https://github.com
 - [Installation](#installation)
 - [Usage](#usage)
   - [Using `ScrollView`/`FlatList`](#using-scrollviewflatlist)
+  - [Using `Modal`](#using-modal)
   - [Using `ImageBackground`](#using-imagebackground)
 - [Components](#components)
   - [`BlurView`](#blurview)
@@ -44,11 +45,11 @@ Support the animation transitions with [react-native-screens](https://github.com
     - [Properties](#properties-2)
 - [Types](#types)
   - [Blur Types](#blur-types)
+- [Migrate to 2.x](#️migrate-to-2x)
+  - [Why This Change?](#why-this-change)
 - [Platform Differences](#platform-differences)
   - [Android](#android)
   - [iOS](#ios)
-- [⚠️ Breaking Changes in v2.0.0](#️-breaking-changes-in-v200)
-  - [Why This Change?](#why-this-change)
 - [Expo](#expo)
 - [TypeScript Support](#typescript-support)
 - [Others Libraries](#others-libraries)
@@ -202,6 +203,52 @@ export function MyScreen() {
 }
 ```
 
+### Using `Modal`
+
+You must add `BlurTarget` as a parent of content screen because it will be the **target** of blur, the `BlurView` component must be to used inside of `Modal` to blur effect works correctly.
+
+```tsx
+import { useRef, useState } from 'react';
+import { Modal, ImageBackground, View } from 'react-native';
+import { BlurTarget, BlurView } from '@danielsaraldi/react-native-blur-view';
+// ...
+
+export function MyScreen() {
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const targetRef = useRef<View | null>(null);
+  // ...
+
+  return (
+    <>
+      <Modal
+        transparent
+        statusBarTranslucent
+        navigationBarTranslucent
+        hardwareAccelerated
+        visible={isOpenModal}
+        onRequestClose={() => setIsOpenModal(false)}
+        style={StyleSheet.absoluteFillObject}
+      >
+        <BlurView
+          blurTarget={targetRef}
+          style={StyleSheet.absoluteFillObject}
+        />
+
+        <View style={styles.modalContent}>{/* ... */}</View>
+      </Modal>
+
+      <BlurTarget ref={targetRef} style={styles.blurTarget}>
+        <ImageBackground
+          style={styles.background}
+          source={{ uri: 'https://picsum.photos/seed/picsum/600/900' }}
+          resizeMode="cover"
+        />
+      </BlurTarget>
+    </>
+  );
+}
+```
+
 ### Using `ImageBackground`
 
 You must add `BlurTarget` as a parent of `ImageBackground` because it will be the **target** of blur, the `BlurView` component must be to used as **brother** of `BlurTarget` to blur effect works correctly.
@@ -321,23 +368,7 @@ On iOS all types are supported, but, on Android is simulated the types using RGB
 | `thin-material-dark`        | A blur effect that creates the appearance of a thin material and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)                        | All      |
 | `ultra-thin-material-dark`  | A blur effect that creates the appearance of an ultra-thin material and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)                 | All      |
 
-## Platform Differences
-
-### Android
-
-On Android platforms, the component utilizes the [BlurView](https://github.com/Dimezis/BlurView) library to offer native blur effects with hardware-accelerated rendering.
-
-For different types of `x-light`, `light`, and `dark`, the `radius` is fixed at `35` and the `downscaleFactor` is only 66% of the stated value. This is done to maintain similarity with the iOS effect.
-
-Bottom tabs customized with the [`react-navigation/bottom-tabs`](https://reactnavigation.org/docs/bottom-tab-navigator/) **aren't** supported! If you want to customize your bottom tabs, opt for [`@sbaiahmed1/react-native-blur`](https://github.com/sbaiahmed1/react-native-blur).
-
-### iOS
-
-On iOS all types are supported by default. However, on Android they are RGBA colors to simulate the same blur color.
-
-The `reducedTransparencyFallbackColor` property **accepts** hexadecimal colors and named colors: `black`, `blue`, `brown`, `clear`, `cyan`, `magenta`, `gray`, `green`, `orange`, `purple`, `red`, `transparent`, `white` and `yellow`.
-
-## ⚠️ Breaking Changes in v2.0.0
+## Migrate to 2.x
 
 > [!WARNING]
 > Version 2.0.0 introduces significant API changes on Android apps. If you're upgrading from 1.x, please read this section carefully.
@@ -392,6 +423,22 @@ The blur effect on Android has always been a challenge. Therefore, version 2.0.0
 - **Performance**: Improved search in the element tree on Android.
 - **Rebuilt**: The core of the `BlurTarget` and `BlurView` components in Android has been redesigned.
 - **New Limitation**: Removed support to bottom tabs customized with the [`react-navigation/bottom-tabs`](https://reactnavigation.org/docs/bottom-tab-navigator/).
+
+## Platform Differences
+
+### Android
+
+On Android platforms, the component utilizes the [BlurView](https://github.com/Dimezis/BlurView) library to offer native blur effects with hardware-accelerated rendering.
+
+For different types of `x-light`, `light`, and `dark`, the `radius` is fixed at `35` and the `downscaleFactor` is only 66% of the stated value. This is done to maintain similarity with the iOS effect.
+
+Bottom tabs customized with the [`react-navigation/bottom-tabs`](https://reactnavigation.org/docs/bottom-tab-navigator/) **aren't** supported! If you want to customize your bottom tabs, opt for [`@sbaiahmed1/react-native-blur`](https://github.com/sbaiahmed1/react-native-blur).
+
+### iOS
+
+On iOS all types are supported by default. However, on Android they are RGBA colors to simulate the same blur color.
+
+The `reducedTransparencyFallbackColor` property **accepts** hexadecimal colors and named colors: `black`, `blue`, `brown`, `clear`, `cyan`, `magenta`, `gray`, `green`, `orange`, `purple`, `red`, `transparent`, `white` and `yellow`.
 
 ## Expo
 
