@@ -45,7 +45,7 @@ Support the animation transitions with [react-native-screens](https://github.com
     - [Properties](#properties-2)
 - [Types](#types)
   - [Blur Types](#blur-types)
-- [Migrate to 2.x](#️migrate-to-2x)
+- [Migrate to 2.x](#migrate-to-2x)
   - [Why This Change?](#why-this-change)
 - [Platform Differences](#platform-differences)
   - [Android](#android)
