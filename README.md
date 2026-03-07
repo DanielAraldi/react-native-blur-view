@@ -287,7 +287,7 @@ export function MyScreen() {
 
 ### `BlurView`
 
-The `BlurView` component is an extends the same properties of the a `View` component.
+The `BlurView` component is an extends the same properties of the a `View` component. The `blurTarget` prop is **required** for Android blur effect works correctly.
 
 #### Properties
 
@@ -306,7 +306,7 @@ When a value less than `0` or greater than `100` are provided for `radius` or `d
 
 The `BlurTarget` component is an extends the same properties of the a `View` component.
 
-This component is exclusive and mandatory for **Android**. It's useful because we use [Dimezis's 3v library](https://github.com/Dimezis/BlurView) to apply the blur effect, so its implementation is slightly different than on iOS. On iOS the `BlurTarget` component is a common `View`.
+This component is available for **Android only**. It's useful because we use [Dimezis's 3v library](https://github.com/Dimezis/BlurView) to apply the blur effect, so its implementation is slightly different than on iOS. The `BlurTarget` component is a common `View` in iOS.
 
 The `BlurTarget` may not contain a `BlurView` that targets the same `BlurTarget`. The `BlurTarget` may contain other `BlurTargets` and `BlurViews` though.
 
@@ -373,35 +373,33 @@ In version 1.x, the `BlurView` has the `targetId` prop to be used as a reference
 
 ```tsx
 // ❌ Old API (v1.x) - Deprecated
-<>
-  <BlurView targetId="target" style={styles.blurView}>
-    {/** ... **/}
-  </BlurView>
+<BlurView targetId="target" style={styles.blurView}>
+  {/** ... **/}
+</BlurView>
 
-  <BlurTarget id="target" style={styles.blurTarget}>
-    {/** ... **/}
-  </BlurTarget>
-</>
+<BlurTarget id="target" style={styles.blurTarget}>
+  {/** ... **/}
+</BlurTarget>
 ```
 
-In version 2.0.0, the `BlurView` has the `targetId` prop swapped by `blurTarget` prop. Now it receives a ref of the `View`:
+In version 2.0.0, the `BlurView` has the `targetId` prop swapped by `blurTarget` prop. The `BlurTarget` has its `id` prop swapped for a `ref` to the `View`:
 
 ```tsx
 // ✅ New API (v2.0.0) - Current
+import { View } from 'react-native';
+// ...
 const targetRef = useRef<View | null>(null);
 ```
 
 ```tsx
 // ✅ New API (v2.0.0) - Current
-<>
-  <BlurView blurTarget={targetRef} style={styles.blurView}>
-    {/** ... **/}
-  </BlurView>
+<BlurView blurTarget={targetRef} style={styles.blurView}>
+  {/** ... **/}
+</BlurView>
 
-  <BlurTarget ref={targetRef} style={styles.blurTarget}>
-    {/** ... **/}
-  </BlurTarget>
-</>
+<BlurTarget ref={targetRef} style={styles.blurTarget}>
+  {/** ... **/}
+</BlurTarget>
 ```
 
 ### Why This Change?
