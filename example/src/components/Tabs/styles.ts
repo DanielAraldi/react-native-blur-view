@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from 'react-native';
+import { isAndroid } from '../../utils';
 
 export const styles = StyleSheet.create({
   container: {
@@ -12,7 +13,13 @@ export const styles = StyleSheet.create({
 
     alignSelf: 'center',
 
+    backgroundColor: isAndroid ? '#878686' : 'transparent',
+
     borderRadius: 9999,
+  },
+
+  containerDark: {
+    backgroundColor: isAndroid ? '#262323' : 'transparent',
   },
 
   blurView: {

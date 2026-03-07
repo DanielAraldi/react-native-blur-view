@@ -8,30 +8,6 @@ import { isIos } from '../utils';
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-function BlursStack() {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="BlursStack" component={Blurs} />
-    </Stack.Navigator>
-  );
-}
-
-function SettingsStack() {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="SettingsStack" component={Settings} />
-    </Stack.Navigator>
-  );
-}
-
-function VibranciesStack() {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="VibranciesStack" component={Vibrancies} />
-    </Stack.Navigator>
-  );
-}
-
 function TabNavigator() {
   return (
     <Tab.Navigator
@@ -40,9 +16,9 @@ function TabNavigator() {
         headerShown: false,
       }}
     >
-      <Tab.Screen name="Blurs" component={BlursStack} />
-      {isIos && <Tab.Screen name="Vibrancies" component={VibranciesStack} />}
-      <Tab.Screen name="Settings" component={SettingsStack} />
+      <Tab.Screen name="Blurs" component={Blurs} />
+      {isIos && <Tab.Screen name="Vibrancies" component={Vibrancies} />}
+      <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
   );
 }

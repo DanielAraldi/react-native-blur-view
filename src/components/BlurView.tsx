@@ -1,5 +1,12 @@
-import { memo, Children, useMemo } from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
+import {
+  memo,
+  Children,
+  useMemo,
+  useState,
+  useEffect,
+  useCallback,
+} from 'react';
+import { findNodeHandle, Platform, StyleSheet, View } from 'react-native';
 
 import { Blur } from '../fabrics';
 import type { BlurViewProps } from '../@types';
@@ -11,15 +18,22 @@ const BlurView = (props: BlurViewProps) => {
     radius = 10,
     downscaleFactor = 6,
     reducedTransparencyFallbackColor = 'white',
-    targetId,
+    blurTarget,
     style,
     children,
     overlayColor,
     ...rest
   } = props;
 
+  const [targetId, setTargetId] = useState<number | undefined>(undefined);
+
   const isAndroid = Platform.OS === 'android';
   const backgroundColor = { backgroundColor: overlayColor };
+
+  const updateBlurTarget = useCallback(() => {
+    const node = blurTarget ? findNodeHandle(blurTarget.current) : undefined;
+    setTargetId(node || undefined);
+  }, [blurTarget]);
 
   const commonProps = useMemo(() => {
     /**
@@ -33,7 +47,7 @@ const BlurView = (props: BlurViewProps) => {
       : downscaleFactor * 0.66;
 
     return {
-      targetId,
+      targetId: isAndroid ? targetId : undefined,
       reducedTransparencyFallbackColor,
       downscaleFactor: _downscaleFactor,
       overlayColor: type,
@@ -49,6 +63,11 @@ const BlurView = (props: BlurViewProps) => {
     rest,
     isAndroid,
   ]);
+
+  useEffect(() => {
+    updateBlurTarget();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!Children.count(children)) {
     return (

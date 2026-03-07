@@ -8,15 +8,16 @@ import {
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import { makeStyles } from './styles';
 import { useBlur } from '../../hooks';
 import { BLUR_TYPES_DATA } from '../../constants';
 import { MOUNTAIN } from '../../assets';
 
 export function Blurs() {
-  const { radius, onToggle } = useBlur();
+  const targetRef = useRef<View | null>(null);
   const { top, bottom } = useSafeAreaInsets();
+  const { radius, onToggle } = useBlur();
 
   const styles = useMemo(() => makeStyles({ top, bottom }), [top, bottom]);
 
@@ -33,7 +34,7 @@ export function Blurs() {
             activeOpacity={0.75}
           >
             <BlurView
-              targetId="types"
+              blurTarget={targetRef}
               radius={radius}
               type={type}
               style={styles.centralize}
@@ -47,12 +48,9 @@ export function Blurs() {
   );
 
   return (
-    <BlurTarget
-      id="Blurs"
-      style={[styles.expand, StyleSheet.absoluteFillObject]}
-    >
+    <View style={[styles.expand, StyleSheet.absoluteFillObject]}>
       <View style={styles.expand}>
-        <BlurTarget id="types" style={StyleSheet.absoluteFillObject}>
+        <BlurTarget ref={targetRef} style={StyleSheet.absoluteFillObject}>
           <ImageBackground
             style={StyleSheet.absoluteFillObject}
             source={MOUNTAIN}
@@ -76,6 +74,6 @@ export function Blurs() {
           {renderBlurs}
         </ScrollView>
       </View>
-    </BlurTarget>
+    </View>
   );
 }

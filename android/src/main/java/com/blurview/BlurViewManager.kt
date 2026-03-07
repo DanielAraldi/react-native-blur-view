@@ -58,8 +58,8 @@ class BlurViewManager : ViewGroupManager<BlurView>(),
 
   @Override
   @ReactProp(name = "targetId")
-  override fun setTargetId(view: BlurView?, targetId: String?) {
-    view?.setTargetId(targetId)
+  override fun setTargetId(view: BlurView, targetId: Int) {
+    view.setTargetId(targetId)
   }
 
   /**

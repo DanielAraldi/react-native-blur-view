@@ -99,4 +99,33 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
 
       color: 'white',
     },
+
+    modalMarginTop: {
+      marginTop: 24,
+    },
+
+    modalContainer: {
+      zIndex: 99,
+
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+
+    modalContent: {
+      width: '80%',
+
+      padding: 16,
+
+      gap: 8,
+
+      justifyContent: 'center',
+
+      backgroundColor: '#F1F1F1',
+
+      borderRadius: 16,
+    },
+
+    modalContentDark: {
+      backgroundColor: '#262323',
+    },
   });
