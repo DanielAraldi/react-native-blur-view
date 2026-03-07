@@ -1,3 +1,22 @@
+# [2.0.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v1.4.0...v2.0.0) (2026-03-07)
+
+
+### Bug Fixes
+
+* adjust summary reference ([a9c8c73](https://github.com/DanielAraldi/react-native-blur-view/commit/a9c8c7379974dc8cc92bba4c42308968754ac714))
+* **android:** improve blur view initialization and prevent flickering during tab navigation ([7f027fc](https://github.com/DanielAraldi/react-native-blur-view/commit/7f027fc132fff40ab6b4f5b4381074137918c238))
+
+
+### Features
+
+* add modal in the example app ([db73c7e](https://github.com/DanielAraldi/react-native-blur-view/commit/db73c7e001b52a38bbee4c87076d6381cc3bb9bd))
+* **android:** remove navigation support ([186908a](https://github.com/DanielAraldi/react-native-blur-view/commit/186908a6400a065d7af612ecc3d9dd70979cabb5))
+
+
+### BREAKING CHANGES
+
+* **android:** rebuilt android core and removed react-navigation support
+
 # [1.4.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v1.3.3...v1.4.0) (2026-03-03)
 
 
