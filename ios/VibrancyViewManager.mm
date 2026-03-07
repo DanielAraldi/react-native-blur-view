@@ -1,3 +1,5 @@
+#if !TARGET_OS_TV
+
 #import <React/RCTViewManager.h>
 #import <React/RCTUIManager.h>
 #import "RCTBridge.h"
@@ -22,3 +24,4 @@ RCT_EXPORT_VIEW_PROPERTY(blurRadius, NSNumber);
 
 @end
 
+#endif
