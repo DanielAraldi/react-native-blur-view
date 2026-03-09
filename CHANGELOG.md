@@ -1,3 +1,15 @@
+# [2.1.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.0.0...v2.1.0) (2026-03-09)
+
+
+### Bug Fixes
+
+* **ios:** add platform ios in the `VibrancyView` JSDoc ([7775049](https://github.com/DanielAraldi/react-native-blur-view/commit/7775049742dd35037745c461e2bd4a3f203bb0fb))
+
+
+### Features
+
+* **ios:** add a new `effectStyle` prop to the `VibrancyView` component ([90a1c09](https://github.com/DanielAraldi/react-native-blur-view/commit/90a1c09cf45c3a253aa7b9928d02e40664685390))
+
 # [2.0.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v1.4.0...v2.0.0) (2026-03-07)
 
 
