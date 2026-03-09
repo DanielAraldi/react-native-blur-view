@@ -44,6 +44,7 @@ using namespace facebook::react;
 
     self.clipsToBounds = YES;
     self.overlayColor = @"light";
+    self.effectStyle = @"label";
     self.reducedTransparencyFallbackColor = @"white";
     self.blurRadius = @10;
 
@@ -84,6 +85,11 @@ using namespace facebook::react;
   if (oldViewProps.overlayColor != newViewProps.overlayColor) {
     NSString *overlayColor = [NSString stringWithUTF8String:newViewProps.overlayColor.c_str()];
     [self setOverlayColor:overlayColor];
+  }
+  
+  if (oldViewProps.effectStyle != newViewProps.effectStyle) {
+    NSString *effectStyle = [NSString stringWithUTF8String:newViewProps.effectStyle.c_str()];
+    [self setEffectStyle:effectStyle];
   }
 
   if (oldViewProps.reducedTransparencyFallbackColor != newViewProps.reducedTransparencyFallbackColor) {
@@ -156,7 +162,12 @@ using namespace facebook::react;
   self.blurEffectView.effect = self.blurEffect;
 
   if (@available(iOS 13.0, *)) {
-    self.vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:self.blurEffect style:UIVibrancyEffectStyleLabel];
+    #if TARGET_OS_TV
+      self.vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:self.blurEffect];
+    #else
+      UIVibrancyEffectStyle vibrancyEffectStyle = [BlurUtils vibrancyEffectStyle:self.effectStyle];
+      self.vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:self.blurEffect style:vibrancyEffectStyle];
+    #endif
   } else {
     self.vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:self.blurEffect];
   }
@@ -245,6 +256,14 @@ Class<RCTComponentViewProtocol> VibrancyViewCls(void)
 {
   if (overlayColor && ![self.overlayColor isEqual:overlayColor]) {
     _overlayColor = overlayColor;
+    [self updateVibrancyEffect];
+  }
+}
+
+- (void)setEffectStyle:(NSString *)effectStyle
+{
+  if (effectStyle && ![self.effectStyle isEqual:effectStyle]) {
+    _effectStyle = effectStyle;
     [self updateVibrancyEffect];
   }
 }

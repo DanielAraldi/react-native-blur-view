@@ -45,6 +45,7 @@ Support the animation transitions with [react-native-screens](https://github.com
     - [Properties](#properties-2)
 - [Types](#types)
   - [Blur Types](#blur-types)
+  - [Effect Styles](#effect-styles)
 - [Migrate to 2.x](#migrate-to-2x)
   - [Why This Change?](#why-this-change)
 - [Platform Differences](#platform-differences)
@@ -326,9 +327,10 @@ This component is available for **iOS only**. It apply a vibrancy effect in chil
 
 | Property                           | Description                                                                  | Default     | Platform |
 | ---------------------------------- | ---------------------------------------------------------------------------- | ----------- | -------- |
-| `type`                             | [Blur type](#blur-types) of the overlay.                                     | `light`     | All      |
-| `radius`                           | Blur radius `0` - `100`.                                                     | `10`        | All      |
-| `overlayColor`                     | Add the overlay color about component.                                       | `undefined` | All      |
+| `type`                             | [Blur type](#blur-types) of the overlay.                                     | `light`     | iOS      |
+| `type`                             | [Effect style](#effect-styles) to vibrancy content.                          | `label`     | iOS      |
+| `radius`                           | Blur radius `0` - `100`.                                                     | `10`        | iOS      |
+| `overlayColor`                     | Add the overlay color about component.                                       | `undefined` | iOS      |
 | `reducedTransparencyFallbackColor` | Background color about vibrancy effect when reduced transparency is enabled. | `white`     | iOS      |
 
 When a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
@@ -363,6 +365,27 @@ On iOS all types are supported, but, on Android is simulated the types using RGB
 | `thick-material-dark`       | A blur effect that creates the appearance of a material that’s thicker than normal and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)  | All      |
 | `thin-material-dark`        | A blur effect that creates the appearance of a thin material and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)                        | All      |
 | `ultra-thin-material-dark`  | A blur effect that creates the appearance of an ultra-thin material and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)                 | All      |
+
+Learn more about blur types [here](https://developer.apple.com/documentation/uikit/uiblureffect/style).
+
+### Effect Styles
+
+On iOS all effect styles are supported. This property is available in the `VibrancyView` component, it's **iOS only**.
+
+| Property           | Description                                                                             | Platform |
+| ------------------ | --------------------------------------------------------------------------------------- | -------- |
+| `label`            | A style for labels containing primary content. (**iOS >= 13**)                          | iOS      |
+| `secondary-label`  | A style for labels containing secondary content. (**iOS >= 13**)                        | iOS      |
+| `tertiary-label`   | A style for labels containing tertiary content. (**iOS >= 13**)                         | iOS      |
+| `quaternary-label` | A style for labels containing quaternary content. (**iOS >= 13**)                       | iOS      |
+| `fill`             | A style for views with large filled areas containing primary content. (**iOS >= 13**)   | iOS      |
+| `secondary-fill`   | A style for views with large filled areas containing secondary content. (**iOS >= 13**) | iOS      |
+| `tertiary-fill`    | A style for views with large filled areas containing tertiary content. (**iOS >= 13**)  | iOS      |
+
+- Label styles show progressive opacity drops from full white to near-invisible.
+- Fill styles show translucent rectangles at decreasing opacity levels.
+
+Learn more about effect styles [here](https://developer.apple.com/documentation/uikit/uivibrancyeffectstyle).
 
 ## Migrate to 2.x
 
@@ -437,12 +460,14 @@ Full TypeScript support with proper type definitions!
 ```ts
 import {
   BlurType,
+  EffectStyle,
   BlurViewProps,
   BlurTargetProps,
   VibrancyProps,
 } from '@danielsaraldi/react-native-blur-view';
 
 export const INITIAL_BLUR_TYPE: BlurType = 'light';
+export const INITIAL_EFFECT_STYLE: EffectStyle = 'label';
 
 export interface CustomBlurViewProps extends BlurViewProps {
   // ...
