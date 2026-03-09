@@ -17,6 +17,8 @@ export interface VibrancyViewProps extends ViewProps {
    *
    * @default 'light'
    *
+   * @platform iOS
+   *
    * @since 1.2.0
    */
   type?: BlurType;
@@ -25,6 +27,8 @@ export interface VibrancyViewProps extends ViewProps {
    * @description Set the effect style for the vibrancy view.
    *
    * @default 'label'
+   *
+   * @platform iOS
    *
    * @since 2.1.0
    */
@@ -36,6 +40,8 @@ export interface VibrancyViewProps extends ViewProps {
    *
    * @default 10
    *
+   * @platform iOS
+   *
    * @since 1.2.0
    */
   radius?: number;
@@ -44,6 +50,8 @@ export interface VibrancyViewProps extends ViewProps {
    * @description Set a background color about vibrancy effect.
    *
    * @default undefined
+   *
+   * @platform iOS
    *
    * @since 1.2.0
    */
