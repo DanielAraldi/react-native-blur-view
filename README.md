@@ -327,10 +327,10 @@ This component is available for **iOS only**. It apply a vibrancy effect in chil
 
 | Property                           | Description                                                                  | Default     | Platform |
 | ---------------------------------- | ---------------------------------------------------------------------------- | ----------- | -------- |
-| `type`                             | [Blur type](#blur-types) of the overlay.                                     | `light`     | All      |
-| `type`                             | [Effect style](#effect-styles) to vibrancy content.                          | `label`     | All      |
-| `radius`                           | Blur radius `0` - `100`.                                                     | `10`        | All      |
-| `overlayColor`                     | Add the overlay color about component.                                       | `undefined` | All      |
+| `type`                             | [Blur type](#blur-types) of the overlay.                                     | `light`     | iOS      |
+| `type`                             | [Effect style](#effect-styles) to vibrancy content.                          | `label`     | iOS      |
+| `radius`                           | Blur radius `0` - `100`.                                                     | `10`        | iOS      |
+| `overlayColor`                     | Add the overlay color about component.                                       | `undefined` | iOS      |
 | `reducedTransparencyFallbackColor` | Background color about vibrancy effect when reduced transparency is enabled. | `white`     | iOS      |
 
 When a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
