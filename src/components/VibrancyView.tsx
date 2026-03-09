@@ -8,6 +8,7 @@ import { globalStyles } from '../styles';
 const VibrancyView = (props: VibrancyViewProps) => {
   const {
     type = 'light',
+    effectStyle = 'label',
     radius = 10,
     reducedTransparencyFallbackColor = 'white',
     style,
@@ -21,6 +22,7 @@ const VibrancyView = (props: VibrancyViewProps) => {
   }
 
   const commonProps = {
+    effectStyle,
     reducedTransparencyFallbackColor,
     overlayColor: type,
     blurRadius: radius,

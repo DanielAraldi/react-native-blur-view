@@ -47,4 +47,5 @@ export type {
   BlurViewProps,
   BlurTargetProps,
   VibrancyViewProps,
+  EffectStyle,
 } from './@types';

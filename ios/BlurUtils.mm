@@ -36,6 +36,18 @@
   return UIBlurEffectStyleLight;
 }
 
++ (UIVibrancyEffectStyle)vibrancyEffectStyle:(NSString *)style
+{
+  if ([style isEqualToString: @"label"]) return UIVibrancyEffectStyleLabel;
+  else if ([style isEqualToString: @"secondary-label"]) return UIVibrancyEffectStyleSecondaryLabel;
+  else if ([style isEqualToString: @"tertiary-label"]) return UIVibrancyEffectStyleTertiaryLabel;
+  else if ([style isEqualToString: @"quaternary-label"]) return UIVibrancyEffectStyleQuaternaryLabel;
+  else if ([style isEqualToString: @"fill"]) return UIVibrancyEffectStyleFill;
+  else if ([style isEqualToString: @"secondary-fill"]) return UIVibrancyEffectStyleSecondaryFill;
+  else if ([style isEqualToString: @"tertiary-fill"]) return UIVibrancyEffectStyleTertiaryFill;
+  else return UIVibrancyEffectStyleLabel;
+}
+
 + (NSNumber *)clipRadius:(NSNumber *)radius
 {
   if (radius == nil) {
