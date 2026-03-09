@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.0...v2.1.1) (2026-03-09)
+
+
+### Bug Fixes
+
+* `type` prop duplicated in the `VibrancyView` ([0485d01](https://github.com/DanielAraldi/react-native-blur-view/commit/0485d01bd7c219b0c2ce0ffa8fa5efa177ad2a4d))
+
 # [2.1.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.0.0...v2.1.0) (2026-03-09)
 
 
