@@ -1,4 +1,4 @@
-import type { BlurRadiusData, BlurTypeData } from '../@types';
+import type { BlurRadiusData, BlurTypeData, EffectStyleData } from '../@types';
 
 export const NAVIGATION_ICONS = {
   Blurs: '🌫️',
@@ -88,6 +88,41 @@ export const BLUR_TYPES_DATA: BlurTypeData[] = [
     label: 'Ultra Thin Material Dark 🌚',
   },
 ] as const;
+
+export const EFFECT_STYLES_DATA: EffectStyleData[] = [
+  {
+    style: 'label',
+    label: 'Label 🏷️',
+  },
+  {
+    style: 'secondary-label',
+    label: 'Secondary Label 🏷️',
+  },
+  {
+    style: 'tertiary-label',
+    label: 'Tertiary Label 🏷️',
+  },
+  {
+    style: 'quaternary-label',
+    label: 'Quaternary Label 🏷️',
+  },
+  {
+    style: 'fill',
+    label: 'Fill 🎨',
+  },
+  {
+    style: 'secondary-fill',
+    label: 'Secondary Fill 🎨',
+  },
+  {
+    style: 'tertiary-fill',
+    label: 'Tertiary Fill 🎨',
+  },
+  {
+    style: 'separator',
+    label: 'Separator ➗',
+  },
+];
 
 export const BLUR_RADIUS_DATA: BlurRadiusData[] = [
   {

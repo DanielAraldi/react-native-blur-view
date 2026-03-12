@@ -1,6 +1,3 @@
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useBlur } from '../../hooks';
-import { makeStyles } from './styles';
 import { useMemo, useRef, useState } from 'react';
 import {
   Button,
@@ -12,9 +9,13 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BlurTarget, BlurView } from '@danielsaraldi/react-native-blur-view';
+import { useBlur } from '../../hooks';
 import { PORSCHE_ARCHITECTURE } from '../../assets';
 import { BLUR_RADIUS_DATA } from '../../constants';
+import { makeStyles } from './styles';
+import { isIos } from '../../utils';
 
 export function Settings() {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
@@ -22,9 +23,12 @@ export function Settings() {
   const targetRef = useRef<View | null>(null);
   const scrollTargetRef = useRef<View | null>(null);
   const { top, bottom } = useSafeAreaInsets();
-  const { mode, radius, isDark, onRadius } = useBlur();
+  const { blurType, effectStyle, radius, isDark, onRadius } = useBlur();
 
-  const color = mode.includes('dark') ? 'white' : 'black';
+  const color = blurType.includes('dark') ? 'white' : 'black';
+  const defaultMessage = isIos
+    ? 'Default blur type is light, radius is 10 and vibrancy effect style is label.'
+    : 'Default blur type is light and default radius is 10.';
 
   const styles = useMemo(() => makeStyles({ top, bottom }), [top, bottom]);
 
@@ -41,7 +45,7 @@ export function Settings() {
             <BlurView
               blurTarget={scrollTargetRef}
               radius={blurRadius}
-              type={mode}
+              type={blurType}
               style={styles.centralize}
               reducedTransparencyFallbackColor="#F1F1F1"
             >
@@ -50,7 +54,7 @@ export function Settings() {
           </TouchableOpacity>
         );
       }),
-    [mode, styles, color, onRadius]
+    [blurType, styles, color, onRadius]
   );
 
   return (
@@ -79,7 +83,7 @@ export function Settings() {
           <View style={styles.configurationItem}>
             <BlurView
               blurTarget={scrollTargetRef}
-              type={mode}
+              type={blurType}
               radius={radius}
               style={StyleSheet.absoluteFillObject}
             />
@@ -114,7 +118,7 @@ export function Settings() {
             <BlurView
               blurTarget={scrollTargetRef}
               radius={radius}
-              type={mode}
+              type={blurType}
               style={styles.centralize}
               reducedTransparencyFallbackColor="#F1F1F1"
             >
@@ -135,7 +139,7 @@ export function Settings() {
         >
           <BlurView
             blurTarget={targetRef}
-            type={mode}
+            type={blurType}
             radius={radius}
             style={StyleSheet.absoluteFillObject}
           />
@@ -171,7 +175,7 @@ export function Settings() {
                   isDark && styles.configurationTextDark,
                 ]}
               >
-                Default type is light and default radius is 10.
+                {defaultMessage}
               </Text>
 
               <Text
@@ -180,8 +184,28 @@ export function Settings() {
                   isDark && styles.configurationTextDark,
                 ]}
               >
-                Current type: {mode}.
+                Current radius: {radius}.
               </Text>
+
+              <Text
+                style={[
+                  styles.configurationText,
+                  isDark && styles.configurationTextDark,
+                ]}
+              >
+                Current blur type: {blurType}.
+              </Text>
+
+              {isIos && (
+                <Text
+                  style={[
+                    styles.configurationText,
+                    isDark && styles.configurationTextDark,
+                  ]}
+                >
+                  Current effect style: {effectStyle}.
+                </Text>
+              )}
 
               <Button title="Close" onPress={() => setIsOpenModal(false)} />
             </View>
