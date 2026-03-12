@@ -7,15 +7,18 @@ import android.util.Log
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.drawable.toDrawable
-import eightbitlab.com.blurview.BlurTarget
+import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.uimanager.ThemedReactContext
+import com.facebook.react.uimanager.UIManagerHelper
+import com.facebook.react.uimanager.common.UIManagerType
 
 class BlurView : eightbitlab.com.blurview.BlurView {
-  private var targetId: String? = null
+  private var targetId: Int? = null
   private var overlayColor: BlurOverlayColor = BlurOverlayColor.fromString("light")
   private var radius: Float = 10f * INTENSITY
   private var downscaleFactor: Float = 6f
-  private var isInitialized: Boolean = false
-  private var rootView: BlurTarget? = null
+  private var targetView: TargetView? = null
+  private var reactContext: ReactApplicationContext
 
   companion object {
     private const val TAG: String = "BlurView"
@@ -23,10 +26,14 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   }
 
   constructor(context: Context?) : super(context) {
+    this.reactContext = (context as ThemedReactContext).reactApplicationContext
+
     this.setupBlurView()
   }
 
   constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
+    this.reactContext = (context as ThemedReactContext).reactApplicationContext
+
     this.setupBlurView()
   }
 
@@ -35,22 +42,20 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     attrs,
     defStyleAttr
   ) {
+    this.reactContext = (context as ThemedReactContext).reactApplicationContext
+
     this.setupBlurView()
   }
 
   override fun onAttachedToWindow() {
     super.onAttachedToWindow()
 
-    if (!this.isInitialized) {
-      this.reinitialize()
-    }
+    this.reinitialize()
   }
 
   override fun onDetachedFromWindow() {
     super.onDetachedFromWindow()
 
-    this.rootView = null
-    this.isInitialized = false
     this.removeCallbacks(null)
   }
 
@@ -98,77 +103,22 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   }
 
   private fun initialize() {
-    // Find rootView only on first mount (when the initialization is false)
-    if (!this.isInitialized) {
-      this.rootView = this.findRootTargetView()
+    if (this.targetView == null) {
+      super.setBackgroundColor(this.overlayColor.color)
+      super.setOverlayColor(this.overlayColor.color)
+      super.setBlurEnabled(false)
 
-      if (this.rootView == null) {
-        super.setBackgroundColor(this.overlayColor.color)
-        super.setOverlayColor(this.overlayColor.color)
-        super.setBlurEnabled(false)
-
-        Log.w(TAG, "Target view not found: $targetId")
-        return
-      }
+      Log.e(TAG, "Target view not found: $targetId")
+      return
     }
 
     val drawable = this.getAppropriateBackground()
-    super.setupWith(this.rootView!!, this.downscaleFactor, false)
+    super.setupWith(this.targetView!!.blurTarget, this.downscaleFactor, false)
       .setBlurRadius(this.radius)
       .setOverlayColor(this.overlayColor.color)
       .setBlurAutoUpdate(true)
       .setBlurEnabled(true)
       .setFrameClearDrawable(drawable)
-
-    this.isInitialized = true
-  }
-
-  private fun findRootTargetView(): BlurTarget? {
-    if (this.targetId == null) {
-      Log.w(TAG, "TargetId is null")
-
-      return null
-    }
-
-    val activityRoot = this.getRootView()
-    activityRoot?.let { root ->
-      val target = findViewWithTagInViewGroup(root as? ViewGroup, targetId!!)
-      if (target != null) return target
-    }
-
-    var parent = this.parent
-    while (parent != null) {
-      if (parent is ViewGroup) {
-        val target = findViewWithTagInViewGroup(parent, targetId!!)
-        if (target != null) return target
-      }
-      parent = parent.parent
-    }
-
-    Log.w(TAG, "Target not found anywhere: $targetId")
-    return null
-  }
-
-  private fun findViewWithTagInViewGroup(viewGroup: ViewGroup?, tag: String): BlurTarget? {
-    if (viewGroup == null) return null
-
-    if (viewGroup.tag == tag && viewGroup is BlurTarget) {
-      return viewGroup
-    }
-
-    for (i in 0 until viewGroup.childCount) {
-      val child = viewGroup.getChildAt(i)
-      if (child.tag == tag && child is BlurTarget) {
-        return child
-      }
-
-      if (child is ViewGroup) {
-        val found = this.findViewWithTagInViewGroup(child, tag)
-        if (found != null) return found
-      }
-    }
-
-    return null
   }
 
   /**
@@ -213,7 +163,10 @@ class BlurView : eightbitlab.com.blurview.BlurView {
         is android.content.ContextWrapper -> {
           context = context.baseContext
         }
-        else -> break
+        else -> {
+          Log.e(TAG, "Context is not an AppCompatActivity or ContextWrapper")
+          break
+        }
       }
     }
 
@@ -242,12 +195,9 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     this.overlayColor = overlay
 
     super.setBackgroundColor(overlay.color)
+    super.setOverlayColor(overlay.color)
 
-    if (this.isInitialized) {
-      super.setOverlayColor(overlay.color)
-      this.isInitialized = false
-      this.reinitialize()
-    }
+    this.reinitialize()
   }
 
   fun setRadius(radius: Float) {
@@ -255,31 +205,36 @@ class BlurView : eightbitlab.com.blurview.BlurView {
 
     this.radius = this.clipRadius(radiusValue)
 
-    if (this.isInitialized) {
-      val clippedRadius = this.clipRadius(radiusValue)
-      super.setBlurRadius(clippedRadius)
-      this.isInitialized = false
-      this.reinitialize()
-    }
+    val clippedRadius = this.clipRadius(radiusValue)
+    super.setBlurRadius(clippedRadius)
+
+    this.reinitialize()
   }
 
   fun setDownscaleFactor(downscaleFactor: Float) {
+    if (this.downscaleFactor == downscaleFactor) return
+
     this.downscaleFactor = downscaleFactor.coerceIn(0f, 100f)
 
-    if (this.isInitialized) {
-      this.isInitialized = false
-      this.reinitialize()
-    }
+    this.reinitialize()
   }
 
-  fun setTargetId(targetId: String?) {
-    val oldTargetId = this.targetId
+  fun setTargetId(targetId: Int?) {
+    if (this.targetId == targetId) return
+
+    if (targetId == null) {
+      this.targetView = null
+    } else {
+      val fabricUIManager = UIManagerHelper.getUIManager(
+        reactContext,
+        UIManagerType.FABRIC
+      )
+      fabricUIManager?.resolveView(targetId)?.let { view ->
+        this.targetView = view as? TargetView
+      }
+    }
 
     this.targetId = targetId
-
-    if (oldTargetId != targetId && this.isAttachedToWindow) {
-      this.isInitialized = false
-      this.reinitialize()
-    }
+    this.reinitialize()
   }
 }

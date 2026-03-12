@@ -1,3 +1,48 @@
+## [2.1.2](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.1...v2.1.2) (2026-03-12)
+
+
+### Bug Fixes
+
+* **ios:** add a missing `separator` prop to the `EffectStyle` ([016c11b](https://github.com/DanielAraldi/react-native-blur-view/commit/016c11b4218263b145da6f8002935981eb3e7670))
+
+## [2.1.1](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.0...v2.1.1) (2026-03-09)
+
+
+### Bug Fixes
+
+* `type` prop duplicated in the `VibrancyView` ([0485d01](https://github.com/DanielAraldi/react-native-blur-view/commit/0485d01bd7c219b0c2ce0ffa8fa5efa177ad2a4d))
+
+# [2.1.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.0.0...v2.1.0) (2026-03-09)
+
+
+### Bug Fixes
+
+* **ios:** add platform ios in the `VibrancyView` JSDoc ([7775049](https://github.com/DanielAraldi/react-native-blur-view/commit/7775049742dd35037745c461e2bd4a3f203bb0fb))
+
+
+### Features
+
+* **ios:** add a new `effectStyle` prop to the `VibrancyView` component ([90a1c09](https://github.com/DanielAraldi/react-native-blur-view/commit/90a1c09cf45c3a253aa7b9928d02e40664685390))
+
+# [2.0.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v1.4.0...v2.0.0) (2026-03-07)
+
+
+### Bug Fixes
+
+* adjust summary reference ([a9c8c73](https://github.com/DanielAraldi/react-native-blur-view/commit/a9c8c7379974dc8cc92bba4c42308968754ac714))
+* **android:** improve blur view initialization and prevent flickering during tab navigation ([7f027fc](https://github.com/DanielAraldi/react-native-blur-view/commit/7f027fc132fff40ab6b4f5b4381074137918c238))
+
+
+### Features
+
+* add modal in the example app ([db73c7e](https://github.com/DanielAraldi/react-native-blur-view/commit/db73c7e001b52a38bbee4c87076d6381cc3bb9bd))
+* **android:** remove navigation support ([186908a](https://github.com/DanielAraldi/react-native-blur-view/commit/186908a6400a065d7af612ecc3d9dd70979cabb5))
+
+
+### BREAKING CHANGES
+
+* **android:** rebuilt android core and removed react-navigation support
+
 # [1.4.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v1.3.3...v1.4.0) (2026-03-03)
 
 

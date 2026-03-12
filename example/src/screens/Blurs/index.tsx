@@ -1,4 +1,4 @@
-import { BlurTarget, BlurView } from '@danielsaraldi/react-native-blur-view';
+import { useMemo, useRef } from 'react';
 import {
   ImageBackground,
   ScrollView,
@@ -7,33 +7,34 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { BlurTarget, BlurView } from '@danielsaraldi/react-native-blur-view';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useMemo } from 'react';
-import { makeStyles } from './styles';
 import { useBlur } from '../../hooks';
-import { BLUR_TYPES_DATA } from '../../constants';
 import { MOUNTAIN } from '../../assets';
+import { BLUR_TYPES_DATA } from '../../constants';
+import { makeStyles } from './styles';
 
 export function Blurs() {
-  const { radius, onToggle } = useBlur();
+  const targetRef = useRef<View | null>(null);
   const { top, bottom } = useSafeAreaInsets();
+  const { radius, onBlurType } = useBlur();
 
   const styles = useMemo(() => makeStyles({ top, bottom }), [top, bottom]);
 
   const renderBlurs = useMemo(
     () =>
-      BLUR_TYPES_DATA.map(({ type, label }, index) => {
+      BLUR_TYPES_DATA.map(({ type, label }) => {
         const color = type.includes('dark') ? 'white' : 'black';
 
         return (
           <TouchableOpacity
-            key={index}
+            key={type}
             style={styles.item}
-            onPress={() => onToggle(type)}
+            onPress={() => onBlurType(type)}
             activeOpacity={0.75}
           >
             <BlurView
-              targetId="types"
+              blurTarget={targetRef}
               radius={radius}
               type={type}
               style={styles.centralize}
@@ -43,16 +44,13 @@ export function Blurs() {
           </TouchableOpacity>
         );
       }),
-    [radius, styles, onToggle]
+    [radius, styles, onBlurType]
   );
 
   return (
-    <BlurTarget
-      id="Blurs"
-      style={[styles.expand, StyleSheet.absoluteFillObject]}
-    >
+    <View style={[styles.expand, StyleSheet.absoluteFillObject]}>
       <View style={styles.expand}>
-        <BlurTarget id="types" style={StyleSheet.absoluteFillObject}>
+        <BlurTarget ref={targetRef} style={StyleSheet.absoluteFillObject}>
           <ImageBackground
             style={StyleSheet.absoluteFillObject}
             source={MOUNTAIN}
@@ -76,6 +74,6 @@ export function Blurs() {
           {renderBlurs}
         </ScrollView>
       </View>
-    </BlurTarget>
+    </View>
   );
 }

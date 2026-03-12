@@ -1,25 +1,20 @@
 import { useMemo } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import { BlurView, VibrancyView } from '@danielsaraldi/react-native-blur-view';
+import { VibrancyView } from '@danielsaraldi/react-native-blur-view';
 
 import { useBlur } from '../../hooks';
-import { isAndroid } from '../../utils';
-import { styles } from './styles';
 import { NAVIGATION_ICONS } from '../../constants';
+import { styles } from './styles';
 
 export function Tabs(props: BottomTabBarProps) {
-  const { state } = props;
-
-  const { mode, radius, isDark } = useBlur();
-
-  const pageIndex = state.index;
-  const id = state.routeNames[pageIndex] || 'Blurs';
+  const { blurType, radius, effectStyle, isDark } = useBlur();
 
   const commonProps = {
     radius,
+    effectStyle,
     style: styles.blurView,
-    type: mode,
+    type: blurType,
     reducedTransparencyFallbackColor: '#F1F1F1',
   };
 
@@ -54,16 +49,10 @@ export function Tabs(props: BottomTabBarProps) {
   );
 
   return (
-    <View style={styles.container}>
-      {isAndroid ? (
-        <BlurView targetId={id} {...commonProps}>
-          <View style={styles.content}>{renderTabs}</View>
-        </BlurView>
-      ) : (
-        <VibrancyView {...commonProps}>
-          <View style={styles.content}>{renderTabs}</View>
-        </VibrancyView>
-      )}
+    <View style={[styles.container, isDark && styles.containerDark]}>
+      <VibrancyView {...commonProps}>
+        <View style={styles.content}>{renderTabs}</View>
+      </VibrancyView>
     </View>
   );
 }

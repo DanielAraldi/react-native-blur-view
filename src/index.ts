@@ -11,8 +11,8 @@ import type {
 } from './@types';
 
 /**
- * @description The `BlurView` component is a React Native component that provides a
- * native blur effect to its children.
+ * @description The `BlurView` component is a React Native component that
+ * provides a native blur effect to its children.
  *
  * @see https://github.com/DanielAraldi/react-native-blur-view?tab=readme-ov-file#blurview
  *
@@ -47,4 +47,5 @@ export type {
   BlurViewProps,
   BlurTargetProps,
   VibrancyViewProps,
+  EffectStyle,
 } from './@types';
