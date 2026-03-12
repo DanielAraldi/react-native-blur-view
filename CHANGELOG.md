@@ -1,3 +1,11 @@
+## [2.1.3](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.2...v2.1.3) (2026-03-12)
+
+
+### Bug Fixes
+
+* **android:** allow RN App version to be used by default ([4f808d7](https://github.com/DanielAraldi/react-native-blur-view/commit/4f808d7a7d8aaaf84e27e33c58b3869410b3c747))
+* **ios:** remove unnecessary podspec config ([c7e40a6](https://github.com/DanielAraldi/react-native-blur-view/commit/c7e40a6242f56bfe82ec567b55fbafd8a7a38a70))
+
 ## [2.1.2](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.1...v2.1.2) (2026-03-12)
 
 
