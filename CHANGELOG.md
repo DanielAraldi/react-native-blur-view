@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.1...v2.1.2) (2026-03-12)
+
+
+### Bug Fixes
+
+* **ios:** add a missing `separator` prop to the `EffectStyle` ([016c11b](https://github.com/DanielAraldi/react-native-blur-view/commit/016c11b4218263b145da6f8002935981eb3e7670))
+
 ## [2.1.1](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.0...v2.1.1) (2026-03-09)
 
 
