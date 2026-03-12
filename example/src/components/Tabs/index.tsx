@@ -8,12 +8,13 @@ import { NAVIGATION_ICONS } from '../../constants';
 import { styles } from './styles';
 
 export function Tabs(props: BottomTabBarProps) {
-  const { mode, radius, isDark } = useBlur();
+  const { blurType, radius, effectStyle, isDark } = useBlur();
 
   const commonProps = {
     radius,
+    effectStyle,
     style: styles.blurView,
-    type: mode,
+    type: blurType,
     reducedTransparencyFallbackColor: '#F1F1F1',
   };
 

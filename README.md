@@ -1,8 +1,8 @@
 # `@danielsaraldi/react-native-blur-view` 🌫️
 
-A simple blur view in react native based in [`@react-native-community/blur`](https://github.com/Kureev/react-native-blur).
+A simple blur view in react native based in [`@react-native-community/blur`](https://github.com/margelo/react-native-blur).
 
-Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-navigation](https://wix.github.io/react-native-navigation) and Modals 😁.
+Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-navigation](https://github.com/wix/react-native-navigation) and Modals 😁.
 
 <div align="center">
   <p>
@@ -79,7 +79,7 @@ cd ios && pod install && cd ..
 
 ```tsx
 import { useRef } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import {
   BlurView,
   BlurTarget,
@@ -210,7 +210,7 @@ You must add `BlurTarget` as a parent of content screen because it will be the *
 
 ```tsx
 import { useRef, useState } from 'react';
-import { Modal, View } from 'react-native';
+import { Modal, StyleSheet, View } from 'react-native';
 import { BlurTarget, BlurView } from '@danielsaraldi/react-native-blur-view';
 // ...
 
@@ -321,7 +321,7 @@ The `BlurTarget` may not contain a `BlurView` that targets the same `BlurTarget`
 
 The `VibrancyView` component is an extends the same properties of the a `View` component.
 
-This component is available for **iOS only**. It apply a vibrancy effect in children content. On Android the `VibrancyView` component is a common `View`. It's available for **iOS >= 13**.
+This component is available for **iOS only**. It apply a vibrancy effect in children content. On Android the `VibrancyView` component is a common `View`.
 
 #### Properties
 
@@ -381,9 +381,11 @@ On iOS all effect styles are supported. This property is available in the `Vibra
 | `fill`             | A style for views with large filled areas containing primary content. (**iOS >= 13**)   | iOS      |
 | `secondary-fill`   | A style for views with large filled areas containing secondary content. (**iOS >= 13**) | iOS      |
 | `tertiary-fill`    | A style for views with large filled areas containing tertiary content. (**iOS >= 13**)  | iOS      |
+| `separator`        | A style for separator lines. (**iOS >= 13**)                                            | iOS      |
 
 - Label styles show progressive opacity drops from full white to near-invisible.
 - Fill styles show translucent rectangles at decreasing opacity levels.
+- Separator style is specifically for thin, translucent separator lines.
 
 Learn more about effect styles [here](https://developer.apple.com/documentation/uikit/uivibrancyeffectstyle).
 

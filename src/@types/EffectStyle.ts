@@ -14,4 +14,5 @@ export type EffectStyle =
   | 'quaternary-label'
   | 'fill'
   | 'secondary-fill'
-  | 'tertiary-fill';
+  | 'tertiary-fill'
+  | 'separator';

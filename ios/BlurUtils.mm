@@ -45,6 +45,7 @@
   else if ([style isEqualToString: @"fill"]) return UIVibrancyEffectStyleFill;
   else if ([style isEqualToString: @"secondary-fill"]) return UIVibrancyEffectStyleSecondaryFill;
   else if ([style isEqualToString: @"tertiary-fill"]) return UIVibrancyEffectStyleTertiaryFill;
+  else if ([style isEqualToString: @"separator"]) return UIVibrancyEffectStyleSeparator;
   else return UIVibrancyEffectStyleLabel;
 }
 
@@ -53,14 +54,8 @@
   if (radius == nil) {
     return @0.0;
   }
-
-  if ([radius doubleValue] <= 0.0) {
-    return @0.0;
-  } else if ([radius doubleValue] >= 100.0) {
-    return @100.0;
-  }
-
-  return radius;
+  
+  return @(MAX(0.0, MIN(100.0, radius.doubleValue)));
 }
 
 + (UIColor *)colorFromString:(NSString *)colorString {
@@ -124,7 +119,7 @@
     unsigned int hexValue;
     NSScanner *scanner = [NSScanner scannerWithString:hexString];
     if ([scanner scanHexInt:&hexValue] && [scanner isAtEnd]) {
-      // Expand 4-digit hex to 8-digit (e.g., "FFF0" -> "FFFFFFFF00")
+      // Expand 4-digit hex to 8-digit (e.g., "RGBA" -> "RRGGBBAA")
       unsigned int r = (hexValue & 0xF000) >> 12;
       unsigned int g = (hexValue & 0x0F00) >> 8;
       unsigned int b = (hexValue & 0x00F0) >> 4;
@@ -136,7 +131,7 @@
     unsigned int hexValue;
     NSScanner *scanner = [NSScanner scannerWithString:hexString];
     if ([scanner scanHexInt:&hexValue] && [scanner isAtEnd]) {
-      // Expand 3-digit hex to 6-digit (e.g., "F0A" -> "FF00AA")
+      // Expand 3-digit hex to 6-digit (e.g., "RGB" -> "RRGGBB")
       unsigned int r = (hexValue & 0xF00) >> 8;
       unsigned int g = (hexValue & 0x0F0) >> 4;
       unsigned int b = (hexValue & 0x00F);
