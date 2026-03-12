@@ -10,6 +10,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BlurView : RCTViewComponentView
 
+#if !TARGET_OS_TV
+
 @property(nonatomic, copy, nullable) NSString *overlayColor;
 @property(nonatomic, copy, nullable) NSString *reducedTransparencyFallbackColor;
 @property(nonatomic, copy, nullable) NSNumber *blurRadius;
@@ -17,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong, nullable) UIView *reducedTransparencyFallbackView;
 @property(nonatomic, strong, nullable) BlurViewEffect *blurEffect;
 @property(nonatomic, strong, nullable) UIVisualEffectView *blurEffectView;
+
+#endif
 
 @end
 
