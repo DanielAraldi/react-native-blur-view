@@ -1,3 +1,10 @@
+## [2.1.5](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.4...v2.1.5) (2026-03-26)
+
+
+### Bug Fixes
+
+* remove unnecessary export default component ([68d2f95](https://github.com/DanielAraldi/react-native-blur-view/commit/68d2f95100dbce81354a2dc1f4e2d3dacdbe73bf))
+
 ## [2.1.4](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.3...v2.1.4) (2026-03-26)
 
 
