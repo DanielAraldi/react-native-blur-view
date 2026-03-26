@@ -1,3 +1,11 @@
+## [2.1.4](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.3...v2.1.4) (2026-03-26)
+
+
+### Bug Fixes
+
+* **example:** fix FMT compile error in the XCode 26.4 ([d136b0f](https://github.com/DanielAraldi/react-native-blur-view/commit/d136b0ff7c052913c645cc8df46730548ccc9556))
+* move components to unique single file and added example in the JSDoc them ([a6ed13d](https://github.com/DanielAraldi/react-native-blur-view/commit/a6ed13db047226c6a07c522c4e720f5fb2040b9d))
+
 ## [2.1.3](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.2...v2.1.3) (2026-03-12)
 
 
