@@ -31,7 +31,7 @@ import { globalStyles } from './styles';
  * };
  * ```
  */
-const VibrancyView = (props: VibrancyViewProps) => {
+export const VibrancyView = (props: VibrancyViewProps) => {
   const {
     type = 'light',
     effectStyle = 'label',
@@ -66,5 +66,3 @@ const VibrancyView = (props: VibrancyViewProps) => {
 
   return <Vibrancy {...commonProps}>{children}</Vibrancy>;
 };
-
-export default VibrancyView;

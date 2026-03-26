@@ -35,7 +35,7 @@ import { globalStyles } from './styles';
  * };
  * ```
  */
-const BlurView = (props: BlurViewProps) => {
+export const BlurView = (props: BlurViewProps) => {
   const {
     type = 'light',
     radius = 10,
@@ -123,5 +123,3 @@ const BlurView = (props: BlurViewProps) => {
     </View>
   );
 };
-
-export default BlurView;

@@ -34,7 +34,5 @@ import type { BlurTargetProps } from './@types';
  * };
  * ```
  */
-const BlurTarget = (props: BlurTargetProps) =>
+export const BlurTarget = (props: BlurTargetProps) =>
   Platform.OS !== 'android' ? <View {...props} /> : <Target {...props} />;
-
-export default BlurTarget;
