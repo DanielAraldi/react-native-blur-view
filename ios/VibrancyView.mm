@@ -1,4 +1,6 @@
+#import <React/RCTViewComponentView.h>
 #import "VibrancyView.h"
+
 #import "BlurViewEffect.h"
 #import "BlurUtils.h"
 
@@ -86,7 +88,7 @@ using namespace facebook::react;
     NSString *overlayColor = [NSString stringWithUTF8String:newViewProps.overlayColor.c_str()];
     [self setOverlayColor:overlayColor];
   }
-  
+
   if (oldViewProps.effectStyle != newViewProps.effectStyle) {
     NSString *effectStyle = [NSString stringWithUTF8String:newViewProps.effectStyle.c_str()];
     [self setEffectStyle:effectStyle];
@@ -148,7 +150,7 @@ using namespace facebook::react;
       [self.blurEffectView.contentView addSubview:subview];
     }
   }
-  
+
   self.reducedTransparencyFallbackView.backgroundColor = [BlurUtils colorFromString:self.reducedTransparencyFallbackColor];
 }
 
