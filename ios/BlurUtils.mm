@@ -36,6 +36,7 @@
   return UIBlurEffectStyleLight;
 }
 
+#if !TARGET_OS_TV
 + (UIVibrancyEffectStyle)vibrancyEffectStyle:(NSString *)style
 {
   if ([style isEqualToString: @"label"]) return UIVibrancyEffectStyleLabel;
@@ -48,13 +49,14 @@
   else if ([style isEqualToString: @"separator"]) return UIVibrancyEffectStyleSeparator;
   else return UIVibrancyEffectStyleLabel;
 }
+#endif
 
 + (NSNumber *)clipRadius:(NSNumber *)radius
 {
   if (radius == nil) {
     return @0.0;
   }
-  
+
   return @(MAX(0.0, MIN(100.0, radius.doubleValue)));
 }
 

@@ -28,7 +28,6 @@ target 'BlurViewExample' do
   post_install do |installer|
     # Workaround for Xcode 26: newer Apple Clang breaks consteval in fmt 11.0.2.
     # Patch base.h to disable consteval since the header doesn't check for pre-defined FMT_USE_CONSTEVAL.
-
     fmt_base = File.join(installer.sandbox.root, 'fmt', 'include', 'fmt', 'base.h')
 
     if File.exist?(fmt_base)

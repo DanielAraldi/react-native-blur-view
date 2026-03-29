@@ -10,8 +10,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface VibrancyView : RCTViewComponentView
 
-#if !TARGET_OS_TV
-
 @property(nonatomic, copy, nullable) NSString *overlayColor;
 @property(nonatomic, copy, nullable) NSString *effectStyle;
 @property(nonatomic, copy, nullable) NSString *reducedTransparencyFallbackColor;
@@ -22,8 +20,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong, nullable) UIVisualEffectView *blurEffectView;
 @property(nonatomic, strong, nullable) UIVibrancyEffect *vibrancyEffect;
 @property(nonatomic, strong, nullable) UIVisualEffectView *vibrancyEffectView;
-
-#endif
 
 @end
 
