@@ -1,3 +1,26 @@
+## [2.1.5](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.4...v2.1.5) (2026-03-26)
+
+
+### Bug Fixes
+
+* remove unnecessary export default component ([68d2f95](https://github.com/DanielAraldi/react-native-blur-view/commit/68d2f95100dbce81354a2dc1f4e2d3dacdbe73bf))
+
+## [2.1.4](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.3...v2.1.4) (2026-03-26)
+
+
+### Bug Fixes
+
+* **example:** fix FMT compile error in the XCode 26.4 ([d136b0f](https://github.com/DanielAraldi/react-native-blur-view/commit/d136b0ff7c052913c645cc8df46730548ccc9556))
+* move components to unique single file and added example in the JSDoc them ([a6ed13d](https://github.com/DanielAraldi/react-native-blur-view/commit/a6ed13db047226c6a07c522c4e720f5fb2040b9d))
+
+## [2.1.3](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.2...v2.1.3) (2026-03-12)
+
+
+### Bug Fixes
+
+* **android:** allow RN App version to be used by default ([4f808d7](https://github.com/DanielAraldi/react-native-blur-view/commit/4f808d7a7d8aaaf84e27e33c58b3869410b3c747))
+* **ios:** remove unnecessary podspec config ([c7e40a6](https://github.com/DanielAraldi/react-native-blur-view/commit/c7e40a6242f56bfe82ec567b55fbafd8a7a38a70))
+
 ## [2.1.2](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.1...v2.1.2) (2026-03-12)
 
 

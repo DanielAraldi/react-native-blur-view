@@ -1,12 +1,12 @@
 {
   "name": "@danielsaraldi/react-native-blur-view",
-  "version": "2.1.2",
+  "version": "2.1.5",
   "description": "A simple blur view in react native",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
     ".": {
-      "source": "./src/index.ts",
+      "source": "./src/index.tsx",
       "types": "./lib/typescript/src/index.d.ts",
       "default": "./lib/module/index.js"
     },
@@ -33,11 +33,10 @@
   ],
   "scripts": {
     "example": "yarn workspace react-native-blur-view-example",
-    "setup:example": "yarn && yarn podspec && yarn prepack && cd example && yarn && cd ios && pod install && cd .. && yarn start",
+    "setup:example": "yarn && yarn prepack && cd example && yarn && cd ios && pod install && cd .. && yarn start",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
-    "podspec": "pod ipc spec BlurView.podspec",
     "prepare": "bob build",
     "prepack": "bob build",
     "release": "npx semantic-release --ci"
