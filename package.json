@@ -32,11 +32,11 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace react-native-blur-view-example",
-    "setup:example": "yarn && yarn prepack && cd example && yarn && cd ios && pod install && cd .. && yarn start",
+    "setup:cli": "yarn && yarn prepack && cd example/cli && yarn && cd ios && pod install && cd .. && yarn start",
+    "setup:tvos": "yarn && yarn prepack && cd example/tvos && yarn && cd ios && pod install && cd .. && yarn start",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "clean": "del-cli android/build example/android/build example/android/app/build example/ios/build lib",
+    "clean": "del-cli android/build example/cli/android/build example/cli/android/app/build example/cli/ios/build example/tvos/android/build example/tvos/android/app/build example/tvos/ios/build lib",
     "prepare": "bob build",
     "prepack": "bob build",
     "release": "npx semantic-release --ci"
@@ -99,13 +99,15 @@
     "react-native": "*"
   },
   "workspaces": [
-    "example"
+    "example/cli",
+    "example/tvos"
   ],
   "packageManager": "yarn@3.6.1",
   "jest": {
     "preset": "react-native",
     "modulePathIgnorePatterns": [
-      "<rootDir>/example/node_modules",
+      "<rootDir>/example/cli/node_modules",
+      "<rootDir>/example/tvos/node_modules",
       "<rootDir>/lib/"
     ]
   },
