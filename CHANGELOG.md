@@ -1,3 +1,10 @@
+## [2.1.6](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.5...v2.1.6) (2026-04-08)
+
+
+### Bug Fixes
+
+* **ios:** adjust `flex-direction` when it's `row` ([1ce327c](https://github.com/DanielAraldi/react-native-blur-view/commit/1ce327c5ec8df275618800b8834d23af9339eb81))
+
 ## [2.1.5](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.4...v2.1.5) (2026-03-26)
 
 
