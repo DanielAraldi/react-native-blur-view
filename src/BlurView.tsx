@@ -117,7 +117,7 @@ export const BlurView = (props: BlurViewProps) => {
         <>
           <Blur style={StyleSheet.absoluteFill} {...commonProps} />
 
-          <View style={globalStyles.content}>{children}</View>
+          {children}
         </>
       )}
     </View>
