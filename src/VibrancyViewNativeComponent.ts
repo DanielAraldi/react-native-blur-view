@@ -8,7 +8,7 @@ import type {
 export interface NativeProps extends ViewProps {
   overlayColor?: WithDefault<string, 'light'>;
   effectStyle?: WithDefault<string, 'label'>;
-  blurRadius?: WithDefault<Float, 10.0>;
+  radius?: WithDefault<Float, 10.0>;
   reducedTransparencyFallbackColor?: WithDefault<string, 'white'>;
 }
 

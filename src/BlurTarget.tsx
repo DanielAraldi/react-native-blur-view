@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import { Platform, View } from 'react-native';
 
 import Target from './TargetViewNativeComponent';
@@ -34,5 +35,10 @@ import type { BlurTargetProps } from './@types';
  * };
  * ```
  */
-export const BlurTarget = (props: BlurTargetProps) =>
-  Platform.OS !== 'android' ? <View {...props} /> : <Target {...props} />;
+export const BlurTarget = forwardRef<View, BlurTargetProps>((props, ref) =>
+  Platform.OS !== 'android' ? (
+    <View ref={ref} {...props} />
+  ) : (
+    <Target ref={ref} {...props} />
+  )
+);

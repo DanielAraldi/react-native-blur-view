@@ -1,4 +1,4 @@
-import { Children } from 'react';
+import { Children, forwardRef } from 'react';
 import { Platform, View } from 'react-native';
 
 import Vibrancy from './VibrancyViewNativeComponent';
@@ -31,38 +31,41 @@ import { globalStyles } from './styles';
  * };
  * ```
  */
-export const VibrancyView = (props: VibrancyViewProps) => {
-  const {
-    type = 'light',
-    effectStyle = 'label',
-    radius = 10,
-    reducedTransparencyFallbackColor = 'white',
-    style,
-    children,
-    overlayColor,
-    ...rest
-  } = props;
+export const VibrancyView = forwardRef<View, VibrancyViewProps>(
+  (props, ref) => {
+    const {
+      type = 'light',
+      effectStyle = 'label',
+      radius = 10,
+      reducedTransparencyFallbackColor = 'white',
+      style,
+      children,
+      overlayColor,
+      ...rest
+    } = props;
 
-  if (Platform.OS !== 'ios') {
-    return <View {...props} />;
+    if (Platform.OS !== 'ios') {
+      return <View ref={ref} {...props} />;
+    }
+
+    const commonProps = {
+      ref,
+      radius,
+      effectStyle,
+      reducedTransparencyFallbackColor,
+      overlayColor: type,
+      style: [globalStyles.container, style, { backgroundColor: overlayColor }],
+      ...rest,
+    };
+
+    if (!Children.count(children)) {
+      return (
+        <Vibrancy {...commonProps}>
+          <View style={globalStyles.expand} />
+        </Vibrancy>
+      );
+    }
+
+    return <Vibrancy {...commonProps}>{children}</Vibrancy>;
   }
-
-  const commonProps = {
-    effectStyle,
-    reducedTransparencyFallbackColor,
-    overlayColor: type,
-    blurRadius: radius,
-    style: [globalStyles.container, style, { backgroundColor: overlayColor }],
-    ...rest,
-  };
-
-  if (!Children.count(children)) {
-    return (
-      <Vibrancy {...commonProps}>
-        <View style={globalStyles.expand} />
-      </Vibrancy>
-    );
-  }
-
-  return <Vibrancy {...commonProps}>{children}</Vibrancy>;
-};
+);
