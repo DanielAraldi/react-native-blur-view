@@ -46,7 +46,7 @@ using namespace facebook::react;
     self.overlayColor = @"light";
     self.effectStyle = @"label";
     self.reducedTransparencyFallbackColor = @"white";
-    self.blurRadius = @10;
+    self.radius = @10;
 
     self.blurEffectView = [[UIVisualEffectView alloc] init];
     self.blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -77,16 +77,16 @@ using namespace facebook::react;
   const auto &oldViewProps = *std::static_pointer_cast<VibrancyViewProps const>(_props);
   const auto &newViewProps = *std::static_pointer_cast<VibrancyViewProps const>(props);
 
-  if (oldViewProps.blurRadius != newViewProps.blurRadius) {
-    NSNumber *blurRadius = [NSNumber numberWithDouble:newViewProps.blurRadius];
-    [self setRadius:blurRadius];
+  if (oldViewProps.radius != newViewProps.radius) {
+    NSNumber *radius = [NSNumber numberWithDouble:newViewProps.radius];
+    [self setRadius:radius];
   }
 
   if (oldViewProps.overlayColor != newViewProps.overlayColor) {
     NSString *overlayColor = [NSString stringWithUTF8String:newViewProps.overlayColor.c_str()];
     [self setOverlayColor:overlayColor];
   }
-  
+
   if (oldViewProps.effectStyle != newViewProps.effectStyle) {
     NSString *effectStyle = [NSString stringWithUTF8String:newViewProps.effectStyle.c_str()];
     [self setEffectStyle:effectStyle];
@@ -148,7 +148,7 @@ using namespace facebook::react;
       [self.blurEffectView.contentView addSubview:subview];
     }
   }
-  
+
   self.reducedTransparencyFallbackView.backgroundColor = [BlurUtils colorFromString:self.reducedTransparencyFallbackColor];
 }
 
@@ -158,7 +158,7 @@ using namespace facebook::react;
   self.vibrancyEffectView.effect = nil;
 
   UIBlurEffectStyle blurEffectStyle = [BlurUtils blurEffectStyle:self.overlayColor];
-  self.blurEffect = [BlurViewEffect effectWithStyle:blurEffectStyle andRadius:self.blurRadius];
+  self.blurEffect = [BlurViewEffect effectWithStyle:blurEffectStyle andRadius:self.radius];
   self.blurEffectView.effect = self.blurEffect;
 
   if (@available(iOS 13.0, *)) {
@@ -270,8 +270,8 @@ Class<RCTComponentViewProtocol> VibrancyViewCls(void)
 
 - (void)setRadius:(NSNumber *)radius
 {
-  if (radius && ![self.blurRadius isEqualToNumber:radius]) {
-    _blurRadius = [BlurUtils clipRadius:radius];
+  if (radius && ![self.radius isEqualToNumber:radius]) {
+    _radius = [BlurUtils clipRadius:radius];
     [self updateVibrancyEffect];
   }
 }

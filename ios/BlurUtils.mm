@@ -54,7 +54,7 @@
   if (radius == nil) {
     return @0.0;
   }
-  
+
   return @(MAX(0.0, MIN(100.0, radius.doubleValue)));
 }
 
