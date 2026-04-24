@@ -45,7 +45,7 @@ using namespace facebook::react;
     self.clipsToBounds = YES;
     self.overlayColor = @"light";
     self.reducedTransparencyFallbackColor = @"white";
-    self.blurRadius = @10;
+    self.radius = @10;
 
     self.blurEffectView = [[UIVisualEffectView alloc] init];
     self.blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -70,9 +70,9 @@ using namespace facebook::react;
   const auto &oldViewProps = *std::static_pointer_cast<BlurViewProps const>(_props);
   const auto &newViewProps = *std::static_pointer_cast<BlurViewProps const>(props);
 
-  if (oldViewProps.blurRadius != newViewProps.blurRadius) {
-    NSNumber *blurRadius = [NSNumber numberWithDouble:newViewProps.blurRadius];
-    [self setRadius:blurRadius];
+  if (oldViewProps.radius != newViewProps.radius) {
+    NSNumber *radius = [NSNumber numberWithDouble:newViewProps.radius];
+    [self setRadius:radius];
   }
 
   if (oldViewProps.overlayColor != newViewProps.overlayColor) {
@@ -93,7 +93,7 @@ using namespace facebook::react;
   self.blurEffectView.effect = nil;
 
   UIBlurEffectStyle blurEffectStyle = [BlurUtils blurEffectStyle:self.overlayColor];
-  BlurViewEffect *blurEffect = [BlurViewEffect effectWithStyle:blurEffectStyle andRadius:self.blurRadius];
+  BlurViewEffect *blurEffect = [BlurViewEffect effectWithStyle:blurEffectStyle andRadius:self.radius];
 
   self.blurEffect = blurEffect;
   self.blurEffectView.effect = blurEffect;
@@ -197,8 +197,8 @@ Class<RCTComponentViewProtocol> BlurViewCls(void)
 
 - (void)setRadius:(NSNumber *)radius
 {
-  if (radius && ![self.blurRadius isEqualToNumber:radius]) {
-    _blurRadius = [BlurUtils clipRadius:radius];
+  if (radius && ![self.radius isEqualToNumber:radius]) {
+    _radius = [BlurUtils clipRadius:radius];
     [self updateBlurEffect];
   }
 }

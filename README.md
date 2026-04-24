@@ -2,7 +2,7 @@
 
 A simple blur view in react native based in [`@react-native-community/blur`](https://github.com/margelo/react-native-blur).
 
-Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-navigation](https://github.com/wix/react-native-navigation) and Modals 😁.
+Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated/), [react-native-navigation](https://github.com/wix/react-native-navigation) and Modals 😁.
 
 <div align="center">
   <p>
@@ -33,7 +33,7 @@ Support the animation transitions with [react-native-screens](https://github.com
 
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Using `ScrollView`/`FlatList`](#using-scrollviewflatlist)
+  - [Using lists](#using-lists)
   - [Using `Modal`](#using-modal)
   - [Using `ImageBackground`](#using-imagebackground)
 - [Components](#components)
@@ -94,17 +94,17 @@ export default function App() {
   return (
     <>
       <BlurView blurTarget={targetRef} style={styles.blurView}>
-        <Text style={styles.title}>BlurView</Text>
+        <Text style={styles.text}>BlurView</Text>
       </BlurView>
 
       <VibrancyView style={styles.vibrancyView}>
-        <Text style={styles.title}>VibrancyView</Text>
+        <Text style={styles.text}>VibrancyView</Text>
       </VibrancyView>
 
-      <BlurTarget ref={targetRef} style={styles.main}>
+      <BlurTarget ref={targetRef} style={styles.blurTarget}>
         <ScrollView
-          style={styles.main}
-          contentContainerStyle={styles.content}
+          style={styles.scrollView}
+          contentContainerStyle={styles.contentContainer}
           showsVerticalScrollIndicator={false}
         >
           {/* ... */}
@@ -156,9 +156,9 @@ export const styles = StyleSheet.create({
 });
 ```
 
-### Using `ScrollView`/`FlatList`
+### Using lists
 
-You must add `BlurView` elements inside of the list (`ScrollView`/`FlatList`), and the content behind should be added as child of the `BlurTarget` component. Check it below:
+You must add `BlurView` elements inside of the list, and the content behind should be added as child of the `BlurTarget` component. Check an example using `ScrollView` below:
 
 ```tsx
 import { useRef } from 'react';
@@ -171,7 +171,7 @@ export function MyScreen() {
   // ...
 
   return (
-    <View style={styles.expand}>
+    <View style={styles.container}>
       <BlurTarget ref={targetRef} style={styles.blurTarget}>
         <ImageBackground
           style={styles.background}
@@ -181,20 +181,20 @@ export function MyScreen() {
       </BlurTarget>
 
       <ScrollView
-        style={styles.container}
+        style={styles.scrollView}
         contentContainerStyle={styles.contentContainer}
         showsVerticalScrollIndicator={false}
       >
         <BlurView blurTarget={targetRef} style={styles.blurView}>
-          <Text style={styles.title}>BlurView 1</Text>
+          <Text style={styles.text}>BlurView 1</Text>
         </BlurView>
 
         <BlurView blurTarget={targetRef} style={styles.blurView}>
-          <Text style={styles.title}>BlurView 2</Text>
+          <Text style={styles.text}>BlurView 2</Text>
         </BlurView>
 
         <BlurView blurTarget={targetRef} style={styles.blurView}>
-          <Text style={styles.title}>BlurView 3</Text>
+          <Text style={styles.text}>BlurView 3</Text>
         </BlurView>
 
         {/* ... */}
@@ -210,7 +210,7 @@ You must add `BlurTarget` as a parent of content screen because it will be the *
 
 ```tsx
 import { useRef, useState } from 'react';
-import { Modal, StyleSheet, View } from 'react-native';
+import { Modal, View } from 'react-native';
 import { BlurTarget, BlurView } from '@danielsaraldi/react-native-blur-view';
 // ...
 
@@ -228,12 +228,9 @@ export function MyScreen() {
         hardwareAccelerated
         visible={isOpenModal}
         onRequestClose={() => setIsOpenModal(false)}
-        style={StyleSheet.absoluteFillObject}
+        style={styles.modal}
       >
-        <BlurView
-          blurTarget={targetRef}
-          style={StyleSheet.absoluteFillObject}
-        />
+        <BlurView blurTarget={targetRef} style={styles.blurView} />
 
         <View style={styles.modalContent}>{/* ... */}</View>
       </Modal>

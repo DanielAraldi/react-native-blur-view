@@ -1,5 +1,12 @@
-import { Children, useMemo, useState, useEffect, useCallback } from 'react';
-import { findNodeHandle, Platform, StyleSheet, View } from 'react-native';
+import {
+  Children,
+  useMemo,
+  useState,
+  useEffect,
+  useCallback,
+  forwardRef,
+} from 'react';
+import { findNodeHandle, Platform, View } from 'react-native';
 
 import Blur from './BlurViewNativeComponent';
 import type { BlurViewProps } from './@types';
@@ -35,7 +42,7 @@ import { globalStyles } from './styles';
  * };
  * ```
  */
-export const BlurView = (props: BlurViewProps) => {
+export const BlurView = forwardRef<View, BlurViewProps>((props, ref) => {
   const {
     type = 'light',
     radius = 10,
@@ -59,12 +66,8 @@ export const BlurView = (props: BlurViewProps) => {
   }, [blurTarget]);
 
   const commonProps = useMemo(() => {
-    /**
-     * When the type is not a primary one, we need to increase the blur radius
-     * and decrease the downscale factor to achieve a similar effect on Android.
-     */
     const isPrimary = type === 'x-light' || type === 'light' || type === 'dark';
-    const _blurRadius = isPrimary ? radius : 35;
+    const _radius = isPrimary ? radius : 35;
     const _downscaleFactor = isPrimary
       ? downscaleFactor
       : downscaleFactor * 0.66;
@@ -74,7 +77,7 @@ export const BlurView = (props: BlurViewProps) => {
       reducedTransparencyFallbackColor,
       downscaleFactor: _downscaleFactor,
       overlayColor: type,
-      blurRadius: isAndroid ? _blurRadius : radius,
+      radius: isAndroid ? _radius : radius,
       ...rest,
     };
   }, [
@@ -96,7 +99,8 @@ export const BlurView = (props: BlurViewProps) => {
     return (
       <View style={[globalStyles.container, style]}>
         <Blur
-          style={[StyleSheet.absoluteFill, backgroundColor]}
+          ref={ref}
+          style={[globalStyles.absoluteFill, backgroundColor]}
           {...commonProps}
         />
       </View>
@@ -108,18 +112,18 @@ export const BlurView = (props: BlurViewProps) => {
       style={[globalStyles.container, style, !isAndroid && backgroundColor]}
     >
       {isAndroid ? (
-        <Blur style={StyleSheet.absoluteFill} {...commonProps}>
+        <Blur ref={ref} style={globalStyles.absoluteFill} {...commonProps}>
           <View style={[globalStyles.content, style, backgroundColor]}>
             {children}
           </View>
         </Blur>
       ) : (
         <>
-          <Blur style={StyleSheet.absoluteFill} {...commonProps} />
+          <Blur ref={ref} style={globalStyles.absoluteFill} {...commonProps} />
 
           {children}
         </>
       )}
     </View>
   );
-};
+});
