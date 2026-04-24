@@ -127,5 +127,3 @@ export const BlurView = forwardRef<View, BlurViewProps>((props, ref) => {
     </View>
   );
 });
-
-BlurView.displayName = 'BlurView';
