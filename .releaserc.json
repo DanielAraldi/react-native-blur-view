@@ -2,7 +2,29 @@
   "branches": ["main"],
   "plugins": [
     "@semantic-release/commit-analyzer",
-    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "angular",
+        "writerOpts": {
+          "types": [
+            { "type": "feat", "section": "🚀 Features", "hidden": false },
+            { "type": "chore", "section": "🔧 Maintenance", "hidden": true },
+            { "type": "ci", "section": "👷 CI", "hidden": true },
+            { "type": "fix", "section": "🐛 Bug Fixes", "hidden": false },
+            { "type": "perf", "section": "⚡ Performance", "hidden": false },
+            {
+              "type": "refactor",
+              "section": "♻️ Refactoring",
+              "hidden": false
+            },
+            { "type": "docs", "section": "📝 Documentation", "hidden": false },
+            { "type": "test", "section": "✅ Tests", "hidden": true },
+            { "type": "style", "section": "🎨 Styles", "hidden": true }
+          ]
+        }
+      }
+    ],
     "@semantic-release/changelog",
     "@semantic-release/github",
     "@semantic-release/npm",
