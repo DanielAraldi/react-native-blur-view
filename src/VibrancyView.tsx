@@ -45,7 +45,11 @@ export const VibrancyView = forwardRef<View, VibrancyViewProps>(
     } = props;
 
     if (Platform.OS !== 'ios') {
-      return <View ref={ref} {...props} />;
+      return (
+        <View ref={ref} style={style} {...rest}>
+          {children}
+        </View>
+      );
     }
 
     const commonProps = {
