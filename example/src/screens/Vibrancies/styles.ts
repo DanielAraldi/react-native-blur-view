@@ -17,7 +17,7 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
     contentContainer: {
       flexGrow: 1,
 
-      paddingTop: top,
+      paddingTop: top + 16,
       paddingHorizontal: 20,
       paddingBottom: bottom + 64,
 
@@ -49,6 +49,16 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
       fontSize: 20,
     },
 
+    animatedHeader: {
+      position: 'absolute',
+
+      top: 0,
+      left: 0,
+
+      width: '100%',
+      height: top,
+    },
+
     header: {
       width: '100%',
 
@@ -73,5 +83,14 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
       textAlign: 'center',
 
       color: 'white',
+    },
+
+    absoluteFill: {
+      position: 'absolute',
+
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
     },
   });

@@ -4,18 +4,24 @@ import {
   ImageBackground,
   Modal,
   ScrollView,
-  StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { BlurTarget, BlurView } from '@danielsaraldi/react-native-blur-view';
+import Animated, {
+  useAnimatedProps,
+  useAnimatedRef,
+  useScrollOffset,
+} from 'react-native-reanimated';
 import { useBlur } from '../../hooks';
 import { PORSCHE_ARCHITECTURE } from '../../assets';
 import { BLUR_RADIUS_DATA } from '../../constants';
 import { makeStyles } from './styles';
 import { isIos } from '../../utils';
+
+const AnimatedBlurView = Animated.createAnimatedComponent(BlurView);
 
 export function Settings() {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
@@ -24,6 +30,9 @@ export function Settings() {
   const scrollTargetRef = useRef<View | null>(null);
   const { top, bottom } = useSafeAreaInsets();
   const { blurType, effectStyle, radius, isDark, onRadius } = useBlur();
+
+  const scrollViewRef = useAnimatedRef<ScrollView>();
+  const scrollOffset = useScrollOffset(scrollViewRef);
 
   const color = blurType.includes('dark') ? 'white' : 'black';
   const defaultMessage = isIos
@@ -57,161 +66,175 @@ export function Settings() {
     [blurType, styles, color, onRadius]
   );
 
+  const animatedProps = useAnimatedProps(
+    () => ({
+      radius: scrollOffset.get() / 100,
+    }),
+    []
+  );
+
   return (
-    <BlurTarget
-      ref={targetRef}
-      style={[styles.expand, StyleSheet.absoluteFillObject]}
-    >
-      <View style={styles.expand}>
-        <BlurTarget ref={scrollTargetRef} style={StyleSheet.absoluteFillObject}>
-          <ImageBackground
-            style={StyleSheet.absoluteFillObject}
-            source={PORSCHE_ARCHITECTURE}
-            resizeMode="cover"
-          />
-        </BlurTarget>
+    <>
+      <AnimatedBlurView
+        blurTarget={targetRef}
+        type={blurType}
+        animatedProps={animatedProps}
+        style={styles.animatedHeader}
+      />
 
-        <ScrollView
-          style={styles.container}
-          contentContainerStyle={styles.contentContainer}
-          showsVerticalScrollIndicator={false}
-        >
-          <View style={styles.header}>
-            <Text style={styles.headerText}>Settings</Text>
-          </View>
-
-          <View style={styles.configurationItem}>
-            <BlurView
-              blurTarget={scrollTargetRef}
-              type={blurType}
-              radius={radius}
-              style={StyleSheet.absoluteFillObject}
+      <BlurTarget ref={targetRef} style={[styles.expand, styles.absoluteFill]}>
+        <View style={styles.expand}>
+          <BlurTarget ref={scrollTargetRef} style={styles.absoluteFill}>
+            <ImageBackground
+              style={styles.absoluteFill}
+              source={PORSCHE_ARCHITECTURE}
+              resizeMode="cover"
             />
+          </BlurTarget>
 
-            <Text
-              style={[
-                styles.configurationText,
-                isDark && styles.configurationTextDark,
-              ]}
+          <ScrollView
+            ref={scrollViewRef}
+            style={styles.container}
+            contentContainerStyle={styles.contentContainer}
+            showsVerticalScrollIndicator={false}
+          >
+            <View style={styles.header}>
+              <Text style={styles.headerText}>Settings</Text>
+            </View>
+
+            <View style={styles.configurationItem}>
+              <BlurView
+                blurTarget={scrollTargetRef}
+                type={blurType}
+                radius={radius}
+                style={styles.absoluteFill}
+              />
+
+              <Text
+                style={[
+                  styles.configurationText,
+                  isDark && styles.configurationTextDark,
+                ]}
+              >
+                Explore radius and type configurations to customize the blur
+                effect ✨{'\n'}Adjust the settings to see how they impact the
+                appearance of the blur on both Android and iOS platforms 🌫️
+              </Text>
+            </View>
+
+            <View style={styles.header}>
+              <Text style={styles.headerText}>Blur Radius</Text>
+            </View>
+
+            {renderBlurRadius}
+
+            <View style={[styles.header, styles.modalMarginTop]}>
+              <Text style={styles.headerText}>Modal</Text>
+            </View>
+
+            <TouchableOpacity
+              style={styles.item}
+              onPress={() => setIsOpenModal(true)}
+              activeOpacity={0.75}
             >
-              Explore radius and type configurations to customize the blur
-              effect. Adjust the settings to see how they impact the appearance
-              of the blur on both Android and iOS platforms.
-            </Text>
-          </View>
+              <BlurView
+                blurTarget={scrollTargetRef}
+                radius={radius}
+                type={blurType}
+                style={styles.centralize}
+                reducedTransparencyFallbackColor="#F1F1F1"
+              >
+                <Text style={[styles.itemText, { color }]}>Open Modal</Text>
+              </BlurView>
+            </TouchableOpacity>
+          </ScrollView>
 
-          <View style={styles.header}>
-            <Text style={styles.headerText}>Blur Radius</Text>
-          </View>
-
-          {renderBlurRadius}
-
-          <View style={[styles.header, styles.modalMarginTop]}>
-            <Text style={styles.headerText}>Modal</Text>
-          </View>
-
-          <TouchableOpacity
-            style={styles.item}
-            onPress={() => setIsOpenModal(true)}
-            activeOpacity={0.75}
+          <Modal
+            transparent
+            statusBarTranslucent
+            navigationBarTranslucent
+            hardwareAccelerated
+            visible={isOpenModal}
+            onRequestClose={() => setIsOpenModal(false)}
+            onDismiss={() => setIsOpenModal(false)}
+            style={styles.absoluteFill}
           >
             <BlurView
-              blurTarget={scrollTargetRef}
-              radius={radius}
+              blurTarget={targetRef}
               type={blurType}
-              style={styles.centralize}
-              reducedTransparencyFallbackColor="#F1F1F1"
-            >
-              <Text style={[styles.itemText, { color }]}>Open Modal</Text>
-            </BlurView>
-          </TouchableOpacity>
-        </ScrollView>
+              radius={radius}
+              style={styles.absoluteFill}
+            />
 
-        <Modal
-          transparent
-          statusBarTranslucent
-          navigationBarTranslucent
-          hardwareAccelerated
-          visible={isOpenModal}
-          onRequestClose={() => setIsOpenModal(false)}
-          onDismiss={() => setIsOpenModal(false)}
-          style={StyleSheet.absoluteFillObject}
-        >
-          <BlurView
-            blurTarget={targetRef}
-            type={blurType}
-            radius={radius}
-            style={StyleSheet.absoluteFillObject}
-          />
-
-          <View style={[styles.modalContainer, StyleSheet.absoluteFillObject]}>
-            <View
-              style={[styles.modalContent, isDark && styles.modalContentDark]}
-            >
-              <Text
-                style={[
-                  styles.configurationText,
-                  isDark && styles.configurationTextDark,
-                ]}
+            <View style={[styles.modalContainer, styles.absoluteFill]}>
+              <View
+                style={[styles.modalContent, isDark && styles.modalContentDark]}
               >
-                On Android platforms, the component utilizes the Dimezis's
-                BlurView library to offer native blur effects with
-                hardware-accelerated rendering.
-              </Text>
-
-              <Text
-                style={[
-                  styles.configurationText,
-                  isDark && styles.configurationTextDark,
-                ]}
-              >
-                On iOS all types are supported by default. However, on Android
-                they are RGBA colors to simulate the same blur color.
-              </Text>
-
-              <Text
-                style={[
-                  styles.configurationText,
-                  isDark && styles.configurationTextDark,
-                ]}
-              >
-                {defaultMessage}
-              </Text>
-
-              <Text
-                style={[
-                  styles.configurationText,
-                  isDark && styles.configurationTextDark,
-                ]}
-              >
-                Current radius: {radius}.
-              </Text>
-
-              <Text
-                style={[
-                  styles.configurationText,
-                  isDark && styles.configurationTextDark,
-                ]}
-              >
-                Current blur type: {blurType}.
-              </Text>
-
-              {isIos && (
                 <Text
                   style={[
                     styles.configurationText,
                     isDark && styles.configurationTextDark,
                   ]}
                 >
-                  Current effect style: {effectStyle}.
+                  On Android platforms, the component utilizes the Dimezis's
+                  BlurView library to offer native blur effects with
+                  hardware-accelerated rendering ⚡️
                 </Text>
-              )}
 
-              <Button title="Close" onPress={() => setIsOpenModal(false)} />
+                <Text
+                  style={[
+                    styles.configurationText,
+                    isDark && styles.configurationTextDark,
+                  ]}
+                >
+                  On iOS all types are supported by default. However, on Android
+                  they are RGBA colors to simulate the same blur color 🎨
+                </Text>
+
+                <Text
+                  style={[
+                    styles.configurationText,
+                    isDark && styles.configurationTextDark,
+                  ]}
+                >
+                  {defaultMessage}
+                </Text>
+
+                <Text
+                  style={[
+                    styles.configurationText,
+                    isDark && styles.configurationTextDark,
+                  ]}
+                >
+                  Current radius: {radius} 🌫️
+                </Text>
+
+                <Text
+                  style={[
+                    styles.configurationText,
+                    isDark && styles.configurationTextDark,
+                  ]}
+                >
+                  Current blur type: {blurType} 🎨
+                </Text>
+
+                {isIos && (
+                  <Text
+                    style={[
+                      styles.configurationText,
+                      isDark && styles.configurationTextDark,
+                    ]}
+                  >
+                    Current effect style: {effectStyle} 💫
+                  </Text>
+                )}
+
+                <Button title="Close" onPress={() => setIsOpenModal(false)} />
+              </View>
             </View>
-          </View>
-        </Modal>
-      </View>
-    </BlurTarget>
+          </Modal>
+        </View>
+      </BlurTarget>
+    </>
   );
 }
