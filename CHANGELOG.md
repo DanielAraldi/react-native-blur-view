@@ -1,3 +1,13 @@
+## [2.1.7](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.6...v2.1.7) (2026-04-24)
+
+
+### Bug Fixes
+
+* add `forwardRef` in all components to support `createAnimatedComponent` of the reanimated ([c1898c5](https://github.com/DanielAraldi/react-native-blur-view/commit/c1898c5a89a5229f8210c3d7144025649fc18dc7))
+* **android:** tiny adjust in method name ([7c537f2](https://github.com/DanielAraldi/react-native-blur-view/commit/7c537f27b121c64be538ec3379f08e8ba542d6c5))
+* **example:** add animated blur in the example App ([4183bb8](https://github.com/DanielAraldi/react-native-blur-view/commit/4183bb86c8502eb4ae9f964747f3f388af3083e3))
+* **ios:** rename `blurRadius` to `radius` in native code ([afb764c](https://github.com/DanielAraldi/react-native-blur-view/commit/afb764c2b5770667dc21f2739314c6bbf35e3504))
+
 ## [2.1.6](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.5...v2.1.6) (2026-04-08)
 
 
