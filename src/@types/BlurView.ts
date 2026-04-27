@@ -65,6 +65,21 @@ export interface BlurViewProps extends ViewProps {
   overlayColor?: ColorValue;
 
   /**
+   * @description Overrides the color type of the overlay on Android. It accepts
+   * a color value that will be used as the background color for the blur effect,
+   * instead of the default color associated with the `type` prop. This can be
+   * useful when you want to achieve a specific look or when you want to match
+   * the blur effect with other elements in your app.
+   *
+   * @default undefined
+   *
+   * @platform Android
+   *
+   * @since 2.2.0
+   */
+  androidColor?: ColorValue;
+
+  /**
    * @description Set a background color about blur effect when reduced
    * transparency is enabled.
    *
