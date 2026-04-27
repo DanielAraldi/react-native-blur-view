@@ -15,7 +15,6 @@ import { makeStyles } from './styles';
 
 export function Blurs() {
   const targetRef = useRef<View | null>(null);
-  const scrollTargetRef = useRef<View | null>(null);
   const { top, bottom } = useSafeAreaInsets();
   const { radius, onBlurType } = useBlur();
 
@@ -34,7 +33,7 @@ export function Blurs() {
             activeOpacity={0.75}
           >
             <BlurView
-              blurTarget={scrollTargetRef}
+              blurTarget={targetRef}
               radius={radius}
               type={type}
               style={styles.centralize}
@@ -48,34 +47,32 @@ export function Blurs() {
   );
 
   return (
-    <>
-      <BlurTarget ref={targetRef} style={[styles.expand, styles.absoluteFill]}>
-        <View style={styles.expand}>
-          <BlurTarget ref={scrollTargetRef} style={styles.absoluteFill}>
-            <ImageBackground
-              style={styles.absoluteFill}
-              source={MOUNTAIN}
-              resizeMode="cover"
-            />
-          </BlurTarget>
+    <View style={[styles.expand, styles.absoluteFill]}>
+      <View style={styles.expand}>
+        <BlurTarget ref={targetRef} style={styles.absoluteFill}>
+          <ImageBackground
+            style={styles.absoluteFill}
+            source={MOUNTAIN}
+            resizeMode="cover"
+          />
+        </BlurTarget>
 
-          <ScrollView
-            style={styles.container}
-            contentContainerStyle={styles.contentContainer}
-            showsVerticalScrollIndicator={false}
-          >
-            <View style={styles.header}>
-              <Text style={styles.headerText}>Blur Types</Text>
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}
+          showsVerticalScrollIndicator={false}
+        >
+          <View style={styles.header}>
+            <Text style={styles.headerText}>Blur Types</Text>
 
-              <Text style={styles.headerHint}>
-                Blur effects are available on iOS and Android
-              </Text>
-            </View>
+            <Text style={styles.headerHint}>
+              Blur effects are available on iOS and Android
+            </Text>
+          </View>
 
-            {renderBlurs}
-          </ScrollView>
-        </View>
-      </BlurTarget>
-    </>
+          {renderBlurs}
+        </ScrollView>
+      </View>
+    </View>
   );
 }
