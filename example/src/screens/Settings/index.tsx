@@ -61,7 +61,6 @@ export function Settings() {
               radius={blurRadius}
               type={blurType}
               style={styles.centralize}
-              reducedTransparencyFallbackColor="#F1F1F1"
             >
               <Text style={[styles.itemText, { color }]}>{label}</Text>
             </BlurView>
@@ -137,7 +136,6 @@ export function Settings() {
               blurTarget={scrollTargetRef}
               type={blurType}
               style={styles.centralize}
-              reducedTransparencyFallbackColor="#F1F1F1"
               animatedProps={animatedProps}
             >
               <Text style={[styles.itemText, { color }]}>Blur Animation</Text>
@@ -149,7 +147,6 @@ export function Settings() {
               <AnimatedVibrancyView
                 type={blurType}
                 style={styles.centralize}
-                reducedTransparencyFallbackColor="#F1F1F1"
                 animatedProps={animatedProps}
               >
                 <Text style={styles.itemText}>Vibrancy Animation</Text>
@@ -171,7 +168,6 @@ export function Settings() {
               radius={radius}
               type={blurType}
               style={styles.centralize}
-              reducedTransparencyFallbackColor="#F1F1F1"
             >
               <Text style={[styles.itemText, { color }]}>Open Modal</Text>
             </BlurView>
