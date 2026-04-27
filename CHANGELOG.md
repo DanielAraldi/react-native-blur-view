@@ -1,3 +1,11 @@
+# [2.2.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.7...v2.2.0) (2026-04-27)
+
+
+### Features
+
+* add a new `androidColor` property in the fabric native component ([44d6dd4](https://github.com/DanielAraldi/react-native-blur-view/commit/44d6dd4344b2e565f5eb71d94943b2dad1deb832))
+* **android:** add a new `androidColor` property, it overrides `type` property color in Android only ([c379e9e](https://github.com/DanielAraldi/react-native-blur-view/commit/c379e9ed2c3ad7da22db8a654773da8a07f72ceb))
+
 ## [2.1.7](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.6...v2.1.7) (2026-04-24)
 
 
