@@ -37,7 +37,7 @@ export function Settings() {
   const { top, bottom } = useSafeAreaInsets();
   const { blurType, effectStyle, radius, isDark, onRadius } = useBlur();
 
-  const radiusAnimation = useSharedValue(0);
+  const radiusAnimation = useSharedValue(0.01);
 
   const color = blurType.includes('dark') ? 'white' : 'black';
   const defaultMessage = isIos
@@ -153,9 +153,7 @@ export function Settings() {
                   reducedTransparencyFallbackColor="#F1F1F1"
                   animatedProps={animatedProps}
                 >
-                  <Text style={[styles.itemText, { color }]}>
-                    Vibrancy Animation
-                  </Text>
+                  <Text style={styles.itemText}>Vibrancy Animation</Text>
                 </AnimatedVibrancyView>
               </View>
             )}

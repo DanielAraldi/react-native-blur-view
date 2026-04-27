@@ -74,6 +74,8 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
 
     itemText: {
       fontSize: 20,
+
+      color: 'white',
     },
 
     header: {
