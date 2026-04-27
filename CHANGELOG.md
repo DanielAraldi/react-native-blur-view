@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.2.0...v2.3.0) (2026-04-27)
+
+
+### Features
+
+* **ios:** add support for RN `ColorValue` in the `reducedTransparencyFallbackColor` property ([2df98b5](https://github.com/DanielAraldi/react-native-blur-view/commit/2df98b5783bb15ff5dafeaeae040248f2d4c2dd8))
+
 # [2.2.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.7...v2.2.0) (2026-04-27)
 
 
