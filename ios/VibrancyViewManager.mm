@@ -18,7 +18,7 @@ RCT_EXPORT_MODULE(VibrancyView);
 
 RCT_EXPORT_VIEW_PROPERTY(overlayColor, NSString);
 RCT_EXPORT_VIEW_PROPERTY(effectStyle, NSString);
-RCT_EXPORT_VIEW_PROPERTY(reducedTransparencyFallbackColor, NSString);
+RCT_EXPORT_VIEW_PROPERTY(reducedTransparencyFallbackColor, UIColor);
 RCT_EXPORT_VIEW_PROPERTY(radius, NSNumber);
 
 @end

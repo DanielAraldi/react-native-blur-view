@@ -54,8 +54,8 @@ class BlurViewManager : ViewGroupManager<BlurView>(),
   }
 
   @Override
-  @ReactProp(name = "reducedTransparencyFallbackColor")
-  override fun setReducedTransparencyFallbackColor(view: BlurView?, reducedTransparencyFallbackColor: String?) {
+  @ReactProp(name = "reducedTransparencyFallbackColor", customType = "Color")
+  override fun setReducedTransparencyFallbackColor(view: BlurView?, reducedTransparencyFallbackColor: Int?) {
     /**
       No-op: Android does not have a direct equivalent to iOS's reduced
       transparency fallback.

@@ -1,4 +1,4 @@
-import type { ViewProps } from 'react-native';
+import type { ColorValue, ViewProps } from 'react-native';
 import codegenNativeComponent from 'react-native/Libraries/Utilities/codegenNativeComponent';
 import type {
   Float,
@@ -9,7 +9,7 @@ export interface NativeProps extends ViewProps {
   overlayColor?: WithDefault<string, 'light'>;
   effectStyle?: WithDefault<string, 'label'>;
   radius?: WithDefault<Float, 10.0>;
-  reducedTransparencyFallbackColor?: WithDefault<string, 'white'>;
+  reducedTransparencyFallbackColor?: ColorValue;
 }
 
 export default codegenNativeComponent<NativeProps>('VibrancyView', {
