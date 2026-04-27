@@ -449,8 +449,6 @@ Bottom tabs customized with the [`react-navigation/bottom-tabs`](https://reactna
 
 On iOS all types are supported by default. However, on Android they are RGBA colors to simulate the same blur color.
 
-The `reducedTransparencyFallbackColor` property **accepts** hexadecimal colors and named colors: `black`, `blue`, `brown`, `clear`, `cyan`, `magenta`, `gray`, `green`, `orange`, `purple`, `red`, `transparent`, `white` and `yellow`.
-
 ## Expo
 
 In Expo, you need to convert to a [custom development build](https://docs.expo.dev/develop/development-builds/introduction/) or use [prebuild](https://docs.expo.dev/workflow/continuous-native-generation/). You can use also React Native without Expo.
