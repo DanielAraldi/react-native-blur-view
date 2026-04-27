@@ -44,7 +44,7 @@ export interface BlurViewProps extends ViewProps {
 
   /**
    * @description Set the downscale factor for the blur effect. It accepts a
-   * number between `0` and `15`. The higher the value, the more blurred the
+   * number between `0` and `100`. The higher the value, the more blurred the
    * effect will be, but it may also impact performance.
    *
    * @default 6
@@ -89,5 +89,5 @@ export interface BlurViewProps extends ViewProps {
    *
    * @since 1.4.0
    */
-  reducedTransparencyFallbackColor?: string;
+  reducedTransparencyFallbackColor?: ColorValue;
 }
