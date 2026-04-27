@@ -8,26 +8,16 @@ import {
 } from 'react-native';
 import { BlurTarget, BlurView } from '@danielsaraldi/react-native-blur-view';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import Animated, {
-  useAnimatedProps,
-  useAnimatedRef,
-  useScrollOffset,
-} from 'react-native-reanimated';
 import { useBlur } from '../../hooks';
 import { MOUNTAIN } from '../../assets';
 import { BLUR_TYPES_DATA } from '../../constants';
 import { makeStyles } from './styles';
 
-const AnimatedBlurView = Animated.createAnimatedComponent(BlurView);
-
 export function Blurs() {
   const targetRef = useRef<View | null>(null);
   const scrollTargetRef = useRef<View | null>(null);
   const { top, bottom } = useSafeAreaInsets();
-  const { radius, blurType, onBlurType } = useBlur();
-
-  const scrollViewRef = useAnimatedRef<ScrollView>();
-  const scrollOffset = useScrollOffset(scrollViewRef);
+  const { radius, onBlurType } = useBlur();
 
   const styles = useMemo(() => makeStyles({ top, bottom }), [top, bottom]);
 
@@ -57,22 +47,8 @@ export function Blurs() {
     [radius, styles, onBlurType]
   );
 
-  const animatedProps = useAnimatedProps(
-    () => ({
-      radius: scrollOffset.get() / 100,
-    }),
-    []
-  );
-
   return (
     <>
-      <AnimatedBlurView
-        blurTarget={targetRef}
-        type={blurType}
-        animatedProps={animatedProps}
-        style={styles.animatedHeader}
-      />
-
       <BlurTarget ref={targetRef} style={[styles.expand, styles.absoluteFill]}>
         <View style={styles.expand}>
           <BlurTarget ref={scrollTargetRef} style={styles.absoluteFill}>
@@ -84,7 +60,6 @@ export function Blurs() {
           </BlurTarget>
 
           <ScrollView
-            ref={scrollViewRef}
             style={styles.container}
             contentContainerStyle={styles.contentContainer}
             showsVerticalScrollIndicator={false}

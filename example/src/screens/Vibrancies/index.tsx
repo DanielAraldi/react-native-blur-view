@@ -11,25 +11,15 @@ import {
   VibrancyView,
   type BlurType,
 } from '@danielsaraldi/react-native-blur-view';
-import Animated, {
-  useAnimatedProps,
-  useAnimatedRef,
-  useScrollOffset,
-} from 'react-native-reanimated';
 import { useBlur } from '../../hooks';
 import { PORSCHE_MOUNTAIN } from '../../assets';
 import { BLUR_TYPES_DATA, EFFECT_STYLES_DATA } from '../../constants';
 import { makeStyles } from './styles';
 
-const AnimatedVibrancyView = Animated.createAnimatedComponent(VibrancyView);
-
 export function Vibrancies() {
   const { radius, blurType, effectStyle, onBlurType, onEffectStyle } =
     useBlur();
   const { top, bottom } = useSafeAreaInsets();
-
-  const scrollViewRef = useAnimatedRef<ScrollView>();
-  const scrollOffset = useScrollOffset(scrollViewRef);
 
   const getTextColor = useCallback((type: BlurType) => {
     const exceptions = ['x-light', 'light', 'dark', 'regular', 'prominent'];
@@ -87,28 +77,14 @@ export function Vibrancies() {
     [radius, styles, blurType, effectStyle, onEffectStyle, getTextColor]
   );
 
-  const animatedProps = useAnimatedProps(
-    () => ({
-      radius: scrollOffset.get() / 100,
-    }),
-    []
-  );
-
   return (
     <View style={styles.expand}>
-      <AnimatedVibrancyView
-        type={blurType}
-        animatedProps={animatedProps}
-        style={styles.animatedHeader}
-      />
-
       <ImageBackground
         style={styles.absoluteFill}
         source={PORSCHE_MOUNTAIN}
         resizeMode="cover"
       >
         <ScrollView
-          ref={scrollViewRef}
           style={styles.container}
           contentContainerStyle={styles.contentContainer}
           showsVerticalScrollIndicator={false}

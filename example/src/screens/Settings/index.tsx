@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import {
   Button,
   ImageBackground,
@@ -9,11 +9,16 @@ import {
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { BlurTarget, BlurView } from '@danielsaraldi/react-native-blur-view';
+import {
+  BlurTarget,
+  BlurView,
+  VibrancyView,
+} from '@danielsaraldi/react-native-blur-view';
 import Animated, {
   useAnimatedProps,
-  useAnimatedRef,
-  useScrollOffset,
+  useSharedValue,
+  withRepeat,
+  withTiming,
 } from 'react-native-reanimated';
 import { useBlur } from '../../hooks';
 import { PORSCHE_ARCHITECTURE } from '../../assets';
@@ -22,6 +27,7 @@ import { makeStyles } from './styles';
 import { isIos } from '../../utils';
 
 const AnimatedBlurView = Animated.createAnimatedComponent(BlurView);
+const AnimatedVibrancyView = Animated.createAnimatedComponent(VibrancyView);
 
 export function Settings() {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
@@ -31,8 +37,7 @@ export function Settings() {
   const { top, bottom } = useSafeAreaInsets();
   const { blurType, effectStyle, radius, isDark, onRadius } = useBlur();
 
-  const scrollViewRef = useAnimatedRef<ScrollView>();
-  const scrollOffset = useScrollOffset(scrollViewRef);
+  const radiusAnimation = useSharedValue(0);
 
   const color = blurType.includes('dark') ? 'white' : 'black';
   const defaultMessage = isIos
@@ -66,22 +71,19 @@ export function Settings() {
     [blurType, styles, color, onRadius]
   );
 
-  const animatedProps = useAnimatedProps(
-    () => ({
-      radius: scrollOffset.get() / 100,
-    }),
-    []
-  );
+  const animatedProps = useAnimatedProps(() => ({
+    radius: radiusAnimation.get() * 100,
+  }));
+
+  useEffect(() => {
+    radiusAnimation.set(() =>
+      withRepeat(withTiming(1, { duration: 2000 }), -1, true)
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
-      <AnimatedBlurView
-        blurTarget={targetRef}
-        type={blurType}
-        animatedProps={animatedProps}
-        style={styles.animatedHeader}
-      />
-
       <BlurTarget ref={targetRef} style={[styles.expand, styles.absoluteFill]}>
         <View style={styles.expand}>
           <BlurTarget ref={scrollTargetRef} style={styles.absoluteFill}>
@@ -93,7 +95,6 @@ export function Settings() {
           </BlurTarget>
 
           <ScrollView
-            ref={scrollViewRef}
             style={styles.container}
             contentContainerStyle={styles.contentContainer}
             showsVerticalScrollIndicator={false}
@@ -128,7 +129,38 @@ export function Settings() {
 
             {renderBlurRadius}
 
-            <View style={[styles.header, styles.modalMarginTop]}>
+            <View style={[styles.header, styles.marginTop]}>
+              <Text style={styles.headerText}>Blur + Reanimated</Text>
+            </View>
+
+            <View style={styles.item}>
+              <AnimatedBlurView
+                blurTarget={scrollTargetRef}
+                type={blurType}
+                style={styles.centralize}
+                reducedTransparencyFallbackColor="#F1F1F1"
+                animatedProps={animatedProps}
+              >
+                <Text style={[styles.itemText, { color }]}>Blur Animation</Text>
+              </AnimatedBlurView>
+            </View>
+
+            {isIos && (
+              <View style={styles.item}>
+                <AnimatedVibrancyView
+                  type={blurType}
+                  style={styles.centralize}
+                  reducedTransparencyFallbackColor="#F1F1F1"
+                  animatedProps={animatedProps}
+                >
+                  <Text style={[styles.itemText, { color }]}>
+                    Vibrancy Animation
+                  </Text>
+                </AnimatedVibrancyView>
+              </View>
+            )}
+
+            <View style={[styles.header, styles.marginTop]}>
               <Text style={styles.headerText}>Modal</Text>
             </View>
 
