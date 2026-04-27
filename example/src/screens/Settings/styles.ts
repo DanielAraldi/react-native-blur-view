@@ -18,7 +18,7 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
     contentContainer: {
       flexGrow: 1,
 
-      paddingTop: (isAndroidSDK31OrLower ? top + 20 : top) + 16,
+      paddingTop: isAndroidSDK31OrLower ? top + 20 : top,
       paddingHorizontal: 20,
       paddingBottom: bottom + (isAndroidSDK31OrLower ? 96 : 64),
 
@@ -74,16 +74,8 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
 
     itemText: {
       fontSize: 20,
-    },
 
-    animatedHeader: {
-      position: 'absolute',
-
-      top: 0,
-      left: 0,
-
-      width: '100%',
-      height: isAndroidSDK31OrLower ? top + 20 : top,
+      color: 'white',
     },
 
     header: {
@@ -110,7 +102,7 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
       color: 'white',
     },
 
-    modalMarginTop: {
+    marginTop: {
       marginTop: 24,
     },
 

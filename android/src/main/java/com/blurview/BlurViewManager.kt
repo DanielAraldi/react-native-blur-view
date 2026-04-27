@@ -36,6 +36,12 @@ class BlurViewManager : ViewGroupManager<BlurView>(),
   }
 
   @Override
+  @ReactProp(name = "androidColor", customType = "Color")
+  override fun setAndroidColor(view: BlurView?, androidColor: Int?) {
+     view?.setAndroidColor(androidColor ?: null)
+  }
+
+  @Override
   @ReactProp(name = "radius", defaultFloat = 10f)
   override fun setRadius(view: BlurView?, radius: Float) {
     view?.setRadius(radius)

@@ -52,6 +52,7 @@ export const BlurView = forwardRef<View, BlurViewProps>((props, ref) => {
     style,
     children,
     overlayColor,
+    androidColor,
     ...rest
   } = props;
 
@@ -73,6 +74,7 @@ export const BlurView = forwardRef<View, BlurViewProps>((props, ref) => {
       : downscaleFactor * 0.66;
 
     return {
+      androidColor,
       targetId: isAndroid ? targetId : undefined,
       reducedTransparencyFallbackColor,
       downscaleFactor: _downscaleFactor,
@@ -84,6 +86,7 @@ export const BlurView = forwardRef<View, BlurViewProps>((props, ref) => {
     type,
     radius,
     downscaleFactor,
+    androidColor,
     reducedTransparencyFallbackColor,
     targetId,
     rest,

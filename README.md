@@ -296,6 +296,7 @@ The `BlurView` component is an extends the same properties of the a `View` compo
 | `radius`                           | Blur radius `0` - `100`.                                                                    | `10.0`      | All      |
 | `downscaleFactor`                  | Downscale factor `0` - `100`.                                                               | `6.0`       | Android  |
 | `overlayColor`                     | Add the overlay color about component.                                                      | `undefined` | All      |
+| `androidColor`                     | Overrides the `type` property color.                                                        | `undefined` | Android  |
 | `reducedTransparencyFallbackColor` | Background color about blur effect when reduced transparency is enabled.                    | `white`     | iOS      |
 
 When a value less than `0` or greater than `100` are provided for `radius` or `downscaleFactor` property, the value is clipped.
@@ -439,6 +440,8 @@ The blur effect on Android has always been a challenge. Therefore, version 2.0.0
 On Android platforms, the component utilizes the [BlurView](https://github.com/Dimezis/BlurView) library to offer native blur effects with hardware-accelerated rendering.
 
 For different types of `x-light`, `light`, and `dark`, the `radius` is fixed at `35` and the `downscaleFactor` is only 66% of the stated value. This is done to maintain similarity with the iOS effect.
+
+The `androidColor` property can be useful when you want to achieve a specific look or match the blur effect to other elements in your app. It **overrides** the `type` property.
 
 Bottom tabs customized with the [`react-navigation/bottom-tabs`](https://reactnavigation.org/docs/bottom-tab-navigator/) **aren't** supported! If you want to customize your bottom tabs, opt for [`@sbaiahmed1/react-native-blur`](https://github.com/sbaiahmed1/react-native-blur).
 
