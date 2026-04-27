@@ -1,3 +1,11 @@
+## [2.3.1](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.3.0...v2.3.1) (2026-04-27)
+
+
+### Bug Fixes
+
+* add correct range of the `downscaleFactor` JSDoc and correct type of the `reducedTransparencyFallbackColor` property ([e767468](https://github.com/DanielAraldi/react-native-blur-view/commit/e767468bfc070a1837a5ae0dfcfbbe4266bf53e7))
+* add the correct type on `reducedTransparencyFallbackColor` property in the `VibrancyView` component ([aa62b68](https://github.com/DanielAraldi/react-native-blur-view/commit/aa62b68eff6133c90a21c1989aa719d7286d7891))
+
 # [2.3.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.2.0...v2.3.0) (2026-04-27)
 
 
