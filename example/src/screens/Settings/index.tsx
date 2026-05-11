@@ -6,6 +6,7 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
+  useColorScheme,
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -22,7 +23,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { useBlur } from '../../hooks';
 import { PORSCHE_ARCHITECTURE } from '../../assets';
-import { BLUR_RADIUS_DATA } from '../../constants';
+import { BLUR_RADIUS_DATA, BLUR_UI_MODES } from '../../constants';
 import { makeStyles } from './styles';
 import { isIos } from '../../utils';
 
@@ -34,12 +35,16 @@ export function Settings() {
 
   const targetRef = useRef<View | null>(null);
   const scrollTargetRef = useRef<View | null>(null);
+  const colorScheme = useColorScheme();
   const { top, bottom } = useSafeAreaInsets();
   const { blurType, effectStyle, radius, isDark, onRadius } = useBlur();
 
   const radiusAnimation = useSharedValue(0.01);
 
-  const color = blurType.includes('dark') ? 'white' : 'black';
+  const colorByType = blurType.includes('dark') ? 'white' : 'black';
+  const isDarkMode = colorScheme === 'dark';
+  const isUIMode = BLUR_UI_MODES.some((mode) => blurType === mode);
+  const color = isUIMode ? (isDarkMode ? 'white' : 'black') : colorByType;
   const defaultMessage = isIos
     ? 'Default blur type is light, radius is 10 and vibrancy effect style is label.'
     : 'Default blur type is light and default radius is 10.';
@@ -109,12 +114,7 @@ export function Settings() {
               style={styles.absoluteFill}
             />
 
-            <Text
-              style={[
-                styles.configurationText,
-                isDark && styles.configurationTextDark,
-              ]}
-            >
+            <Text style={[styles.configurationText, { color }]}>
               Explore radius and type configurations to customize the blur
               effect ✨{'\n'}Adjust the settings to see how they impact the
               appearance of the blur on both Android and iOS platforms 🌫️
