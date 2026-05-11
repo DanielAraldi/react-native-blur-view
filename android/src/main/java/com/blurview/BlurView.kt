@@ -1,6 +1,7 @@
 package com.blurview
 
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Build
 import android.util.AttributeSet
 import android.util.Log
@@ -15,7 +16,8 @@ import com.facebook.react.uimanager.common.UIManagerType
 class BlurView : eightbitlab.com.blurview.BlurView {
   private var targetId: Int? = null
   private var androidColor: Int? = null
-  private var overlayColor: BlurOverlayColor = BlurOverlayColor.fromString("light")
+  private var colorString: String = "light"
+  private var overlayColor: BlurOverlayColor = BlurOverlayColor.fromString(this.colorString, resources.configuration)
   private var radius: Float = 10f * INTENSITY
   private var downscaleFactor: Float = 6f
   private var targetView: TargetView? = null
@@ -84,6 +86,17 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     // We override this to prevent the superclass (BlurViewGroup/FrameLayout) from
     // re-positioning children based on its own logic (e.g. gravity), which would
     // conflict with React Native's layout.
+  }
+
+  /**
+   * Handle configuration changes, such as dark mode or orientation changes.
+   * This ensures the blur view updates its overlay color based on the new
+   * configuration.
+   */
+  override fun onConfigurationChanged(config: Configuration) {
+    super.onConfigurationChanged(config)
+
+    this.setOverlayColor(this.colorString)
   }
 
   private fun setupBlurView() {
@@ -199,9 +212,10 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   }
 
   fun setOverlayColor(overlayColor: String) {
-    val overlay = BlurOverlayColor.fromString(overlayColor)
+    val overlay = BlurOverlayColor.fromString(overlayColor, resources.configuration)
 
     this.overlayColor = overlay
+    this.colorString = overlayColor
 
     if (this.androidColor != null) return;
 
