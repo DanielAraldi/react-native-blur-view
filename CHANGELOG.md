@@ -1,3 +1,12 @@
+## [2.3.2](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.3.1...v2.3.2) (2026-05-11)
+
+
+### Bug Fixes
+
+* **android:** ensure the blur view updates it's overlay color based on the UI mode new configuration ([61eb771](https://github.com/DanielAraldi/react-native-blur-view/commit/61eb771ef6420c3a8003453d2da88a62e55cc9ff))
+* **android:** remove unnecessary mathematical logic from downscaleFactor property ([ffa6ae6](https://github.com/DanielAraldi/react-native-blur-view/commit/ffa6ae63655f826a4f6c367f71d594406e29d695))
+* **example:** update text color based on the UI mode ([9043ea1](https://github.com/DanielAraldi/react-native-blur-view/commit/9043ea1d93b6685e5b8896c01b76679963c0a0b3))
+
 ## [2.3.1](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.3.0...v2.3.1) (2026-04-27)
 
 
