@@ -5,16 +5,18 @@ import {
   TouchableOpacity,
   View,
   ScrollView,
+  useColorScheme,
 } from 'react-native';
 import { BlurTarget, BlurView } from '@danielsaraldi/react-native-blur-view';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useBlur } from '../../hooks';
 import { MOUNTAIN } from '../../assets';
-import { BLUR_TYPES_DATA } from '../../constants';
+import { BLUR_TYPES_DATA, BLUR_UI_MODES } from '../../constants';
 import { makeStyles } from './styles';
 
 export function Blurs() {
   const targetRef = useRef<View | null>(null);
+  const colorScheme = useColorScheme();
   const { top, bottom } = useSafeAreaInsets();
   const { radius, onBlurType } = useBlur();
 
@@ -23,7 +25,10 @@ export function Blurs() {
   const renderBlurs = useMemo(
     () =>
       BLUR_TYPES_DATA.map(({ type, label }) => {
-        const color = type.includes('dark') ? 'white' : 'black';
+        const colorByType = type.includes('dark') ? 'white' : 'black';
+        const isDarkMode = colorScheme === 'dark';
+        const isUIMode = BLUR_UI_MODES.some((mode) => type === mode);
+        const color = isUIMode ? (isDarkMode ? 'white' : 'black') : colorByType;
 
         return (
           <TouchableOpacity
@@ -43,7 +48,7 @@ export function Blurs() {
           </TouchableOpacity>
         );
       }),
-    [radius, styles, onBlurType]
+    [radius, styles, colorScheme, onBlurType]
   );
 
   return (

@@ -28,7 +28,7 @@ import { globalStyles } from './styles';
  * import { styles } from './styles';
  *
  * const MyComponent = () => {
- *   const blurTargetRef = useRef(null);
+ *   const blurTargetRef = useRef<View | null>(null);
  *
  *   return (
  *     <View style={styles.container}>
@@ -69,20 +69,19 @@ export const BlurView = forwardRef<View, BlurViewProps>((props, ref) => {
   const commonProps = useMemo(() => {
     const isPrimary = type === 'x-light' || type === 'light' || type === 'dark';
     const _radius = isPrimary ? radius : 35;
-    const _downscaleFactor = isPrimary
-      ? downscaleFactor
-      : downscaleFactor * 0.66;
 
     return {
+      ref,
       androidColor,
+      downscaleFactor,
       targetId: isAndroid ? targetId : undefined,
       reducedTransparencyFallbackColor,
-      downscaleFactor: _downscaleFactor,
       overlayColor: type,
       radius: isAndroid ? _radius : radius,
       ...rest,
     };
   }, [
+    ref,
     type,
     radius,
     downscaleFactor,
@@ -102,7 +101,6 @@ export const BlurView = forwardRef<View, BlurViewProps>((props, ref) => {
     return (
       <View style={[globalStyles.container, style]}>
         <Blur
-          ref={ref}
           style={[globalStyles.absoluteFill, backgroundColor]}
           {...commonProps}
         />
@@ -115,14 +113,14 @@ export const BlurView = forwardRef<View, BlurViewProps>((props, ref) => {
       style={[globalStyles.container, style, !isAndroid && backgroundColor]}
     >
       {isAndroid ? (
-        <Blur ref={ref} style={globalStyles.absoluteFill} {...commonProps}>
+        <Blur style={globalStyles.absoluteFill} {...commonProps}>
           <View style={[globalStyles.content, style, backgroundColor]}>
             {children}
           </View>
         </Blur>
       ) : (
         <>
-          <Blur ref={ref} style={globalStyles.absoluteFill} {...commonProps} />
+          <Blur style={globalStyles.absoluteFill} {...commonProps} />
 
           {children}
         </>

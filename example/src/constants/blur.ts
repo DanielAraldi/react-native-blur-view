@@ -6,6 +6,16 @@ export const NAVIGATION_ICONS = {
   Settings: '⚙️',
 } as const;
 
+export const BLUR_UI_MODES = [
+  'regular',
+  'prominent',
+  'material',
+  'thin-material',
+  'chrome-material',
+  'thick-material',
+  'ultra-thin-material',
+] as const;
+
 export const BLUR_TYPES_DATA: BlurTypeData[] = [
   {
     type: 'x-light',
@@ -122,7 +132,7 @@ export const EFFECT_STYLES_DATA: EffectStyleData[] = [
     style: 'separator',
     label: 'Separator ➗',
   },
-];
+] as const;
 
 export const BLUR_RADIUS_DATA: BlurRadiusData[] = [
   {
@@ -169,4 +179,4 @@ export const BLUR_RADIUS_DATA: BlurRadiusData[] = [
     radius: 100,
     label: 'Blur radius 100',
   },
-];
+] as const;
