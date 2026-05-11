@@ -21,7 +21,7 @@ import type { BlurTargetProps } from './@types';
  * import { styles } from './styles';
  *
  * const MyComponent = () => {
- *   const blurTargetRef = useRef(null);
+ *   const blurTargetRef = useRef<View | null>(null);
  *
  *   return (
  *     <View style={styles.container}>

@@ -439,7 +439,7 @@ The blur effect on Android has always been a challenge. Therefore, version 2.0.0
 
 On Android platforms, the component utilizes the [BlurView](https://github.com/Dimezis/BlurView) library to offer native blur effects with hardware-accelerated rendering.
 
-For different types of `x-light`, `light`, and `dark`, the `radius` is fixed at `35` and the `downscaleFactor` is only 66% of the stated value. This is done to maintain similarity with the iOS effect.
+For different types of `x-light`, `light`, and `dark`, the `radius` is fixed at `35`. This is done to maintain similarity with the iOS effect.
 
 The `androidColor` property can be useful when you want to achieve a specific look or match the blur effect to other elements in your app. It **overrides** the `type` property.
 
