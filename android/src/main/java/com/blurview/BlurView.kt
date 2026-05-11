@@ -96,6 +96,9 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   override fun onConfigurationChanged(config: Configuration) {
     super.onConfigurationChanged(config)
 
+    val currentOverlayColor = BlurOverlayColor.fromString(this.colorString, config)
+    if (this.androidColor != null || currentOverlayColor == this.overlayColor) return
+
     this.setOverlayColor(this.colorString)
   }
 
@@ -217,7 +220,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     this.overlayColor = overlay
     this.colorString = overlayColor
 
-    if (this.androidColor != null) return;
+    if (this.androidColor != null) return
 
     super.setBackgroundColor(overlay.color)
     super.setOverlayColor(overlay.color)
