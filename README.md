@@ -7,6 +7,7 @@ Support the animation transitions with [react-native-screens](https://github.com
 <div align="center">
   <p>
     <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/DanielAraldi/react-native-blur-view?style=flat&color=brightgreen" />
+    <img alt="Unpacked size" src="https://img.shields.io/npm/unpacked-size/%40danielsaraldi%2Freact-native-blur-view?style=flat&color=brightgreen" />
     <img alt="NPM Downloads" src="https://img.shields.io/npm/dm/%40danielsaraldi%2Freact-native-blur-view?style=flat" />
   </p>
 </div>
