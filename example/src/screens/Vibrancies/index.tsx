@@ -2,9 +2,9 @@ import { useCallback, useMemo } from 'react';
 import {
   ImageBackground,
   ScrollView,
-  StyleSheet,
   Text,
   TouchableOpacity,
+  useColorScheme,
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -14,19 +14,32 @@ import {
 } from '@danielsaraldi/react-native-blur-view';
 import { useBlur } from '../../hooks';
 import { PORSCHE_MOUNTAIN } from '../../assets';
-import { BLUR_TYPES_DATA, EFFECT_STYLES_DATA } from '../../constants';
+import {
+  BLUR_TYPES_DATA,
+  BLUR_UI_MODES,
+  EFFECT_STYLES_DATA,
+} from '../../constants';
 import { makeStyles } from './styles';
 
 export function Vibrancies() {
+  const colorScheme = useColorScheme();
   const { radius, blurType, effectStyle, onBlurType, onEffectStyle } =
     useBlur();
   const { top, bottom } = useSafeAreaInsets();
 
-  const getTextColor = useCallback((type: BlurType) => {
-    const exceptions = ['extra-light', 'light', 'dark', 'regular', 'prominent'];
-    const color = type.includes('dark') ? 'white' : 'black';
-    return exceptions.some((exception) => exception === type) ? 'white' : color;
-  }, []);
+  const getTextColor = useCallback(
+    (type: BlurType) => {
+      const exceptions = ['extra-light', 'light', 'dark', 'extra-dark', 'regular', 'prominent'];
+      const isException = exceptions.some((exception) => exception === type);
+      if (isException) return 'white';
+
+      const isDarkMode = colorScheme === 'dark';
+      const isUIMode = BLUR_UI_MODES.some((mode) => type === mode);
+      const colorByType = type.includes('dark') ? 'white' : 'black';
+      return isUIMode ? (isDarkMode ? 'white' : 'black') : colorByType;
+    },
+    [colorScheme]
+  );
 
   const styles = useMemo(() => makeStyles({ top, bottom }), [top, bottom]);
 
@@ -81,7 +94,7 @@ export function Vibrancies() {
   return (
     <View style={styles.expand}>
       <ImageBackground
-        style={StyleSheet.absoluteFill}
+        style={styles.absoluteFill}
         source={PORSCHE_MOUNTAIN}
         resizeMode="cover"
       >

@@ -1,3 +1,52 @@
+## [2.3.2](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.3.1...v2.3.2) (2026-05-11)
+
+
+### Bug Fixes
+
+* **android:** ensure the blur view updates it's overlay color based on the UI mode new configuration ([61eb771](https://github.com/DanielAraldi/react-native-blur-view/commit/61eb771ef6420c3a8003453d2da88a62e55cc9ff))
+* **android:** remove unnecessary mathematical logic from downscaleFactor property ([ffa6ae6](https://github.com/DanielAraldi/react-native-blur-view/commit/ffa6ae63655f826a4f6c367f71d594406e29d695))
+* **example:** update text color based on the UI mode ([9043ea1](https://github.com/DanielAraldi/react-native-blur-view/commit/9043ea1d93b6685e5b8896c01b76679963c0a0b3))
+
+## [2.3.1](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.3.0...v2.3.1) (2026-04-27)
+
+
+### Bug Fixes
+
+* add correct range of the `downscaleFactor` JSDoc and correct type of the `reducedTransparencyFallbackColor` property ([e767468](https://github.com/DanielAraldi/react-native-blur-view/commit/e767468bfc070a1837a5ae0dfcfbbe4266bf53e7))
+* add the correct type on `reducedTransparencyFallbackColor` property in the `VibrancyView` component ([aa62b68](https://github.com/DanielAraldi/react-native-blur-view/commit/aa62b68eff6133c90a21c1989aa719d7286d7891))
+
+# [2.3.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.2.0...v2.3.0) (2026-04-27)
+
+
+### Features
+
+* **ios:** add support for RN `ColorValue` in the `reducedTransparencyFallbackColor` property ([2df98b5](https://github.com/DanielAraldi/react-native-blur-view/commit/2df98b5783bb15ff5dafeaeae040248f2d4c2dd8))
+
+# [2.2.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.7...v2.2.0) (2026-04-27)
+
+
+### Features
+
+* add a new `androidColor` property in the fabric native component ([44d6dd4](https://github.com/DanielAraldi/react-native-blur-view/commit/44d6dd4344b2e565f5eb71d94943b2dad1deb832))
+* **android:** add a new `androidColor` property, it overrides `type` property color in Android only ([c379e9e](https://github.com/DanielAraldi/react-native-blur-view/commit/c379e9ed2c3ad7da22db8a654773da8a07f72ceb))
+
+## [2.1.7](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.6...v2.1.7) (2026-04-24)
+
+
+### Bug Fixes
+
+* add `forwardRef` in all components to support `createAnimatedComponent` of the reanimated ([c1898c5](https://github.com/DanielAraldi/react-native-blur-view/commit/c1898c5a89a5229f8210c3d7144025649fc18dc7))
+* **android:** tiny adjust in method name ([7c537f2](https://github.com/DanielAraldi/react-native-blur-view/commit/7c537f27b121c64be538ec3379f08e8ba542d6c5))
+* **example:** add animated blur in the example App ([4183bb8](https://github.com/DanielAraldi/react-native-blur-view/commit/4183bb86c8502eb4ae9f964747f3f388af3083e3))
+* **ios:** rename `blurRadius` to `radius` in native code ([afb764c](https://github.com/DanielAraldi/react-native-blur-view/commit/afb764c2b5770667dc21f2739314c6bbf35e3504))
+
+## [2.1.6](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.5...v2.1.6) (2026-04-08)
+
+
+### Bug Fixes
+
+* **ios:** adjust `flex-direction` when it's `row` ([1ce327c](https://github.com/DanielAraldi/react-native-blur-view/commit/1ce327c5ec8df275618800b8834d23af9339eb81))
+
 ## [2.1.5](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.1.4...v2.1.5) (2026-03-26)
 
 

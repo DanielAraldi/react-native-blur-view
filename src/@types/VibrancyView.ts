@@ -67,5 +67,5 @@ export interface VibrancyViewProps extends ViewProps {
    *
    * @since 1.4.0
    */
-  reducedTransparencyFallbackColor?: string;
+  reducedTransparencyFallbackColor?: ColorValue;
 }

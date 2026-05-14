@@ -6,6 +6,16 @@ export const NAVIGATION_ICONS = {
   Settings: '⚙️',
 } as const;
 
+export const BLUR_UI_MODES = [
+  'regular',
+  'prominent',
+  'material',
+  'thin-material',
+  'chrome-material',
+  'thick-material',
+  'ultra-thin-material',
+] as const;
+
 export const BLUR_TYPES_DATA: BlurTypeData[] = [
   {
     type: 'extra-light',

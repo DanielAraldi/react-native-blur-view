@@ -36,8 +36,14 @@ class BlurViewManager : ViewGroupManager<BlurView>(),
   }
 
   @Override
-  @ReactProp(name = "blurRadius", defaultFloat = 10f)
-  override fun setBlurRadius(view: BlurView?, radius: Float) {
+  @ReactProp(name = "androidColor", customType = "Color")
+  override fun setAndroidColor(view: BlurView?, androidColor: Int?) {
+     view?.setAndroidColor(androidColor ?: null)
+  }
+
+  @Override
+  @ReactProp(name = "radius", defaultFloat = 10f)
+  override fun setRadius(view: BlurView?, radius: Float) {
     view?.setRadius(radius)
   }
 
@@ -48,8 +54,8 @@ class BlurViewManager : ViewGroupManager<BlurView>(),
   }
 
   @Override
-  @ReactProp(name = "reducedTransparencyFallbackColor")
-  override fun setReducedTransparencyFallbackColor(view: BlurView?, reducedTransparencyFallbackColor: String?) {
+  @ReactProp(name = "reducedTransparencyFallbackColor", customType = "Color")
+  override fun setReducedTransparencyFallbackColor(view: BlurView?, reducedTransparencyFallbackColor: Int?) {
     /**
       No-op: Android does not have a direct equivalent to iOS's reduced
       transparency fallback.

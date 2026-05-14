@@ -15,8 +15,10 @@
     "@react-navigation/native-stack": "^7.15.0",
     "react": "19.2.3",
     "react-native": "0.85.3",
+    "react-native-reanimated": "4.3.1",
     "react-native-safe-area-context": "^5.6.1",
     "react-native-screens": "4.25.0",
+    "react-native-worklets": "0.8.3",
     "zustand": "^5.0.13"
   },
   "devDependencies": {

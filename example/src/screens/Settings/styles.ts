@@ -74,6 +74,8 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
 
     itemText: {
       fontSize: 20,
+
+      color: 'white',
     },
 
     header: {
@@ -100,7 +102,7 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
       color: 'white',
     },
 
-    modalMarginTop: {
+    marginTop: {
       marginTop: 24,
     },
 
@@ -127,5 +129,14 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
 
     modalContentDark: {
       backgroundColor: '#262323',
+    },
+
+    absoluteFill: {
+      position: 'absolute',
+
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
     },
   });

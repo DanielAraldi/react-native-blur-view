@@ -1,4 +1,4 @@
-import type { ViewProps } from 'react-native';
+import type { ColorValue, ViewProps } from 'react-native';
 import codegenNativeComponent from 'react-native/Libraries/Utilities/codegenNativeComponent';
 import type {
   Float,
@@ -9,9 +9,10 @@ import type {
 export interface NativeProps extends ViewProps {
   targetId?: WithDefault<Int32, null>;
   overlayColor?: WithDefault<string, 'light'>;
-  blurRadius?: WithDefault<Float, 10.0>;
+  radius?: WithDefault<Float, 10.0>;
   downscaleFactor?: WithDefault<Float, 6.0>;
-  reducedTransparencyFallbackColor?: WithDefault<string, 'white'>;
+  reducedTransparencyFallbackColor?: ColorValue;
+  androidColor?: ColorValue;
 }
 
 export default codegenNativeComponent<NativeProps>('BlurView');

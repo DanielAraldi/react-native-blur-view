@@ -1,5 +1,4 @@
-import type { RefObject } from 'react';
-import type { View, ViewProps } from 'react-native';
+import type { ViewProps } from 'react-native';
 
 /**
  * @interface BlurTargetProps
@@ -10,15 +9,4 @@ import type { View, ViewProps } from 'react-native';
  *
  * @since 1.0.0
  */
-export interface BlurTargetProps extends ViewProps {
-  /**
-   * @description Ref for the `BlurTarget` component to be identified by
-   * `BlurView` component in tree. **This is used to link the two components
-   * together and it's required for Android.**
-   *
-   * @platform Android
-   *
-   * @since 2.0.0
-   */
-  ref?: RefObject<View | null>;
-}
+export interface BlurTargetProps extends ViewProps {}

@@ -4,6 +4,7 @@
 #import "BlurViewEffect.h"
 #import "BlurUtils.h"
 
+#import <react/RCTConversions.h>
 #import <react/renderer/components/BlurViewSpec/ComponentDescriptors.h>
 #import <react/renderer/components/BlurViewSpec/EventEmitters.h>
 #import <react/renderer/components/BlurViewSpec/Props.h>
@@ -47,8 +48,8 @@ using namespace facebook::react;
     self.clipsToBounds = YES;
     self.overlayColor = @"light";
     self.effectStyle = @"label";
-    self.reducedTransparencyFallbackColor = @"white";
-    self.blurRadius = @10;
+    self.reducedTransparencyFallbackColor = [UIColor whiteColor];
+    self.radius = @10;
 
     self.blurEffectView = [[UIVisualEffectView alloc] init];
     self.blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -79,9 +80,9 @@ using namespace facebook::react;
   const auto &oldViewProps = *std::static_pointer_cast<VibrancyViewProps const>(_props);
   const auto &newViewProps = *std::static_pointer_cast<VibrancyViewProps const>(props);
 
-  if (oldViewProps.blurRadius != newViewProps.blurRadius) {
-    NSNumber *blurRadius = [NSNumber numberWithDouble:newViewProps.blurRadius];
-    [self setRadius:blurRadius];
+  if (oldViewProps.radius != newViewProps.radius) {
+    NSNumber *radius = [NSNumber numberWithDouble:newViewProps.radius];
+    [self setRadius:radius];
   }
 
   if (oldViewProps.overlayColor != newViewProps.overlayColor) {
@@ -95,7 +96,7 @@ using namespace facebook::react;
   }
 
   if (oldViewProps.reducedTransparencyFallbackColor != newViewProps.reducedTransparencyFallbackColor) {
-    NSString *reducedTransparencyFallbackColor = [NSString stringWithUTF8String:newViewProps.reducedTransparencyFallbackColor.c_str()];
+    UIColor *reducedTransparencyFallbackColor = RCTUIColorFromSharedColor(newViewProps.reducedTransparencyFallbackColor);
     [self setReducedTransparencyFallbackColor:reducedTransparencyFallbackColor];
   }
 
@@ -151,7 +152,7 @@ using namespace facebook::react;
     }
   }
 
-  self.reducedTransparencyFallbackView.backgroundColor = [BlurUtils colorFromString:self.reducedTransparencyFallbackColor];
+  self.reducedTransparencyFallbackView.backgroundColor = self.reducedTransparencyFallbackColor;
 }
 
 - (void)updateVibrancyEffect
@@ -160,7 +161,7 @@ using namespace facebook::react;
   self.vibrancyEffectView.effect = nil;
 
   UIBlurEffectStyle blurEffectStyle = [BlurUtils blurEffectStyle:self.overlayColor];
-  self.blurEffect = [BlurViewEffect effectWithStyle:blurEffectStyle andRadius:self.blurRadius];
+  self.blurEffect = [BlurViewEffect effectWithStyle:blurEffectStyle andRadius:self.radius];
   self.blurEffectView.effect = self.blurEffect;
 
   if (@available(iOS 13.0, *)) {
@@ -272,13 +273,13 @@ Class<RCTComponentViewProtocol> VibrancyViewCls(void)
 
 - (void)setRadius:(NSNumber *)radius
 {
-  if (radius && ![self.blurRadius isEqualToNumber:radius]) {
-    _blurRadius = [BlurUtils clipRadius:radius];
+  if (radius && ![self.radius isEqualToNumber:radius]) {
+    _radius = [BlurUtils clipRadius:radius];
     [self updateVibrancyEffect];
   }
 }
 
-- (void)setReducedTransparencyFallbackColor:(NSString *)reducedTransparencyFallbackColor
+- (void)setReducedTransparencyFallbackColor:(UIColor *)reducedTransparencyFallbackColor
 {
   if (reducedTransparencyFallbackColor && ![self.reducedTransparencyFallbackColor isEqual:reducedTransparencyFallbackColor]) {
     _reducedTransparencyFallbackColor = reducedTransparencyFallbackColor;

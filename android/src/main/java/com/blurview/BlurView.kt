@@ -1,6 +1,7 @@
 package com.blurview
 
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Build
 import android.util.AttributeSet
 import android.util.Log
@@ -14,7 +15,9 @@ import com.facebook.react.uimanager.common.UIManagerType
 
 class BlurView : eightbitlab.com.blurview.BlurView {
   private var targetId: Int? = null
-  private var overlayColor: BlurOverlayColor = BlurOverlayColor.fromString("light")
+  private var androidColor: Int? = null
+  private var colorString: String = "light"
+  private var overlayColor: BlurOverlayColor = BlurOverlayColor.fromString(this.colorString, resources.configuration)
   private var radius: Float = 10f * INTENSITY
   private var downscaleFactor: Float = 6f
   private var targetView: TargetView? = null
@@ -85,8 +88,24 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     // conflict with React Native's layout.
   }
 
+  /**
+   * Handle configuration changes, such as dark mode or orientation changes.
+   * This ensures the blur view updates its overlay color based on the new
+   * configuration.
+   */
+  override fun onConfigurationChanged(config: Configuration) {
+    super.onConfigurationChanged(config)
+
+    val currentOverlayColor = BlurOverlayColor.fromString(this.colorString, config)
+    if (this.androidColor != null || currentOverlayColor == this.overlayColor) return
+
+    this.setOverlayColor(this.colorString)
+  }
+
   private fun setupBlurView() {
-    super.setBackgroundColor(this.overlayColor.color)
+    val color = this.getColorForBlur()
+
+    super.setBackgroundColor(color)
     super.layoutParams = ViewGroup.LayoutParams(
       ViewGroup.LayoutParams.MATCH_PARENT,
       ViewGroup.LayoutParams.MATCH_PARENT
@@ -103,9 +122,11 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   }
 
   private fun initialize() {
+    val color = this.getColorForBlur()
+
     if (this.targetView == null) {
-      super.setBackgroundColor(this.overlayColor.color)
-      super.setOverlayColor(this.overlayColor.color)
+      super.setBackgroundColor(color)
+      super.setOverlayColor(color)
       super.setBlurEnabled(false)
 
       Log.e(TAG, "Target view not found: $targetId")
@@ -115,7 +136,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     val drawable = this.getAppropriateBackground()
     super.setupWith(this.targetView!!.blurTarget, this.downscaleFactor, false)
       .setBlurRadius(this.radius)
-      .setOverlayColor(this.overlayColor.color)
+      .setOverlayColor(color)
       .setBlurAutoUpdate(true)
       .setBlurEnabled(true)
       .setFrameClearDrawable(drawable)
@@ -173,6 +194,10 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     return null
   }
 
+  private fun getColorForBlur(): Int {
+    return this.androidColor ?: this.overlayColor.color
+  }
+
   private fun clipRadius(radius: Float): Float {
     /**
      * On Android > 31 the maximum blur radius is 67.5f and minimum is 0f.
@@ -190,12 +215,29 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   }
 
   fun setOverlayColor(overlayColor: String) {
-    val overlay = BlurOverlayColor.fromString(overlayColor)
+    val overlay = BlurOverlayColor.fromString(overlayColor, resources.configuration)
 
     this.overlayColor = overlay
+    this.colorString = overlayColor
+
+    if (this.androidColor != null) return
 
     super.setBackgroundColor(overlay.color)
     super.setOverlayColor(overlay.color)
+
+    this.reinitialize()
+  }
+
+  fun setAndroidColor(androidColor: Int?) {
+    this.androidColor = androidColor
+
+    if (androidColor == null) {
+      super.setBackgroundColor(this.overlayColor.color)
+      super.setOverlayColor(this.overlayColor.color)
+    } else {
+      super.setBackgroundColor(androidColor)
+      super.setOverlayColor(androidColor)
+    }
 
     this.reinitialize()
   }

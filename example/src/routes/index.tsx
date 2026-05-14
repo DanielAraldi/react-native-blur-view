@@ -11,6 +11,7 @@ const Stack = createNativeStackNavigator();
 function TabNavigator() {
   return (
     <Tab.Navigator
+      // eslint-disable-next-line react/no-unstable-nested-components
       tabBar={(props) => <Tabs {...props} />}
       screenOptions={{
         headerShown: false,
