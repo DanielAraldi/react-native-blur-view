@@ -63,7 +63,11 @@ export const BlurView = (props: BlurViewProps) => {
      * When the type is not a primary one, we need to increase the blur radius
      * and decrease the downscale factor to achieve a similar effect on Android.
      */
-    const isPrimary = type === 'x-light' || type === 'light' || type === 'dark';
+    const isPrimary =
+      type === 'extra-light' ||
+      type === 'light' ||
+      type === 'dark' ||
+      type === 'extra-dark';
     const _blurRadius = isPrimary ? radius : 35;
     const _downscaleFactor = isPrimary
       ? downscaleFactor

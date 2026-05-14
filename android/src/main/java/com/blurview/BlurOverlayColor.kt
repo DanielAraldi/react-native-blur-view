@@ -3,9 +3,10 @@ package com.blurview
 import android.graphics.Color
 
 enum class BlurOverlayColor(val color: Int) {
-  X_LIGHT(Color.argb(140, 240, 240, 240)),
+  EXTRA_LIGHT(Color.argb(140, 240, 240, 240)),
   LIGHT(Color.argb(42, 255, 255, 255)),
   DARK(Color.argb(120, 26, 22, 22)),
+  EXTRA_DARK(Color.argb(160, 35, 35, 35)),
   REGULAR(Color.argb(35, 255, 255, 255)),
   PROMINENT(Color.argb(140, 240, 240, 240)),
   ULTRA_THIN_MATERIAL(Color.argb(75, 240, 240, 240)),
@@ -27,9 +28,10 @@ enum class BlurOverlayColor(val color: Int) {
   companion object {
     fun fromString(color: String): BlurOverlayColor {
       return when (color.lowercase()) {
-        "x-light" -> X_LIGHT
+        "extra-light" -> EXTRA_LIGHT
         "light" -> LIGHT
         "dark" -> DARK
+        "extra-dark" -> EXTRA_DARK
         "regular" -> REGULAR
         "prominent" -> PROMINENT
         "ultra-thin-material" -> ULTRA_THIN_MATERIAL
