@@ -402,7 +402,7 @@ This version focused exclusively on full TV device support. The main changes are
 - **Types**: The `BlurView` and `VibrancyView` component types have undergone minor changes:
   - **Renaming**: Renamed `x-light` to `extra-light`.
   - **New Type**: Added a new `extra-dark` type.
-- **Runtime**: Bump Node.js version of `20.x` from `22.x`.
+- **Runtime**: Bump Node.js version from `20.x` to `22.x`.
 
 ## Platform Differences
 
