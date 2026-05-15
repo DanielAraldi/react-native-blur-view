@@ -320,7 +320,7 @@ The `BlurTarget` may not contain a `BlurView` that targets the same `BlurTarget`
 
 The `VibrancyView` component is an extends the same properties of the a `View` component.
 
-This component is available for **iOS only**. It apply a vibrancy effect in children content. On Android the `VibrancyView` component is a common `View`. The `effectStyle` property **doesn't supported** in tvOS.
+This component is available for **iOS only**. It applies a vibrancy effect to child content. On Android, the `VibrancyView` component is a common `View`. The `effectStyle` property **isn't supported** on tvOS.
 
 #### Properties
 
