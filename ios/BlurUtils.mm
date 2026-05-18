@@ -9,7 +9,7 @@
   else if ([style isEqualToString: @"dark"]) return UIBlurEffectStyleDark;
 
   #if TARGET_OS_TV
-    if (@available(iOS 10.0, *)) {
+    if (@available(tvOS 10.0, *)) {
       if ([style isEqualToString: @"extra-dark"]) return UIBlurEffectStyleExtraDark;
     }
   #else
