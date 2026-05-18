@@ -32,6 +32,7 @@
     "!**/.*"
   ],
   "scripts": {
+    "example": "yarn workspace react-native-blur-view-example",
     "setup": "yarn && yarn prepack && cd example && yarn && cd ios && pod install && cd .. && yarn start",
     "typecheck": "tsc",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",

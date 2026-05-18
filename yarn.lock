@@ -12107,9 +12107,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-blur-example@workspace:example":
+"react-native-blur-view-example@workspace:example":
   version: 0.0.0-use.local
-  resolution: "react-native-blur-example@workspace:example"
+  resolution: "react-native-blur-view-example@workspace:example"
   dependencies:
     "@babel/core": ^7.25.2
     "@babel/preset-env": ^7.25.3
