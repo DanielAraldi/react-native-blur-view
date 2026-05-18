@@ -131,6 +131,7 @@ The `package.json` file contains various scripts for common tasks:
 - `yarn lint`: lint files with ESLint.
 - `yarn test`: run unit tests with Jest.
 - `yarn setup`: setup of the example (install deps, build library, install pods).
+- `yarn example`: execute workspace example App.
 
 ### Sending a pull request
 

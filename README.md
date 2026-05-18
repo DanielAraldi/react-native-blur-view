@@ -394,14 +394,45 @@ Learn more about effect styles [here](https://developer.apple.com/documentation/
 > [!WARNING]
 > Version 3.0.0 introduces significant API changes on Android and iOS applications. If you're upgrading from 2.x, please read this section carefully.
 
+In version 3.0.0, the `x-light` blur `type` has been renamed to `extra-light` in the `BlurView` and `VibrancyView` components:
+
+```tsx
+// ❌ Old API (v2.x) - Deprecated
+<BlurView blurTarget={targetRef} type='x-light' style={styles.blurView}>
+  {/** ... **/}
+</BlurView>
+
+<VibrancyView blurTarget={targetRef} type='x-light' style={styles.vibrancyView}>
+  {/** ... **/}
+</VibrancyView>
+
+// ✅ New API (v3.0.0) - Current
+<BlurView blurTarget={targetRef} type='extra-light' style={styles.blurView}>
+  {/** ... **/}
+</BlurView>
+
+<VibrancyView blurTarget={targetRef} type='extra-light' style={styles.vibrancyView}>
+  {/** ... **/}
+</VibrancyView>
+```
+
+A new `type` of blur called `extra-dark` has been added to the `BlurView` and `VibrancyView` components, below is a small example:
+
+```tsx
+// ✅ New type (v3.0.0) - Current
+<BlurView blurTarget={targetRef} type="extra-dark" style={styles.blurView}>
+  {/** ... **/}
+</BlurView>
+```
+
 ### Why This Change?
 
 This version focused exclusively on full TV device support. The main changes are listed below:
 
-- **New Support**: Added full support for Android TV and Apple TV.
+- **New support**: Added full support for Android TV and Apple TV.
 - **Types**: The `BlurView` and `VibrancyView` component types have undergone minor changes:
   - **Renaming**: Renamed `x-light` to `extra-light`.
-  - **New Type**: Added a new `extra-dark` type.
+  - **New type**: Added a new `extra-dark` type.
 - **Runtime**: Bump Node.js version from `20.x` to `22.x`.
 
 ## Platform Differences
