@@ -22,4 +22,3 @@ RCT_EXPORT_VIEW_PROPERTY(reducedTransparencyFallbackColor, UIColor);
 RCT_EXPORT_VIEW_PROPERTY(radius, NSNumber);
 
 @end
-

@@ -8,9 +8,10 @@
  * @since 0.1.0
  */
 export type BlurType =
-  | 'x-light'
+  | 'extra-light'
   | 'light'
   | 'dark'
+  | 'extra-dark'
   | 'thin-material'
   | 'thin-material-light'
   | 'thin-material-dark'

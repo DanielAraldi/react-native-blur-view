@@ -1,4 +1,6 @@
+#import <React/RCTViewComponentView.h>
 #import "VibrancyView.h"
+
 #import "BlurViewEffect.h"
 #import "BlurUtils.h"
 

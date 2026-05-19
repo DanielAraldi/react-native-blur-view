@@ -2,7 +2,7 @@
 
 A simple blur view in react native based in [`@react-native-community/blur`](https://github.com/margelo/react-native-blur).
 
-Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated/), [react-native-navigation](https://github.com/wix/react-native-navigation) and Modals 😁.
+Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated/), [react-native-navigation](https://github.com/wix/react-native-navigation) and Modals 😁. This library supports Apple TV and Android TV! 📺
 
 <div align="center">
   <p>
@@ -47,7 +47,7 @@ Support the animation transitions with [react-native-screens](https://github.com
 - [Types](#types)
   - [Blur Types](#blur-types)
   - [Effect Styles](#effect-styles)
-- [Migrate to 2.x](#migrate-to-2x)
+- [Migrate to 3.x](#migrate-to-3x)
   - [Why This Change?](#why-this-change)
 - [Platform Differences](#platform-differences)
   - [Android](#android)
@@ -320,7 +320,7 @@ The `BlurTarget` may not contain a `BlurView` that targets the same `BlurTarget`
 
 The `VibrancyView` component is an extends the same properties of the a `View` component.
 
-This component is available for **iOS only**. It apply a vibrancy effect in children content. On Android the `VibrancyView` component is a common `View`.
+This component is available for **iOS only**. It applies a vibrancy effect to child content. On Android, the `VibrancyView` component is a common `View`. The `effectStyle` property **isn't supported** on tvOS.
 
 #### Properties
 
@@ -344,9 +344,10 @@ On iOS all types are supported, but, on Android is simulated the types using RGB
 
 | Property                    | Description                                                                                                                                               | Platform |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `x-light`                   | The area of the view is lighter than the underlying view.                                                                                                 | All      |
+| `extra-light`               | The area of the view is lighter than the underlying view.                                                                                                 | All      |
 | `light`                     | The area of the view is the same approximate lightness of the underlying view.                                                                            | All      |
 | `dark`                      | The area of the view is darker than the underlying view.                                                                                                  | All      |
+| `extra-dark`                | The area of the view is even more dark than the underlying view. (**tvOS >= 10**)                                                                         | All      |
 | `regular`                   | A regular blur style that adapts to the user interface style. Radius **doesn't apply** to this. (**iOS >= 10**)                                           | All      |
 | `prominent`                 | A blur style for making content more prominent that adapts to the user interface style. Radius **doesn't apply** to this. (**iOS >= 10**)                 | All      |
 | `chrome-material`           | An adaptable blur effect that creates the appearance of the system chrome. Radius **doesn't apply** to this. (**iOS >= 13**)                              | All      |
@@ -388,51 +389,51 @@ On iOS all effect styles are supported. This property is available in the `Vibra
 
 Learn more about effect styles [here](https://developer.apple.com/documentation/uikit/uivibrancyeffectstyle).
 
-## Migrate to 2.x
+## Migrate to 3.x
 
 > [!WARNING]
-> Version 2.0.0 introduces significant API changes on Android apps. If you're upgrading from 1.x, please read this section carefully.
+> Version 3.0.0 introduces significant API changes on Android and iOS applications. If you're upgrading from 2.x, please read this section carefully.
 
-In version 1.x, the `BlurView` has the `targetId` prop to be used as a reference to the `BlurTarget` in tree:
+In version 3.0.0, the `x-light` blur `type` has been renamed to `extra-light` in the `BlurView` and `VibrancyView` components:
 
 ```tsx
-// ❌ Old API (v1.x) - Deprecated
-<BlurView targetId="target" style={styles.blurView}>
+// ❌ Old API (v2.x) - Deprecated
+<BlurView blurTarget={targetRef} type='x-light' style={styles.blurView}>
   {/** ... **/}
 </BlurView>
 
-<BlurTarget id="target" style={styles.blurTarget}>
+<VibrancyView blurTarget={targetRef} type='x-light' style={styles.vibrancyView}>
   {/** ... **/}
-</BlurTarget>
-```
+</VibrancyView>
 
-In version 2.0.0, the `BlurView` has the `targetId` prop swapped by `blurTarget` prop. The `BlurTarget` has its `id` prop swapped for a `ref` to the `View`:
-
-```tsx
-// ✅ New API (v2.0.0) - Current
-import { View } from 'react-native';
-// ...
-const targetRef = useRef<View | null>(null);
-```
-
-```tsx
-// ✅ New API (v2.0.0) - Current
-<BlurView blurTarget={targetRef} style={styles.blurView}>
+// ✅ New API (v3.0.0) - Current
+<BlurView blurTarget={targetRef} type='extra-light' style={styles.blurView}>
   {/** ... **/}
 </BlurView>
 
-<BlurTarget ref={targetRef} style={styles.blurTarget}>
+<VibrancyView blurTarget={targetRef} type='extra-light' style={styles.vibrancyView}>
   {/** ... **/}
-</BlurTarget>
+</VibrancyView>
+```
+
+A new `type` of blur called `extra-dark` has been added to the `BlurView` and `VibrancyView` components, below is a small example:
+
+```tsx
+// ✅ New type (v3.0.0) - Current
+<BlurView blurTarget={targetRef} type="extra-dark" style={styles.blurView}>
+  {/** ... **/}
+</BlurView>
 ```
 
 ### Why This Change?
 
-The blur effect on Android has always been a challenge. Therefore, version 2.0.0 focused exclusively on Android to make valuable performance improvements:
+This version focused exclusively on full TV device support. The main changes are listed below:
 
-- **Performance**: Improved search in the element tree on Android.
-- **Rebuilt**: The core of the `BlurTarget` and `BlurView` components in Android has been redesigned.
-- **New Limitation**: Removed support to bottom tabs customized with the [`react-navigation/bottom-tabs`](https://reactnavigation.org/docs/bottom-tab-navigator/).
+- **New support**: Added full support for Android TV and Apple TV.
+- **Types**: The `BlurView` and `VibrancyView` component types have undergone minor changes:
+  - **Renaming**: Renamed `x-light` to `extra-light`.
+  - **New type**: Added a new `extra-dark` type.
+- **Runtime**: Bump Node.js version from `20.x` to `22.x`.
 
 ## Platform Differences
 
@@ -440,7 +441,7 @@ The blur effect on Android has always been a challenge. Therefore, version 2.0.0
 
 On Android platforms, the component utilizes the [BlurView](https://github.com/Dimezis/BlurView) library to offer native blur effects with hardware-accelerated rendering.
 
-For different types of `x-light`, `light`, and `dark`, the `radius` is fixed at `35`. This is done to maintain similarity with the iOS effect.
+For different types of `extra-light`, `light`, `dark` and `extra-dark`, the `radius` is fixed at `35`. This is done to maintain similarity with the iOS effect.
 
 The `androidColor` property can be useful when you want to achieve a specific look or match the blur effect to other elements in your app. It **overrides** the `type` property.
 
@@ -449,6 +450,14 @@ Bottom tabs customized with the [`react-navigation/bottom-tabs`](https://reactna
 ### iOS
 
 On iOS all types are supported by default. However, on Android they are RGBA colors to simulate the same blur color.
+
+The `extra-dark` blur type is not natively available on iOS, so it falls back to the `dark` blur type.
+
+### tvOS
+
+On tvOS, the blur types `extra-light`, `light`, `dark`, `extra-dark`, `regular`, and `prominent` are supported. Other blur types are accepted by the API but fall back to the `light` blur type on tvOS, since the underlying `UIBlurEffectStyle` values are unavailable.
+
+The [effect styles](#effect-styles) **aren't** supported.
 
 ## Expo
 

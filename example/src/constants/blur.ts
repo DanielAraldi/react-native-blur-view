@@ -18,8 +18,8 @@ export const BLUR_UI_MODES = [
 
 export const BLUR_TYPES_DATA: BlurTypeData[] = [
   {
-    type: 'x-light',
-    label: 'X-Light ☀️',
+    type: 'extra-light',
+    label: 'Extra Light ☀️',
   },
   {
     type: 'light',
@@ -28,6 +28,10 @@ export const BLUR_TYPES_DATA: BlurTypeData[] = [
   {
     type: 'dark',
     label: 'Dark 🌑',
+  },
+  {
+    type: 'extra-dark',
+    label: 'Extra Dark 🌚',
   },
   {
     type: 'regular',

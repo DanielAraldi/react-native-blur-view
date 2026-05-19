@@ -29,7 +29,14 @@ export function Vibrancies() {
 
   const getTextColor = useCallback(
     (type: BlurType) => {
-      const exceptions = ['x-light', 'light', 'dark', 'regular', 'prominent'];
+      const exceptions = [
+        'extra-light',
+        'light',
+        'dark',
+        'extra-dark',
+        'regular',
+        'prominent',
+      ];
       const isException = exceptions.some((exception) => exception === type);
       if (isException) return 'white';
 
