@@ -455,7 +455,7 @@ The `extra-dark` blur type doesn't work on iOS devices, so we use the `dark` blu
 
 ### tvOS
 
-On tvOS, the blur types `extra-light`, `light`, `dark`, `extra-dark`, `regular`, and `prominent` are supported. As for the other types, although they are available, we use `light` blur type as a **fallback**.
+On tvOS, the blur types `extra-light`, `light`, `dark`, `extra-dark`, `regular`, and `prominent` are supported. Other blur types are accepted by the API but fall back to the `light` blur type on tvOS, since the underlying `UIBlurEffectStyle` values are unavailable.
 
 The [effect styles](#effect-styles) **aren't** supported.
 
