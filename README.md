@@ -451,7 +451,7 @@ Bottom tabs customized with the [`react-navigation/bottom-tabs`](https://reactna
 
 On iOS all types are supported by default. However, on Android they are RGBA colors to simulate the same blur color.
 
-The `extra-dark` blur type doesn't work on iOS devices, so we use the `dark` blur type as a **fallback**.
+The `extra-dark` blur type is not natively available on iOS, so it falls back to the `dark` blur type.
 
 ### tvOS
 
