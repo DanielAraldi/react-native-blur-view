@@ -58,7 +58,7 @@ The example apps are configured to use the local version of the library, so any 
 
 If you want to use Android Studio or XCode to edit the native code:
 
-- For **CLI example**: Open `example/android` in Android Studio, or `example/ios/BlurViewCLIExample.xcworkspace` in XCode.
+- Open `example/android` in Android Studio, or `example/ios/BlurViewExample.xcworkspace` in XCode.
 
 To edit the Objective-C or Swift files in XCode, find the source files at `Pods > Development Pods > react-native-blur-view`.
 
