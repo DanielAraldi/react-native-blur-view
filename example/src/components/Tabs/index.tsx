@@ -10,14 +10,6 @@ import { styles } from './styles';
 export function Tabs(props: BottomTabBarProps) {
   const { blurType, radius, effectStyle, isDark } = useBlur();
 
-  const commonProps = {
-    radius,
-    effectStyle,
-    style: styles.blurView,
-    type: blurType,
-    reducedTransparencyFallbackColor: '#F1F1F1',
-  };
-
   const renderTabs = useMemo(
     () =>
       props.state.routes.map((route, index) => {
@@ -50,7 +42,13 @@ export function Tabs(props: BottomTabBarProps) {
 
   return (
     <View style={[styles.container, isDark && styles.containerDark]}>
-      <VibrancyView {...commonProps}>
+      <VibrancyView
+        radius={radius}
+        type={blurType}
+        effectStyle={effectStyle}
+        reducedTransparencyFallbackColor="#F1F1F1"
+        style={styles.blurView}
+      >
         <View style={styles.content}>{renderTabs}</View>
       </VibrancyView>
     </View>

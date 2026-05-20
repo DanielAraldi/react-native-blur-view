@@ -15,7 +15,8 @@ import {
   BlurView,
   VibrancyView,
 } from '@danielsaraldi/react-native-blur-view';
-import Animated, {
+import {
+  createAnimatedComponent,
   useAnimatedProps,
   useSharedValue,
   withRepeat,
@@ -27,8 +28,12 @@ import { BLUR_RADIUS_DATA, BLUR_UI_MODES } from '../../constants';
 import { makeStyles } from './styles';
 import { isIos } from '../../utils';
 
-const AnimatedBlurView = Animated.createAnimatedComponent(BlurView);
-const AnimatedVibrancyView = Animated.createAnimatedComponent(VibrancyView);
+const AnimatedBlurView = createAnimatedComponent(BlurView, {
+  jsProps: ['radius'],
+});
+const AnimatedVibrancyView = createAnimatedComponent(VibrancyView, {
+  jsProps: ['radius'],
+});
 
 export function Settings() {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
