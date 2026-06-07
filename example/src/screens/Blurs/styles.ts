@@ -13,10 +13,6 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
 
       width: '100%',
       height: '100%',
-    },
-
-    contentContainer: {
-      flexGrow: 1,
 
       paddingTop: isAndroidSDK31OrLower ? top + 20 : top,
       paddingHorizontal: 20,
@@ -29,22 +25,45 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
       flex: 1,
     },
 
-    item: {
+    card: {
       width: '100%',
-      height: 80,
-    },
+      height: 256,
 
-    centralize: {
-      flex: 1,
+      flexDirection: 'row',
+
+      justifyContent: 'space-between',
+      alignItems: 'center',
+
+      padding: 12,
 
       borderRadius: 16,
+    },
+
+    text: {
+      fontSize: 20,
+    },
+
+    scroll: {
+      flex: 1,
+
+      width: '100%',
+      height: 64,
+    },
+
+    scrollContent: {
+      flexGrow: 1,
+
+      gap: 16,
+    },
+
+    radius: {
+      width: 64,
+      height: 64,
 
       justifyContent: 'center',
       alignItems: 'center',
-    },
 
-    itemText: {
-      fontSize: 20,
+      borderRadius: 16,
     },
 
     header: {

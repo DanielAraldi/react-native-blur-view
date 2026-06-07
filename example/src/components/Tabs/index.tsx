@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { VibrancyView } from '@danielsaraldi/react-native-blur-view';
 
@@ -18,9 +18,8 @@ export function Tabs(props: BottomTabBarProps) {
           NAVIGATION_ICONS[route.name as keyof typeof NAVIGATION_ICONS];
 
         return (
-          <TouchableOpacity
+          <Pressable
             key={route.key}
-            activeOpacity={0.9}
             style={[styles.tab, isFocused && styles.tabSelected]}
             onPress={() => props.navigation.navigate(route.name)}
           >
@@ -34,7 +33,7 @@ export function Tabs(props: BottomTabBarProps) {
             >
               {route.name} {icon}
             </Text>
-          </TouchableOpacity>
+          </Pressable>
         );
       }),
     [props, isDark]
