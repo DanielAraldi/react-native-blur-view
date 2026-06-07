@@ -4,6 +4,9 @@ A simple blur view in react native based in [`@react-native-community/blur`](htt
 
 Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated/), [react-native-navigation](https://github.com/wix/react-native-navigation) and Modals 😁. This library supports Apple TV and Android TV! 📺
 
+> [!WARNING]
+> Bottom tabs customized with the [react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator/) aren't supported in Android. For more information, just [click here](https://github.com/DanielAraldi/react-native-blur-view/issues/39#issuecomment-4081708642)!
+
 <div align="center">
   <p>
     <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/DanielAraldi/react-native-blur-view?style=flat&color=brightgreen" />
