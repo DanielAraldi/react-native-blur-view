@@ -83,7 +83,9 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
 
       alignItems: 'center',
 
-      marginBottom: 24,
+      marginBottom: 8,
+
+      gap: 16,
     },
 
     headerText: {
@@ -100,10 +102,6 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
       textAlign: 'center',
 
       color: 'white',
-    },
-
-    marginTop: {
-      marginTop: 24,
     },
 
     modalContainer: {

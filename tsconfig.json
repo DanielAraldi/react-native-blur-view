@@ -2,7 +2,9 @@
   "compilerOptions": {
     "rootDir": ".",
     "paths": {
-      "@danielsaraldi/react-native-blur-view": ["./src/index"]
+      "@danielsaraldi/react-native-blur-view": ["./src/index"],
+      "react-native": ["./node_modules/react-native"],
+      "react-native/*": ["./node_modules/react-native/*"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

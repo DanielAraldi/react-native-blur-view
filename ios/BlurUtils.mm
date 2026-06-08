@@ -4,9 +4,17 @@
 
 + (UIBlurEffectStyle)blurEffectStyle:(NSString *)style
 {
-  if ([style isEqualToString: @"x-light"]) return UIBlurEffectStyleExtraLight;
+  if ([style isEqualToString: @"extra-light"]) return UIBlurEffectStyleExtraLight;
   else if ([style isEqualToString: @"light"]) return UIBlurEffectStyleLight;
   else if ([style isEqualToString: @"dark"]) return UIBlurEffectStyleDark;
+
+  #if TARGET_OS_TV
+    if (@available(tvOS 10.0, *)) {
+      if ([style isEqualToString: @"extra-dark"]) return UIBlurEffectStyleExtraDark;
+    }
+  #else
+    if ([style isEqualToString: @"extra-dark"]) return UIBlurEffectStyleDark;
+  #endif
 
   if (@available(iOS 10.0, *)) {
     if ([style isEqualToString: @"regular"]) return UIBlurEffectStyleRegular;
@@ -36,6 +44,7 @@
   return UIBlurEffectStyleLight;
 }
 
+#if !TARGET_OS_TV
 + (UIVibrancyEffectStyle)vibrancyEffectStyle:(NSString *)style
 {
   if ([style isEqualToString: @"label"]) return UIVibrancyEffectStyleLabel;
@@ -48,6 +57,7 @@
   else if ([style isEqualToString: @"separator"]) return UIVibrancyEffectStyleSeparator;
   else return UIVibrancyEffectStyleLabel;
 }
+#endif
 
 + (NSNumber *)clipRadius:(NSNumber *)radius
 {

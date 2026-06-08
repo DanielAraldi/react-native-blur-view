@@ -4,9 +4,10 @@ import android.content.res.Configuration
 import android.graphics.Color
 
 enum class BlurOverlayColor(val color: Int) {
-  X_LIGHT(Color.argb(140, 240, 240, 240)),
+  EXTRA_LIGHT(Color.argb(140, 240, 240, 240)),
   LIGHT(Color.argb(42, 255, 255, 255)),
   DARK(Color.argb(120, 26, 22, 22)),
+  EXTRA_DARK(Color.argb(160, 35, 35, 35)),
   REGULAR_LIGHT(Color.argb(35, 255, 255, 255)),
   REGULAR_DARK(Color.argb(35, 28, 28, 30)),
   PROMINENT_LIGHT(Color.argb(140, 240, 240, 240)),
@@ -27,9 +28,10 @@ enum class BlurOverlayColor(val color: Int) {
       val isDarkMode = (configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
 
       return when (color.lowercase()) {
-        "x-light" -> X_LIGHT
+        "extra-light" -> EXTRA_LIGHT
         "light" -> LIGHT
         "dark" -> DARK
+        "extra-dark" -> EXTRA_DARK
         "regular" -> if (isDarkMode) REGULAR_DARK else REGULAR_LIGHT
         "prominent" -> if (isDarkMode) PROMINENT_DARK else PROMINENT_LIGHT
         "ultra-thin-material" -> if (isDarkMode) ULTRA_THIN_MATERIAL_DARK else ULTRA_THIN_MATERIAL_LIGHT

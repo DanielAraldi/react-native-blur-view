@@ -3,9 +3,9 @@ import {
   Button,
   ImageBackground,
   Modal,
+  Pressable,
   ScrollView,
   Text,
-  TouchableOpacity,
   useColorScheme,
   View,
 } from 'react-native';
@@ -15,20 +15,25 @@ import {
   BlurView,
   VibrancyView,
 } from '@danielsaraldi/react-native-blur-view';
-import Animated, {
+import {
+  createAnimatedComponent,
   useAnimatedProps,
   useSharedValue,
   withRepeat,
   withTiming,
 } from 'react-native-reanimated';
 import { useBlur } from '../../hooks';
-import { PORSCHE_ARCHITECTURE } from '../../assets';
-import { BLUR_RADIUS_DATA, BLUR_UI_MODES } from '../../constants';
+import { SPRING } from '../../assets';
+import { BLUR_UI_MODES } from '../../constants';
 import { makeStyles } from './styles';
 import { isIos } from '../../utils';
 
-const AnimatedBlurView = Animated.createAnimatedComponent(BlurView);
-const AnimatedVibrancyView = Animated.createAnimatedComponent(VibrancyView);
+const AnimatedBlurView = createAnimatedComponent(BlurView, {
+  jsProps: ['radius'],
+});
+const AnimatedVibrancyView = createAnimatedComponent(VibrancyView, {
+  jsProps: ['radius'],
+});
 
 export function Settings() {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
@@ -37,7 +42,7 @@ export function Settings() {
   const scrollTargetRef = useRef<View | null>(null);
   const colorScheme = useColorScheme();
   const { top, bottom } = useSafeAreaInsets();
-  const { blurType, effectStyle, radius, isDark, onRadius } = useBlur();
+  const { blurType, effectStyle, radius, isDark } = useBlur();
 
   const radiusAnimation = useSharedValue(0.01);
 
@@ -50,30 +55,6 @@ export function Settings() {
     : 'Default blur type is light and default radius is 10.';
 
   const styles = useMemo(() => makeStyles({ top, bottom }), [top, bottom]);
-
-  const renderBlurRadius = useMemo(
-    () =>
-      BLUR_RADIUS_DATA.map(({ radius: blurRadius, label }, index) => {
-        return (
-          <TouchableOpacity
-            key={index}
-            style={styles.item}
-            onPress={() => onRadius(blurRadius)}
-            activeOpacity={0.75}
-          >
-            <BlurView
-              blurTarget={scrollTargetRef}
-              radius={blurRadius}
-              type={blurType}
-              style={styles.centralize}
-            >
-              <Text style={[styles.itemText, { color }]}>{label}</Text>
-            </BlurView>
-          </TouchableOpacity>
-        );
-      }),
-    [blurType, styles, color, onRadius]
-  );
 
   const animatedProps = useAnimatedProps(() => ({
     radius: radiusAnimation.get() * 100,
@@ -92,7 +73,7 @@ export function Settings() {
         <BlurTarget ref={scrollTargetRef} style={styles.absoluteFill}>
           <ImageBackground
             style={styles.absoluteFill}
-            source={PORSCHE_ARCHITECTURE}
+            source={SPRING}
             resizeMode="cover"
           />
         </BlurTarget>
@@ -116,19 +97,18 @@ export function Settings() {
 
             <Text style={[styles.configurationText, { color }]}>
               Explore radius and type configurations to customize the blur
-              effect ✨{'\n'}Adjust the settings to see how they impact the
+              effect ✨{'\n\n'}Adjust the settings to see how they impact the
               appearance of the blur on both Android and iOS platforms 🌫️
             </Text>
           </View>
 
           <View style={styles.header}>
-            <Text style={styles.headerText}>Blur Radius</Text>
-          </View>
-
-          {renderBlurRadius}
-
-          <View style={[styles.header, styles.marginTop]}>
             <Text style={styles.headerText}>Blur + Reanimated</Text>
+
+            <Text style={styles.headerHint}>
+              Blur and vibrancy effects can be animated using Reanimated shared
+              values and animated props API 🎬
+            </Text>
           </View>
 
           <View style={styles.item}>
@@ -154,15 +134,15 @@ export function Settings() {
             </View>
           )}
 
-          <View style={[styles.header, styles.marginTop]}>
+          <View style={styles.header}>
             <Text style={styles.headerText}>Modal</Text>
+
+            <Text style={styles.headerHint}>
+              Support for blurring in content and backdrop Modals 🪟
+            </Text>
           </View>
 
-          <TouchableOpacity
-            style={styles.item}
-            onPress={() => setIsOpenModal(true)}
-            activeOpacity={0.75}
-          >
+          <Pressable style={styles.item} onPress={() => setIsOpenModal(true)}>
             <BlurView
               blurTarget={scrollTargetRef}
               radius={radius}
@@ -171,7 +151,7 @@ export function Settings() {
             >
               <Text style={[styles.itemText, { color }]}>Open Modal</Text>
             </BlurView>
-          </TouchableOpacity>
+          </Pressable>
         </ScrollView>
 
         <Modal

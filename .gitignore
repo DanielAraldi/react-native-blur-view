@@ -40,13 +40,14 @@ project.xcworkspace
 .settings
 local.properties
 android.iml
+.kotlin
 
 # Cocoapods
 #
-example/ios/Pods
+example/**/Pods
 
 # Ruby
-example/vendor/
+example/**/vendor/
 
 # node.js
 #

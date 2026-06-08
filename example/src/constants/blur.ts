@@ -18,8 +18,8 @@ export const BLUR_UI_MODES = [
 
 export const BLUR_TYPES_DATA: BlurTypeData[] = [
   {
-    type: 'x-light',
-    label: 'X-Light ☀️',
+    type: 'extra-light',
+    label: 'Extra Light ☀️',
   },
   {
     type: 'light',
@@ -28,6 +28,10 @@ export const BLUR_TYPES_DATA: BlurTypeData[] = [
   {
     type: 'dark',
     label: 'Dark 🌑',
+  },
+  {
+    type: 'extra-dark',
+    label: 'Extra Dark 🌚',
   },
   {
     type: 'regular',
@@ -137,46 +141,46 @@ export const EFFECT_STYLES_DATA: EffectStyleData[] = [
 export const BLUR_RADIUS_DATA: BlurRadiusData[] = [
   {
     radius: 0,
-    label: 'Blur radius 0',
+    label: '0',
   },
   {
     radius: 10,
-    label: 'Blur radius 10',
+    label: '10',
   },
   {
     radius: 20,
-    label: 'Blur radius 20',
+    label: '20',
   },
   {
     radius: 30,
-    label: 'Blur radius 30',
+    label: '30',
   },
   {
     radius: 40,
-    label: 'Blur radius 40',
+    label: '40',
   },
   {
     radius: 50,
-    label: 'Blur radius 50',
+    label: '50',
   },
   {
     radius: 60,
-    label: 'Blur radius 60',
+    label: '60',
   },
   {
     radius: 70,
-    label: 'Blur radius 70',
+    label: '70',
   },
   {
     radius: 80,
-    label: 'Blur radius 80',
+    label: '80',
   },
   {
     radius: 90,
-    label: 'Blur radius 90',
+    label: '90',
   },
   {
     radius: 100,
-    label: 'Blur radius 100',
+    label: '100',
   },
 ] as const;

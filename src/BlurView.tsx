@@ -67,7 +67,11 @@ export const BlurView = forwardRef<View, BlurViewProps>((props, ref) => {
   }, [blurTarget]);
 
   const commonProps = useMemo(() => {
-    const isPrimary = type === 'x-light' || type === 'light' || type === 'dark';
+    const isPrimary =
+      type === 'extra-light' ||
+      type === 'light' ||
+      type === 'dark' ||
+      type === 'extra-dark';
     const _radius = isPrimary ? radius : 35;
 
     return {

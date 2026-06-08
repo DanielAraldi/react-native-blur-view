@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
 
     alignSelf: 'center',
 
-    backgroundColor: isAndroid ? '#878686' : 'transparent',
+    backgroundColor: isAndroid ? '#F1F1F1' : 'transparent',
 
     borderRadius: 9999,
   },

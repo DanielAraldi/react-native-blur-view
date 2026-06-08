@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import { VibrancyView } from '@danielsaraldi/react-native-blur-view';
 
@@ -10,14 +10,6 @@ import { styles } from './styles';
 export function Tabs(props: BottomTabBarProps) {
   const { blurType, radius, effectStyle, isDark } = useBlur();
 
-  const commonProps = {
-    radius,
-    effectStyle,
-    style: styles.blurView,
-    type: blurType,
-    reducedTransparencyFallbackColor: '#F1F1F1',
-  };
-
   const renderTabs = useMemo(
     () =>
       props.state.routes.map((route, index) => {
@@ -26,9 +18,8 @@ export function Tabs(props: BottomTabBarProps) {
           NAVIGATION_ICONS[route.name as keyof typeof NAVIGATION_ICONS];
 
         return (
-          <TouchableOpacity
+          <Pressable
             key={route.key}
-            activeOpacity={0.9}
             style={[styles.tab, isFocused && styles.tabSelected]}
             onPress={() => props.navigation.navigate(route.name)}
           >
@@ -42,7 +33,7 @@ export function Tabs(props: BottomTabBarProps) {
             >
               {route.name} {icon}
             </Text>
-          </TouchableOpacity>
+          </Pressable>
         );
       }),
     [props, isDark]
@@ -50,7 +41,13 @@ export function Tabs(props: BottomTabBarProps) {
 
   return (
     <View style={[styles.container, isDark && styles.containerDark]}>
-      <VibrancyView {...commonProps}>
+      <VibrancyView
+        radius={radius}
+        type={blurType}
+        effectStyle={effectStyle}
+        reducedTransparencyFallbackColor="#F1F1F1"
+        style={styles.blurView}
+      >
         <View style={styles.content}>{renderTabs}</View>
       </VibrancyView>
     </View>

@@ -1,10 +1,10 @@
-import { StatusBar } from 'react-native';
+import { StatusBar, useColorScheme } from 'react-native';
 
 import { Routes } from './routes';
-import { useBlur } from './hooks';
 
 export default function App() {
-  const { isDark } = useBlur();
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === 'dark';
 
   return (
     <>

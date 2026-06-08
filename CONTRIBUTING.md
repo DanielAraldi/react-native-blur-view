@@ -8,8 +8,9 @@ We want this community to be friendly and respectful to each other. Please follo
 
 This project is a monorepo managed using [Yarn workspaces](https://yarnpkg.com/features/workspaces). It contains the following packages:
 
-- The library package in the root directory.
-- An example app in the `example/` directory.
+- Open `example/` directory:
+
+### Initial Setup
 
 To get started with the project, run `yarn` in the root directory to install the required dependencies for each package:
 
@@ -19,33 +20,49 @@ yarn
 
 > Since the project relies on Yarn workspaces, you cannot use [`npm`](https://github.com/npm/cli) for development.
 
-The [example app](/example/) demonstrates usage of the library. You need to run it to test any changes you make.
+### Running the Example
 
-It is configured to use the local version of the library, so any changes you make to the library's source code will be reflected in the example app. Changes to the library's JavaScript code will be reflected in the example app without a rebuild, but native code changes will require a rebuild of the example app.
+The standard React Native example app demonstrates usage of the library on mobile devices.
 
-If you want to use Android Studio or XCode to edit the native code, you can open the `example/android` or `example/ios` directories respectively in those editors. To edit the Objective-C or Swift files, open `example/ios/BlurViewExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > react-native-blur-view`.
-
-To edit the Java or Kotlin files, open `example/android` in Android studio and find the source files at `react-native-blur-view` under `Android`.
-
-You can use various commands from the root directory to work with the project.
-
-To start the packager:
+**Setup (first time only):**
 
 ```sh
-yarn example start
+yarn setup
 ```
 
-To run the example app on Android:
+This command installs dependencies, builds the library, and installs iOS pods.
+
+**Run the app:**
+
+To start the Metro bundler:
 
 ```sh
-yarn example android
+cd example && yarn start
 ```
 
-To run the example app on iOS:
+To run on Android:
 
 ```sh
-yarn example ios
+cd example && yarn android
 ```
+
+To run on iOS:
+
+```sh
+cd example && yarn ios
+```
+
+### Native Development
+
+The example apps are configured to use the local version of the library, so any changes you make to the library's source code will be reflected in the example apps. Changes to the library's JavaScript code will be reflected without a rebuild, but native code changes will require a rebuild of the example app.
+
+If you want to use Android Studio or XCode to edit the native code:
+
+- Open `example/android` in Android Studio, or `example/ios/BlurViewExample.xcworkspace` in XCode.
+
+To edit the Objective-C or Swift files in XCode, find the source files at `Pods > Development Pods > react-native-blur-view`.
+
+To edit the Java or Kotlin files in Android Studio, find the source files at `react-native-blur-view` under `Android`.
 
 To confirm that the app is running with the new architecture, you can check the Metro logs for a message like this:
 
@@ -113,9 +130,8 @@ The `package.json` file contains various scripts for common tasks:
 - `yarn typecheck`: type-check files with TypeScript.
 - `yarn lint`: lint files with ESLint.
 - `yarn test`: run unit tests with Jest.
-- `yarn example start`: start the Metro server for the example app.
-- `yarn example android`: run the example app on Android.
-- `yarn example ios`: run the example app on iOS.
+- `yarn setup`: setup of the example (install deps, build library, install pods).
+- `yarn example`: execute workspace example App.
 
 ### Sending a pull request
 

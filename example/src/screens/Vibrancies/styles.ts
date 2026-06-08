@@ -28,24 +28,44 @@ export const makeStyles = ({ top, bottom }: MakeStylesProps) =>
       flex: 1,
     },
 
-    item: {
+    card: {
       width: '100%',
-      height: 80,
+      height: 256,
+
+      flexDirection: 'row',
+
+      justifyContent: 'space-between',
+      alignItems: 'center',
+
+      padding: 12,
+
+      borderRadius: 16,
     },
 
-    centralize: {
+    horizontal: {
       flex: 1,
 
       width: '100%',
-      height: '100%',
+      height: 64,
+    },
 
-      borderRadius: 16,
+    horizontalContent: {
+      flexGrow: 1,
+
+      gap: 16,
+    },
+
+    radius: {
+      width: 64,
+      height: 64,
 
       justifyContent: 'center',
       alignItems: 'center',
+
+      borderRadius: 16,
     },
 
-    itemText: {
+    text: {
       fontSize: 20,
     },
 
