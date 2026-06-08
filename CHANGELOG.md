@@ -1,3 +1,24 @@
+# [3.0.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.3.2...v3.0.0) (2026-06-08)
+
+
+### Bug Fixes
+
+* **example:** add `jsProps` to observer radius only in `createAnimatedComponent` wrapper ([628cb88](https://github.com/DanielAraldi/react-native-blur-view/commit/628cb881700c5283959fc4e7979d2d8ee8a296d2))
+* **ios:** enable `extra-dark` in tvOS >= 10 ([4ce1800](https://github.com/DanielAraldi/react-native-blur-view/commit/4ce180079df226446dcbb7a5f6d638178f1e7c5a))
+* swap reducedTransparencyFallbackColor to overlayColor and fixed blur effect without children ([a6457d0](https://github.com/DanielAraldi/react-native-blur-view/commit/a6457d00dad119935b77d9a725f426968ab8105a))
+
+
+### Features
+
+* **example:** bump react native to `0.85.3` ([fc68e60](https://github.com/DanielAraldi/react-native-blur-view/commit/fc68e60417c89fc3db6660a7717e963ce31b51ec))
+* **ios:** add tvOS support ([f062605](https://github.com/DanielAraldi/react-native-blur-view/commit/f062605f62bb2503a2945b4d94b3495540605652))
+* **tv:** apply support for tv ([3086da7](https://github.com/DanielAraldi/react-native-blur-view/commit/3086da7672c902b4d4b3fbce87b867a1edebbffb))
+
+
+### BREAKING CHANGES
+
+* **tv:** Add TV support
+
 ## [2.3.2](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.3.1...v2.3.2) (2026-05-11)
 
 
