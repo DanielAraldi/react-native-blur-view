@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/DanielAraldi/react-native-blur-view/compare/v3.0.0...v3.0.1) (2026-07-23)
+
+
+### Bug Fixes
+
+* **android:** gestures being cancelled under a BlurTarget ([912d84c](https://github.com/DanielAraldi/react-native-blur-view/commit/912d84c884b400feed0dbf7ba98411b560d3a6aa))
+
 # [3.0.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v2.3.2...v3.0.0) (2026-06-08)
 
 
