@@ -95,7 +95,12 @@ class TargetView: ViewGroup {
 
   override fun getChildAt(index: Int): View? = blurTarget.getChildAt(index)
 
-  override fun indexOfChild(child: View?): Int = blurTarget.indexOfChild(child)
+  override fun indexOfChild(child: View?): Int {
+    if (child === blurTarget) {
+      return super.indexOfChild(child)
+    }
+    return blurTarget.indexOfChild(child)
+  }
 
   override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
     val width = MeasureSpec.getSize(widthMeasureSpec)
