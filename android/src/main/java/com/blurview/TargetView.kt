@@ -23,10 +23,6 @@ class TargetView: ViewGroup {
     )
   }
 
-  /**
-   * When adding a child to this view, we want to actually add it to the blur target view.
-   * Because of this we need to override add, remove and measurement methods.
-   */
   override fun addView(child: View) {
     if (child === blurTarget) {
       super.addView(child)
@@ -102,6 +98,22 @@ class TargetView: ViewGroup {
     return blurTarget.indexOfChild(child)
   }
 
+  override fun startViewTransition(view: View?) {
+    if (view === blurTarget) {
+      super.startViewTransition(view)
+      return
+    }
+    blurTarget.startViewTransition(view)
+  }
+
+  override fun endViewTransition(view: View?) {
+    if (view === blurTarget) {
+      super.endViewTransition(view)
+      return
+    }
+    blurTarget.endViewTransition(view)
+  }
+
   override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
     val width = MeasureSpec.getSize(widthMeasureSpec)
     val height = MeasureSpec.getSize(heightMeasureSpec)
@@ -121,7 +133,7 @@ class TargetView: ViewGroup {
     // We override this to prevent the superclass (BlurViewGroup/FrameLayout) from
     // re-positioning children based on its own logic (e.g. gravity), which would
     // conflict with React Native's layout.
-
+    
     blurTarget.layout(0, 0, right - left, bottom - top)
   }
 
