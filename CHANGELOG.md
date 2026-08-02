@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/DanielAraldi/react-native-blur-view/compare/v3.0.1...v3.0.2) (2026-08-02)
+
+
+### Bug Fixes
+
+* **android:** fix content inside a `BlurTarget` disappearing during screen exit animations ([cbc8442](https://github.com/DanielAraldi/react-native-blur-view/commit/cbc8442ea741dd09598602092191ff473397ea1f))
+
 ## [3.0.1](https://github.com/DanielAraldi/react-native-blur-view/compare/v3.0.0...v3.0.1) (2026-07-23)
 
 
