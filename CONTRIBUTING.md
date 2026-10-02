@@ -114,9 +114,9 @@ Our pre-commit hooks verify that the linter and tests pass when committing.
 
 ### Publishing to npm
 
-We use [semantic-release](https://github.com/semantic-release/semantic-release) to make it easier to publish new versions. It handles common tasks like bumping version based on semver, creating tags and releases etc.
+We use [release-it](https://github.com/release-it/release-it) to make it easier to publish new versions. It handles common tasks like bumping version based on semver, updating the changelog, creating tags and releases etc.
 
-To publish new versions, run the following:
+Releases are published manually from the `main` branch. Make sure you are logged in to npm (`npm login`) and, to create the GitHub release automatically, export a `GITHUB_TOKEN` with `repo` scope. Then run:
 
 ```sh
 yarn release
