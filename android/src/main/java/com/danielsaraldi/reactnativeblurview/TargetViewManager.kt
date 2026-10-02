@@ -1,4 +1,4 @@
-package com.blurview
+package com.danielsaraldi.reactnativeblurview
 
 import com.facebook.react.module.annotations.ReactModule
 import com.facebook.react.uimanager.ThemedReactContext

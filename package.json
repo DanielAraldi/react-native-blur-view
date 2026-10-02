@@ -144,7 +144,7 @@
     "type": "all",
     "jsSrcsDir": "src",
     "android": {
-      "javaPackageName": "com.blurview"
+      "javaPackageName": "com.danielsaraldi.reactnativeblurview"
     },
     "ios": {
       "componentProvider": {
@@ -161,7 +161,7 @@
   "react-native": {
     "android": {
       "sourceDir": "../android",
-      "packageImportPath": "import com.blurview.BlurViewPackage;"
+      "packageImportPath": "import com.danielsaraldi.reactnativeblurview.BlurViewPackage;"
     },
     "ios": {
       "podspecPath": "./BlurView.podspec",

@@ -1,4 +1,4 @@
-package com.blurview
+package com.danielsaraldi.reactnativeblurview
 
 import android.annotation.SuppressLint
 import android.content.Context

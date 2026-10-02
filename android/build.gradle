@@ -32,7 +32,7 @@ if (project.extensions.findByName('kotlin') == null) {
 apply plugin: "com.facebook.react"
 
 android {
-  namespace "com.blurview"
+  namespace "com.danielsaraldi.reactnativeblurview"
 
   compileSdkVersion getExtOrIntegerDefault("compileSdkVersion")
 
@@ -88,5 +88,5 @@ dependencies {
 react {
   jsRootDir = file("../src/")
   libraryName = "BlurView"
-  codegenJavaPackageName = "com.blurview"
+  codegenJavaPackageName = "com.danielsaraldi.reactnativeblurview"
 }

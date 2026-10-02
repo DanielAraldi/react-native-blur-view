@@ -1,4 +1,4 @@
-package com.blurview
+package com.danielsaraldi.reactnativeblurview
 
 import com.facebook.react.ReactPackage
 import com.facebook.react.bridge.NativeModule

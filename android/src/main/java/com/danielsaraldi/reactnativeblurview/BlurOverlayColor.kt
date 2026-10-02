@@ -1,4 +1,4 @@
-package com.blurview
+package com.danielsaraldi.reactnativeblurview
 
 import android.content.res.Configuration
 import android.graphics.Color
