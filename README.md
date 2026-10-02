@@ -345,29 +345,29 @@ These are all types of available.
 
 On iOS all types are supported, but, on Android is simulated the types using RGBA colors.
 
-| Property                    | Description                                                                                                                                               | Platform |
-| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `extra-light`               | The area of the view is lighter than the underlying view.                                                                                                 | All      |
-| `light`                     | The area of the view is the same approximate lightness of the underlying view.                                                                            | All      |
-| `dark`                      | The area of the view is darker than the underlying view.                                                                                                  | All      |
-| `extra-dark`                | The area of the view is even more dark than the underlying view. (**tvOS >= 10**)                                                                         | All      |
-| `regular`                   | A regular blur style that adapts to the user interface style. Radius **doesn't apply** to this. (**iOS >= 10**)                                           | All      |
-| `prominent`                 | A blur style for making content more prominent that adapts to the user interface style. Radius **doesn't apply** to this. (**iOS >= 10**)                 | All      |
-| `chrome-material`           | An adaptable blur effect that creates the appearance of the system chrome. Radius **doesn't apply** to this. (**iOS >= 13**)                              | All      |
-| `material`                  | An adaptable blur effect that creates the appearance of a material with normal thickness. Radius **doesn't apply** to this. (**iOS >= 13**)               | All      |
-| `thick-material`            | An adaptable blur effect that creates the appearance of a material that’s thicker than normal. Radius **doesn't apply** to this. (**iOS >= 13**)          | All      |
-| `thin-material`             | An adaptable blur effect that creates the appearance of a thin material. Radius **doesn't apply** to this. (**iOS >= 13**)                                | All      |
-| `ultra-thin-material`       | An adaptable blur effect that creates the appearance of an ultra-thin material. Radius **doesn't apply** to this. (**iOS >= 13**)                         | All      |
-| `chrome-material-light`     | A blur effect that creates the appearance of the system chrome and is always light. Radius **doesn't apply** to this. (**iOS >= 13**)                     | All      |
-| `material-light`            | A blur effect that creates the appearance of a material with normal thickness and is always light. Radius **doesn't apply** to this. (**iOS >= 13**)      | All      |
-| `thick-material-light`      | A blur effect that creates the appearance of a material that’s thicker than normal and is always light. Radius **doesn't apply** to this. (**iOS >= 13**) | All      |
-| `thin-material-light`       | A blur effect that creates the appearance of a thin material and is always light. Radius **doesn't apply** to this. (**iOS >= 13**)                       | All      |
-| `ultra-thin-material-light` | A blur effect that creates the appearance of an ultra-thin material and is always light. Radius **doesn't apply** to this. (**iOS >= 13**)                | All      |
-| `chrome-material-dark`      | A blur effect that creates the appearance of the system chrome and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)                      | All      |
-| `material-dark`             | A blur effect that creates the appearance of a material with normal thickness and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)       | All      |
-| `thick-material-dark`       | A blur effect that creates the appearance of a material that’s thicker than normal and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)  | All      |
-| `thin-material-dark`        | A blur effect that creates the appearance of a thin material and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)                        | All      |
-| `ultra-thin-material-dark`  | A blur effect that creates the appearance of an ultra-thin material and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)                 | All      |
+| Property                    | Description                                                                                                                                                          | Platform |
+| --------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `extra-light`               | The area of the view is lighter than the underlying view.                                                                                                            | All      |
+| `light`                     | The area of the view is the same approximate lightness of the underlying view.                                                                                       | All      |
+| `dark`                      | The area of the view is darker than the underlying view.                                                                                                             | All      |
+| `extra-dark`                | The area of the view is even more dark than the underlying view. (**tvOS >= 10**)                                                                                    | All      |
+| `regular`                   | A regular blur style that adapts to the user interface style. Radius controls the effect intensity on iOS. (**iOS >= 10**)                                           | All      |
+| `prominent`                 | A blur style for making content more prominent that adapts to the user interface style. Radius controls the effect intensity on iOS. (**iOS >= 10**)                 | All      |
+| `chrome-material`           | An adaptable blur effect that creates the appearance of the system chrome. Radius controls the effect intensity on iOS. (**iOS >= 13**)                              | All      |
+| `material`                  | An adaptable blur effect that creates the appearance of a material with normal thickness. Radius controls the effect intensity on iOS. (**iOS >= 13**)               | All      |
+| `thick-material`            | An adaptable blur effect that creates the appearance of a material that’s thicker than normal. Radius controls the effect intensity on iOS. (**iOS >= 13**)          | All      |
+| `thin-material`             | An adaptable blur effect that creates the appearance of a thin material. Radius controls the effect intensity on iOS. (**iOS >= 13**)                                | All      |
+| `ultra-thin-material`       | An adaptable blur effect that creates the appearance of an ultra-thin material. Radius controls the effect intensity on iOS. (**iOS >= 13**)                         | All      |
+| `chrome-material-light`     | A blur effect that creates the appearance of the system chrome and is always light. Radius controls the effect intensity on iOS. (**iOS >= 13**)                     | All      |
+| `material-light`            | A blur effect that creates the appearance of a material with normal thickness and is always light. Radius controls the effect intensity on iOS. (**iOS >= 13**)      | All      |
+| `thick-material-light`      | A blur effect that creates the appearance of a material that’s thicker than normal and is always light. Radius controls the effect intensity on iOS. (**iOS >= 13**) | All      |
+| `thin-material-light`       | A blur effect that creates the appearance of a thin material and is always light. Radius controls the effect intensity on iOS. (**iOS >= 13**)                       | All      |
+| `ultra-thin-material-light` | A blur effect that creates the appearance of an ultra-thin material and is always light. Radius controls the effect intensity on iOS. (**iOS >= 13**)                | All      |
+| `chrome-material-dark`      | A blur effect that creates the appearance of the system chrome and is always dark. Radius controls the effect intensity on iOS. (**iOS >= 13**)                      | All      |
+| `material-dark`             | A blur effect that creates the appearance of a material with normal thickness and is always dark. Radius controls the effect intensity on iOS. (**iOS >= 13**)       | All      |
+| `thick-material-dark`       | A blur effect that creates the appearance of a material that’s thicker than normal and is always dark. Radius controls the effect intensity on iOS. (**iOS >= 13**)  | All      |
+| `thin-material-dark`        | A blur effect that creates the appearance of a thin material and is always dark. Radius controls the effect intensity on iOS. (**iOS >= 13**)                        | All      |
+| `ultra-thin-material-dark`  | A blur effect that creates the appearance of an ultra-thin material and is always dark. Radius controls the effect intensity on iOS. (**iOS >= 13**)                 | All      |
 
 Learn more about blur types [here](https://developer.apple.com/documentation/uikit/uiblureffect/style).
 
@@ -444,7 +444,7 @@ This version focused exclusively on full TV device support. The main changes are
 
 On Android platforms, the component utilizes the [BlurView](https://github.com/Dimezis/BlurView) library to offer native blur effects with hardware-accelerated rendering.
 
-For different types of `extra-light`, `light`, `dark` and `extra-dark`, the `radius` is fixed at `35`. This is done to maintain similarity with the iOS effect.
+For `regular`, `prominent` and material blur types, the overlay color opacity is scaled by `radius / 100` to match the iOS effect intensity. This doesn't apply when `androidColor` is provided.
 
 The `androidColor` property can be useful when you want to achieve a specific look or match the blur effect to other elements in your app. It **overrides** the `type` property.
 
@@ -455,6 +455,8 @@ Bottom tabs customized with the [`react-navigation/bottom-tabs`](https://reactna
 On iOS all types are supported by default. However, on Android they are RGBA colors to simulate the same blur color.
 
 The `extra-dark` blur type is not natively available on iOS, so it falls back to the `dark` blur type.
+
+For `regular`, `prominent` and material blur types, the `radius` property controls the strength of the whole effect (blur, tint and saturation) as a percentage (`radius / 100`), since these types don't support a custom blur radius. A `radius` of `100` keeps the native strength of the blur type, which can't be exceeded.
 
 ### tvOS
 

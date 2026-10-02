@@ -66,35 +66,29 @@ export const BlurView = forwardRef<View, BlurViewProps>((props, ref) => {
     setTargetId(node || undefined);
   }, [blurTarget]);
 
-  const commonProps = useMemo(() => {
-    const isPrimary =
-      type === 'extra-light' ||
-      type === 'light' ||
-      type === 'dark' ||
-      type === 'extra-dark';
-    const _radius = isPrimary ? radius : 35;
-
-    return {
+  const commonProps = useMemo(
+    () => ({
       ref,
+      radius,
       androidColor,
       downscaleFactor,
       targetId: isAndroid ? targetId : undefined,
       reducedTransparencyFallbackColor,
       overlayColor: type,
-      radius: isAndroid ? _radius : radius,
       ...rest,
-    };
-  }, [
-    ref,
-    type,
-    radius,
-    downscaleFactor,
-    androidColor,
-    reducedTransparencyFallbackColor,
-    targetId,
-    rest,
-    isAndroid,
-  ]);
+    }),
+    [
+      ref,
+      type,
+      radius,
+      downscaleFactor,
+      androidColor,
+      reducedTransparencyFallbackColor,
+      targetId,
+      rest,
+      isAndroid,
+    ]
+  );
 
   useEffect(() => {
     updateBlurTarget();

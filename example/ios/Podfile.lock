@@ -1,5 +1,5 @@
 PODS:
-  - BlurView (3.0.3):
+  - BlurView (3.0.5):
     - hermes-engine
     - RCTRequired
     - RCTTypeSafety
@@ -2364,7 +2364,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  BlurView: a8009221031ea1c74b5345e8a0c6d43782b87a8e
+  BlurView: a12ee47edadfc3465b28d0cf41f023d1d3dd6524
   FBLazyVector: 24e62c765683b8d89006a88a2c8f5cf019f0074d
   hermes-engine: d05d7fdd92427595b2affc06ecca3c3fed432503
   RCTDeprecation: a4c521821fab57cbb125b36effe84d897d0dfa12

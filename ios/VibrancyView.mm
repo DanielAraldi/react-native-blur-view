@@ -70,6 +70,11 @@ using namespace facebook::react;
 
     [self.blurEffectView.contentView addSubview:self.vibrancyEffectView];
     [self addSubview:self.blurEffectView];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                          selector:@selector(applicationWillEnterForeground:)
+                                          name:UIApplicationWillEnterForegroundNotification
+                                          object:nil];
   }
 
   return self;
@@ -157,12 +162,12 @@ using namespace facebook::react;
 
 - (void)updateVibrancyEffect
 {
+  [self stopBlurAnimator];
   self.blurEffectView.effect = nil;
   self.vibrancyEffectView.effect = nil;
 
   UIBlurEffectStyle blurEffectStyle = [BlurUtils blurEffectStyle:self.overlayColor];
   self.blurEffect = [BlurViewEffect effectWithStyle:blurEffectStyle andRadius:self.radius];
-  self.blurEffectView.effect = self.blurEffect;
 
   if (@available(iOS 13.0, *)) {
     #if TARGET_OS_TV
@@ -175,7 +180,48 @@ using namespace facebook::react;
     self.vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:self.blurEffect];
   }
 
-  self.vibrancyEffectView.effect = self.vibrancyEffect;
+  CGFloat fraction = self.radius.doubleValue / 100.0;
+  if ([BlurUtils isRadiusSupported:blurEffectStyle] || fraction >= 1.0) {
+    self.blurEffectView.effect = self.blurEffect;
+    self.vibrancyEffectView.effect = self.vibrancyEffect;
+    return;
+  }
+
+  __weak UIVisualEffectView *blurEffectView = self.blurEffectView;
+  __weak UIVisualEffectView *vibrancyEffectView = self.vibrancyEffectView;
+  UIBlurEffect *blurEffect = self.blurEffect;
+  UIVibrancyEffect *vibrancyEffect = self.vibrancyEffect;
+  self.blurAnimator = [[UIViewPropertyAnimator alloc] initWithDuration:1.0 curve:UIViewAnimationCurveLinear animations:^{
+    blurEffectView.effect = blurEffect;
+    vibrancyEffectView.effect = vibrancyEffect;
+  }];
+  [self.blurAnimator pauseAnimation];
+  self.blurAnimator.fractionComplete = fraction;
+}
+
+- (void)stopBlurAnimator
+{
+  if (self.blurAnimator && self.blurAnimator.state == UIViewAnimatingStateActive) {
+    [self.blurAnimator stopAnimation:YES];
+  }
+
+  self.blurAnimator = nil;
+}
+
+- (void)didMoveToWindow
+{
+  [super didMoveToWindow];
+
+  if (self.window && self.blurAnimator) {
+    [self updateVibrancyEffect];
+  }
+}
+
+- (void)applicationWillEnterForeground:(__unused NSNotification *)notification
+{
+  if (self.blurAnimator) {
+    [self updateVibrancyEffect];
+  }
 }
 
 - (void)reduceTransparencyStatusDidChange:(__unused NSNotification *)notification
@@ -225,6 +271,8 @@ using namespace facebook::react;
 - (void)dealloc
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+  [self stopBlurAnimator];
 
   if (self.reducedTransparencyFallbackView) {
     [self.reducedTransparencyFallbackView removeFromSuperview];

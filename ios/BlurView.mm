@@ -63,6 +63,11 @@ using namespace facebook::react;
     [self updateFallbackView];
 
     [self addSubview:self.blurEffectView];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                          selector:@selector(applicationWillEnterForeground:)
+                                          name:UIApplicationWillEnterForegroundNotification
+                                          object:nil];
   }
 
   return self;
@@ -93,13 +98,50 @@ using namespace facebook::react;
 
 - (void)updateBlurEffect
 {
+  [self stopBlurAnimator];
   self.blurEffectView.effect = nil;
 
   UIBlurEffectStyle blurEffectStyle = [BlurUtils blurEffectStyle:self.overlayColor];
   BlurViewEffect *blurEffect = [BlurViewEffect effectWithStyle:blurEffectStyle andRadius:self.radius];
-
   self.blurEffect = blurEffect;
-  self.blurEffectView.effect = blurEffect;
+
+  CGFloat fraction = self.radius.doubleValue / 100.0;
+  if ([BlurUtils isRadiusSupported:blurEffectStyle] || fraction >= 1.0) {
+    self.blurEffectView.effect = blurEffect;
+    return;
+  }
+
+  __weak UIVisualEffectView *blurEffectView = self.blurEffectView;
+  self.blurAnimator = [[UIViewPropertyAnimator alloc] initWithDuration:1.0 curve:UIViewAnimationCurveLinear animations:^{
+    blurEffectView.effect = blurEffect;
+  }];
+  [self.blurAnimator pauseAnimation];
+  self.blurAnimator.fractionComplete = fraction;
+}
+
+- (void)stopBlurAnimator
+{
+  if (self.blurAnimator && self.blurAnimator.state == UIViewAnimatingStateActive) {
+    [self.blurAnimator stopAnimation:YES];
+  }
+
+  self.blurAnimator = nil;
+}
+
+- (void)didMoveToWindow
+{
+  [super didMoveToWindow];
+
+  if (self.window && self.blurAnimator) {
+    [self updateBlurEffect];
+  }
+}
+
+- (void)applicationWillEnterForeground:(__unused NSNotification *)notification
+{
+  if (self.blurAnimator) {
+    [self updateBlurEffect];
+  }
 }
 
 - (BOOL)isReduceTransparencyEnabled
@@ -169,6 +211,8 @@ using namespace facebook::react;
 - (void)dealloc
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+  [self stopBlurAnimator];
 
   if (self.reducedTransparencyFallbackView) {
     [self.reducedTransparencyFallbackView removeFromSuperview];

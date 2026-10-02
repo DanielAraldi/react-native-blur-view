@@ -10,6 +10,8 @@
 
 @implementation BlurViewEffect
 
+@dynamic radius;
+
 + (instancetype)effectWithStyle:(UIBlurEffectStyle)style
 {
   id instance = [super effectWithStyle:style];
@@ -22,16 +24,18 @@
 {
   BlurViewEffect *effect = (BlurViewEffect*)[self effectWithStyle:style];
   effect.radius = radius;
-  
+
   return effect;
 }
 
-- (NSNumber*)blurRadius {
-  return objc_getAssociatedObject(self, @selector(blurRadius));
+- (NSNumber*)radius
+{
+  return objc_getAssociatedObject(self, @selector(radius));
 }
 
-- (void)setBlurRadius:(NSNumber*)blurRadius {
-  objc_setAssociatedObject(self, @selector(blurRadius), blurRadius, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setRadius:(NSNumber*)radius
+{
+  objc_setAssociatedObject(self, @selector(radius), radius, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (id)effectSettings
@@ -48,8 +52,8 @@
 {
   id instance = [super copyWithZone:zone];
   object_setClass(instance, [self class]);
-  objc_setAssociatedObject(instance, @selector(blurRadius), self.radius, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-  
+  objc_setAssociatedObject(instance, @selector(radius), self.radius, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+
   return instance;
 }
 

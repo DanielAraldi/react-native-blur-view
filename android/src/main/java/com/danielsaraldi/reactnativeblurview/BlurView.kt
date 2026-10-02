@@ -2,16 +2,19 @@ package com.danielsaraldi.reactnativeblurview
 
 import android.content.Context
 import android.content.res.Configuration
+import android.graphics.Color
 import android.os.Build
 import android.util.AttributeSet
 import android.util.Log
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.ColorUtils
 import androidx.core.graphics.drawable.toDrawable
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.UIManagerHelper
 import com.facebook.react.uimanager.common.UIManagerType
+import kotlin.math.roundToInt
 
 class BlurView : eightbitlab.com.blurview.BlurView {
   private var targetId: Int? = null
@@ -19,6 +22,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   private var colorString: String = "light"
   private var overlayColor: BlurOverlayColor = BlurOverlayColor.fromString(this.colorString, resources.configuration)
   private var radius: Float = 10f * INTENSITY
+  private var rawRadius: Float = 10f
   private var downscaleFactor: Float = 6f
   private var targetView: TargetView? = null
   private var reactContext: ReactApplicationContext
@@ -195,7 +199,13 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   }
 
   private fun getColorForBlur(): Int {
-    return this.androidColor ?: this.overlayColor.color
+    this.androidColor?.let { return it }
+
+    val color = this.overlayColor.color
+    if (!this.overlayColor.scalesWithRadius) return color
+
+    val alpha = (Color.alpha(color) * (this.rawRadius / 100f)).roundToInt()
+    return ColorUtils.setAlphaComponent(color, alpha)
   }
 
   private fun clipRadius(radius: Float): Float {
@@ -222,8 +232,9 @@ class BlurView : eightbitlab.com.blurview.BlurView {
 
     if (this.androidColor != null) return
 
-    super.setBackgroundColor(overlay.color)
-    super.setOverlayColor(overlay.color)
+    val color = this.getColorForBlur()
+    super.setBackgroundColor(color)
+    super.setOverlayColor(color)
 
     this.reinitialize()
   }
@@ -231,24 +242,25 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   fun setAndroidColor(androidColor: Int?) {
     this.androidColor = androidColor
 
-    if (androidColor == null) {
-      super.setBackgroundColor(this.overlayColor.color)
-      super.setOverlayColor(this.overlayColor.color)
-    } else {
-      super.setBackgroundColor(androidColor)
-      super.setOverlayColor(androidColor)
-    }
+    val color = this.getColorForBlur()
+    super.setBackgroundColor(color)
+    super.setOverlayColor(color)
 
     this.reinitialize()
   }
 
   fun setRadius(radius: Float) {
     val radiusValue = radius * INTENSITY
-
-    this.radius = this.clipRadius(radiusValue)
-
     val clippedRadius = this.clipRadius(radiusValue)
+
+    this.rawRadius = clippedRadius
+    this.radius = clippedRadius
+
     super.setBlurRadius(clippedRadius)
+
+    val color = this.getColorForBlur()
+    super.setBackgroundColor(color)
+    super.setOverlayColor(color)
 
     this.reinitialize()
   }
