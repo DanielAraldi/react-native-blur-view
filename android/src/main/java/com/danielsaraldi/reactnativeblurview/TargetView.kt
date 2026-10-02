@@ -1,4 +1,4 @@
-package com.blurview
+package com.danielsaraldi.reactnativeblurview
 
 import android.content.Context
 import android.util.AttributeSet

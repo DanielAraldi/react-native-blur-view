@@ -1,3 +1,10 @@
+## [3.0.4](https://github.com/DanielAraldi/react-native-blur-view/compare/v3.0.3...v3.0.4) (2026-10-02)
+
+
+### Code Refactoring
+
+* **android:** rename package to `com.danielsaraldi.reactnativeblurview` to avoid overlapping with `eightbitlab.com.blurview` ([4219556](https://github.com/DanielAraldi/react-native-blur-view/commit/421955600bfc751f8181eb60b62e2bae2b5bc4ec))
+
 ## [3.0.3](https://github.com/DanielAraldi/react-native-blur-view/compare/v3.0.2...v3.0.3) (2026-09-04)
 
 
