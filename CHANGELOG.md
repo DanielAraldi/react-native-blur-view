@@ -1,3 +1,9 @@
+
+
+## [3.0.5](https://github.com/DanielAraldi/react-native-blur-view/compare/v3.0.4...v3.0.5) (2026-10-02)
+
+* remove unnecessary release action ([ece7071](https://github.com/DanielAraldi/react-native-blur-view/commit/ece7071fb7f46703ea7f91c26b40b720d0be9fe6))
+
 ## [3.0.4](https://github.com/DanielAraldi/react-native-blur-view/compare/v3.0.3...v3.0.4) (2026-10-02)
 
 
