@@ -107,7 +107,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   }
 
   private fun setupBlurView() {
-    val color = this.getColorForBlur()
+    val color = this.getBlurColor()
 
     super.setBackgroundColor(color)
     super.layoutParams = ViewGroup.LayoutParams(
@@ -126,7 +126,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   }
 
   private fun initialize() {
-    val color = this.getColorForBlur()
+    val color = this.getBlurColor()
 
     if (this.targetView == null) {
       super.setBackgroundColor(color)
@@ -198,14 +198,13 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     return null
   }
 
-  private fun getColorForBlur(): Int {
+  private fun getBlurColor(): Int {
     this.androidColor?.let { return it }
 
-    val color = this.overlayColor.color
-    if (!this.overlayColor.scalesWithRadius) return color
-
-    val alpha = (Color.alpha(color) * (this.rawRadius / 100f)).roundToInt()
-    return ColorUtils.setAlphaComponent(color, alpha)
+    val currentColor = this.overlayColor.color
+    val alphaFactor = Color.alpha(currentColor) * (this.rawRadius / 100f)
+    val alpha = alphaFactor.roundToInt()
+    return ColorUtils.setAlphaComponent(currentColor, alpha)
   }
 
   private fun clipRadius(radius: Float): Float {
@@ -232,7 +231,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
 
     if (this.androidColor != null) return
 
-    val color = this.getColorForBlur()
+    val color = this.getBlurColor()
     super.setBackgroundColor(color)
     super.setOverlayColor(color)
 
@@ -242,7 +241,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   fun setAndroidColor(androidColor: Int?) {
     this.androidColor = androidColor
 
-    val color = this.getColorForBlur()
+    val color = this.getBlurColor()
     super.setBackgroundColor(color)
     super.setOverlayColor(color)
 
@@ -250,15 +249,16 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   }
 
   fun setRadius(radius: Float) {
+    this.rawRadius = radius.coerceIn(0f, 100f)
+
     val radiusValue = radius * INTENSITY
     val clippedRadius = this.clipRadius(radiusValue)
 
-    this.rawRadius = clippedRadius
     this.radius = clippedRadius
 
     super.setBlurRadius(clippedRadius)
 
-    val color = this.getColorForBlur()
+    val color = this.getBlurColor()
     super.setBackgroundColor(color)
     super.setOverlayColor(color)
 

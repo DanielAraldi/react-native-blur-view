@@ -23,9 +23,6 @@ enum class BlurOverlayColor(val color: Int) {
   CHROME_MATERIAL_LIGHT(Color.argb(165, 248, 248, 248)),
   CHROME_MATERIAL_DARK(Color.argb(100, 32, 32, 32));
 
-  val scalesWithRadius: Boolean
-    get() = this != EXTRA_LIGHT && this != LIGHT && this != DARK && this != EXTRA_DARK
-
   companion object {
     fun fromString(color: String, configuration: Configuration): BlurOverlayColor {
       val isDarkMode = (configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
