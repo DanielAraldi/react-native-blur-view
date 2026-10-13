@@ -111,6 +111,12 @@ using namespace facebook::react;
     return;
   }
 
+  // A paused animator created before the view is on screen is not honored by
+  // UIVisualEffectView, which renders the full effect instead. Wait for didMoveToWindow.
+  if (!self.window) {
+    return;
+  }
+
   __weak UIVisualEffectView *blurEffectView = self.blurEffectView;
   self.blurAnimator = [[UIViewPropertyAnimator alloc] initWithDuration:1.0 curve:UIViewAnimationCurveLinear animations:^{
     blurEffectView.effect = blurEffect;
@@ -132,14 +138,25 @@ using namespace facebook::react;
 {
   [super didMoveToWindow];
 
-  if (self.window && self.blurAnimator) {
-    [self updateBlurEffect];
+  if (!self.window) {
+    [self stopBlurAnimator];
+    return;
   }
+
+  // Defer to the next run loop so the animator is not created inside the
+  // transaction (e.g. a navigation transition) that inserted the view.
+  __weak BlurView *weakSelf = self;
+  dispatch_async(dispatch_get_main_queue(), ^{
+    BlurView *strongSelf = weakSelf;
+    if (strongSelf && strongSelf.window) {
+      [strongSelf updateBlurEffect];
+    }
+  });
 }
 
 - (void)applicationWillEnterForeground:(__unused NSNotification *)notification
 {
-  if (self.blurAnimator) {
+  if (self.window) {
     [self updateBlurEffect];
   }
 }
