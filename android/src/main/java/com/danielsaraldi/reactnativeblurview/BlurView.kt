@@ -21,7 +21,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   private var androidColor: Int? = null
   private var colorString: String = "light"
   private var overlayColor: BlurOverlayColor = BlurOverlayColor.fromString(this.colorString, resources.configuration)
-  private var radius: Float = 10f * INTENSITY
+  private var radius: Float = 20f * INTENSITY
   private var rawRadius: Float = 10f
   private var downscaleFactor: Float = 6f
   private var targetView: TargetView? = null
@@ -29,7 +29,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
 
   companion object {
     private const val TAG: String = "BlurView"
-    private const val INTENSITY: Float = 0.675f
+    private const val INTENSITY: Float = 0.175f
   }
 
   constructor(context: Context?) : super(context) {

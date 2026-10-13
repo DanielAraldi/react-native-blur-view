@@ -44,17 +44,6 @@
   return UIBlurEffectStyleLight;
 }
 
-+ (BOOL)isRadiusSupported:(UIBlurEffectStyle)style
-{
-  #if TARGET_OS_TV
-    if (style == UIBlurEffectStyleExtraDark) return YES;
-  #endif
-
-  return style == UIBlurEffectStyleExtraLight
-    || style == UIBlurEffectStyleLight
-    || style == UIBlurEffectStyleDark;
-}
-
 #if !TARGET_OS_TV
 + (UIVibrancyEffectStyle)vibrancyEffectStyle:(NSString *)style
 {

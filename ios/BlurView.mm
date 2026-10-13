@@ -48,7 +48,7 @@ using namespace facebook::react;
     self.clipsToBounds = YES;
     self.overlayColor = @"light";
     self.reducedTransparencyFallbackColor = [UIColor whiteColor];
-    self.radius = @10;
+    self.radius = @20;
 
     self.blurEffectView = [[UIVisualEffectView alloc] init];
     self.blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -106,7 +106,7 @@ using namespace facebook::react;
   self.blurEffect = blurEffect;
 
   CGFloat fraction = self.radius.doubleValue / 100.0;
-  if ([BlurUtils isRadiusSupported:blurEffectStyle] || fraction >= 1.0) {
+  if (fraction >= 1.0) {
     self.blurEffectView.effect = blurEffect;
     return;
   }

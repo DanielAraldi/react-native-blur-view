@@ -9,7 +9,7 @@ import type {
 export interface NativeProps extends ViewProps {
   targetId?: WithDefault<Int32, null>;
   overlayColor?: WithDefault<string, 'light'>;
-  radius?: WithDefault<Float, 10.0>;
+  radius?: WithDefault<Float, 20.0>;
   downscaleFactor?: WithDefault<Float, 6.0>;
   reducedTransparencyFallbackColor?: ColorValue;
   androidColor?: ColorValue;

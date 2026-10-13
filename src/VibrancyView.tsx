@@ -36,7 +36,7 @@ export const VibrancyView = forwardRef<View, VibrancyViewProps>(
     const {
       type = 'light',
       effectStyle = 'label',
-      radius = 10,
+      radius = 20,
       reducedTransparencyFallbackColor = 'white',
       style,
       children,

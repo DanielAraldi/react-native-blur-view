@@ -45,7 +45,7 @@ import { globalStyles } from './styles';
 export const BlurView = forwardRef<View, BlurViewProps>((props, ref) => {
   const {
     type = 'light',
-    radius = 10,
+    radius = 20,
     downscaleFactor = 6,
     reducedTransparencyFallbackColor = 'white',
     blurTarget,

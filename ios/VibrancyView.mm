@@ -49,7 +49,7 @@ using namespace facebook::react;
     self.overlayColor = @"light";
     self.effectStyle = @"label";
     self.reducedTransparencyFallbackColor = [UIColor whiteColor];
-    self.radius = @10;
+    self.radius = @20;
 
     self.blurEffectView = [[UIVisualEffectView alloc] init];
     self.blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -181,7 +181,7 @@ using namespace facebook::react;
   }
 
   CGFloat fraction = self.radius.doubleValue / 100.0;
-  if ([BlurUtils isRadiusSupported:blurEffectStyle] || fraction >= 1.0) {
+  if (fraction >= 1.0) {
     self.blurEffectView.effect = self.blurEffect;
     self.vibrancyEffectView.effect = self.vibrancyEffect;
     return;
