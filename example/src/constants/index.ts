@@ -1,1 +1,2 @@
-export * from './blur';
+export * from './home';
+export * from './types';

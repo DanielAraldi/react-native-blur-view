@@ -1,38 +1,35 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useColorScheme } from 'react-native';
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
+} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Blurs, Settings, Vibrancies } from '../screens';
-import { NavigationContainer } from '@react-navigation/native';
-import { Tabs } from '../components';
+import { Blur, Home, Modal, Reanimated, Types, Vibrancy } from '../screens';
+import type { RootStackParamList } from '../@types';
 import { isIos } from '../utils';
 
-const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
-
-function TabNavigator() {
-  return (
-    <Tab.Navigator
-      // eslint-disable-next-line react/no-unstable-nested-components
-      tabBar={(props) => <Tabs {...props} />}
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Tab.Screen name="Blurs" component={Blurs} />
-      {isIos && <Tab.Screen name="Vibrancies" component={Vibrancies} />}
-      <Tab.Screen name="Settings" component={Settings} />
-    </Tab.Navigator>
-  );
-}
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export function Routes() {
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === 'dark';
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: true }}>
+    <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
+      <Stack.Navigator
+        screenOptions={{ headerBackButtonDisplayMode: 'minimal' }}
+      >
         <Stack.Screen
-          name="Main"
-          component={TabNavigator}
-          options={{ headerShown: false }}
+          name="Home"
+          component={Home}
+          options={{ title: 'React Native Blur View' }}
         />
+        <Stack.Screen name="Blur" component={Blur} />
+        {isIos && <Stack.Screen name="Vibrancy" component={Vibrancy} />}
+        <Stack.Screen name="Modal" component={Modal} />
+        <Stack.Screen name="Reanimated" component={Reanimated} />
+        <Stack.Screen name="Types" component={Types} />
       </Stack.Navigator>
     </NavigationContainer>
   );

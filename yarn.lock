@@ -3259,6 +3259,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-community/slider@npm:^5.2.1":
+  version: 5.2.1
+  resolution: "@react-native-community/slider@npm:5.2.1"
+  checksum: 966ce08eeaaf280f199dee0f5943894cc4d40e870afd765b5b04ed26b6c3d5aa2e9ea0600de66d41f682cb7ee7afae55a81bae6832b8bb92ab9c11f0354f3aa9
+  languageName: node
+  linkType: hard
+
 "@react-native/assets-registry@npm:0.79.2":
   version: 0.79.2
   resolution: "@react-native/assets-registry@npm:0.79.2"
@@ -3727,23 +3734,6 @@ __metadata:
     "@types/react":
       optional: true
   checksum: ecc1c26842124676d93dd60cbca4c94dad406ed6877392673f3e5127b1c2bd8f433e7b7f8385c41c541315f98d8393193c4b8a91aafc35945f1051e317fce9e8
-  languageName: node
-  linkType: hard
-
-"@react-navigation/bottom-tabs@npm:^7.16.0":
-  version: 7.16.0
-  resolution: "@react-navigation/bottom-tabs@npm:7.16.0"
-  dependencies:
-    "@react-navigation/elements": ^2.9.17
-    color: ^4.2.3
-    sf-symbols-typescript: ^2.1.0
-  peerDependencies:
-    "@react-navigation/native": ^7.2.4
-    react: ">= 18.2.0"
-    react-native: "*"
-    react-native-safe-area-context: ">= 4.0.0"
-    react-native-screens: ">= 4.0.0"
-  checksum: 7c8184539bacff8089b6df988d72b63196be41b449057991217d1d0dd6290f85f2499f7da858a5d77ed392d3786abba5d99360d5fc2fd88349e113b8dfb24e89
   languageName: node
   linkType: hard
 
@@ -11616,12 +11606,12 @@ __metadata:
     "@react-native-community/cli": 20.1.0
     "@react-native-community/cli-platform-android": 20.1.0
     "@react-native-community/cli-platform-ios": 20.1.0
+    "@react-native-community/slider": ^5.2.1
     "@react-native/babel-preset": 0.85.3
     "@react-native/eslint-config": 0.85.3
     "@react-native/jest-preset": 0.85.3
     "@react-native/metro-config": 0.85.3
     "@react-native/typescript-config": 0.85.3
-    "@react-navigation/bottom-tabs": ^7.16.0
     "@react-navigation/native": ^7.2.4
     "@react-navigation/native-stack": ^7.15.0
     "@types/react": ^19.2.0
@@ -11634,7 +11624,6 @@ __metadata:
     react-native-screens: 4.25.0
     react-native-svg: 15.15.5
     react-native-worklets: 0.8.3
-    zustand: ^5.0.13
   languageName: unknown
   linkType: soft
 
@@ -14084,26 +14073,5 @@ __metadata:
   version: 4.4.3
   resolution: "zod@npm:4.4.3"
   checksum: bf236fdee7a5a5ec645eef5bfea3aad34e7df912931c2a23bc17e5b59882482751da42392916529da52ff9bc70f584797a5d496f1fb81f2d1a4c90fdd3922d2a
-  languageName: node
-  linkType: hard
-
-"zustand@npm:^5.0.13":
-  version: 5.0.13
-  resolution: "zustand@npm:5.0.13"
-  peerDependencies:
-    "@types/react": ">=18.0.0"
-    immer: ">=9.0.6"
-    react: ">=18.0.0"
-    use-sync-external-store: ">=1.2.0"
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-    immer:
-      optional: true
-    react:
-      optional: true
-    use-sync-external-store:
-      optional: true
-  checksum: 37f9c1eb888fc6c570f80a182a54844752ffe05dca75356273038effad642892df3a839f16733636a2dd4a49f68c02be27a37b9ba767af03515ef1f8d97468de
   languageName: node
   linkType: hard
