@@ -5,7 +5,7 @@ A simple blur view in react native based in [`@react-native-community/blur`](htt
 Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated/), [react-native-navigation](https://github.com/wix/react-native-navigation) and Modals 😁. This library supports Apple TV and Android TV! 📺
 
 > [!WARNING]
-> Bottom tabs customized with the [react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator/) aren't supported in Android. For more information, just [click here](https://github.com/DanielAraldi/react-native-blur-view/issues/39#issuecomment-4081708642)!
+> Bottom tabs customized with the [react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator/) and sticky header component aren't supported in Android. For more information, just [click here](https://github.com/DanielAraldi/react-native-blur-view/issues/39#issuecomment-4081708642)!
 
 <div align="center">
   <p>
@@ -297,7 +297,7 @@ The `BlurView` component is an extends the same properties of the a `View` compo
 | ---------------------------------- | ------------------------------------------------------------------------------------------- | ----------- | -------- |
 | `blurTarget`                       | Ref of the `BlurTarget` component to be identified by the `BlurView` component in the tree. | `undefined` | Android  |
 | `type`                             | [Blur type](#blur-types) of the overlay.                                                    | `light`     | All      |
-| `radius`                           | Blur radius `0` - `100`.                                                                    | `10.0`      | All      |
+| `radius`                           | Blur radius `0` - `100`.                                                                    | `20.0`      | All      |
 | `downscaleFactor`                  | Downscale factor `0` - `100`.                                                               | `6.0`       | Android  |
 | `overlayColor`                     | Add the overlay color about component.                                                      | `undefined` | All      |
 | `androidColor`                     | Overrides the `type` property color.                                                        | `undefined` | Android  |
@@ -331,7 +331,7 @@ This component is available for **iOS only**. It applies a vibrancy effect to ch
 | ---------------------------------- | ---------------------------------------------------------------------------- | ----------- | -------- |
 | `type`                             | [Blur type](#blur-types) of the overlay.                                     | `light`     | iOS      |
 | `effectStyle`                      | [Effect style](#effect-styles) to vibrancy content.                          | `label`     | iOS      |
-| `radius`                           | Blur radius `0` - `100`.                                                     | `10`        | iOS      |
+| `radius`                           | Blur radius `0` - `100`.                                                     | `20.0`      | iOS      |
 | `overlayColor`                     | Add the overlay color about component.                                       | `undefined` | iOS      |
 | `reducedTransparencyFallbackColor` | Background color about vibrancy effect when reduced transparency is enabled. | `white`     | iOS      |
 
