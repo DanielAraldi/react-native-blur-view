@@ -1,5 +1,31 @@
 
 
+## [3.1.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v3.0.5...v3.1.0) (2026-10-14)
+
+### 🚀 Features
+
+* change blur radius by intensity ([969164b](https://github.com/DanielAraldi/react-native-blur-view/commit/969164b0035ab87394ec9e89b17be02957641a48))
+* **example:** create a new app example ([fd75caa](https://github.com/DanielAraldi/react-native-blur-view/commit/fd75caa5109a6614eb2e925d2d60c985775bbeca))
+* new blur radius intensity ([eda989c](https://github.com/DanielAraldi/react-native-blur-view/commit/eda989c369412736f2aad847fc7cc84cb1a8cd24))
+
+### 🐛 Bug Fixes
+
+* **example:** responsive adjustment for android ([ffd25e5](https://github.com/DanielAraldi/react-native-blur-view/commit/ffd25e5f69c937c194b7e9efa250483c65233e13))
+
+### ⚡ Performance
+
+* **ios:** improve first rendering blur performance ([be76654](https://github.com/DanielAraldi/react-native-blur-view/commit/be76654158eef7ff54d323dc9f39989c4f63a671))
+
+### ♻️ Refactoring
+
+* remove unnecessary `scalesWithRadius` value in the `BlurOverlayColor` ([7b85f3a](https://github.com/DanielAraldi/react-native-blur-view/commit/7b85f3a4fb1d9ef3ad78876e7b8f5e6690331983))
+
+### 📝 Documentation
+
+* add sticky header component support in the documentation ([31df684](https://github.com/DanielAraldi/react-native-blur-view/commit/31df68457e7db2e3684dc306615b99217c783308))
+* update documentation ([585b907](https://github.com/DanielAraldi/react-native-blur-view/commit/585b907bf89e5bb2428344e16c81eab456ee0d77))
+* update previews ([2405d1e](https://github.com/DanielAraldi/react-native-blur-view/commit/2405d1e9c5207ff73a04e75a852a915d716104ac))
+
 ## [3.0.5](https://github.com/DanielAraldi/react-native-blur-view/compare/v3.0.4...v3.0.5) (2026-10-02)
 
 * remove unnecessary release action ([ece7071](https://github.com/DanielAraldi/react-native-blur-view/commit/ece7071fb7f46703ea7f91c26b40b720d0be9fe6))
