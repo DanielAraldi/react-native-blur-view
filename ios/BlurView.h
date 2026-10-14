@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong, nullable) UIView *reducedTransparencyFallbackView;
 @property(nonatomic, strong, nullable) BlurViewEffect *blurEffect;
 @property(nonatomic, strong, nullable) UIVisualEffectView *blurEffectView;
+@property(nonatomic, strong, nullable) UIViewPropertyAnimator *blurAnimator;
 
 @end
 

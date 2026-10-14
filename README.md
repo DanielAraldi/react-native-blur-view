@@ -5,7 +5,7 @@ A simple blur view in react native based in [`@react-native-community/blur`](htt
 Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated/), [react-native-navigation](https://github.com/wix/react-native-navigation) and Modals 😁. This library supports Apple TV and Android TV! 📺
 
 > [!WARNING]
-> Bottom tabs customized with the [react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator/) aren't supported in Android. For more information, just [click here](https://github.com/DanielAraldi/react-native-blur-view/issues/39#issuecomment-4081708642)!
+> Bottom tabs customized with the [react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator/) and [sticky header component](https://reactnative.dev/docs/scrollview#stickyheadercomponent) aren't supported in Android. For more information, just [click here](https://github.com/DanielAraldi/react-native-blur-view/issues/39#issuecomment-4081708642)!
 
 <div align="center">
   <p>
@@ -297,7 +297,7 @@ The `BlurView` component is an extends the same properties of the a `View` compo
 | ---------------------------------- | ------------------------------------------------------------------------------------------- | ----------- | -------- |
 | `blurTarget`                       | Ref of the `BlurTarget` component to be identified by the `BlurView` component in the tree. | `undefined` | Android  |
 | `type`                             | [Blur type](#blur-types) of the overlay.                                                    | `light`     | All      |
-| `radius`                           | Blur radius `0` - `100`.                                                                    | `10.0`      | All      |
+| `radius`                           | Blur radius `0` - `100`.                                                                    | `20.0`      | All      |
 | `downscaleFactor`                  | Downscale factor `0` - `100`.                                                               | `6.0`       | Android  |
 | `overlayColor`                     | Add the overlay color about component.                                                      | `undefined` | All      |
 | `androidColor`                     | Overrides the `type` property color.                                                        | `undefined` | Android  |
@@ -331,7 +331,7 @@ This component is available for **iOS only**. It applies a vibrancy effect to ch
 | ---------------------------------- | ---------------------------------------------------------------------------- | ----------- | -------- |
 | `type`                             | [Blur type](#blur-types) of the overlay.                                     | `light`     | iOS      |
 | `effectStyle`                      | [Effect style](#effect-styles) to vibrancy content.                          | `label`     | iOS      |
-| `radius`                           | Blur radius `0` - `100`.                                                     | `10`        | iOS      |
+| `radius`                           | Blur radius `0` - `100`.                                                     | `20.0`      | iOS      |
 | `overlayColor`                     | Add the overlay color about component.                                       | `undefined` | iOS      |
 | `reducedTransparencyFallbackColor` | Background color about vibrancy effect when reduced transparency is enabled. | `white`     | iOS      |
 
@@ -345,29 +345,29 @@ These are all types of available.
 
 On iOS all types are supported, but, on Android is simulated the types using RGBA colors.
 
-| Property                    | Description                                                                                                                                               | Platform |
-| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `extra-light`               | The area of the view is lighter than the underlying view.                                                                                                 | All      |
-| `light`                     | The area of the view is the same approximate lightness of the underlying view.                                                                            | All      |
-| `dark`                      | The area of the view is darker than the underlying view.                                                                                                  | All      |
-| `extra-dark`                | The area of the view is even more dark than the underlying view. (**tvOS >= 10**)                                                                         | All      |
-| `regular`                   | A regular blur style that adapts to the user interface style. Radius **doesn't apply** to this. (**iOS >= 10**)                                           | All      |
-| `prominent`                 | A blur style for making content more prominent that adapts to the user interface style. Radius **doesn't apply** to this. (**iOS >= 10**)                 | All      |
-| `chrome-material`           | An adaptable blur effect that creates the appearance of the system chrome. Radius **doesn't apply** to this. (**iOS >= 13**)                              | All      |
-| `material`                  | An adaptable blur effect that creates the appearance of a material with normal thickness. Radius **doesn't apply** to this. (**iOS >= 13**)               | All      |
-| `thick-material`            | An adaptable blur effect that creates the appearance of a material that’s thicker than normal. Radius **doesn't apply** to this. (**iOS >= 13**)          | All      |
-| `thin-material`             | An adaptable blur effect that creates the appearance of a thin material. Radius **doesn't apply** to this. (**iOS >= 13**)                                | All      |
-| `ultra-thin-material`       | An adaptable blur effect that creates the appearance of an ultra-thin material. Radius **doesn't apply** to this. (**iOS >= 13**)                         | All      |
-| `chrome-material-light`     | A blur effect that creates the appearance of the system chrome and is always light. Radius **doesn't apply** to this. (**iOS >= 13**)                     | All      |
-| `material-light`            | A blur effect that creates the appearance of a material with normal thickness and is always light. Radius **doesn't apply** to this. (**iOS >= 13**)      | All      |
-| `thick-material-light`      | A blur effect that creates the appearance of a material that’s thicker than normal and is always light. Radius **doesn't apply** to this. (**iOS >= 13**) | All      |
-| `thin-material-light`       | A blur effect that creates the appearance of a thin material and is always light. Radius **doesn't apply** to this. (**iOS >= 13**)                       | All      |
-| `ultra-thin-material-light` | A blur effect that creates the appearance of an ultra-thin material and is always light. Radius **doesn't apply** to this. (**iOS >= 13**)                | All      |
-| `chrome-material-dark`      | A blur effect that creates the appearance of the system chrome and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)                      | All      |
-| `material-dark`             | A blur effect that creates the appearance of a material with normal thickness and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)       | All      |
-| `thick-material-dark`       | A blur effect that creates the appearance of a material that’s thicker than normal and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)  | All      |
-| `thin-material-dark`        | A blur effect that creates the appearance of a thin material and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)                        | All      |
-| `ultra-thin-material-dark`  | A blur effect that creates the appearance of an ultra-thin material and is always dark. Radius **doesn't apply** to this. (**iOS >= 13**)                 | All      |
+| Property                    | Description                                                                                                             | Platform |
+| --------------------------- | ----------------------------------------------------------------------------------------------------------------------- | -------- |
+| `extra-light`               | The area of the view is lighter than the underlying view.                                                               | All      |
+| `light`                     | The area of the view is the same approximate lightness of the underlying view.                                          | All      |
+| `dark`                      | The area of the view is darker than the underlying view.                                                                | All      |
+| `extra-dark`                | The area of the view is even more dark than the underlying view. (**tvOS >= 10**)                                       | All      |
+| `regular`                   | A regular blur style that adapts to the user interface style. (**iOS >= 10**)                                           | All      |
+| `prominent`                 | A blur style for making content more prominent that adapts to the user interface style. (**iOS >= 10**)                 | All      |
+| `chrome-material`           | An adaptable blur effect that creates the appearance of the system chrome. (**iOS >= 13**)                              | All      |
+| `material`                  | An adaptable blur effect that creates the appearance of a material with normal thickness. (**iOS >= 13**)               | All      |
+| `thick-material`            | An adaptable blur effect that creates the appearance of a material that’s thicker than normal. (**iOS >= 13**)          | All      |
+| `thin-material`             | An adaptable blur effect that creates the appearance of a thin material. (**iOS >= 13**)                                | All      |
+| `ultra-thin-material`       | An adaptable blur effect that creates the appearance of an ultra-thin material. (**iOS >= 13**)                         | All      |
+| `chrome-material-light`     | A blur effect that creates the appearance of the system chrome and is always light. (**iOS >= 13**)                     | All      |
+| `material-light`            | A blur effect that creates the appearance of a material with normal thickness and is always light. (**iOS >= 13**)      | All      |
+| `thick-material-light`      | A blur effect that creates the appearance of a material that’s thicker than normal and is always light. (**iOS >= 13**) | All      |
+| `thin-material-light`       | A blur effect that creates the appearance of a thin material and is always light. (**iOS >= 13**)                       | All      |
+| `ultra-thin-material-light` | A blur effect that creates the appearance of an ultra-thin material and is always light. (**iOS >= 13**)                | All      |
+| `chrome-material-dark`      | A blur effect that creates the appearance of the system chrome and is always dark. (**iOS >= 13**)                      | All      |
+| `material-dark`             | A blur effect that creates the appearance of a material with normal thickness and is always dark. (**iOS >= 13**)       | All      |
+| `thick-material-dark`       | A blur effect that creates the appearance of a material that’s thicker than normal and is always dark. (**iOS >= 13**)  | All      |
+| `thin-material-dark`        | A blur effect that creates the appearance of a thin material and is always dark. (**iOS >= 13**)                        | All      |
+| `ultra-thin-material-dark`  | A blur effect that creates the appearance of an ultra-thin material and is always dark. (**iOS >= 13**)                 | All      |
 
 Learn more about blur types [here](https://developer.apple.com/documentation/uikit/uiblureffect/style).
 
@@ -444,17 +444,19 @@ This version focused exclusively on full TV device support. The main changes are
 
 On Android platforms, the component utilizes the [BlurView](https://github.com/Dimezis/BlurView) library to offer native blur effects with hardware-accelerated rendering.
 
-For different types of `extra-light`, `light`, `dark` and `extra-dark`, the `radius` is fixed at `35`. This is done to maintain similarity with the iOS effect.
+For `regular`, `prominent` and material blur types, the overlay color opacity is scaled by `radius / 100` to match the iOS effect intensity. This doesn't apply when `androidColor` is provided.
 
 The `androidColor` property can be useful when you want to achieve a specific look or match the blur effect to other elements in your app. It **overrides** the `type` property.
 
-Bottom tabs customized with the [`react-navigation/bottom-tabs`](https://reactnavigation.org/docs/bottom-tab-navigator/) **aren't** supported! If you want to customize your bottom tabs, opt for [`@sbaiahmed1/react-native-blur`](https://github.com/sbaiahmed1/react-native-blur).
+Bottom tabs customized with the [`react-navigation/bottom-tabs`](https://reactnavigation.org/docs/bottom-tab-navigator/) and [sticky header component](https://reactnative.dev/docs/scrollview#stickyheadercomponent) **aren't** supported! If you want to customize your bottom tabs ou sticky header component, opt for [`@sbaiahmed1/react-native-blur`](https://github.com/sbaiahmed1/react-native-blur).
 
 ### iOS
 
 On iOS all types are supported by default. However, on Android they are RGBA colors to simulate the same blur color.
 
 The `extra-dark` blur type is not natively available on iOS, so it falls back to the `dark` blur type.
+
+For `regular`, `prominent` and material blur types, the `radius` property controls the strength of the whole effect (blur, tint and saturation) as a percentage (`radius / 100`), since these types don't support a custom blur radius. A `radius` of `100` keeps the native strength of the blur type, which can't be exceeded.
 
 ### tvOS
 

@@ -44,6 +44,15 @@ target 'BlurViewExample' do
       end
     end
 
+    installer.pods_project.targets.each do |target|
+      target.build_configurations.each do |config|
+        current_target = config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f
+        if current_target < 15.0
+          config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '15.0'
+        end
+      end
+    end
+
     react_native_post_install(
       installer,
       config[:reactNativePath],

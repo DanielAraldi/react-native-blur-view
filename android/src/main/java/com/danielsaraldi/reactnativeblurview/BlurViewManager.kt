@@ -42,7 +42,7 @@ class BlurViewManager : ViewGroupManager<BlurView>(),
   }
 
   @Override
-  @ReactProp(name = "radius", defaultFloat = 10f)
+  @ReactProp(name = "radius", defaultFloat = 20f)
   override fun setRadius(view: BlurView?, radius: Float) {
     view?.setRadius(radius)
   }

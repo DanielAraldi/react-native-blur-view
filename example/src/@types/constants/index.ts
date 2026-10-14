@@ -1,1 +1,1 @@
-export * from './blur';
+export * from './home';

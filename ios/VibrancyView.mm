@@ -49,7 +49,7 @@ using namespace facebook::react;
     self.overlayColor = @"light";
     self.effectStyle = @"label";
     self.reducedTransparencyFallbackColor = [UIColor whiteColor];
-    self.radius = @10;
+    self.radius = @20;
 
     self.blurEffectView = [[UIVisualEffectView alloc] init];
     self.blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -70,6 +70,11 @@ using namespace facebook::react;
 
     [self.blurEffectView.contentView addSubview:self.vibrancyEffectView];
     [self addSubview:self.blurEffectView];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                          selector:@selector(applicationWillEnterForeground:)
+                                          name:UIApplicationWillEnterForegroundNotification
+                                          object:nil];
   }
 
   return self;
@@ -157,12 +162,12 @@ using namespace facebook::react;
 
 - (void)updateVibrancyEffect
 {
+  [self stopBlurAnimator];
   self.blurEffectView.effect = nil;
   self.vibrancyEffectView.effect = nil;
 
   UIBlurEffectStyle blurEffectStyle = [BlurUtils blurEffectStyle:self.overlayColor];
   self.blurEffect = [BlurViewEffect effectWithStyle:blurEffectStyle andRadius:self.radius];
-  self.blurEffectView.effect = self.blurEffect;
 
   if (@available(iOS 13.0, *)) {
     #if TARGET_OS_TV
@@ -175,7 +180,65 @@ using namespace facebook::react;
     self.vibrancyEffect = [UIVibrancyEffect effectForBlurEffect:self.blurEffect];
   }
 
-  self.vibrancyEffectView.effect = self.vibrancyEffect;
+  CGFloat fraction = self.radius.doubleValue / 100.0;
+  if (fraction >= 1.0) {
+    self.blurEffectView.effect = self.blurEffect;
+    self.vibrancyEffectView.effect = self.vibrancyEffect;
+    return;
+  }
+
+  // A paused animator created before the view is on screen is not honored by
+  // UIVisualEffectView, which renders the full effect instead. Wait for didMoveToWindow.
+  if (!self.window) {
+    return;
+  }
+
+  __weak UIVisualEffectView *blurEffectView = self.blurEffectView;
+  __weak UIVisualEffectView *vibrancyEffectView = self.vibrancyEffectView;
+  UIBlurEffect *blurEffect = self.blurEffect;
+  UIVibrancyEffect *vibrancyEffect = self.vibrancyEffect;
+  self.blurAnimator = [[UIViewPropertyAnimator alloc] initWithDuration:1.0 curve:UIViewAnimationCurveLinear animations:^{
+    blurEffectView.effect = blurEffect;
+    vibrancyEffectView.effect = vibrancyEffect;
+  }];
+  [self.blurAnimator pauseAnimation];
+  self.blurAnimator.fractionComplete = fraction;
+}
+
+- (void)stopBlurAnimator
+{
+  if (self.blurAnimator && self.blurAnimator.state == UIViewAnimatingStateActive) {
+    [self.blurAnimator stopAnimation:YES];
+  }
+
+  self.blurAnimator = nil;
+}
+
+- (void)didMoveToWindow
+{
+  [super didMoveToWindow];
+
+  if (!self.window) {
+    [self stopBlurAnimator];
+    return;
+  }
+
+  // Defer to the next run loop so the animator is not created inside the
+  // transaction (e.g. a navigation transition) that inserted the view.
+  __weak VibrancyView *weakSelf = self;
+  dispatch_async(dispatch_get_main_queue(), ^{
+    VibrancyView *strongSelf = weakSelf;
+    if (strongSelf && strongSelf.window) {
+      [strongSelf updateVibrancyEffect];
+    }
+  });
+}
+
+- (void)applicationWillEnterForeground:(__unused NSNotification *)notification
+{
+  if (self.window) {
+    [self updateVibrancyEffect];
+  }
 }
 
 - (void)reduceTransparencyStatusDidChange:(__unused NSNotification *)notification
@@ -225,6 +288,8 @@ using namespace facebook::react;
 - (void)dealloc
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+  [self stopBlurAnimator];
 
   if (self.reducedTransparencyFallbackView) {
     [self.reducedTransparencyFallbackView removeFromSuperview];

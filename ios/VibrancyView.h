@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong, nullable) UIVisualEffectView *blurEffectView;
 @property(nonatomic, strong, nullable) UIVibrancyEffect *vibrancyEffect;
 @property(nonatomic, strong, nullable) UIVisualEffectView *vibrancyEffectView;
+@property(nonatomic, strong, nullable) UIViewPropertyAnimator *blurAnimator;
 
 @end
 
