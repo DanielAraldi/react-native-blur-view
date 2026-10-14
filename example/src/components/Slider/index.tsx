@@ -30,6 +30,7 @@ export function Slider(props: SliderProps) {
         onValueChange={(sliderValue) => {
           onValueChange(Math.round(sliderValue));
         }}
+        thumbTintColor="#007AFF"
         minimumTrackTintColor="#007AFF"
         maximumTrackTintColor="#00000040"
       />

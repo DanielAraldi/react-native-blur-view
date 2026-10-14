@@ -8,6 +8,9 @@ export const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
 
+    width: '100%',
+    height: 96,
+
     paddingTop: 20,
     paddingHorizontal: 20,
 

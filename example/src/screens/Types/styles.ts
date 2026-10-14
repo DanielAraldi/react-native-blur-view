@@ -19,16 +19,13 @@ export const styles = StyleSheet.create({
   },
 
   grid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-
     gap: 12,
   },
 
   box: {
     overflow: 'hidden',
 
-    width: '47%',
+    width: '100%',
     height: 120,
 
     justifyContent: 'center',
