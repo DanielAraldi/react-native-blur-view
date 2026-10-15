@@ -1,6 +1,6 @@
 # `@danielsaraldi/react-native-blur-view` 🌫️
 
-A simple blur view in react native based in [`@react-native-community/blur`](https://github.com/margelo/react-native-blur).
+A simple blur view in react native based on [`@react-native-community/blur`](https://github.com/margelo/react-native-blur).
 
 Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated/), [react-native-navigation](https://github.com/wix/react-native-navigation) and Modals 😁. This library supports Apple TV and Android TV! 📺
 
@@ -162,7 +162,7 @@ export const styles = StyleSheet.create({
 
 ### Using lists
 
-You must add `BlurView` elements inside of the list, and the content behind should be added as child of the `BlurTarget` component. Check an example using `ScrollView` below:
+You must add `BlurView` elements inside the list, and the content behind should be added as a child of the `BlurTarget` component. Check an example using `ScrollView` below:
 
 ```tsx
 import { useRef } from 'react';
@@ -210,7 +210,7 @@ export function MyScreen() {
 
 ### Using `Modal`
 
-You must add `BlurTarget` as a parent of content screen because it will be the **target** of blur, the `BlurView` component must be to used inside of `Modal` to blur effect works correctly.
+You must add `BlurTarget` as a parent of the content screen because it will be the **target** of blur. The `BlurView` component must be used inside `Modal` for the blur effect to work correctly.
 
 ```tsx
 import { useRef, useState } from 'react';
@@ -249,7 +249,7 @@ export function MyScreen() {
 
 ### Using `ImageBackground`
 
-You must add `BlurTarget` as a parent of `ImageBackground` because it will be the **target** of blur, the `BlurView` component must be to used as **brother** of `BlurTarget` to blur effect works correctly.
+You must add `BlurTarget` as a parent of `ImageBackground` because it will be the **target** of blur. The `BlurView` component must be used as a **sibling** of `BlurTarget` for the blur effect to work correctly.
 
 ```tsx
 import { useRef } from 'react';
@@ -289,7 +289,7 @@ export function MyScreen() {
 
 ### `BlurView`
 
-The `BlurView` component is an extends the same properties of the a `View` component. The `blurTarget` prop is **required** for Android blur effect works correctly.
+The `BlurView` component extends the same properties of a `View` component. The `blurTarget` prop is **required** for the Android blur effect to work correctly.
 
 #### Properties
 
@@ -299,15 +299,15 @@ The `BlurView` component is an extends the same properties of the a `View` compo
 | `type`                             | [Blur type](#blur-types) of the overlay.                                                    | `light`     | All      |
 | `radius`                           | Blur radius `0` - `100`.                                                                    | `20.0`      | All      |
 | `downscaleFactor`                  | Downscale factor `0` - `100`.                                                               | `6.0`       | Android  |
-| `overlayColor`                     | Add the overlay color about component.                                                      | `undefined` | All      |
+| `overlayColor`                     | Add the overlay color to the component.                                                      | `undefined` | All      |
 | `androidColor`                     | Overrides the `type` property color.                                                        | `undefined` | Android  |
-| `reducedTransparencyFallbackColor` | Background color about blur effect when reduced transparency is enabled.                    | `white`     | iOS      |
+| `reducedTransparencyFallbackColor` | Background color for the blur effect when reduced transparency is enabled.                    | `white`     | iOS      |
 
-When a value less than `0` or greater than `100` are provided for `radius` or `downscaleFactor` property, the value is clipped.
+When a value less than `0` or greater than `100` is provided for the `radius` or `downscaleFactor` property, the value is clipped.
 
 ### `BlurTarget`
 
-The `BlurTarget` component is an extends the same properties of the a `View` component.
+The `BlurTarget` component extends the same properties of a `View` component.
 
 This component is available for **Android only**. It's useful because we use [Dimezis's 3v library](https://github.com/Dimezis/BlurView) to apply the blur effect, so its implementation is slightly different than on iOS. The `BlurTarget` component is a common `View` in iOS.
 
@@ -321,7 +321,7 @@ The `BlurTarget` may not contain a `BlurView` that targets the same `BlurTarget`
 
 ### `VibrancyView`
 
-The `VibrancyView` component is an extends the same properties of the a `View` component.
+The `VibrancyView` component extends the same properties of a `View` component.
 
 This component is available for **iOS only**. It applies a vibrancy effect to child content. On Android, the `VibrancyView` component is a common `View`. The `effectStyle` property **isn't supported** on tvOS.
 
@@ -332,18 +332,18 @@ This component is available for **iOS only**. It applies a vibrancy effect to ch
 | `type`                             | [Blur type](#blur-types) of the overlay.                                     | `light`     | iOS      |
 | `effectStyle`                      | [Effect style](#effect-styles) to vibrancy content.                          | `label`     | iOS      |
 | `radius`                           | Blur radius `0` - `100`.                                                     | `20.0`      | iOS      |
-| `overlayColor`                     | Add the overlay color about component.                                       | `undefined` | iOS      |
-| `reducedTransparencyFallbackColor` | Background color about vibrancy effect when reduced transparency is enabled. | `white`     | iOS      |
+| `overlayColor`                     | Add the overlay color to the component.                                       | `undefined` | iOS      |
+| `reducedTransparencyFallbackColor` | Background color for the vibrancy effect when reduced transparency is enabled. | `white`     | iOS      |
 
-When a value less than `0` or greater than `100` are provided for `radius` property, the `radius` is clipped.
+When a value less than `0` or greater than `100` is provided for the `radius` property, the `radius` is clipped.
 
 ## Types
 
-These are all types of available.
+These are all available types.
 
 ### Blur Types
 
-On iOS all types are supported, but, on Android is simulated the types using RGBA colors.
+On iOS, all types are supported, but on Android, the types are simulated using RGBA colors.
 
 | Property                    | Description                                                                                                             | Platform |
 | --------------------------- | ----------------------------------------------------------------------------------------------------------------------- | -------- |
@@ -373,7 +373,7 @@ Learn more about blur types [here](https://developer.apple.com/documentation/uik
 
 ### Effect Styles
 
-On iOS all effect styles are supported. This property is available in the `VibrancyView` component, it's **iOS only**.
+On iOS, all effect styles are supported. This property is available in the `VibrancyView` component, it's **iOS only**.
 
 | Property           | Description                                                                             | Platform |
 | ------------------ | --------------------------------------------------------------------------------------- | -------- |
@@ -419,7 +419,7 @@ In version 3.0.0, the `x-light` blur `type` has been renamed to `extra-light` in
 </VibrancyView>
 ```
 
-A new `type` of blur called `extra-dark` has been added to the `BlurView` and `VibrancyView` components, below is a small example:
+A new `type` of blur called `extra-dark` has been added to the `BlurView` and `VibrancyView` components. Below is a small example:
 
 ```tsx
 // ✅ New type (v3.0.0) - Current
@@ -444,19 +444,21 @@ This version focused exclusively on full TV device support. The main changes are
 
 On Android platforms, the component utilizes the [BlurView](https://github.com/Dimezis/BlurView) library to offer native blur effects with hardware-accelerated rendering.
 
-For `regular`, `prominent` and material blur types, the overlay color opacity is scaled by `radius / 100` to match the iOS effect intensity. This doesn't apply when `androidColor` is provided.
+For `regular`, `prominent`, and material blur types, the overlay color opacity is scaled by `radius / 100` to match the iOS effect intensity. This doesn't apply when `androidColor` is provided.
 
 The `androidColor` property can be useful when you want to achieve a specific look or match the blur effect to other elements in your app. It **overrides** the `type` property.
 
-Bottom tabs customized with the [`react-navigation/bottom-tabs`](https://reactnavigation.org/docs/bottom-tab-navigator/) and [sticky header component](https://reactnative.dev/docs/scrollview#stickyheadercomponent) **aren't** supported! If you want to customize your bottom tabs ou sticky header component, opt for [`@sbaiahmed1/react-native-blur`](https://github.com/sbaiahmed1/react-native-blur).
+Bottom tabs customized with the [`react-navigation/bottom-tabs`](https://reactnavigation.org/docs/bottom-tab-navigator/) and [sticky header component](https://reactnative.dev/docs/scrollview#stickyheadercomponent) **aren't** supported! If you want to customize your bottom tabs or sticky header component, opt for [`@sbaiahmed1/react-native-blur`](https://github.com/sbaiahmed1/react-native-blur).
+
+Only components based on [`TextureView`](https://source.android.com/docs/core/graphics/arch-tv) are supported. Components that use [`SurfaceView`](https://developer.android.com/reference/android/view/SurfaceView) aren't supported by the BlurView third-party library.
 
 ### iOS
 
-On iOS all types are supported by default. However, on Android they are RGBA colors to simulate the same blur color.
+On iOS, all types are supported by default. However, on Android they are RGBA colors to simulate the same blur color.
 
 The `extra-dark` blur type is not natively available on iOS, so it falls back to the `dark` blur type.
 
-For `regular`, `prominent` and material blur types, the `radius` property controls the strength of the whole effect (blur, tint and saturation) as a percentage (`radius / 100`), since these types don't support a custom blur radius. A `radius` of `100` keeps the native strength of the blur type, which can't be exceeded.
+For `regular`, `prominent`, and material blur types, the `radius` property controls the strength of the whole effect (blur, tint, and saturation) as a percentage (`radius / 100`), since these types don't support a custom blur radius. A `radius` of `100` keeps the native strength of the blur type, which can't be exceeded.
 
 ### tvOS
 
@@ -466,7 +468,7 @@ The [effect styles](#effect-styles) **aren't** supported.
 
 ## Expo
 
-In Expo, you need to convert to a [custom development build](https://docs.expo.dev/develop/development-builds/introduction/) or use [prebuild](https://docs.expo.dev/workflow/continuous-native-generation/). You can use also React Native without Expo.
+In Expo, you need to convert to a [custom development build](https://docs.expo.dev/develop/development-builds/introduction/) or use [prebuild](https://docs.expo.dev/workflow/continuous-native-generation/). You can also use React Native without Expo.
 
 ## TypeScript Support
 
@@ -500,7 +502,7 @@ export interface CustomVibrancyViewProps extends VibrancyProps {
 ## Others Libraries
 
 - ✅ [`expo-blur`](https://docs.expo.dev/versions/latest/sdk/blur-view/) - A React component that blurs everything underneath the view. Common usage of this is for navigation bars, tab bars, and modals.
-- ✅ [`@sbaiahmed1/react-native-blur`](https://github.com/sbaiahmed1/react-native-blur) - A modern React Native blur view component that provides native blur effects for both iOS and Android platforms. also adds progressive blur and liquidGlass.
+- ✅ [`@sbaiahmed1/react-native-blur`](https://github.com/sbaiahmed1/react-native-blur) - A modern React Native blur view component that provides native blur effects for both iOS and Android platforms. Also adds progressive blur and liquid glass.
 - 🛑 [`@react-native-community/blur`](https://github.com/margelo/react-native-blur) - A component for UIVisualEffectView's blur and vibrancy effect on iOS, and BlurView on Android.
 
 ## Contributing
