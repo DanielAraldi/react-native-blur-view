@@ -1,5 +1,15 @@
 
 
+## [3.1.1](https://github.com/DanielAraldi/react-native-blur-view/compare/v3.1.0...v3.1.1) (2026-10-18)
+
+### 🐛 Bug Fixes
+
+* **ios:** import React Native headers with the React/ prefix (React Native 0.87) ([f5d27be](https://github.com/DanielAraldi/react-native-blur-view/commit/f5d27be189304450956df312458740eeec0f199c))
+
+### 📝 Documentation
+
+* **android:** update documentation about `SurfaceView` support ([18c5811](https://github.com/DanielAraldi/react-native-blur-view/commit/18c5811bf8a3725f640c89852f9e24d7a2249018))
+
 ## [3.1.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v3.0.5...v3.1.0) (2026-10-14)
 
 ### 🚀 Features
