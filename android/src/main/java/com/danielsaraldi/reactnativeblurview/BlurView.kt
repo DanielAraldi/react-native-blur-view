@@ -106,6 +106,14 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     this.setOverlayColor(this.colorString)
   }
 
+  override fun onWindowVisibilityChanged(visibility: Int) {
+    super.onWindowVisibilityChanged(visibility)
+
+    if (visibility == VISIBLE && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+      targetView?.blurTarget?.refreshBlurView(this)
+    }
+  }
+
   private fun setupBlurView() {
     val color = this.getBlurColor()
 
