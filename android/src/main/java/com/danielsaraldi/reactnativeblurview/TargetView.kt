@@ -4,10 +4,9 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
-import eightbitlab.com.blurview.BlurTarget
 
 class TargetView: ViewGroup {
-  internal var blurTarget: BlurTarget = UIManagerCompatibleBlurTarget(context)
+  internal var blurTarget = UIManagerCompatibleBlurTarget(context)
 
   constructor(context: Context): super(context)
   constructor(context: Context, attrs: AttributeSet): super(context, attrs)
@@ -133,7 +132,7 @@ class TargetView: ViewGroup {
     // We override this to prevent the superclass (BlurViewGroup/FrameLayout) from
     // re-positioning children based on its own logic (e.g. gravity), which would
     // conflict with React Native's layout.
-    
+
     blurTarget.layout(0, 0, right - left, bottom - top)
   }
 
