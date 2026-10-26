@@ -5,7 +5,15 @@ import {
   NavigationContainer,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Blur, Home, Modal, Reanimated, Types, Vibrancy } from '../screens';
+import {
+  Blur,
+  BorderRadius,
+  Home,
+  Modal,
+  Reanimated,
+  Types,
+  Vibrancy,
+} from '../screens';
 import type { RootStackParamList } from '../@types';
 import { isIos } from '../utils';
 
@@ -26,6 +34,11 @@ export function Routes() {
           options={{ title: 'React Native Blur View' }}
         />
         <Stack.Screen name="Blur" component={Blur} />
+        <Stack.Screen
+          name="BorderRadius"
+          component={BorderRadius}
+          options={{ title: 'Border Radius' }}
+        />
         {isIos && <Stack.Screen name="Vibrancy" component={Vibrancy} />}
         <Stack.Screen name="Modal" component={Modal} />
         <Stack.Screen name="Reanimated" component={Reanimated} />

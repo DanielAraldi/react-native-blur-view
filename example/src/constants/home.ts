@@ -8,6 +8,11 @@ const OPTIONS: HomeOptionData[] = [
     description: 'Control the blur radius with a slider',
   },
   {
+    route: 'BorderRadius',
+    label: 'Border Radius',
+    description: 'Control the border radius with a slider',
+  },
+  {
     route: 'Vibrancy',
     label: 'Vibrancy',
     description: 'Control the vibrancy radius with a slider (iOS only)',
