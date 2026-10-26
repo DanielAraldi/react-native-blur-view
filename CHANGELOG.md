@@ -1,5 +1,15 @@
 
 
+## [3.2.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v3.1.1...v3.2.0) (2026-10-26)
+
+### 🚀 Features
+
+* **android:** bump `BlurView` third-party version ([5ec8f58](https://github.com/DanielAraldi/react-native-blur-view/commit/5ec8f589a1cb038929f9d9c67ee9fd3ed1d999d9))
+
+### 📝 Documentation
+
+* **example:** add border radius example screen ([e479cb3](https://github.com/DanielAraldi/react-native-blur-view/commit/e479cb3150d36ff2b56b1bc6c8f1511a545231a7))
+
 ## [3.1.1](https://github.com/DanielAraldi/react-native-blur-view/compare/v3.1.0...v3.1.1) (2026-10-18)
 
 ### 🐛 Bug Fixes
