@@ -1,4 +1,5 @@
 export * from './Blur';
+export * from './BorderRadius';
 export * from './Home';
 export * from './Modal';
 export * from './Reanimated';

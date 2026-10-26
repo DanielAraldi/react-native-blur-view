@@ -30,7 +30,7 @@ export function Blur() {
         </BlurView>
       </View>
 
-      <Slider value={radius} onValueChange={setRadius} />
+      <Slider blurTarget={targetRef} value={radius} onValueChange={setRadius} />
     </View>
   );
 }

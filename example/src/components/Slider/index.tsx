@@ -6,7 +6,13 @@ import { styles } from './styles';
 import type { SliderProps } from '../../@types';
 
 export function Slider(props: SliderProps) {
-  const { value, onValueChange } = props;
+  const {
+    label = 'Radius',
+    maximumValue = 100,
+    blurTarget,
+    value,
+    onValueChange,
+  } = props;
 
   const { bottom } = useSafeAreaInsets();
   const colorScheme = useColorScheme();
@@ -14,18 +20,19 @@ export function Slider(props: SliderProps) {
 
   return (
     <BlurView
+      blurTarget={blurTarget}
       type="material"
       radius={50}
       style={[styles.container, { paddingBottom: bottom + 20 }]}
     >
       <Text style={[styles.label, isDark && styles.labelDark]}>
-        Radius: {value}
+        {label}: {value}
       </Text>
 
       <RNSlider
         style={styles.slider}
         minimumValue={0}
-        maximumValue={100}
+        maximumValue={maximumValue}
         value={value}
         onValueChange={(sliderValue) => {
           onValueChange(Math.round(sliderValue));
