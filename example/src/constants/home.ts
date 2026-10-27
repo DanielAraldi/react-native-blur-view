@@ -28,6 +28,11 @@ const OPTIONS: HomeOptionData[] = [
     description: 'Blur radius animated from 1 to 100',
   },
   {
+    route: 'Gesture',
+    label: 'Gesture',
+    description: 'Drag the blur view with a pan gesture',
+  },
+  {
     route: 'Types',
     label: 'Types',
     description: isIos ? 'All blur types and effect styles' : 'All blur types',

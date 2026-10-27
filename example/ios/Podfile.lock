@@ -1,5 +1,5 @@
 PODS:
-  - BlurView (3.1.1):
+  - BlurView (3.2.0):
     - hermes-engine
     - RCTRequired
     - RCTTypeSafety
@@ -1493,7 +1493,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - react-native-slider (5.2.1):
+  - react-native-slider (5.2.2):
     - hermes-engine
     - RCTRequired
     - RCTTypeSafety
@@ -1505,7 +1505,7 @@ PODS:
     - React-graphics
     - React-ImageManager
     - React-jsi
-    - react-native-slider/common (= 5.2.1)
+    - react-native-slider/common (= 5.2.2)
     - React-NativeModulesApple
     - React-RCTFabric
     - React-renderercss
@@ -1516,7 +1516,7 @@ PODS:
     - ReactCommon/turbomodule/core
     - ReactNativeDependencies
     - Yoga
-  - react-native-slider/common (5.2.1):
+  - react-native-slider/common (5.2.2):
     - hermes-engine
     - RCTRequired
     - RCTTypeSafety
@@ -1923,6 +1923,29 @@ PODS:
     - React-utils (= 0.85.3)
     - ReactNativeDependencies
   - ReactNativeDependencies (0.85.3)
+  - RNGestureHandler (3.4.0):
+    - hermes-engine
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-Core-prebuilt
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - ReactNativeDependencies
+    - RNWorklets (>= 0.8.0)
+    - Yoga
   - RNReanimated (4.3.1):
     - hermes-engine
     - RCTRequired
@@ -2240,6 +2263,7 @@ DEPENDENCIES:
   - ReactCodegen (from `build/generated/ios/ReactCodegen`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeDependencies (from `../node_modules/react-native/third-party-podspecs/ReactNativeDependencies.podspec`)
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -2400,6 +2424,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   ReactNativeDependencies:
     :podspec: "../node_modules/react-native/third-party-podspecs/ReactNativeDependencies.podspec"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -2412,7 +2438,7 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
-  BlurView: bd1fe10b07d02b8237ddb05dcf5b6ee7ac1e5330
+  BlurView: 47688b611064186d244f269d707976ca7ec7b779
   FBLazyVector: 24e62c765683b8d89006a88a2c8f5cf019f0074d
   hermes-engine: d05d7fdd92427595b2affc06ecca3c3fed432503
   RCTDeprecation: a4c521821fab57cbb125b36effe84d897d0dfa12
@@ -2453,7 +2479,7 @@ SPEC CHECKSUMS:
   React-microtasksnativemodule: ab33a818d339f5a1da308893c11b487be66121a8
   React-mutationobservernativemodule: a42d1626651ccd7d0dc02a56e69d4ec77c248893
   react-native-safe-area-context: 6b4966397ada0f7dd481e4486a2ef936834861a1
-  react-native-slider: 6f0c45414cd6ddd89eba696588dc0da5edce53a9
+  react-native-slider: cb8357424909942ac1b1b43fac605bc13768c285
   React-NativeModulesApple: deba264b03bd79c6bd61014fa30e40321b5e443a
   React-networking: 35e6070b084f435429f85c5db40b4d5b38652fe9
   React-oscompat: 64a0c7ef5441855dc6e2a6afe8ba8f92aa05075e
@@ -2488,6 +2514,7 @@ SPEC CHECKSUMS:
   ReactCodegen: c8f81e6c6f762dcf442a6203a1fb58f7dafc8014
   ReactCommon: 7dfc3250793bf36cf221096ff59e1179e13eef7f
   ReactNativeDependencies: 350229f97813f0d5d5c418b36de81573fc131eac
+  RNGestureHandler: 0099c580b39852fedd18458e7af4d0e3e038d683
   RNReanimated: f735b1747a7a93bda7ca102c6d37a3cf54b6d5e8
   RNScreens: a6a509f05ea74d50abab8c21b319b33cfca1ea1c
   RNSVG: 0e52210d4d43165e7e2cf9c890a9848b27e513ac

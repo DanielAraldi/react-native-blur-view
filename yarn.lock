@@ -3259,10 +3259,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-community/slider@npm:^5.2.1":
-  version: 5.2.1
-  resolution: "@react-native-community/slider@npm:5.2.1"
-  checksum: 966ce08eeaaf280f199dee0f5943894cc4d40e870afd765b5b04ed26b6c3d5aa2e9ea0600de66d41f682cb7ee7afae55a81bae6832b8bb92ab9c11f0354f3aa9
+"@react-native-community/slider@npm:5.2.2":
+  version: 5.2.2
+  resolution: "@react-native-community/slider@npm:5.2.2"
+  checksum: d675aae093e1e1e8f81db9d2f773de4958846027c7ffbc469bfbd8527569716df7b828dc5c37cb0deffeceaa18c00b37d7b4c2c0d84b8f31c8eeb448d5e5f769
   languageName: node
   linkType: hard
 
@@ -4077,6 +4077,24 @@ __metadata:
   version: 7.0.3
   resolution: "@types/parse-path@npm:7.0.3"
   checksum: 21a12c228d38f5a75659dfd7cb127dc2001ed3f6acbd1b2e0575d1348c735594c0bab06a97fe849c151438384829f20ea5971cb045f7ecd37d53c76a9fcb9de3
+  languageName: node
+  linkType: hard
+
+"@types/react-test-renderer@npm:^19.1.0":
+  version: 19.3.0
+  resolution: "@types/react-test-renderer@npm:19.3.0"
+  dependencies:
+    "@types/react": "*"
+  checksum: fbc49458dbb661d7565d60c07bca5284bac15bf88fc7fef9bb5ff0f58c4dbe87faf430443bac94b9a7a3dd2fa1e520435fe4d245928545756220b0fb76e0b080
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:*":
+  version: 19.3.0
+  resolution: "@types/react@npm:19.3.0"
+  dependencies:
+    csstype: ^3.2.2
+  checksum: 1cc51d4b76e5855da231e8b5afbde76db000eb3fffa5a8087a93eef1c168e86f90d10b7dae08dabf7a6ac327a254604406e6ede45c952d39d24dd0da6f856790
   languageName: node
   linkType: hard
 
@@ -11606,7 +11624,7 @@ __metadata:
     "@react-native-community/cli": 20.1.0
     "@react-native-community/cli-platform-android": 20.1.0
     "@react-native-community/cli-platform-ios": 20.1.0
-    "@react-native-community/slider": ^5.2.1
+    "@react-native-community/slider": 5.2.2
     "@react-native/babel-preset": 0.85.3
     "@react-native/eslint-config": 0.85.3
     "@react-native/jest-preset": 0.85.3
@@ -11619,6 +11637,7 @@ __metadata:
     react: 19.2.3
     react-native: 0.85.3
     react-native-builder-bob: ^0.40.10
+    react-native-gesture-handler: 3.4.0
     react-native-reanimated: 4.3.1
     react-native-safe-area-context: ^5.6.1
     react-native-screens: 4.25.0
@@ -11656,6 +11675,19 @@ __metadata:
   bin:
     bob: bin/bob
   checksum: 429cfa0fa4aa1bcc8410718563449dd31f450010d7d3c8be8a4a2ac0ac82b20be3bb2c2f0811df64e1cf2e4714f73c8cb9dd031e4a0a0e07ee0b1b96d8a4d70a
+  languageName: node
+  linkType: hard
+
+"react-native-gesture-handler@npm:3.4.0":
+  version: 3.4.0
+  resolution: "react-native-gesture-handler@npm:3.4.0"
+  dependencies:
+    "@types/react-test-renderer": ^19.1.0
+    invariant: ^2.2.4
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 9fde4a30b6b68bbca4111c6510e8a734adce0670926a4dbecb5ddc4bdc644c96d3f5de419391bff52e11507577ad72de8e5e0a686dffe912e2cf72fd9649eae9
   languageName: node
   linkType: hard
 

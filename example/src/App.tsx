@@ -1,4 +1,6 @@
-import { StatusBar, useColorScheme } from 'react-native';
+import { StatusBar, StyleSheet, useColorScheme } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { Routes } from './routes';
 
@@ -7,10 +9,18 @@ export default function App() {
   const isDark = colorScheme === 'dark';
 
   return (
-    <>
-      <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
+    <SafeAreaProvider>
+      <GestureHandlerRootView style={styles.container}>
+        <StatusBar barStyle={isDark ? 'light-content' : 'dark-content'} />
 
-      <Routes />
-    </>
+        <Routes />
+      </GestureHandlerRootView>
+    </SafeAreaProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

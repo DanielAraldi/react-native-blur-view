@@ -8,6 +8,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
   Blur,
   BorderRadius,
+  Gesture,
   Home,
   Modal,
   Reanimated,
@@ -26,7 +27,10 @@ export function Routes() {
   return (
     <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
       <Stack.Navigator
-        screenOptions={{ headerBackButtonDisplayMode: 'minimal' }}
+        screenOptions={{
+          headerBackButtonDisplayMode: 'minimal',
+          animation: 'slide_from_right',
+        }}
       >
         <Stack.Screen
           name="Home"
@@ -42,6 +46,7 @@ export function Routes() {
         {isIos && <Stack.Screen name="Vibrancy" component={Vibrancy} />}
         <Stack.Screen name="Modal" component={Modal} />
         <Stack.Screen name="Reanimated" component={Reanimated} />
+        <Stack.Screen name="Gesture" component={Gesture} />
         <Stack.Screen name="Types" component={Types} />
       </Stack.Navigator>
     </NavigationContainer>

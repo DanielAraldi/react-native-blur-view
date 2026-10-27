@@ -5,5 +5,6 @@ export type RootStackParamList = {
   Vibrancy: undefined;
   Modal: undefined;
   Reanimated: undefined;
+  Gesture: undefined;
   Types: undefined;
 };
