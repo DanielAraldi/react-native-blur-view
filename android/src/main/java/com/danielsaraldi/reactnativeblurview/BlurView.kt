@@ -209,18 +209,15 @@ class BlurView : eightbitlab.com.blurview.BlurView {
 
   private fun clipRadius(radius: Float): Float {
     /**
-     * On Android > 31 the maximum blur radius is 67.5f and minimum is 0f.
-     * On Android <= 31 the maximum blur radius is 25f and minimum must be
-     * 0.00001f because if 0f radius is provided the Dimezis's BlurView library
-     * crashes.
+     * On Android > 31 the minimum blur radius is 0f.
+     * On Android <= 31 the minimum blur radius must be 0.00001f because if 0f
+     * radius is provided, the Dimezis's BlurView library crashes.
      *
      * See more details in the issue: https://github.com/Dimezis/BlurView/issues/247
      */
-    val isAndroidHigherThan12 = Build.VERSION.SDK_INT > Build.VERSION_CODES.S
-    val minRadius = if (isAndroidHigherThan12) 0f else 0.00001f
-    val maxRadius = if (isAndroidHigherThan12) 67.5f else 25f
+    val minRadius = if (Build.VERSION.SDK_INT > Build.VERSION_CODES.S) 0f else 0.00001f
 
-    return radius.coerceIn(minRadius, maxRadius)
+    return radius.coerceIn(minRadius, INTENSITY)
   }
 
   fun setOverlayColor(overlayColor: String) {
