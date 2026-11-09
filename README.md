@@ -309,7 +309,7 @@ When a value less than `0` or greater than `100` is provided for the `radius` or
 
 The `BlurTarget` component extends the same properties of a `View` component.
 
-This component is available for **Android only**. It's useful because we use [Dimezis's 3v library](https://github.com/Dimezis/BlurView) to apply the blur effect, so its implementation is slightly different than on iOS. The `BlurTarget` component is a common `View` in iOS.
+This component is available for **Android only**. It's useful because we use [Dimezis's 4v library](https://github.com/Dimezis/BlurView) to apply the blur effect, so its implementation is slightly different than on iOS. The `BlurTarget` component is a common `View` in iOS.
 
 The `BlurTarget` may not contain a `BlurView` that targets the same `BlurTarget`. The `BlurTarget` may contain other `BlurTargets` and `BlurViews` though.
 
