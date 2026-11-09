@@ -216,8 +216,9 @@ class BlurView : eightbitlab.com.blurview.BlurView {
      * See more details in the issue: https://github.com/Dimezis/BlurView/issues/247
      */
     val minRadius = if (Build.VERSION.SDK_INT > Build.VERSION_CODES.S) 0f else 0.00001f
+    val maxRadius = 100f * INTENSITY
 
-    return radius.coerceIn(minRadius, INTENSITY)
+    return radius.coerceIn(minRadius, maxRadius)
   }
 
   fun setOverlayColor(overlayColor: String) {
