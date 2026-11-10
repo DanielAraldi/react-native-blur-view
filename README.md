@@ -1,6 +1,6 @@
-# `@danielsaraldi/react-native-blur-view` 🌫️
+# @danielsaraldi/react-native-blur-view 🌫️
 
-A simple blur view in react native based on [`@react-native-community/blur`](https://github.com/margelo/react-native-blur).
+A simple blur view in react native based on [@react-native-community/blur](https://github.com/margelo/react-native-blur).
 
 Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated/), [react-native-navigation](https://github.com/wix/react-native-navigation) and Modals 😁. This library supports Apple TV and Android TV! 📺
 
