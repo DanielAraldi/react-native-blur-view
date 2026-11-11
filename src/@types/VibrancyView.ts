@@ -7,7 +7,7 @@ import type { EffectStyle } from './EffectStyle';
  *
  * @description Props for the `VibrancyView` component.
  *
- * @see https://github.com/DanielAraldi/react-native-blur-view?tab=readme-ov-file#properties-2
+ * @see https://github.com/DanielAraldi/react-native-blur-view?tab=readme-ov-file#properties-3
  *
  * @since 1.2.0
  */

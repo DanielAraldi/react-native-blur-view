@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ImageBackground, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { VibrancyView } from '@danielsaraldi/react-native-blur-view';
 import { Slider } from '../../components';
 import { KILL_BILL } from '../../assets';
@@ -10,11 +10,9 @@ export function Vibrancy() {
 
   return (
     <View style={styles.container}>
-      <ImageBackground
-        style={styles.absoluteFill}
-        source={KILL_BILL}
-        resizeMode="cover"
-      />
+      <View style={StyleSheet.absoluteFill}>
+        <Image style={styles.image} source={KILL_BILL} resizeMode="cover" />
+      </View>
 
       <View style={styles.content}>
         <VibrancyView

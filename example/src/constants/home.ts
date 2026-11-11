@@ -18,6 +18,11 @@ const OPTIONS: HomeOptionData[] = [
     description: 'Control the vibrancy radius with a slider (iOS only)',
   },
   {
+    route: 'ProgressiveBlur',
+    label: 'Progressive Blur',
+    description: 'Control the blur direction and offset',
+  },
+  {
     route: 'Modal',
     label: 'Modal',
     description: 'Modal with a blurred backdrop',
@@ -39,6 +44,8 @@ const OPTIONS: HomeOptionData[] = [
   },
 ];
 
+const IOS_ONLY_ROUTES: HomeOptionData['route'][] = ['Vibrancy'];
+
 export const HOME_OPTIONS: HomeOptionData[] = OPTIONS.filter(
-  ({ route }) => isIos || route !== 'Vibrancy'
+  ({ route }) => isIos || !IOS_ONLY_ROUTES.includes(route)
 );

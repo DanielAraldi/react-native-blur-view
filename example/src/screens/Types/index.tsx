@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { ImageBackground, ScrollView, Text, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import {
   BlurTarget,
   BlurView,
@@ -15,12 +15,14 @@ export function Types() {
 
   return (
     <View style={styles.container}>
-      <BlurTarget ref={targetRef} style={styles.absoluteFill}>
-        <ImageBackground
-          style={styles.absoluteFill}
-          source={AMERICAN_PSYCHO}
-          resizeMode="cover"
-        />
+      <BlurTarget ref={targetRef} style={StyleSheet.absoluteFill}>
+        <View style={StyleSheet.absoluteFill}>
+          <Image
+            style={styles.image}
+            source={AMERICAN_PSYCHO}
+            resizeMode="cover"
+          />
+        </View>
       </BlurTarget>
 
       <ScrollView

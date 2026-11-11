@@ -11,6 +11,7 @@ import {
   Gesture,
   Home,
   Modal,
+  ProgressiveBlur,
   Reanimated,
   Types,
   Vibrancy,
@@ -44,6 +45,11 @@ export function Routes() {
           options={{ title: 'Border Radius' }}
         />
         {isIos && <Stack.Screen name="Vibrancy" component={Vibrancy} />}
+        <Stack.Screen
+          name="ProgressiveBlur"
+          component={ProgressiveBlur}
+          options={{ title: 'Progressive Blur' }}
+        />
         <Stack.Screen name="Modal" component={Modal} />
         <Stack.Screen name="Reanimated" component={Reanimated} />
         <Stack.Screen name="Gesture" component={Gesture} />

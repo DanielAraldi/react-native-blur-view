@@ -11,6 +11,11 @@ export const styles = StyleSheet.create({
     gap: 16,
   },
 
+  image: {
+    width: '100%',
+    height: '100%',
+  },
+
   title: {
     fontSize: 22,
     fontWeight: 'bold',
@@ -42,14 +47,5 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
 
     color: 'white',
-  },
-
-  absoluteFill: {
-    position: 'absolute',
-
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
   },
 });

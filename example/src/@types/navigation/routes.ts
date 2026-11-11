@@ -3,6 +3,7 @@ export type RootStackParamList = {
   Blur: undefined;
   BorderRadius: undefined;
   Vibrancy: undefined;
+  ProgressiveBlur: undefined;
   Modal: undefined;
   Reanimated: undefined;
   Gesture: undefined;
