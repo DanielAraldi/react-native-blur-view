@@ -1,5 +1,23 @@
 
 
+## [3.3.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v3.2.0...v3.3.0) (2026-11-11)
+
+### 🚀 Features
+
+* introduces a new `ProgressiveBlurView` component ([a339431](https://github.com/DanielAraldi/react-native-blur-view/commit/a3394319533423b8d4d3e09fe1389a9be5a7719e))
+
+### 🐛 Bug Fixes
+
+* **android:** adjust max radius value based intensity ([a1c9721](https://github.com/DanielAraldi/react-native-blur-view/commit/a1c972160b8655002ad9095a791308901e6ebb47))
+* **android:** define new max blur radius for clip radius ([e3ae5bb](https://github.com/DanielAraldi/react-native-blur-view/commit/e3ae5bb6548032239d5f66ced3b10f02fa16dd5f))
+* **android:** resolve nativePtr exception for android SDK 33 ([a35212b](https://github.com/DanielAraldi/react-native-blur-view/commit/a35212bac656eed57a69b153647d9f019bbbb495))
+
+### 📝 Documentation
+
+* **example:** add pan gesture example screen ([cf79646](https://github.com/DanielAraldi/react-native-blur-view/commit/cf796468ed499beaf64ad1d373324834f28d576d))
+* grammars adjustments ([959909b](https://github.com/DanielAraldi/react-native-blur-view/commit/959909babbccc7846766b4811524754c6fa99067))
+* update the library reference for `BlurTarget` component description ([d458406](https://github.com/DanielAraldi/react-native-blur-view/commit/d458406d90fea373d52e75205f8a15d02b45207b))
+
 ## [3.2.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v3.1.1...v3.2.0) (2026-10-26)
 
 ### 🚀 Features
