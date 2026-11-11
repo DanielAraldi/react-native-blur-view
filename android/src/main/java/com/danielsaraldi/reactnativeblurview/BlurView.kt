@@ -30,6 +30,8 @@ class BlurView : eightbitlab.com.blurview.BlurView {
   companion object {
     private const val TAG: String = "BlurView"
     private const val INTENSITY: Float = 0.175f
+    private const val MAX_RADIUS: Float = 100f * INTENSITY
+    private const val MIN_RADIUS: Float = 0.00001f
   }
 
   constructor(context: Context?) : super(context) {
@@ -207,19 +209,6 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     return ColorUtils.setAlphaComponent(currentColor, alpha)
   }
 
-  private fun clipRadius(radius: Float): Float {
-    /**
-     * On Android > 31 the minimum blur radius is 0f.
-     * On Android <= 31 the minimum blur radius must be 0.00001f because if 0f
-     * radius is provided, the Dimezis's BlurView library crashes.
-     *
-     * See more details in the issue: https://github.com/Dimezis/BlurView/issues/247
-     */
-    val minRadius = if (Build.VERSION.SDK_INT > Build.VERSION_CODES.S) 0f else 0.00001f
-
-    return radius.coerceIn(minRadius, INTENSITY)
-  }
-
   fun setOverlayColor(overlayColor: String) {
     val overlay = BlurOverlayColor.fromString(overlayColor, resources.configuration)
 
@@ -249,7 +238,7 @@ class BlurView : eightbitlab.com.blurview.BlurView {
     this.rawRadius = radius.coerceIn(0f, 100f)
 
     val radiusValue = radius * INTENSITY
-    val clippedRadius = this.clipRadius(radiusValue)
+    val clippedRadius = radiusValue.coerceIn(MIN_RADIUS, MAX_RADIUS)
 
     this.radius = clippedRadius
 
