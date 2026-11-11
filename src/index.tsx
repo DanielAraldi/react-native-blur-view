@@ -1,11 +1,14 @@
 export { BlurTarget } from './BlurTarget';
-export { VibrancyView } from './VibrancyView';
 export { BlurView } from './BlurView';
+export { ProgressiveBlurView } from './ProgressiveBlurView';
+export { VibrancyView } from './VibrancyView';
 
 export type {
   BlurType,
   BlurViewProps,
   BlurTargetProps,
-  VibrancyViewProps,
+  Direction,
   EffectStyle,
+  ProgressiveBlurViewProps,
+  VibrancyViewProps,
 } from './@types';

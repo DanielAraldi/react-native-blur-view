@@ -1,8 +1,9 @@
 import { useRef, useState } from 'react';
 import {
   Button,
-  ImageBackground,
+  Image,
   Modal as RNModal,
+  StyleSheet,
   Text,
   View,
 } from 'react-native';
@@ -16,12 +17,14 @@ export function Modal() {
 
   return (
     <View style={styles.container}>
-      <BlurTarget ref={targetRef} style={styles.absoluteFill}>
-        <ImageBackground
-          style={styles.absoluteFill}
-          source={INGLORIOUS_BASTERDS}
-          resizeMode="cover"
-        />
+      <BlurTarget ref={targetRef} style={StyleSheet.absoluteFill}>
+        <View style={StyleSheet.absoluteFill}>
+          <Image
+            style={styles.image}
+            source={INGLORIOUS_BASTERDS}
+            resizeMode="cover"
+          />
+        </View>
 
         <View style={styles.content}>
           <View style={styles.button}>
@@ -43,7 +46,7 @@ export function Modal() {
           blurTarget={targetRef}
           type="light"
           radius={20}
-          style={styles.absoluteFill}
+          style={StyleSheet.absoluteFill}
         >
           <View style={styles.modalContainer}>
             <View style={styles.modalContent}>

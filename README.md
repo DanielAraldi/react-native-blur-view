@@ -1,4 +1,4 @@
-# `@danielsaraldi/react-native-blur-view` 🌫️
+# @danielsaraldi/react-native-blur-view 🌫️
 
 A simple blur view in react native based on [`@react-native-community/blur`](https://github.com/margelo/react-native-blur).
 
@@ -37,18 +37,21 @@ Support the animation transitions with [react-native-screens](https://github.com
 
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Using lists](#using-lists)
-  - [Using `Modal`](#using-modal)
-  - [Using `ImageBackground`](#using-imagebackground)
+  - [Using Lists](#using-lists)
+  - [Using Modal](#using-modal)
+  - [Using Image Background](#using-image-background)
 - [Components](#components)
   - [`BlurView`](#blurview)
     - [Properties](#properties)
-  - [`BlurTarget`](#blurtarget)
+  - [`ProgressiveBlurView`](#progressiveblurview)
     - [Properties](#properties-1)
-  - [`VibrancyView`](#vibrancyview)
+  - [`BlurTarget`](#blurtarget)
     - [Properties](#properties-2)
+  - [`VibrancyView`](#vibrancyview)
+    - [Properties](#properties-3)
 - [Types](#types)
   - [Blur Types](#blur-types)
+  - [Directions](#directions)
   - [Effect Styles](#effect-styles)
 - [Migrate to 3.x](#migrate-to-3x)
   - [Why This Change?](#why-this-change)
@@ -84,11 +87,7 @@ cd ios && pod install && cd ..
 ```tsx
 import { useRef } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import {
-  BlurView,
-  BlurTarget,
-  VibrancyView,
-} from '@danielsaraldi/react-native-blur-view';
+import { BlurView, BlurTarget } from '@danielsaraldi/react-native-blur-view';
 // ...
 
 export default function App() {
@@ -100,10 +99,6 @@ export default function App() {
       <BlurView blurTarget={targetRef} style={styles.blurView}>
         <Text style={styles.text}>BlurView</Text>
       </BlurView>
-
-      <VibrancyView style={styles.vibrancyView}>
-        <Text style={styles.text}>VibrancyView</Text>
-      </VibrancyView>
 
       <BlurTarget ref={targetRef} style={styles.blurTarget}>
         <ScrollView
@@ -124,35 +119,30 @@ export const styles = StyleSheet.create({
     top: 0,
 
     width: '100%',
-    height: 256,
+    height: 128,
 
     justifyContent: 'center',
     alignItems: 'center',
+
+    borderRadius: 16,
   },
 
-  vibrancyView: {
-    position: 'absolute',
-    top: 256,
-
-    width: '100%',
-    height: 256,
-
-    justifyContent: 'center',
-    alignItems: 'center',
+  blurTarget: {
+    flex: 1,
   },
 
-  title: {
+  text: {
     fontSize: 24,
     fontWeight: 'bold',
 
     color: 'white',
   },
 
-  main: {
+  scrollView: {
     flex: 1,
   },
 
-  content: {
+  contentContainer: {
     padding: 20,
 
     gap: 8,
@@ -166,7 +156,7 @@ You must add `BlurView` elements inside the list, and the content behind should 
 
 ```tsx
 import { useRef } from 'react';
-import { ImageBackground, ScrollView, Text, View } from 'react-native';
+import { Image, ScrollView, Text, View } from 'react-native';
 import { BlurView, BlurTarget } from '@danielsaraldi/react-native-blur-view';
 // ...
 
@@ -177,11 +167,9 @@ export function MyScreen() {
   return (
     <View style={styles.container}>
       <BlurTarget ref={targetRef} style={styles.blurTarget}>
-        <ImageBackground
-          style={styles.background}
-          source={BACKGROUND}
-          resizeMode="cover"
-        />
+        <View style={styles.background}>
+          <Image style={styles.image} source={BACKGROUND} resizeMode="cover" />
+        </View>
       </BlurTarget>
 
       <ScrollView
@@ -247,13 +235,16 @@ export function MyScreen() {
 }
 ```
 
-### Using `ImageBackground`
+### Using image background
 
-You must add `BlurTarget` as a parent of `ImageBackground` because it will be the **target** of blur. The `BlurView` component must be used as a **sibling** of `BlurTarget` for the blur effect to work correctly.
+You must add `BlurTarget` as a parent of the image because it will be the **target** of blur. The `BlurView` component must be used as a **sibling** of `BlurTarget` for the blur effect to work correctly.
+
+> [!WARNING]
+> Avoid using [`ImageBackground`](https://reactnative.dev/docs/imagebackground) as the blur background. Its implementation is a minimal wrapper, and the React Native docs recommend building your own component instead. Use a `View` with an `Image` inside it, as shown below.
 
 ```tsx
 import { useRef } from 'react';
-import { ImageBackground, View } from 'react-native';
+import { Image, View } from 'react-native';
 import { BlurTarget, BlurView } from '@danielsaraldi/react-native-blur-view';
 // ...
 
@@ -274,11 +265,13 @@ export function MyScreen() {
       </View>
 
       <BlurTarget ref={targetRef} style={styles.blurTarget}>
-        <ImageBackground
-          style={styles.background}
-          source={{ uri: 'https://picsum.photos/seed/picsum/600/900' }}
-          resizeMode="cover"
-        />
+        <View style={styles.background}>
+          <Image
+            style={styles.image}
+            source={{ uri: 'https://picsum.photos/seed/picsum/600/900' }}
+            resizeMode="cover"
+          />
+        </View>
       </BlurTarget>
     </>
   );
@@ -299,17 +292,41 @@ The `BlurView` component extends the same properties of a `View` component. The 
 | `type`                             | [Blur type](#blur-types) of the overlay.                                                    | `light`     | All      |
 | `radius`                           | Blur radius `0` - `100`.                                                                    | `20.0`      | All      |
 | `downscaleFactor`                  | Downscale factor `0` - `100`.                                                               | `6.0`       | Android  |
-| `overlayColor`                     | Add the overlay color to the component.                                                      | `undefined` | All      |
+| `overlayColor`                     | Add the overlay color to the component.                                                     | `undefined` | All      |
 | `androidColor`                     | Overrides the `type` property color.                                                        | `undefined` | Android  |
-| `reducedTransparencyFallbackColor` | Background color for the blur effect when reduced transparency is enabled.                    | `white`     | iOS      |
+| `reducedTransparencyFallbackColor` | Background color for the blur effect when reduced transparency is enabled.                  | `white`     | iOS      |
 
 When a value less than `0` or greater than `100` is provided for the `radius` or `downscaleFactor` property, the value is clipped.
+
+### `ProgressiveBlurView`
+
+The `ProgressiveBlurView` component extends the same properties of a `View` component.
+
+It applies a blur effect that is strongest at the `direction` edge and fades out towards the opposite edge. Like the `BlurView` component, the `blurTarget` prop is **required** for the Android blur effect to work correctly. Children aren't affected by the progressive effect.
+
+#### Properties
+
+| Property                           | Description                                                                                            | Default     | Platform |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------ | ----------- | -------- |
+| `blurTarget`                       | Ref of the `BlurTarget` component to be identified by the `ProgressiveBlurView` component in the tree. | `undefined` | Android  |
+| `type`                             | [Blur type](#blur-types) of the overlay.                                                               | `light`     | All      |
+| `radius`                           | Blur radius `0` - `100`.                                                                               | `20.0`      | All      |
+| `downscaleFactor`                  | Downscale factor `0` - `100`.                                                                          | `6.0`       | Android  |
+| `direction`                        | [Direction](#directions) edge where the blur effect starts.                                            | `top`       | All      |
+| `offset`                           | How much of the view is covered by the blur, measured from the `direction` edge `0` - `1`.             | `1.0`       | All      |
+| `overlayColor`                     | Add the overlay color to the component.                                                                | `undefined` | All      |
+| `androidColor`                     | Overrides the `type` property color.                                                                   | `undefined` | Android  |
+| `reducedTransparencyFallbackColor` | Background color for the blur effect when reduced transparency is enabled.                             | `white`     | iOS      |
+
+When a value less than `0` or greater than `100` is provided for the `radius` or `downscaleFactor` property, the value is clipped.
+
+When a value less than `0` or greater than `1` is provided for the `offset` property, the `offset` is clipped. An `offset` of `0` disables the effect, and an `offset` of `1` fades the effect across the whole view.
 
 ### `BlurTarget`
 
 The `BlurTarget` component extends the same properties of a `View` component.
 
-This component is available for **Android only**. It's useful because we use [Dimezis's 3v library](https://github.com/Dimezis/BlurView) to apply the blur effect, so its implementation is slightly different than on iOS. The `BlurTarget` component is a common `View` in iOS.
+This component is available for **Android only**. It's useful because we use [Dimezis's 4v library](https://github.com/Dimezis/BlurView) to apply the blur effect, so its implementation is slightly different than on iOS. The `BlurTarget` component is a common `View` in iOS.
 
 The `BlurTarget` may not contain a `BlurView` that targets the same `BlurTarget`. The `BlurTarget` may contain other `BlurTargets` and `BlurViews` though.
 
@@ -327,12 +344,12 @@ This component is available for **iOS only**. It applies a vibrancy effect to ch
 
 #### Properties
 
-| Property                           | Description                                                                  | Default     | Platform |
-| ---------------------------------- | ---------------------------------------------------------------------------- | ----------- | -------- |
-| `type`                             | [Blur type](#blur-types) of the overlay.                                     | `light`     | iOS      |
-| `effectStyle`                      | [Effect style](#effect-styles) to vibrancy content.                          | `label`     | iOS      |
-| `radius`                           | Blur radius `0` - `100`.                                                     | `20.0`      | iOS      |
-| `overlayColor`                     | Add the overlay color to the component.                                       | `undefined` | iOS      |
+| Property                           | Description                                                                    | Default     | Platform |
+| ---------------------------------- | ------------------------------------------------------------------------------ | ----------- | -------- |
+| `type`                             | [Blur type](#blur-types) of the overlay.                                       | `light`     | iOS      |
+| `effectStyle`                      | [Effect style](#effect-styles) to vibrancy content.                            | `label`     | iOS      |
+| `radius`                           | Blur radius `0` - `100`.                                                       | `20.0`      | iOS      |
+| `overlayColor`                     | Add the overlay color to the component.                                        | `undefined` | iOS      |
 | `reducedTransparencyFallbackColor` | Background color for the vibrancy effect when reduced transparency is enabled. | `white`     | iOS      |
 
 When a value less than `0` or greater than `100` is provided for the `radius` property, the `radius` is clipped.
@@ -370,6 +387,17 @@ On iOS, all types are supported, but on Android, the types are simulated using R
 | `ultra-thin-material-dark`  | A blur effect that creates the appearance of an ultra-thin material and is always dark. (**iOS >= 13**)                 | All      |
 
 Learn more about blur types [here](https://developer.apple.com/documentation/uikit/uiblureffect/style).
+
+### Directions
+
+The edge of the view where a progressive effect starts. The effect is strongest at this edge and fades out towards the opposite edge. This property is available in the `ProgressiveBlurView` component. An unknown value falls back to `top`.
+
+| Property | Description                                                              | Platform |
+| -------- | ------------------------------------------------------------------------ | -------- |
+| `top`    | The effect starts at the top edge and fades out towards the bottom edge. | All      |
+| `bottom` | The effect starts at the bottom edge and fades out towards the top edge. | All      |
+| `left`   | The effect starts at the left edge and fades out towards the right edge. | All      |
+| `right`  | The effect starts at the right edge and fades out towards the left edge. | All      |
 
 ### Effect Styles
 
@@ -477,16 +505,23 @@ Full TypeScript support with proper type definitions!
 ```ts
 import {
   BlurType,
+  Direction,
   EffectStyle,
   BlurViewProps,
   BlurTargetProps,
-  VibrancyProps,
+  ProgressiveBlurViewProps,
+  VibrancyViewProps,
 } from '@danielsaraldi/react-native-blur-view';
 
 export const INITIAL_BLUR_TYPE: BlurType = 'light';
+export const INITIAL_DIRECTION: Direction = 'top';
 export const INITIAL_EFFECT_STYLE: EffectStyle = 'label';
 
 export interface CustomBlurViewProps extends BlurViewProps {
+  // ...
+}
+
+export interface CustomProgressiveBlurViewProps extends ProgressiveBlurViewProps {
   // ...
 }
 
@@ -494,7 +529,7 @@ export interface CustomBlurTargetProps extends BlurTargetProps {
   // ...
 }
 
-export interface CustomVibrancyViewProps extends VibrancyProps {
+export interface CustomVibrancyViewProps extends VibrancyViewProps {
   // ...
 }
 ```

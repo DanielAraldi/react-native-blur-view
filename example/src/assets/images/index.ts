@@ -1,6 +1,7 @@
 import type { ImageSourcePropType } from 'react-native';
 
 const AMERICAN_PSYCHO: ImageSourcePropType = require('./american-psycho.jpg');
+const BREAKING_BAD: ImageSourcePropType = require('./breaking-bad.jpg');
 const FIGHT_CLUB: ImageSourcePropType = require('./fight-club.jpg');
 const INGLORIOUS_BASTERDS: ImageSourcePropType = require('./inglourious-basterds.jpg');
 const INTERSTELLAR: ImageSourcePropType = require('./interstellar.jpeg');
@@ -10,6 +11,7 @@ const THE_SHINING: ImageSourcePropType = require('./the-shining.jpeg');
 
 export {
   AMERICAN_PSYCHO,
+  BREAKING_BAD,
   FIGHT_CLUB,
   KILL_BILL,
   INGLORIOUS_BASTERDS,

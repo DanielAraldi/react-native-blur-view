@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { ImageBackground, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { BlurTarget, BlurView } from '@danielsaraldi/react-native-blur-view';
 import { Slider } from '../../components';
 import { THE_SHINING } from '../../assets';
@@ -11,12 +11,10 @@ export function BorderRadius() {
 
   return (
     <View style={styles.container}>
-      <BlurTarget ref={targetRef} style={styles.absoluteFill}>
-        <ImageBackground
-          style={styles.absoluteFill}
-          source={THE_SHINING}
-          resizeMode="cover"
-        />
+      <BlurTarget ref={targetRef} style={StyleSheet.absoluteFill}>
+        <View style={StyleSheet.absoluteFill}>
+          <Image style={styles.image} source={THE_SHINING} resizeMode="cover" />
+        </View>
       </BlurTarget>
 
       <View style={styles.content}>

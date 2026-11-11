@@ -47,6 +47,10 @@
     "android",
     "blur",
     "blur-view",
+    "vibrancy",
+    "vibrancy-view",
+    "progressive-blur",
+    "progressive-blur-view",
     "react-native-blur",
     "react-native-blur-view"
   ],
@@ -214,7 +218,8 @@
     "ios": {
       "componentProvider": {
         "BlurView": "BlurView",
-        "VibrancyView": "VibrancyView"
+        "VibrancyView": "VibrancyView",
+        "ProgressiveMaskView": "ProgressiveMaskView"
       }
     }
   },

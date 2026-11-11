@@ -59,6 +59,14 @@
 }
 #endif
 
++ (NSString *)progressiveDirection:(NSString *)direction
+{
+  if ([direction isEqualToString:@"bottom"]) return @"bottom";
+  else if ([direction isEqualToString:@"left"]) return @"left";
+  else if ([direction isEqualToString:@"right"]) return @"right";
+  else return @"top";
+}
+
 + (NSNumber *)clipRadius:(NSNumber *)radius
 {
   if (radius == nil) {
@@ -66,6 +74,15 @@
   }
 
   return @(MAX(0.0, MIN(100.0, radius.doubleValue)));
+}
+
++ (NSNumber *)clipOffset:(NSNumber *)offset
+{
+  if (offset == nil) {
+    return @1.0;
+  }
+
+  return @(MAX(0.0, MIN(1.0, offset.doubleValue)));
 }
 
 @end

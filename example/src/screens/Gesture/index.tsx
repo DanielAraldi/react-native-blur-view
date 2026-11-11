@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { ImageBackground, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import { BlurTarget, BlurView } from '@danielsaraldi/react-native-blur-view';
 import { GestureDetector, usePanGesture } from 'react-native-gesture-handler';
 import Animated, {
@@ -35,12 +35,14 @@ export function Gesture() {
 
   return (
     <View style={styles.container}>
-      <BlurTarget ref={targetRef} style={styles.absoluteFill}>
-        <ImageBackground
-          style={styles.absoluteFill}
-          source={INTERSTELLAR}
-          resizeMode="cover"
-        />
+      <BlurTarget ref={targetRef} style={StyleSheet.absoluteFill}>
+        <View style={StyleSheet.absoluteFill}>
+          <Image
+            style={styles.image}
+            source={INTERSTELLAR}
+            resizeMode="cover"
+          />
+        </View>
       </BlurTarget>
 
       <View style={styles.content}>

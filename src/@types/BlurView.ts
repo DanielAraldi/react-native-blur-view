@@ -5,7 +5,8 @@ import type { RefObject } from 'react';
 /**
  * @interface BlurViewProps
  *
- * @description Props for the `BlurView` component.
+ * @description Props for the `BlurView` component. On Android, the `blurTarget`
+ * prop is required for the blur effect to work correctly.
  *
  * @see https://github.com/DanielAraldi/react-native-blur-view?tab=readme-ov-file#properties
  *

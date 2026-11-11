@@ -5,7 +5,7 @@ import type { ViewProps } from 'react-native';
  *
  * @description Props for the `BlurTarget` component.
  *
- * @see https://github.com/DanielAraldi/react-native-blur-view?tab=readme-ov-file#properties-1
+ * @see https://github.com/DanielAraldi/react-native-blur-view?tab=readme-ov-file#properties-2
  *
  * @since 1.0.0
  */

@@ -11,6 +11,7 @@ class BlurViewPackage : ReactPackage {
     val viewManagers: MutableList<ViewManager<*, *>> = ArrayList()
     viewManagers.add(TargetViewManager())
     viewManagers.add(BlurViewManager())
+    viewManagers.add(ProgressiveMaskViewManager())
     return viewManagers
   }
 

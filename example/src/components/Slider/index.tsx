@@ -8,6 +8,7 @@ import type { SliderProps } from '../../@types';
 export function Slider(props: SliderProps) {
   const {
     label = 'Radius',
+    suffix = '',
     maximumValue = 100,
     blurTarget,
     value,
@@ -27,6 +28,7 @@ export function Slider(props: SliderProps) {
     >
       <Text style={[styles.label, isDark && styles.labelDark]}>
         {label}: {value}
+        {suffix}
       </Text>
 
       <RNSlider
