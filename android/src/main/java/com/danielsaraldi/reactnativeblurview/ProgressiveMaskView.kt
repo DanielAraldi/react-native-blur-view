@@ -11,16 +11,6 @@ import android.graphics.Shader
 import com.facebook.react.views.view.ReactViewGroup
 import kotlin.math.roundToInt
 
-/**
- * A container that fades its children out progressively from one edge of the
- * view. The children are drawn in an offscreen layer and then masked with a
- * linear alpha gradient, so it works with any content, including the
- * `BlurView` component.
- *
- * It mirrors the gradient used by the iOS `ProgressiveMaskView`: the content is
- * fully visible at the `direction` edge and fades out with a smoothstep curve
- * until `offset` of the view length. Beyond that the content is hidden.
- */
 class ProgressiveMaskView(context: Context?) : ReactViewGroup(context) {
   private var direction: String = "top"
   private var offset: Float = 1f
