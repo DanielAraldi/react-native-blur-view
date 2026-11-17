@@ -1,16 +1,16 @@
-#import <React/RCTViewComponentView.h>
 #import "BlurView.h"
+#import <React/RCTViewComponentView.h>
 
-#import "BlurViewEffect.h"
 #import "BlurUtils.h"
+#import "BlurViewEffect.h"
 
-#import <react/RCTConversions.h>
+#import <React/RCTConversions.h>
 #import <react/renderer/components/BlurViewSpec/ComponentDescriptors.h>
 #import <react/renderer/components/BlurViewSpec/EventEmitters.h>
 #import <react/renderer/components/BlurViewSpec/Props.h>
 #import <react/renderer/components/BlurViewSpec/RCTComponentViewHelpers.h>
 
-#import "RCTFabricComponentsPlugins.h"
+#import <React/RCTFabricComponentsPlugins.h>
 
 using namespace facebook::react;
 
@@ -19,28 +19,26 @@ using namespace facebook::react;
 @end
 
 @implementation BlurView {
-  UIView * _view;
+  UIView *_view;
 }
 
-+ (ComponentDescriptorProvider)componentDescriptorProvider
-{
++ (ComponentDescriptorProvider)componentDescriptorProvider {
   return concreteComponentDescriptorProvider<BlurViewComponentDescriptor>();
 }
 
-- (instancetype)init
-{
+- (instancetype)init {
   if (self = [super init]) {
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(reduceTransparencyStatusDidChange:)
-                                          name:UIAccessibilityReduceTransparencyStatusDidChangeNotification
-                                          object:nil];
+    [[NSNotificationCenter defaultCenter]
+        addObserver:self
+           selector:@selector(reduceTransparencyStatusDidChange:)
+               name:UIAccessibilityReduceTransparencyStatusDidChangeNotification
+             object:nil];
   }
 
   return self;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
   if (self = [super initWithFrame:frame]) {
     static const auto defaultProps = std::make_shared<const BlurViewProps>();
     _props = defaultProps;
@@ -51,11 +49,13 @@ using namespace facebook::react;
     self.radius = @20;
 
     self.blurEffectView = [[UIVisualEffectView alloc] init];
-    self.blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.blurEffectView.autoresizingMask =
+        UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.blurEffectView.frame = self.bounds;
 
     self.reducedTransparencyFallbackView = [[UIView alloc] init];
-    self.reducedTransparencyFallbackView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.reducedTransparencyFallbackView.autoresizingMask =
+        UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.reducedTransparencyFallbackView.frame = frame;
     self.reducedTransparencyFallbackView.userInteractionEnabled = NO;
 
@@ -64,19 +64,22 @@ using namespace facebook::react;
 
     [self addSubview:self.blurEffectView];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                          selector:@selector(applicationWillEnterForeground:)
-                                          name:UIApplicationWillEnterForegroundNotification
-                                          object:nil];
+    [[NSNotificationCenter defaultCenter]
+        addObserver:self
+           selector:@selector(applicationWillEnterForeground:)
+               name:UIApplicationWillEnterForegroundNotification
+             object:nil];
   }
 
   return self;
 }
 
-- (void)updateProps:(Props::Shared const &)props oldProps:(Props::Shared const &)oldProps
-{
-  const auto &oldViewProps = *std::static_pointer_cast<BlurViewProps const>(_props);
-  const auto &newViewProps = *std::static_pointer_cast<BlurViewProps const>(props);
+- (void)updateProps:(Props::Shared const &)props
+           oldProps:(Props::Shared const &)oldProps {
+  const auto &oldViewProps =
+      *std::static_pointer_cast<BlurViewProps const>(_props);
+  const auto &newViewProps =
+      *std::static_pointer_cast<BlurViewProps const>(props);
 
   if (oldViewProps.radius != newViewProps.radius) {
     NSNumber *radius = [NSNumber numberWithDouble:newViewProps.radius];
@@ -84,25 +87,29 @@ using namespace facebook::react;
   }
 
   if (oldViewProps.overlayColor != newViewProps.overlayColor) {
-    NSString *overlayColor = [NSString stringWithUTF8String:newViewProps.overlayColor.c_str()];
+    NSString *overlayColor =
+        [NSString stringWithUTF8String:newViewProps.overlayColor.c_str()];
     [self setOverlayColor:overlayColor];
   }
 
-  if (oldViewProps.reducedTransparencyFallbackColor != newViewProps.reducedTransparencyFallbackColor) {
-    UIColor *reducedTransparencyFallbackColor = RCTUIColorFromSharedColor(newViewProps.reducedTransparencyFallbackColor);
+  if (oldViewProps.reducedTransparencyFallbackColor !=
+      newViewProps.reducedTransparencyFallbackColor) {
+    UIColor *reducedTransparencyFallbackColor = RCTUIColorFromSharedColor(
+        newViewProps.reducedTransparencyFallbackColor);
     [self setReducedTransparencyFallbackColor:reducedTransparencyFallbackColor];
   }
 
   [super updateProps:props oldProps:oldProps];
 }
 
-- (void)updateBlurEffect
-{
+- (void)updateBlurEffect {
   [self stopBlurAnimator];
   self.blurEffectView.effect = nil;
 
-  UIBlurEffectStyle blurEffectStyle = [BlurUtils blurEffectStyle:self.overlayColor];
-  BlurViewEffect *blurEffect = [BlurViewEffect effectWithStyle:blurEffectStyle andRadius:self.radius];
+  UIBlurEffectStyle blurEffectStyle =
+      [BlurUtils blurEffectStyle:self.overlayColor];
+  BlurViewEffect *blurEffect = [BlurViewEffect effectWithStyle:blurEffectStyle
+                                                     andRadius:self.radius];
   self.blurEffect = blurEffect;
 
   CGFloat fraction = self.radius.doubleValue / 100.0;
@@ -112,30 +119,33 @@ using namespace facebook::react;
   }
 
   // A paused animator created before the view is on screen is not honored by
-  // UIVisualEffectView, which renders the full effect instead. Wait for didMoveToWindow.
+  // UIVisualEffectView, which renders the full effect instead. Wait for
+  // didMoveToWindow.
   if (!self.window) {
     return;
   }
 
   __weak UIVisualEffectView *blurEffectView = self.blurEffectView;
-  self.blurAnimator = [[UIViewPropertyAnimator alloc] initWithDuration:1.0 curve:UIViewAnimationCurveLinear animations:^{
-    blurEffectView.effect = blurEffect;
-  }];
+  self.blurAnimator = [[UIViewPropertyAnimator alloc]
+      initWithDuration:1.0
+                 curve:UIViewAnimationCurveLinear
+            animations:^{
+              blurEffectView.effect = blurEffect;
+            }];
   [self.blurAnimator pauseAnimation];
   self.blurAnimator.fractionComplete = fraction;
 }
 
-- (void)stopBlurAnimator
-{
-  if (self.blurAnimator && self.blurAnimator.state == UIViewAnimatingStateActive) {
+- (void)stopBlurAnimator {
+  if (self.blurAnimator &&
+      self.blurAnimator.state == UIViewAnimatingStateActive) {
     [self.blurAnimator stopAnimation:YES];
   }
 
   self.blurAnimator = nil;
 }
 
-- (void)didMoveToWindow
-{
+- (void)didMoveToWindow {
   [super didMoveToWindow];
 
   if (!self.window) {
@@ -154,20 +164,18 @@ using namespace facebook::react;
   });
 }
 
-- (void)applicationWillEnterForeground:(__unused NSNotification *)notification
-{
+- (void)applicationWillEnterForeground:(__unused NSNotification *)notification {
   if (self.window) {
     [self updateBlurEffect];
   }
 }
 
-- (BOOL)isReduceTransparencyEnabled
-{
-  return UIAccessibilityIsReduceTransparencyEnabled() == YES && self.reducedTransparencyFallbackColor != NULL;
+- (BOOL)isReduceTransparencyEnabled {
+  return UIAccessibilityIsReduceTransparencyEnabled() == YES &&
+         self.reducedTransparencyFallbackColor != NULL;
 }
 
-- (void)updateFallbackView
-{
+- (void)updateFallbackView {
   if ([self isReduceTransparencyEnabled]) {
     if (![self.subviews containsObject:self.reducedTransparencyFallbackView]) {
       [self insertSubview:self.reducedTransparencyFallbackView atIndex:0];
@@ -186,26 +194,28 @@ using namespace facebook::react;
     }
   }
 
-  self.reducedTransparencyFallbackView.backgroundColor = self.reducedTransparencyFallbackColor;
+  self.reducedTransparencyFallbackView.backgroundColor =
+      self.reducedTransparencyFallbackColor;
 }
 
-- (void)reduceTransparencyStatusDidChange:(__unused NSNotification *)notification
-{
+- (void)reduceTransparencyStatusDidChange:
+    (__unused NSNotification *)notification {
   [self updateFallbackView];
 }
 
-- (void)mountChildComponentView:(UIView<RCTComponentViewProtocol> *)childComponentView index:(NSInteger)index
-{
+- (void)mountChildComponentView:
+            (UIView<RCTComponentViewProtocol> *)childComponentView
+                          index:(NSInteger)index {
   [self insertSubview:childComponentView atIndex:index];
 }
 
-- (void)unmountChildComponentView:(UIView<RCTComponentViewProtocol> *)childComponentView index:(NSInteger)index
-{
+- (void)unmountChildComponentView:
+            (UIView<RCTComponentViewProtocol> *)childComponentView
+                            index:(NSInteger)index {
   [childComponentView removeFromSuperview];
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
   [super layoutSubviews];
 
   if (self.reducedTransparencyFallbackView) {
@@ -225,8 +235,7 @@ using namespace facebook::react;
   }
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 
   [self stopBlurAnimator];
@@ -246,30 +255,27 @@ using namespace facebook::react;
   }
 }
 
-Class<RCTComponentViewProtocol> BlurViewCls(void)
-{
-  return BlurView.class;
-}
+Class<RCTComponentViewProtocol> BlurViewCls(void) { return BlurView.class; }
 
-- (void)setOverlayColor:(NSString *)overlayColor
-{
+- (void)setOverlayColor:(NSString *)overlayColor {
   if (overlayColor && ![self.overlayColor isEqual:overlayColor]) {
     _overlayColor = overlayColor;
     [self updateBlurEffect];
   }
 }
 
-- (void)setRadius:(NSNumber *)radius
-{
+- (void)setRadius:(NSNumber *)radius {
   if (radius && ![self.radius isEqualToNumber:radius]) {
     _radius = [BlurUtils clipRadius:radius];
     [self updateBlurEffect];
   }
 }
 
-- (void)setReducedTransparencyFallbackColor:(UIColor *)reducedTransparencyFallbackColor
-{
-  if (reducedTransparencyFallbackColor && ![self.reducedTransparencyFallbackColor isEqual:reducedTransparencyFallbackColor]) {
+- (void)setReducedTransparencyFallbackColor:
+    (UIColor *)reducedTransparencyFallbackColor {
+  if (reducedTransparencyFallbackColor &&
+      ![self.reducedTransparencyFallbackColor
+          isEqual:reducedTransparencyFallbackColor]) {
     _reducedTransparencyFallbackColor = reducedTransparencyFallbackColor;
     [self updateFallbackView];
   }

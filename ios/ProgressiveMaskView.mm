@@ -1,15 +1,15 @@
-#import <React/RCTViewComponentView.h>
 #import "ProgressiveMaskView.h"
+#import <React/RCTViewComponentView.h>
 
 #import "BlurUtils.h"
 
-#import <react/RCTConversions.h>
+#import <React/RCTConversions.h>
 #import <react/renderer/components/BlurViewSpec/ComponentDescriptors.h>
 #import <react/renderer/components/BlurViewSpec/EventEmitters.h>
 #import <react/renderer/components/BlurViewSpec/Props.h>
 #import <react/renderer/components/BlurViewSpec/RCTComponentViewHelpers.h>
 
-#import "RCTFabricComponentsPlugins.h"
+#import <React/RCTFabricComponentsPlugins.h>
 
 using namespace facebook::react;
 
@@ -26,22 +26,23 @@ static const NSInteger kProgressiveMaskSteps = 16;
 
 @implementation ProgressiveMaskView
 
-+ (ComponentDescriptorProvider)componentDescriptorProvider
-{
-  return concreteComponentDescriptorProvider<ProgressiveMaskViewComponentDescriptor>();
++ (ComponentDescriptorProvider)componentDescriptorProvider {
+  return concreteComponentDescriptorProvider<
+      ProgressiveMaskViewComponentDescriptor>();
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
   if (self = [super initWithFrame:frame]) {
-    static const auto defaultProps = std::make_shared<const ProgressiveMaskViewProps>();
+    static const auto defaultProps =
+        std::make_shared<const ProgressiveMaskViewProps>();
     _props = defaultProps;
 
     self.direction = @"top";
     self.offset = @1.0;
 
     self.contentView = [[UIView alloc] initWithFrame:self.bounds];
-    self.contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.contentView.autoresizingMask =
+        UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.contentView.backgroundColor = [UIColor clearColor];
 
     self.gradientLayer = [CAGradientLayer layer];
@@ -56,13 +57,16 @@ static const NSInteger kProgressiveMaskSteps = 16;
   return self;
 }
 
-- (void)updateProps:(Props::Shared const &)props oldProps:(Props::Shared const &)oldProps
-{
-  const auto &oldViewProps = *std::static_pointer_cast<ProgressiveMaskViewProps const>(_props);
-  const auto &newViewProps = *std::static_pointer_cast<ProgressiveMaskViewProps const>(props);
+- (void)updateProps:(Props::Shared const &)props
+           oldProps:(Props::Shared const &)oldProps {
+  const auto &oldViewProps =
+      *std::static_pointer_cast<ProgressiveMaskViewProps const>(_props);
+  const auto &newViewProps =
+      *std::static_pointer_cast<ProgressiveMaskViewProps const>(props);
 
   if (oldViewProps.direction != newViewProps.direction) {
-    NSString *direction = [NSString stringWithUTF8String:newViewProps.direction.c_str()];
+    NSString *direction =
+        [NSString stringWithUTF8String:newViewProps.direction.c_str()];
     [self setDirection:direction];
   }
 
@@ -74,8 +78,7 @@ static const NSInteger kProgressiveMaskSteps = 16;
   [super updateProps:props oldProps:oldProps];
 }
 
-- (void)updateGradient
-{
+- (void)updateGradient {
   CGPoint startPoint = CGPointMake(0.5, 0.0);
   CGPoint endPoint = CGPointMake(0.5, 1.0);
 
@@ -96,15 +99,16 @@ static const NSInteger kProgressiveMaskSteps = 16;
 
   if (offset <= 0.0) {
     CGColorRef clear = [UIColor clearColor].CGColor;
-    [colors addObjectsFromArray:@[(__bridge id)clear, (__bridge id)clear]];
-    [locations addObjectsFromArray:@[@0.0, @1.0]];
+    [colors addObjectsFromArray:@[ (__bridge id)clear, (__bridge id)clear ]];
+    [locations addObjectsFromArray:@[ @0.0, @1.0 ]];
   } else {
     for (NSInteger step = 0; step <= kProgressiveMaskSteps; step++) {
       CGFloat progress = (CGFloat)step / (CGFloat)kProgressiveMaskSteps;
       CGFloat eased = progress * progress * (3.0 - 2.0 * progress);
       CGFloat alpha = 1.0 - eased;
 
-      [colors addObject:(__bridge id)[UIColor colorWithWhite:0.0 alpha:alpha].CGColor];
+      [colors addObject:(__bridge id)[UIColor colorWithWhite:0.0 alpha:alpha]
+                            .CGColor];
       [locations addObject:@(progress * offset)];
     }
 
@@ -123,18 +127,19 @@ static const NSInteger kProgressiveMaskSteps = 16;
   [CATransaction commit];
 }
 
-- (void)mountChildComponentView:(UIView<RCTComponentViewProtocol> *)childComponentView index:(NSInteger)index
-{
+- (void)mountChildComponentView:
+            (UIView<RCTComponentViewProtocol> *)childComponentView
+                          index:(NSInteger)index {
   [self.contentView insertSubview:childComponentView atIndex:index];
 }
 
-- (void)unmountChildComponentView:(UIView<RCTComponentViewProtocol> *)childComponentView index:(NSInteger)index
-{
+- (void)unmountChildComponentView:
+            (UIView<RCTComponentViewProtocol> *)childComponentView
+                            index:(NSInteger)index {
   [childComponentView removeFromSuperview];
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
   [super layoutSubviews];
 
   self.contentView.frame = self.bounds;
@@ -147,8 +152,7 @@ static const NSInteger kProgressiveMaskSteps = 16;
   [CATransaction commit];
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
   if (self.contentView) {
     self.contentView.layer.mask = nil;
     [self.contentView removeFromSuperview];
@@ -158,13 +162,11 @@ static const NSInteger kProgressiveMaskSteps = 16;
   self.gradientLayer = nil;
 }
 
-Class<RCTComponentViewProtocol> ProgressiveMaskViewCls(void)
-{
+Class<RCTComponentViewProtocol> ProgressiveMaskViewCls(void) {
   return ProgressiveMaskView.class;
 }
 
-- (void)setDirection:(NSString *)direction
-{
+- (void)setDirection:(NSString *)direction {
   NSString *normalized = [BlurUtils progressiveDirection:direction];
   if (![self.direction isEqualToString:normalized]) {
     _direction = normalized;
@@ -172,8 +174,7 @@ Class<RCTComponentViewProtocol> ProgressiveMaskViewCls(void)
   }
 }
 
-- (void)setOffset:(NSNumber *)offset
-{
+- (void)setOffset:(NSNumber *)offset {
   NSNumber *clipped = [BlurUtils clipOffset:offset];
   if (![self.offset isEqualToNumber:clipped]) {
     _offset = clipped;

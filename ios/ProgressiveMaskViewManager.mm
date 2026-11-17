@@ -1,6 +1,6 @@
-#import <React/RCTViewManager.h>
-#import <React/RCTUIManager.h>
 #import <React/RCTBridge.h>
+#import <React/RCTUIManager.h>
+#import <React/RCTViewManager.h>
 
 #import "ProgressiveMaskView.h"
 
@@ -11,8 +11,7 @@
 
 RCT_EXPORT_MODULE(ProgressiveMaskView);
 
-- (UIView *)view
-{
+- (UIView *)view {
   return [[ProgressiveMaskView alloc] init];
 }
 

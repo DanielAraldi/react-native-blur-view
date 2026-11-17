@@ -1,6 +1,6 @@
-#import <React/RCTViewManager.h>
-#import <React/RCTUIManager.h>
 #import <React/RCTBridge.h>
+#import <React/RCTUIManager.h>
+#import <React/RCTViewManager.h>
 
 #import "VibrancyView.h"
 
@@ -11,8 +11,7 @@
 
 RCT_EXPORT_MODULE(VibrancyView);
 
-- (UIView *)view
-{
+- (UIView *)view {
   return [[VibrancyView alloc] init];
 }
 
