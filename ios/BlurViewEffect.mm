@@ -4,7 +4,7 @@
 
 @interface UIBlurEffect (Protected)
 
-@property (nonatomic, readonly) id effectSettings;
+@property(nonatomic, readonly) id effectSettings;
 
 @end
 
@@ -12,34 +12,31 @@
 
 @dynamic radius;
 
-+ (instancetype)effectWithStyle:(UIBlurEffectStyle)style
-{
++ (instancetype)effectWithStyle:(UIBlurEffectStyle)style {
   id instance = [super effectWithStyle:style];
   object_setClass(instance, self);
 
   return instance;
 }
 
-+ (instancetype)effectWithStyle:(UIBlurEffectStyle)style andRadius:(NSNumber*)radius
-{
-  BlurViewEffect *effect = (BlurViewEffect*)[self effectWithStyle:style];
++ (instancetype)effectWithStyle:(UIBlurEffectStyle)style
+                      andRadius:(NSNumber *)radius {
+  BlurViewEffect *effect = (BlurViewEffect *)[self effectWithStyle:style];
   effect.radius = radius;
 
   return effect;
 }
 
-- (NSNumber*)radius
-{
+- (NSNumber *)radius {
   return objc_getAssociatedObject(self, @selector(radius));
 }
 
-- (void)setRadius:(NSNumber*)radius
-{
-  objc_setAssociatedObject(self, @selector(radius), radius, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setRadius:(NSNumber *)radius {
+  objc_setAssociatedObject(self, @selector(radius), radius,
+                           OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (id)effectSettings
-{
+- (id)effectSettings {
   id settings = [super effectSettings];
   NSNumber *radius = self.radius;
   if (radius) {
@@ -48,11 +45,11 @@
   return settings;
 }
 
-- (id)copyWithZone:(NSZone*)zone
-{
+- (id)copyWithZone:(NSZone *)zone {
   id instance = [super copyWithZone:zone];
   object_setClass(instance, [self class]);
-  objc_setAssociatedObject(instance, @selector(radius), self.radius, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+  objc_setAssociatedObject(instance, @selector(radius), self.radius,
+                           OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 
   return instance;
 }

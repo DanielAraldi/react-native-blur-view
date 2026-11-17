@@ -1,6 +1,6 @@
-#import <React/RCTViewManager.h>
-#import <React/RCTUIManager.h>
 #import <React/RCTBridge.h>
+#import <React/RCTUIManager.h>
+#import <React/RCTViewManager.h>
 
 #import "BlurView.h"
 
@@ -11,8 +11,7 @@
 
 RCT_EXPORT_MODULE(BlurView);
 
-- (UIView *)view
-{
+- (UIView *)view {
   return [[BlurView alloc] init];
 }
 

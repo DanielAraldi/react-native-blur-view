@@ -19,6 +19,7 @@
     "ios",
     "cpp",
     "*.podspec",
+    "Package.swift",
     "react-native.config.js",
     "!ios/build",
     "!android/build",
@@ -189,6 +190,9 @@
     "tabWidth": 2,
     "trailingComma": "es5",
     "useTabs": false
+  },
+  "swiftpmConfig": {
+    "name": "ReactNativeBlurView"
   },
   "react-native-builder-bob": {
     "source": "src",
