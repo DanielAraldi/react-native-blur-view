@@ -1,5 +1,13 @@
 
 
+## [3.4.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v3.3.0...v3.4.0) (2026-11-17)
+
+* **example:** update react native version of the example App ([44f7da2](https://github.com/DanielAraldi/react-native-blur-view/commit/44f7da297ad024f4ab6281cae15213a906df97a3))
+
+### 🚀 Features
+
+* **ios:** add Swift Package Manager support ([62675e1](https://github.com/DanielAraldi/react-native-blur-view/commit/62675e11c3f00b5ae325e7d7760b0173c4a8c4b3))
+
 ## [3.3.0](https://github.com/DanielAraldi/react-native-blur-view/compare/v3.2.0...v3.3.0) (2026-11-11)
 
 ### 🚀 Features
