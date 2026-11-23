@@ -15,9 +15,6 @@ Support the animation transitions with [react-native-screens](https://github.com
   </p>
 </div>
 
-> [!NOTE]
-> This package supports **only** [new architecture](https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here).
-
 <p align="center">
   <img
     height="756px"
@@ -35,6 +32,7 @@ Support the animation transitions with [react-native-screens](https://github.com
 
 ## Summary
 
+- [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
   - [Using Lists](#using-lists)
@@ -63,6 +61,18 @@ Support the animation transitions with [react-native-screens](https://github.com
 - [Others Libraries](#others-libraries)
 - [Contributing](#contributing)
 - [License](#license)
+
+## Requirements
+ 
+| Requirement        | Minimum version                                                                                  |
+| ------------------ | ------------------------------------------------------------------------------------------------ |
+| React Native       | [New Architecture](https://reactnative.dev/blog/2024/10/23/the-new-architecture-is-here) enabled |
+| iOS/tvOS           | `15.1`                                                                                           |
+| Android/Android TV | `7.0` (API level `24`)                                                                           |
+ 
+- **New Architecture only**: The old architecture isn't supported.
+- **TV platforms**: To run on Apple TV or Android TV, your app must use [`react-native-tvos`](https://github.com/react-native-tvos/react-native-tvos).
+- **Expo**: Expo Go isn't supported, since this package contains native code. See the [Expo](#expo) section.
 
 ## Installation
 
