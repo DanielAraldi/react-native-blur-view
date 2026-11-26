@@ -2,7 +2,7 @@
 
 A simple blur view in react native based on [@react-native-community/blur](https://github.com/margelo/react-native-blur).
 
-Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated/), [react-native-navigation](https://github.com/wix/react-native-navigation) and Modals 😁. This library supports Apple TV and Android TV! 📺
+Support the animation transitions with [react-native-screens](https://github.com/software-mansion/react-native-screens), [react-native-reanimated](https://github.com/software-mansion/react-native-reanimated/), [react-native-navigation](https://github.com/wix/react-native-navigation) and Modals 😁.
 
 > [!WARNING]
 > Bottom tabs customized with the [react-navigation/bottom-tabs](https://reactnavigation.org/docs/bottom-tab-navigator/) and [sticky header component](https://reactnative.dev/docs/scrollview#stickyheadercomponent) aren't supported in Android. For more information, just [click here](https://github.com/DanielAraldi/react-native-blur-view/issues/39#issuecomment-4081708642)!
@@ -96,7 +96,7 @@ cd ios && pod install && cd ..
 
 ```tsx
 import { useRef } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { BlurView, BlurTarget } from '@danielsaraldi/react-native-blur-view';
 // ...
 
@@ -122,42 +122,6 @@ export default function App() {
     </>
   );
 }
-
-export const styles = StyleSheet.create({
-  blurView: {
-    position: 'absolute',
-    top: 0,
-
-    width: '100%',
-    height: 128,
-
-    justifyContent: 'center',
-    alignItems: 'center',
-
-    borderRadius: 16,
-  },
-
-  blurTarget: {
-    flex: 1,
-  },
-
-  text: {
-    fontSize: 24,
-    fontWeight: 'bold',
-
-    color: 'white',
-  },
-
-  scrollView: {
-    flex: 1,
-  },
-
-  contentContainer: {
-    padding: 20,
-
-    gap: 8,
-  },
-});
 ```
 
 ### Using lists
@@ -443,18 +407,10 @@ In version 3.0.0, the `x-light` blur `type` has been renamed to `extra-light` in
   {/** ... **/}
 </BlurView>
 
-<VibrancyView blurTarget={targetRef} type='x-light' style={styles.vibrancyView}>
-  {/** ... **/}
-</VibrancyView>
-
 // ✅ New API (v3.0.0) - Current
 <BlurView blurTarget={targetRef} type='extra-light' style={styles.blurView}>
   {/** ... **/}
 </BlurView>
-
-<VibrancyView blurTarget={targetRef} type='extra-light' style={styles.vibrancyView}>
-  {/** ... **/}
-</VibrancyView>
 ```
 
 A new `type` of blur called `extra-dark` has been added to the `BlurView` and `VibrancyView` components. Below is a small example:
@@ -544,7 +500,7 @@ export interface CustomVibrancyViewProps extends VibrancyViewProps {
 }
 ```
 
-## Others Libraries
+## Other Libraries
 
 - ✅ [`expo-blur`](https://docs.expo.dev/versions/latest/sdk/blur-view/) - A React component that blurs everything underneath the view. Common usage of this is for navigation bars, tab bars, and modals.
 - ✅ [`@sbaiahmed1/react-native-blur`](https://github.com/sbaiahmed1/react-native-blur) - A modern React Native blur view component that provides native blur effects for both iOS and Android platforms. Also adds progressive blur and liquid glass.
